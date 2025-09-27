@@ -1,0 +1,5 @@
+../Core/Lib/mpu9250/test/driver_mpu9250_dmp_tap_orient_motion_test.c:181:13:a_dmp_orient_callback	0	static
+../Core/Lib/mpu9250/test/driver_mpu9250_dmp_tap_orient_motion_test.c:121:13:a_dmp_tap_callback	0	static
+../Core/Lib/mpu9250/test/driver_mpu9250_dmp_tap_orient_motion_test.c:75:13:a_receive_callback	0	static
+../Core/Lib/mpu9250/test/driver_mpu9250_dmp_tap_orient_motion_test.c:58:9:mpu9250_dmp_tap_orient_motion_test_irq_handler	8	static
+../Core/Lib/mpu9250/test/driver_mpu9250_dmp_tap_orient_motion_test.c:231:9:mpu9250_dmp_tap_orient_motion_test	232	static

@@ -1,0 +1,10 @@
+../Core/Lib/flight_controller_libs/filters.c:6:6:pt1_filter_init_lowpass	3
+../Core/Lib/flight_controller_libs/filters.c:20:7:pt1_filter_apply_lowpass	1
+../Core/Lib/flight_controller_libs/filters.c:25:6:pt1_filter_reset	1
+../Core/Lib/flight_controller_libs/filters.c:29:7:biquad_filter_apply	1
+../Core/Lib/flight_controller_libs/filters.c:36:6:biquad_filter_reset	1
+../Core/Lib/flight_controller_libs/filters.c:44:6:biquad_filter_init_bandpass	1
+../Core/Lib/flight_controller_libs/filters.c:69:6:biquad_filter_init_notch	1
+../Core/Lib/flight_controller_libs/filters.c:93:6:pt2_filter_init_lowpass	1
+../Core/Lib/flight_controller_libs/filters.c:100:7:pt2_filter_apply_lowpass	1
+../Core/Lib/flight_controller_libs/filters.c:104:6:pt2_filter_reset	1

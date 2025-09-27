@@ -1,0 +1,6 @@
+../Core/Inc/geometry3D.h:196:19:quatmultiply	32	static
+../Core/Src/flight_controller.c:41:6:flight_controller_init	16	static
+../Core/Src/flight_controller.c:91:6:angle_controller	224	static
+../Core/Src/flight_controller.c:172:6:flight_controller_loop	136	static
+../Core/Src/flight_controller.c:236:6:flight_controller_init_motors	16	static
+../Core/Src/flight_controller.c:246:9:throttle2Dshot_value	0	static

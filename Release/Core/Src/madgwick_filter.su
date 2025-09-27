@@ -1,0 +1,3 @@
+../Core/Inc/geometry3D.h:143:19:quatnormalize	56	static
+../Core/Src/madgwick_filter.c:18:6:madgwick_filter_init	0	static
+../Core/Src/madgwick_filter.c:32:6:madgwick_filter_apply	120	static

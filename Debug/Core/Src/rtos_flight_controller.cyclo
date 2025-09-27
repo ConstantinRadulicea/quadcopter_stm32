@@ -1,0 +1,9 @@
+../Core/Src/rtos_flight_controller.c:29:13:ctrl_timer_cb	3
+../Core/Src/rtos_flight_controller.c:37:13:write_motor_timer_cb	3
+../Core/Src/rtos_flight_controller.c:45:13:init_imu	2
+../Core/Src/rtos_flight_controller.c:75:13:flight_controller_main	4
+../Core/Src/rtos_flight_controller.c:136:13:write_motor_main	8
+../Core/Src/rtos_flight_controller.c:192:12:line_buffer_add_char	5
+../Core/Src/rtos_flight_controller.c:219:13:rc_control_main	10
+../Core/Src/rtos_flight_controller.c:323:13:print_telemetry_data	1
+../Core/Src/rtos_flight_controller.c:416:6:app_main	5

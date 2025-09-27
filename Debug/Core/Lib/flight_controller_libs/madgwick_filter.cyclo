@@ -1,0 +1,2 @@
+../Core/Lib/flight_controller_libs/madgwick_filter.c:18:6:madgwick_filter_init	1
+../Core/Lib/flight_controller_libs/madgwick_filter.c:32:6:madgwick_filter_apply	1

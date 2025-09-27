@@ -1,0 +1,2 @@
+../Core/Lib/mpu9250/test/driver_mpu9250_dmp_pedometer_test.c:57:9:mpu9250_dmp_pedometer_test_irq_handler	8	static
+../Core/Lib/mpu9250/test/driver_mpu9250_dmp_pedometer_test.c:79:9:mpu9250_dmp_pedometer_test	216	static

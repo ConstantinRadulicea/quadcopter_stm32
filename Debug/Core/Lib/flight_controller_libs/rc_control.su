@@ -1,0 +1,17 @@
+../Core/Lib/flight_controller_libs/rc_control.c:6:6:rc_channel_filter_init	40	static
+../Core/Lib/flight_controller_libs/rc_control.c:22:6:rc_channel_filter_update	24	static
+../Core/Lib/flight_controller_libs/rc_control.c:55:7:rc_channel_filter_get_processed	16	static
+../Core/Lib/flight_controller_libs/rc_control.c:60:6:rc_attitude_control_init_roll	40	static
+../Core/Lib/flight_controller_libs/rc_control.c:72:6:rc_attitude_control_update_roll	16	static
+../Core/Lib/flight_controller_libs/rc_control.c:80:7:rc_attitude_control_get_processed_roll	16	static
+../Core/Lib/flight_controller_libs/rc_control.c:87:6:rc_attitude_control_init_pitch	40	static
+../Core/Lib/flight_controller_libs/rc_control.c:99:6:rc_attitude_control_update_pitch	16	static
+../Core/Lib/flight_controller_libs/rc_control.c:107:7:rc_attitude_control_get_processed_pitch	16	static
+../Core/Lib/flight_controller_libs/rc_control.c:114:6:rc_attitude_control_init_yaw	40	static
+../Core/Lib/flight_controller_libs/rc_control.c:126:6:rc_attitude_control_update_yaw	16	static
+../Core/Lib/flight_controller_libs/rc_control.c:134:7:rc_attitude_control_get_processed_yaw	16	static
+../Core/Lib/flight_controller_libs/rc_control.c:141:6:rc_attitude_control_init_throttle	40	static
+../Core/Lib/flight_controller_libs/rc_control.c:153:6:rc_attitude_control_update_throttle	16	static
+../Core/Lib/flight_controller_libs/rc_control.c:161:7:rc_attitude_control_get_processed_throttle	16	static
+../Core/Lib/flight_controller_libs/rc_control.c:168:6:rc_attitude_control_update	32	static
+../Core/Lib/flight_controller_libs/rc_control.c:182:6:rc_attitude_control_get_processed	24	static

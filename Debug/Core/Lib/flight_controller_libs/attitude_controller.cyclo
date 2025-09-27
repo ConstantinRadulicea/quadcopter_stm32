@@ -1,0 +1,4 @@
+../Core/Lib/flight_controller_libs/attitude_controller.c:8:6:attitude_controller_init	2
+../Core/Lib/flight_controller_libs/attitude_controller.c:29:19:quat_remove_yaw	1
+../Core/Lib/flight_controller_libs/attitude_controller.c:49:6:attitude_controller_angle_mode_update	14
+../Core/Lib/flight_controller_libs/attitude_controller.c:98:6:attitude_controller_get_calculated_rate	5

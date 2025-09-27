@@ -1,0 +1,3 @@
+../Core/Lib/flight_controller_libs/crc.c:4:10:crc16_ccitt_init	4	static
+../Core/Lib/flight_controller_libs/crc.c:8:10:crc16_ccitt_add	24	static
+../Core/Lib/flight_controller_libs/crc.c:22:10:crc16_ccitt_add_arr	32	static

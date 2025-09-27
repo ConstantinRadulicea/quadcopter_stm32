@@ -1,0 +1,4 @@
+../Core/Src/freertos.c:52:5:line_buffer_add_char	24	static
+../Core/Src/freertos.c:132:6:MX_FREERTOS_Init	8	static
+../Core/Src/freertos.c:178:6:StartDefaultTask	16	static
+../Core/Src/freertos.c:198:6:usart1_task_fcn	512	static,ignoring_inline_asm

@@ -1,0 +1,14 @@
+../Core/Src/usart.c:48:6:MX_USART1_UART_Init	2
+../Core/Src/usart.c:83:6:HAL_UART_MspInit	4
+../Core/Src/usart.c:153:6:HAL_UART_MspDeInit	2
+../Core/Src/usart.c:186:6:HAL_UART_TxCpltCallback	3
+../Core/Src/usart.c:212:6:HAL_UART_RxCpltCallback	1
+../Core/Src/usart.c:220:6:HAL_UART_IDLECallback	2
+../Core/Src/usart.c:261:6:usart1_start_tx_if_idle	2
+../Core/Src/usart.c:284:6:usart1_recover	1
+../Core/Src/usart.c:251:6:HAL_UART_ErrorCallback	2
+../Core/Src/usart.c:308:8:usart1_send_data	3
+../Core/Src/usart.c:325:8:usart1_recv_data	3
+../Core/Src/usart.c:338:8:usart1_data_available_for_read	1
+../Core/Src/usart.c:347:8:usart1_data_available_for_write	1
+../Core/Src/usart.c:356:6:usart1_data_rx_flush	1

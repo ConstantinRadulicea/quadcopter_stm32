@@ -1,0 +1,4 @@
+../Core/Lib/Dshot/dshot.c:97:13:dshot_dma_tc_callback	0	static
+../Core/Lib/Dshot/dshot.c:162:13:dshot_prepare_dmabuffer	8	static
+../Core/Lib/Dshot/dshot.c:38:6:dshot_init	16	static
+../Core/Lib/Dshot/dshot.c:45:6:dshot_write	32	static

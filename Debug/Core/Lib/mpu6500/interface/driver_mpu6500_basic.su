@@ -1,0 +1,4 @@
+../Core/Lib/mpu6500/interface/driver_mpu6500_basic.c:50:9:mpu6500_basic_init	24	static
+../Core/Lib/mpu6500/interface/driver_mpu6500_basic.c:613:9:mpu6500_basic_read_temperature	24	static
+../Core/Lib/mpu6500/interface/driver_mpu6500_basic.c:635:9:mpu6500_basic_read	64	static
+../Core/Lib/mpu6500/interface/driver_mpu6500_basic.c:674:9:mpu6500_basic_deinit	8	static

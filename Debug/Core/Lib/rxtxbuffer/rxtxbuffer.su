@@ -1,0 +1,17 @@
+../Core/Lib/rxtxbuffer/rxtxbuffer.c:9:9:rxtxbuffer_init	24	static
+../Core/Lib/rxtxbuffer/rxtxbuffer.c:27:10:rxtxbuffer_buffer_ptr	16	static
+../Core/Lib/rxtxbuffer/rxtxbuffer.c:31:8:rxtxbuffer_sent_size	16	static
+../Core/Lib/rxtxbuffer/rxtxbuffer.c:35:8:rxtxbuffer_data_size	16	static
+../Core/Lib/rxtxbuffer/rxtxbuffer.c:39:8:rxtxbuffer_capacity	16	static
+../Core/Lib/rxtxbuffer/rxtxbuffer.c:43:8:rxtxbuffer_free_space	16	static
+../Core/Lib/rxtxbuffer/rxtxbuffer.c:47:8:rxtxbuffer_data_remaining	16	static
+../Core/Lib/rxtxbuffer/rxtxbuffer.c:51:6:rxtxbuffer_sent_data_increase_size	16	static
+../Core/Lib/rxtxbuffer/rxtxbuffer.c:55:6:rxtxbuffer_data_increase_size	16	static
+../Core/Lib/rxtxbuffer/rxtxbuffer.c:59:6:rxtxbuffer_data_decrease_size	16	static
+../Core/Lib/rxtxbuffer/rxtxbuffer.c:73:6:rxtxbuffer_sent_data_decrease_size	16	static
+../Core/Lib/rxtxbuffer/rxtxbuffer.c:82:6:rxtxbuffer_clear	16	static
+../Core/Lib/rxtxbuffer/rxtxbuffer.c:87:6:rxtxbuffer_reset_sent_size	16	static
+../Core/Lib/rxtxbuffer/rxtxbuffer.c:91:8:rxtxbuffer_push_arr	32	static
+../Core/Lib/rxtxbuffer/rxtxbuffer.c:98:10:rxtxbuffer_data_ptr	16	static
+../Core/Lib/rxtxbuffer/rxtxbuffer.c:102:10:rxtxbuffer_free_space_ptr	16	static
+../Core/Lib/rxtxbuffer/rxtxbuffer.c:106:6:rxtxbuffer_shift_data_buf	24	static
