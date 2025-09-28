@@ -82,6 +82,9 @@ void attitude_controller_angle_mode_update(
 
     // --- Step 4: Convert error quaternion → rotation vector (rad) ---
     angles3D rotvec_err = quat2rotvec(estimated_q_witouth_yaw);
+    //angles3D rotvec_err = quat2rotvec(error_q);
+
+    rotvec_err.z = 0.0f;
 
     fc->calculated_roll_rate = rotvec_err.x * fc->rate_gain;
 	fc->calculated_pitch_rate = rotvec_err.y * fc->rate_gain;

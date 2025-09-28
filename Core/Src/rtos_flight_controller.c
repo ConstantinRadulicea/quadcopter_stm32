@@ -13,8 +13,6 @@
 #include "tim.h"
 #include "atomic_custom.h"
 #include "usart.h"
-#include "FreeRTOS.h"
-#include "task.h"
 #include "crc.h"
 
 flight_control_loop_t fcl;
@@ -74,10 +72,6 @@ static void init_imu(){
 
 static void flight_controller_main(void *arg)
 {
-    init_imu();
-    flight_control_loop_init(&fcl);
-    flight_control_loop_disarm_esc(&fcl);
-
     uint16_t len;
     int16_t accel_raw[3];
     int16_t gyro_raw[3];
@@ -137,19 +131,6 @@ static void write_motor_main(void *arg){
     write_motor_main_h = xTaskGetCurrentTaskHandle();
 
     float duty_cycle;
-
-    duty_cycle = esc_pwm_throttle_to_duty_cycle(ESC_PWM_HZ, ESC_PWM_MIN_US, ESC_PWM_MAX_US, 0.0f);
-
-	ATOMIC_BLOCK_CUSTOM(ATOMIC_RESTORESTATE_CUSTOM)
-	{
-		pwm_init(&esc_motors[0], MOTOR_1_TIM, MOTOR_1_TIM_CHANNEL, TIMER_CLOCK, ESC_PWM_HZ, duty_cycle);
-		pwm_init(&esc_motors[1], MOTOR_2_TIM, MOTOR_2_TIM_CHANNEL, TIMER_CLOCK, ESC_PWM_HZ, duty_cycle);
-		pwm_init(&esc_motors[2], MOTOR_3_TIM, MOTOR_3_TIM_CHANNEL, TIMER_CLOCK, ESC_PWM_HZ, duty_cycle);
-		pwm_init(&esc_motors[3], MOTOR_4_TIM, MOTOR_4_TIM_CHANNEL, TIMER_CLOCK, ESC_PWM_HZ, duty_cycle);
-	}
-
-    vTaskDelay(pdMS_TO_TICKS(100));
-
     static TimerHandle_t s_writeMotorTimer = NULL;
     if (s_writeMotorTimer == NULL) {
         s_writeMotorTimer = xTimerCreate(
@@ -329,8 +310,6 @@ static void print_telemetry_data(void *arg){
 	coord3D target_attitude = { 0 };
 	float target_throttle = 0.0f;
 
-    vTaskDelay(pdMS_TO_TICKS(500));
-
     for (;;)
     {
     #if MUTEX_ESP_ENABLE != 0
@@ -347,11 +326,11 @@ static void print_telemetry_data(void *arg){
         angles3D angles = quat2angle(&(body_frame_estimated_q));
 
         printf("%.3f;%.3f;%.3f;", degrees(angles.x), degrees(angles.y), degrees(angles.z));
-//        printf("%.3f;%.3f;%.3f;", body_frame_accel.x, body_frame_accel.y, body_frame_accel.z);
-//        printf("%.3f;%.3f;%.3f;", body_frame_gyro.x, body_frame_gyro.y, body_frame_gyro.z);
+        printf("%.3f;%.3f;%.3f;", body_frame_accel.x, body_frame_accel.y, body_frame_accel.z);
+        printf("%.3f;%.3f;%.3f;", body_frame_gyro.x, body_frame_gyro.y, body_frame_gyro.z);
 //        printf("%.3f;%.3f;%.3f;", raw_accel.x, raw_accel.y, raw_accel.z);
 //        printf("%.3f;%.3f;%.3f;", raw_gyro.x, raw_gyro.y, raw_gyro.z);
-        printf("%.3f;%.3f;%.3f;%.3f;", local_motors_throttle[0], local_motors_throttle[1], local_motors_throttle[2], local_motors_throttle[3]);
+//        printf("%.3f;%.3f;%.3f;%.3f;", local_motors_throttle[0], local_motors_throttle[1], local_motors_throttle[2], local_motors_throttle[3]);
 
 #if MUTEX_ESP_ENABLE != 0
 	xSemaphoreTake(fcl.rc_attitude_control_mutex, portMAX_DELAY);
@@ -366,7 +345,7 @@ static void print_telemetry_data(void *arg){
 #if MUTEX_ESP_ENABLE != 0
 	xSemaphoreGive(fcl.rc_attitude_control_mutex);
 #endif
-	printf("%.3f;%.3f;%.3f;%.3f;", target_attitude.x, target_attitude.y, target_attitude.z, target_throttle);
+//	printf("%.3f;%.3f;%.3f;%.3f;", target_attitude.x, target_attitude.y, target_attitude.z, target_throttle);
 
 #if MUTEX_ESP_ENABLE != 0
 	xSemaphoreTake(fcl.attitude_controller_mutex, portMAX_DELAY);
@@ -383,7 +362,7 @@ static void print_telemetry_data(void *arg){
 #if MUTEX_ESP_ENABLE != 0
 	xSemaphoreGive(fcl.attitude_controller_mutex);
 #endif
-	printf("%.3f;%.3f;%.3f;", target_roll_rate, target_pitch_rate, target_yaw_rate);
+//	printf("%.3f;%.3f;%.3f;", target_roll_rate, target_pitch_rate, target_yaw_rate);
 
 
 #if MUTEX_ESP_ENABLE != 0
@@ -410,11 +389,29 @@ static void print_telemetry_data(void *arg){
     }
 }
 
+
+void app_init(){
+    init_imu();
+    flight_control_loop_init(&fcl);
+    flight_control_loop_disarm_esc(&fcl);
+
+    float duty_cycle = esc_pwm_throttle_to_duty_cycle(ESC_PWM_HZ, ESC_PWM_MIN_US, ESC_PWM_MAX_US, 0.0f);
+	ATOMIC_BLOCK_CUSTOM(ATOMIC_RESTORESTATE_CUSTOM)
+	{
+		pwm_init(&esc_motors[0], MOTOR_1_TIM, MOTOR_1_TIM_CHANNEL, TIMER_CLOCK, ESC_PWM_HZ, duty_cycle);
+		pwm_init(&esc_motors[1], MOTOR_2_TIM, MOTOR_2_TIM_CHANNEL, TIMER_CLOCK, ESC_PWM_HZ, duty_cycle);
+		pwm_init(&esc_motors[2], MOTOR_3_TIM, MOTOR_3_TIM_CHANNEL, TIMER_CLOCK, ESC_PWM_HZ, duty_cycle);
+		pwm_init(&esc_motors[3], MOTOR_4_TIM, MOTOR_4_TIM_CHANNEL, TIMER_CLOCK, ESC_PWM_HZ, duty_cycle);
+	}
+}
+
+
 static TaskHandle_t flight_h, write_h, telem_h, read_rc_controller_h;
 #define STACK_WORDS(bytes) ((bytes)/sizeof(StackType_t))
 
 void app_main(void *argument)
 {
+	app_init();
     configASSERT(pdPASS == xTaskCreate(flight_controller_main, "flight_controller_main", STACK_WORDS(2048), NULL, 15, &flight_h));
     configASSERT(pdPASS == xTaskCreate(write_motor_main, "write_motor_main", STACK_WORDS(2048), NULL, 14, &write_h));
     configASSERT(pdPASS == xTaskCreate(rc_control_main, "rc_control_main",  STACK_WORDS(2048), NULL, 13, &read_rc_controller_h));

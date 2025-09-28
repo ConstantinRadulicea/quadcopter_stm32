@@ -39,6 +39,8 @@
 #include "main.h"
 #include <stdio.h>
 #include <stdarg.h>
+#include "FreeRTOS.h"
+#include "task.h"
 
 /**
  * @brief  interface iic bus init
@@ -166,7 +168,7 @@ uint8_t mpu6500_interface_spi_write(uint8_t reg, uint8_t *buf, uint16_t len)
  */
 void mpu6500_interface_delay_ms(uint32_t ms)
 {
-	HAL_Delay(ms);
+	vTaskDelay(pdMS_TO_TICKS(ms));
 }
 
 /**
