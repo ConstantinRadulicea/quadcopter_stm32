@@ -24,6 +24,24 @@ pwm_t esc_motors[4];
 static TaskHandle_t ctrl_task_h;
 static TaskHandle_t write_motor_main_h;
 
+static uint8_t flight_stack[2048];
+static uint8_t write_stack[2048];
+static uint8_t rc_stack[2048];
+static uint8_t telem_stack[2048];
+
+StaticTask_t flight_h_taskControlBlock;
+StaticTask_t write_h_taskControlBlock;
+StaticTask_t rc_h_taskControlBlock;
+StaticTask_t telem_h_taskControlBlock;
+// Thread IDs
+static osThreadId_t flight_h;
+static osThreadId_t write_h;
+static osThreadId_t rc_h;
+static osThreadId_t telem_h;
+
+
+#define STACK_WORDS(bytes) ((bytes)/sizeof(StackType_t))
+
 static void ctrl_timer_cb(TimerHandle_t arg)
 {
      BaseType_t hpw = pdFALSE;
@@ -383,6 +401,11 @@ static void print_telemetry_data(void *arg){
 #endif
 	printf("%.3f;%.3f;%.3f;", pid_roll_output, pid_pitch_output, pid_yaw_output);
 
+//    printf("%lu;", (unsigned long)(uxTaskGetStackHighWaterMark((TaskHandle_t)flight_h) * sizeof(StackType_t)));
+//    printf("%lu;", (unsigned long)(uxTaskGetStackHighWaterMark((TaskHandle_t)write_h) * sizeof(StackType_t)));
+//    printf("%lu;", (unsigned long)(uxTaskGetStackHighWaterMark((TaskHandle_t)rc_h)     * sizeof(StackType_t)));
+//    printf("%lu;", (unsigned long)(uxTaskGetStackHighWaterMark((TaskHandle_t)telem_h)  * sizeof(StackType_t)));
+
 
     printf("\n");
     vTaskDelay(pdMS_TO_TICKS(HzToMilliSec(TELEMETRY_TASK_HZ)));
@@ -405,17 +428,61 @@ void app_init(){
 	}
 }
 
-
-static TaskHandle_t flight_h, write_h, telem_h, read_rc_controller_h;
-#define STACK_WORDS(bytes) ((bytes)/sizeof(StackType_t))
-
 void app_main(void *argument)
 {
 	app_init();
-    configASSERT(pdPASS == xTaskCreate(flight_controller_main, "flight_controller_main", STACK_WORDS(2048), NULL, 15, &flight_h));
-    configASSERT(pdPASS == xTaskCreate(write_motor_main, "write_motor_main", STACK_WORDS(2048), NULL, 14, &write_h));
-    configASSERT(pdPASS == xTaskCreate(rc_control_main, "rc_control_main",  STACK_WORDS(2048), NULL, 13, &read_rc_controller_h));
-    configASSERT(pdPASS == xTaskCreate(print_telemetry_data, "print_telemetry_data", STACK_WORDS(2048), NULL, 5, &telem_h));
+
+    // Priority mapping:
+    //   original 15  -> high
+    //   original 14  -> above normal
+    //   original 13  -> normal
+    //   original 5   -> below normal
+    //
+    // If you need finer spacing, use osPriorityHigh1..7, osPriorityAboveNormal1..7 (if available).
+
+    const osThreadAttr_t flight_attr = {
+        .name       = "flight_controller_main",
+        .priority   = osPriorityHigh,
+        .stack_mem  = flight_stack,
+        .stack_size = sizeof(flight_stack),
+		.cb_mem = &flight_h_taskControlBlock,
+		.cb_size = sizeof(flight_h_taskControlBlock)
+    };
+    flight_h = osThreadNew(flight_controller_main, NULL, &flight_attr);
+    configASSERT(flight_h != NULL);
+
+    const osThreadAttr_t write_attr = {
+        .name       = "write_motor_main",
+        .priority   = osPriorityAboveNormal,
+        .stack_mem  = write_stack,
+        .stack_size = sizeof(write_stack),
+		.cb_mem = &write_h_taskControlBlock,
+		.cb_size = sizeof(write_h_taskControlBlock)
+    };
+    write_h = osThreadNew(write_motor_main, NULL, &write_attr);
+    configASSERT(write_h != NULL);
+
+    const osThreadAttr_t rc_attr = {
+        .name       = "rc_control_main",
+        .priority   = osPriorityNormal,
+        .stack_mem  = rc_stack,
+        .stack_size = sizeof(rc_stack),
+		.cb_mem = &rc_h_taskControlBlock,
+		.cb_size = sizeof(rc_h_taskControlBlock)
+    };
+    rc_h = osThreadNew(rc_control_main, NULL, &rc_attr);
+    configASSERT(rc_h != NULL);
+
+    const osThreadAttr_t telem_attr = {
+        .name       = "print_telemetry_data",
+        .priority   = osPriorityBelowNormal,
+        .stack_mem  = telem_stack,
+        .stack_size = sizeof(telem_stack),
+		.cb_mem = &telem_h_taskControlBlock,
+		.cb_size = sizeof(telem_h_taskControlBlock)
+    };
+    telem_h = osThreadNew(print_telemetry_data, NULL, &telem_attr);
+    configASSERT(telem_h != NULL);
 
     for (;;) {
         vTaskDelay(pdMS_TO_TICKS(1000));

@@ -25,7 +25,7 @@ static float accelerometer_A_1[3][3] = {
 		{0.000180f, 0.997138f, 0.000472f},
 		{-0.002872f, 0.000472f, 0.983752f}
 };
-static float gyro_bias[3] = { -0.010603f, -0.026431f, 0.020599f };
+static float gyro_bias[3] = { -0.010603f - 0.002f, -0.026431f - 0.0134614f, 0.020599f - 0.002f };
 
 
 static quaternion ground_default_position_q = { .w = 1.0f, .x = 0.0f, .y = 0.0f, .z = 0.0f };
