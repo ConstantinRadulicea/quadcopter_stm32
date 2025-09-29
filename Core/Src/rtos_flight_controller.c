@@ -15,6 +15,8 @@
 #include "usart.h"
 #include "crc.h"
 
+#define ENABLE_ESC_CALIBRATION_BUILD 0
+
 flight_control_loop_t fcl;
 
 SemaphoreHandle_t g_motors_throttle_mutex;
@@ -176,6 +178,27 @@ static void write_motor_main(void *arg){
 
         xSemaphoreTake(g_motors_throttle_mutex, portMAX_DELAY);
         flight_control_loop_get_motors_throttle(&fcl, g_motors_throttle);
+
+		#if ENABLE_ESC_CALIBRATION_BUILD != 0
+			#if MUTEX_ESP_ENABLE != 0
+				xSemaphoreTake(fcl.rc_attitude_control_mutex, portMAX_DELAY);
+			#endif
+				coord3D target_attitude;
+				float target_throttle = 0.0f;
+				rc_attitude_control_get_processed(
+					&fcl.rc_attitude_control,
+					&(target_attitude.x),
+					&(target_attitude.y),
+					&(target_attitude.z),
+					&target_throttle
+				);
+			#if MUTEX_ESP_ENABLE != 0
+				xSemaphoreGive(fcl.rc_attitude_control_mutex);
+			#endif
+				for(int i=0; i<4; i++){
+					g_motors_throttle[i] = target_throttle;
+				}
+		#endif
 
         for (size_t i = 0; i < 4; i++) {
         	duty_cycle = esc_pwm_throttle_to_duty_cycle(ESC_PWM_HZ, ESC_PWM_MIN_US, ESC_PWM_MAX_US, g_motors_throttle[i]);
@@ -442,7 +465,7 @@ void app_main(void *argument)
 
     const osThreadAttr_t flight_attr = {
         .name       = "flight_controller_main",
-        .priority   = osPriorityHigh,
+        .priority   = osPriorityRealtime,
         .stack_mem  = flight_stack,
         .stack_size = sizeof(flight_stack),
 		.cb_mem = &flight_h_taskControlBlock,

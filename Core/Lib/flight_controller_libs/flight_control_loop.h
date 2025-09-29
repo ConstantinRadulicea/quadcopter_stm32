@@ -29,13 +29,13 @@ extern "C" {
 #define GYRO_SAMPLE_RATE_HZ FLIGHT_CONTROLLER_PID_FREQ_HZ
 
 #define CONTROLLER_PID_KP radians(200.0f)		// 50
-#define CONTROLLER_PID_KI radians(0.0f)		// 70
+#define CONTROLLER_PID_KI radians(50.0f)		// 70
 #define CONTROLLER_PID_KD radians(0.0f)		// 20
 #define CONTROLLER_MAX_INTEGRAL_LIMIT (CONTROLLER_PID_MAX_OUTPUT * 0.3f)
 #define CONTROLLER_PID_KFF radians(0.0f)	// 80
 
 #define CONTROLLER_YAW_PID_KP radians(200.0f)	// 45
-#define CONTROLLER_YAW_PID_KI radians(0.0f)		// 70
+#define CONTROLLER_YAW_PID_KI radians(50.0f)		// 70
 #define CONTROLLER_YAW_PID_KD radians(0.0f)		// 0
 #define CONTROLLER_YAW_MAX_INTEGRAL_LIMIT (CONTROLLER_MAX_INTEGRAL_LIMIT)
 #define CONTROLLER_YAW_PID_KFF radians(0.0f)	// 90

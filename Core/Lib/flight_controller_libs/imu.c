@@ -30,17 +30,8 @@ void imu_init(
 }
 
 void imu_set_leveled_attitude(imu_t* im, quaternion leveld_attitude_q) {
-
-	// recalculate the offset from leveld position to estimated position
-	quaternion q_level = leveld_attitude_q;
-	q_level = quatnormalize(&q_level);          // safety
-	quaternion q_ref = (quaternion){ 1.0f,0.0f,0.0f,0.0f };      // "leveled = identity"
-	q_level = quatconj(&q_level);
-	quaternion q_off = quatmultiply(&q_ref, &q_level); // q_off = q_ref * q_level^-1
-	q_off = quatnormalize(&q_off);
-
-	im->leveld_attitude_q = leveld_attitude_q;
-	im->q_offset = q_off; // store the offset from leveld position to estimated position
+	quaternion q_ref = IMU_DEFAULT_LEVELD_ATTITUDE_Q;      // "leveled = identity"
+	im->q_offset = quat_error(&q_ref, &leveld_attitude_q);
 }
 
 void imu_update_gyro(imu_t* im, coord3D imu_raw_gyro_rad) {

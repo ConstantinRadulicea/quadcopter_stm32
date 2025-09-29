@@ -28,7 +28,9 @@ static float accelerometer_A_1[3][3] = {
 static float gyro_bias[3] = { -0.010603f - 0.002f, -0.026431f - 0.0134614f, 0.020599f - 0.002f };
 
 
-static quaternion ground_default_position_q = { .w = 1.0f, .x = 0.0f, .y = 0.0f, .z = 0.0f };
+// https://articulatedrobotics.xyz/tools/rotation-calculator/
+//static quaternion ground_default_position_q = { .w = 1.0f, .x = 0.0f, .y = 0.0f, .z = 0.0f };	// angle2quat();
+static quaternion ground_default_position_q = { .w = 0.999698f, .x = 0.007852f, .y = 0.023297f, .z = 0.000183f };
 
 
 void flight_control_loop_arm_esc(flight_control_loop_t* fcl) {
