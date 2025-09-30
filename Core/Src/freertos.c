@@ -37,6 +37,7 @@
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
+typedef StaticTask_t osStaticThreadDef_t;
 /* USER CODE BEGIN PTD */
 
 /* USER CODE END PTD */
@@ -48,55 +49,23 @@
 
 /* Private macro -------------------------------------------------------------*/
 /* USER CODE BEGIN PM */
-int line_buffer_add_char(char c, char *buf, size_t buf_size, size_t *len)
-{
-    // buf: destination buffer
-    // buf_size: total buffer capacity
-    // len: pointer to current length (persistent between calls)
-    // Returns 1 when a full line (ending with \n\r) is complete, 0 otherwise
 
-    if (*len + 1 >= buf_size) {
-        // buffer overflow: reset
-        *len = 0;
-        return 0;
-    }
-
-    buf[(*len)++] = c;
-
-    // Check for \n\r at the end
-    if (*len >= 2) {
-    	if(buf[*len - 2] == '\r' && buf[*len - 1] == '\n'){
-            buf[*len - 2] = '\0'; // terminate string before \n\r
-            *len = 0;             // reset for next line
-            return 1;             // line complete
-    	}
-    }
-
-    return 0; // line not complete yet
-}
 /* USER CODE END PM */
 
 /* Private variables ---------------------------------------------------------*/
 /* USER CODE BEGIN Variables */
 
-osThreadId_t flignt_controller_taskHandle;
-uint32_t flignt_controller_taskBuffer[ 2048 ];
-StaticTask_t flignt_controller_taskControlBlock;
-const osThreadAttr_t flignt_controller_task_attributes = {
-  .name = "usart1_task",
-  .cb_mem = &flignt_controller_taskControlBlock,
-  .cb_size = sizeof(flignt_controller_taskControlBlock),
-  .stack_mem = &flignt_controller_taskBuffer[0],
-  .stack_size = sizeof(flignt_controller_taskBuffer),
-  .priority = (osPriority_t) osPriorityLow,
-};
-
 /* USER CODE END Variables */
 /* Definitions for defaultTask */
 osThreadId_t defaultTaskHandle;
+uint32_t defaultTaskBuffer[ 512 ];
+osStaticThreadDef_t defaultTaskControlBlock;
 const osThreadAttr_t defaultTask_attributes = {
   .name = "defaultTask",
-  .stack_size = 128 * 4,
+  .cb_mem = &defaultTaskControlBlock,
+  .cb_size = sizeof(defaultTaskControlBlock),
+  .stack_mem = &defaultTaskBuffer[0],
+  .stack_size = sizeof(defaultTaskBuffer),
   .priority = (osPriority_t) osPriorityNormal,
 };
 
@@ -117,7 +86,7 @@ void MX_FREERTOS_Init(void); /* (MISRA C 2004 rule 8.1) */
   */
 void MX_FREERTOS_Init(void) {
   /* USER CODE BEGIN Init */
-
+	app_main_start(NULL);
   /* USER CODE END Init */
 
   /* USER CODE BEGIN RTOS_MUTEX */
@@ -141,7 +110,6 @@ void MX_FREERTOS_Init(void) {
   defaultTaskHandle = osThreadNew(StartDefaultTask, NULL, &defaultTask_attributes);
 
   /* USER CODE BEGIN RTOS_THREADS */
-  flignt_controller_taskHandle = osThreadNew(app_main, NULL, &flignt_controller_task_attributes);
   /* add threads, ... */
   /* USER CODE END RTOS_THREADS */
 
@@ -166,7 +134,7 @@ void StartDefaultTask(void *argument)
   /* Infinite loop */
   for(;;)
   {
-    osDelay(1000);
+    osDelay(pdMS_TO_TICKS(1000));
   }
   /* USER CODE END StartDefaultTask */
 }

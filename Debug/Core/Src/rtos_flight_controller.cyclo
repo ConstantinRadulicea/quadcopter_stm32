@@ -7,4 +7,4 @@
 ../Core/Src/rtos_flight_controller.c:241:13:rc_control_main	10
 ../Core/Src/rtos_flight_controller.c:345:13:print_telemetry_data	1
 ../Core/Src/rtos_flight_controller.c:439:6:app_init	3
-../Core/Src/rtos_flight_controller.c:454:6:app_main	5
+../Core/Src/rtos_flight_controller.c:455:6:app_main_start	5

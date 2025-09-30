@@ -1,6 +1,5 @@
 #include "rtos_flight_controller.h"
 
-#include "driver_mpu9250_basic.h"
 #include "driver_mpu6500_basic.h"
 #include <stdio.h>
 #include <math.h>
@@ -31,6 +30,7 @@ static uint8_t write_stack[2048];
 static uint8_t rc_stack[2048];
 static uint8_t telem_stack[2048];
 
+osThreadAttr_t flight_attr, write_attr, rc_attr, telem_attr;
 StaticTask_t flight_h_taskControlBlock;
 StaticTask_t write_h_taskControlBlock;
 StaticTask_t rc_h_taskControlBlock;
@@ -451,7 +451,8 @@ void app_init(){
 	}
 }
 
-void app_main(void *argument)
+
+void app_main_start(void *argument)
 {
 	app_init();
 
@@ -463,7 +464,7 @@ void app_main(void *argument)
     //
     // If you need finer spacing, use osPriorityHigh1..7, osPriorityAboveNormal1..7 (if available).
 
-    const osThreadAttr_t flight_attr = {
+    flight_attr = (osThreadAttr_t){
         .name       = "flight_controller_main",
         .priority   = osPriorityRealtime,
         .stack_mem  = flight_stack,
@@ -474,7 +475,7 @@ void app_main(void *argument)
     flight_h = osThreadNew(flight_controller_main, NULL, &flight_attr);
     configASSERT(flight_h != NULL);
 
-    const osThreadAttr_t write_attr = {
+    write_attr = (osThreadAttr_t){
         .name       = "write_motor_main",
         .priority   = osPriorityAboveNormal,
         .stack_mem  = write_stack,
@@ -485,7 +486,7 @@ void app_main(void *argument)
     write_h = osThreadNew(write_motor_main, NULL, &write_attr);
     configASSERT(write_h != NULL);
 
-    const osThreadAttr_t rc_attr = {
+    rc_attr = (osThreadAttr_t){
         .name       = "rc_control_main",
         .priority   = osPriorityNormal,
         .stack_mem  = rc_stack,
@@ -496,7 +497,7 @@ void app_main(void *argument)
     rc_h = osThreadNew(rc_control_main, NULL, &rc_attr);
     configASSERT(rc_h != NULL);
 
-    const osThreadAttr_t telem_attr = {
+    telem_attr = (osThreadAttr_t){
         .name       = "print_telemetry_data",
         .priority   = osPriorityBelowNormal,
         .stack_mem  = telem_stack,
@@ -507,7 +508,7 @@ void app_main(void *argument)
     telem_h = osThreadNew(print_telemetry_data, NULL, &telem_attr);
     configASSERT(telem_h != NULL);
 
-    for (;;) {
-        vTaskDelay(pdMS_TO_TICKS(1000));
-    }
+//    for (;;) {
+//        vTaskDelay(pdMS_TO_TICKS(1000));
+//    }
 }

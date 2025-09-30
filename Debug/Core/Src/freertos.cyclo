@@ -1,3 +1,2 @@
-../Core/Src/freertos.c:51:5:line_buffer_add_char	5
-../Core/Src/freertos.c:118:6:MX_FREERTOS_Init	1
-../Core/Src/freertos.c:161:6:StartDefaultTask	1
+../Core/Src/freertos.c:87:6:MX_FREERTOS_Init	1
+../Core/Src/freertos.c:129:6:StartDefaultTask	1

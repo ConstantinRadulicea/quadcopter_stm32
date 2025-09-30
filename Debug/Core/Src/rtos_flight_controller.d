@@ -22,9 +22,6 @@ Core/Src/rtos_flight_controller.o: ../Core/Src/rtos_flight_controller.c \
  ../Middlewares/Third_Party/FreeRTOS/Source/include/queue.h \
  ../Middlewares/Third_Party/FreeRTOS/Source/include/task.h \
  ../Middlewares/Third_Party/FreeRTOS/Source/include/list.h \
- ../Core/Lib/mpu9250/interface/driver_mpu9250_basic.h \
- ../Core/Lib/mpu9250/interface/driver_mpu9250_interface.h \
- ../Core/Lib/mpu9250/src/driver_mpu9250.h \
  C:/Programming/STM32F405RGT6_test/Core/Lib/mpu6500/interface/driver_mpu6500_basic.h \
  C:/Programming/STM32F405RGT6_test/Core/Lib/mpu6500/interface/driver_mpu6500_interface.h \
  C:/Programming/STM32F405RGT6_test/Core/Lib/mpu6500/src/driver_mpu6500.h \
@@ -91,9 +88,6 @@ C:/Programming/STM32F405RGT6_test/Core/Lib/flight_controller_libs/rc_control.h:
 ../Middlewares/Third_Party/FreeRTOS/Source/include/queue.h:
 ../Middlewares/Third_Party/FreeRTOS/Source/include/task.h:
 ../Middlewares/Third_Party/FreeRTOS/Source/include/list.h:
-../Core/Lib/mpu9250/interface/driver_mpu9250_basic.h:
-../Core/Lib/mpu9250/interface/driver_mpu9250_interface.h:
-../Core/Lib/mpu9250/src/driver_mpu9250.h:
 C:/Programming/STM32F405RGT6_test/Core/Lib/mpu6500/interface/driver_mpu6500_basic.h:
 C:/Programming/STM32F405RGT6_test/Core/Lib/mpu6500/interface/driver_mpu6500_interface.h:
 C:/Programming/STM32F405RGT6_test/Core/Lib/mpu6500/src/driver_mpu6500.h:

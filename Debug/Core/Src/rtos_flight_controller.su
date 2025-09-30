@@ -7,4 +7,4 @@
 ../Core/Src/rtos_flight_controller.c:241:13:rc_control_main	440	static
 ../Core/Src/rtos_flight_controller.c:345:13:print_telemetry_data	184	static
 ../Core/Src/rtos_flight_controller.c:439:6:app_init	48	static,ignoring_inline_asm
-../Core/Src/rtos_flight_controller.c:454:6:app_main	176	static,ignoring_inline_asm
+../Core/Src/rtos_flight_controller.c:455:6:app_main_start	176	static,ignoring_inline_asm
