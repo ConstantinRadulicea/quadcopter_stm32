@@ -1,4 +1,5 @@
 "./Core/Lib/flight_controller_libs/attitude_controller.o"
+"./Core/Lib/flight_controller_libs/cli.o"
 "./Core/Lib/flight_controller_libs/crc.o"
 "./Core/Lib/flight_controller_libs/filters.o"
 "./Core/Lib/flight_controller_libs/flight_control_loop.o"

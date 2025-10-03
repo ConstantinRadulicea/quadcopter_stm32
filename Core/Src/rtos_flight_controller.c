@@ -371,7 +371,7 @@ static void print_telemetry_data(void *arg){
         printf("%.3f;%.3f;%.3f;", body_frame_gyro.x, body_frame_gyro.y, body_frame_gyro.z);
 //        printf("%.3f;%.3f;%.3f;", raw_accel.x, raw_accel.y, raw_accel.z);
 //        printf("%.3f;%.3f;%.3f;", raw_gyro.x, raw_gyro.y, raw_gyro.z);
-//        printf("%.3f;%.3f;%.3f;%.3f;", local_motors_throttle[0], local_motors_throttle[1], local_motors_throttle[2], local_motors_throttle[3]);
+        printf("%.3f;%.3f;%.3f;%.3f;", local_motors_throttle[0], local_motors_throttle[1], local_motors_throttle[2], local_motors_throttle[3]);
 
 #if MUTEX_ESP_ENABLE != 0
 	xSemaphoreTake(fcl.rc_attitude_control_mutex, portMAX_DELAY);
@@ -386,7 +386,8 @@ static void print_telemetry_data(void *arg){
 #if MUTEX_ESP_ENABLE != 0
 	xSemaphoreGive(fcl.rc_attitude_control_mutex);
 #endif
-//	printf("%.3f;%.3f;%.3f;%.3f;", target_attitude.x, target_attitude.y, target_attitude.z, target_throttle);
+	//	printf("%.3f;%.3f;%.3f;", target_attitude.x, target_attitude.y, target_attitude.z);
+	printf("%.3f;", target_throttle);
 
 #if MUTEX_ESP_ENABLE != 0
 	xSemaphoreTake(fcl.attitude_controller_mutex, portMAX_DELAY);
