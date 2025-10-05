@@ -17,7 +17,7 @@
 #define PID_LIMIT CONTROLLER_PID_MAX_OUTPUT                 // Axis PID clamp
 
 #define MAX_THROTTLE_MIX MAX_THROTTLE
-#define AXIS_TO_MOTOR_GAIN (0.25f / PID_LIMIT)  // ±500 → ±0.5 motor range
+#define AXIS_TO_MOTOR_GAIN ((0.25f * MAX_THROTTLE_MIX)  / PID_LIMIT)  // ±500 → ±0.5 motor range
 
 
 /*

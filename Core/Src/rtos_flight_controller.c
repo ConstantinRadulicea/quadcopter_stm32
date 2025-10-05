@@ -423,7 +423,7 @@ static void print_telemetry_data(void *arg){
 #if MUTEX_ESP_ENABLE != 0
 	xSemaphoreGive(fcl.rate_controller_mutex);
 #endif
-	printf("%.3f;%.3f;%.3f;", pid_roll_output, pid_pitch_output, pid_yaw_output);
+	printf("%.3f;%.3f;%.3f;", degrees(pid_roll_output), degrees(pid_pitch_output), degrees(pid_yaw_output));
 
 //    printf("%lu;", (unsigned long)(uxTaskGetStackHighWaterMark((TaskHandle_t)flight_h) * sizeof(StackType_t)));
 //    printf("%lu;", (unsigned long)(uxTaskGetStackHighWaterMark((TaskHandle_t)write_h) * sizeof(StackType_t)));
