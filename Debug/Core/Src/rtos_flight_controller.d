@@ -64,7 +64,10 @@ Core/Src/rtos_flight_controller.o: ../Core/Src/rtos_flight_controller.c \
  ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pcd_ex.h \
  ../Core/Inc/tim.h ../Core/Inc/main.h ../Core/Inc/esc_pwm.h \
  ../Core/Inc/atomic_custom.h ../Core/Inc/usart.h \
- C:/Programming/STM32F405RGT6_test/Core/Lib/flight_controller_libs/crc.h
+ C:/Programming/STM32F405RGT6_test/Core/Lib/flight_controller_libs/crc.h \
+ C:/Programming/STM32F405RGT6_test/Core/Lib/flight_controller_libs/fp_cli.h \
+ C:/Programming/STM32F405RGT6_test/Core/Lib/lwshell/lwshell/src/include/lwshell/lwshell.h \
+ C:/Programming/STM32F405RGT6_test/Core/Lib/lwshell/lwshell/src/include/lwshell/lwshell_opt.h
 ../Core/Inc/rtos_flight_controller.h:
 C:/Programming/STM32F405RGT6_test/Core/Lib/flight_controller_libs/flight_control_loop.h:
 C:/Programming/STM32F405RGT6_test/Core/Lib/flight_controller_libs/imu.h:
@@ -134,3 +137,6 @@ C:/Programming/STM32F405RGT6_test/Core/Lib/flight_controller_libs/imu.h:
 ../Core/Inc/atomic_custom.h:
 ../Core/Inc/usart.h:
 C:/Programming/STM32F405RGT6_test/Core/Lib/flight_controller_libs/crc.h:
+C:/Programming/STM32F405RGT6_test/Core/Lib/flight_controller_libs/fp_cli.h:
+C:/Programming/STM32F405RGT6_test/Core/Lib/lwshell/lwshell/src/include/lwshell/lwshell.h:
+C:/Programming/STM32F405RGT6_test/Core/Lib/lwshell/lwshell/src/include/lwshell/lwshell_opt.h:

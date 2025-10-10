@@ -1,0 +1,40 @@
+{
+	"name": "LwSHELL",
+	"version": "1.2.0",
+	"description": "Lightweight shell command line manager",
+	"keywords": "lwshell, cmd, command line, shell, manager, uart, usb, cdc, command, commands",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/MaJerle/lwshell.git"
+	},
+	"authors": [
+		{
+			"name": "Tilen Majerle",
+			"email": "tilen@majerle.eu",
+			"url": "https://majerle.eu"
+		}
+	],
+	"license": "MIT",
+	"homepage": "https://github.com/MaJerle/lwshell",
+	"dependencies": {
+
+	},
+	"frameworks": "*",
+	"platforms": "*",
+	"export": {
+		"exclude": [
+			".github",
+			"dev",
+			"docs",
+			"**/.vs",
+			"**/Debug",
+			"build",
+			"**/build"
+		]
+	},
+    "build": {
+        "includeDir": "lwshell/src/include",
+        "srcDir": ".",
+        "srcFilter": "+<lwshell>"
+    }
+}

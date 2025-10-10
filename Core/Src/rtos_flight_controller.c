@@ -29,17 +29,20 @@ static uint8_t flight_stack[2048];
 static uint8_t write_stack[2048];
 static uint8_t rc_stack[2048];
 static uint8_t telem_stack[2048];
+static uint8_t fp_cli_stack[2048];
 
-osThreadAttr_t flight_attr, write_attr, rc_attr, telem_attr;
+osThreadAttr_t flight_attr, write_attr, rc_attr, telem_attr, fp_cli_attr;
 StaticTask_t flight_h_taskControlBlock;
 StaticTask_t write_h_taskControlBlock;
 StaticTask_t rc_h_taskControlBlock;
 StaticTask_t telem_h_taskControlBlock;
+StaticTask_t fp_cli_h_taskControlBlock;
 // Thread IDs
 static osThreadId_t flight_h;
 static osThreadId_t write_h;
 static osThreadId_t rc_h;
 static osThreadId_t telem_h;
+static osThreadId_t fp_cli_h;
 
 
 #define STACK_WORDS(bytes) ((bytes)/sizeof(StackType_t))
@@ -475,6 +478,19 @@ static void print_telemetry_data(void *arg){
     }
 }
 
+#include "fp_cli.h"
+static void fp_cli_func(void *arg){
+	//CDC_Transmit_FS((uint8_t*)err_header, sizeof(err_header) - 1);
+	fp_cli_example_minimal_init();
+	//lwshellr_t lwshell_input_ex(lwshell_t* lwobj, const void* in_data, size_t len);
+	for(;;){
+		//lwshell_input_ex(&lwshell_cli, , );
+		vTaskDelay(pdMS_TO_TICKS(100));
+	}
+
+
+}
+
 
 void app_init(){
     init_imu();
@@ -548,7 +564,16 @@ void app_main_start(void *argument)
     telem_h = osThreadNew(print_telemetry_data, NULL, &telem_attr);
     configASSERT(telem_h != NULL);
 
-//    for (;;) {
-//        vTaskDelay(pdMS_TO_TICKS(1000));
-//    }
+
+    fp_cli_attr = (osThreadAttr_t){
+        .name       = "fp_cli_func",
+        .priority   = osPriorityBelowNormal,
+        .stack_mem  = fp_cli_stack,
+        .stack_size = sizeof(fp_cli_stack),
+		.cb_mem = &fp_cli_h_taskControlBlock,
+		.cb_size = sizeof(fp_cli_h_taskControlBlock)
+    };
+    fp_cli_h = osThreadNew(fp_cli_func, NULL, &fp_cli_attr);
+    configASSERT(fp_cli_h != NULL);
+
 }

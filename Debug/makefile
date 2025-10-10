@@ -27,6 +27,7 @@ RM := rm -rf
 -include Core/Lib/mpu9250/interface/subdir.mk
 -include Core/Lib/mpu6500/src/subdir.mk
 -include Core/Lib/mpu6500/interface/subdir.mk
+-include Core/Lib/lwshell/lwshell/src/lwshell/subdir.mk
 -include Core/Lib/flight_controller_libs/subdir.mk
 -include objects.mk
 

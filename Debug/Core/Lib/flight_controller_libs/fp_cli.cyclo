@@ -1,0 +1,2 @@
+../Core/Lib/flight_controller_libs/fp_cli.c:10:9:mycmd_fn	2
+../Core/Lib/flight_controller_libs/fp_cli.c:21:6:fp_cli_example_minimal_init	1
