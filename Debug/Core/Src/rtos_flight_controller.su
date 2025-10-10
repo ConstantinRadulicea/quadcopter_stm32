@@ -4,7 +4,7 @@
 ../Core/Src/rtos_flight_controller.c:93:13:flight_controller_main	96	static
 ../Core/Src/rtos_flight_controller.c:150:13:write_motor_main	80	static,ignoring_inline_asm
 ../Core/Src/rtos_flight_controller.c:214:12:line_buffer_add_char	24	static
-../Core/Src/rtos_flight_controller.c:241:13:rc_control_main	440	static
-../Core/Src/rtos_flight_controller.c:345:13:print_telemetry_data	200	static
-../Core/Src/rtos_flight_controller.c:440:6:app_init	48	static,ignoring_inline_asm
-../Core/Src/rtos_flight_controller.c:456:6:app_main_start	176	static,ignoring_inline_asm
+../Core/Src/rtos_flight_controller.c:241:13:rc_control_main	480	static
+../Core/Src/rtos_flight_controller.c:384:13:print_telemetry_data	200	static
+../Core/Src/rtos_flight_controller.c:479:6:app_init	48	static,ignoring_inline_asm
+../Core/Src/rtos_flight_controller.c:495:6:app_main_start	176	static,ignoring_inline_asm

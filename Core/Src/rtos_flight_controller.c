@@ -261,6 +261,11 @@ static void rc_control_main(void *arg)
     int current_message_corrupted = 0;
     uint16_t crc_calculated;
     unsigned int crc_received = 0;
+    float pid_p = 0.0f;
+    float pid_i = 0.0f;
+    float pid_d = 0.0f;
+    float level_p = 0.0f;
+    float pid_apply = 0.0f;
 
 
   /* Infinite loop */
@@ -280,15 +285,22 @@ static void rc_control_main(void *arg)
 				  crc_calculated = crc16_ccitt_init();
 				  crc_calculated = crc16_ccitt_add_arr(crc_calculated, (uint8_t*)linebuf, temp_str_len);
 
-				  if (sscanf(linebuf, "%f;%f;%f;%f;%f;%f;%x",
+				  if (sscanf(linebuf, "%f;%f;%f;%f;%f;%f;%f;%f;%f;%f;%f;%x",
 						  &temp_target_throttle,
 						  &temp_target_attitude.x,
 						  &temp_target_attitude.y,
 						  &temp_target_attitude.z,
 						  &temp_arm_flag,
 						  &temp_disarm_flag,
+
+						  &pid_p,
+						  &pid_i,
+						  &pid_d,
+						  &level_p,
+						  &pid_apply,
 						  &crc_received
-						  ) == 7) {
+
+						  ) == 12) {
 					  current_message_corrupted = 0;
 					  //printf("%s\n", linebuf);
 
@@ -312,6 +324,34 @@ static void rc_control_main(void *arg)
           arm_flag = (temp_arm_flag);
           disarm_flag = (temp_disarm_flag);
           target_throttle = temp_target_throttle;
+          if(pid_apply > 0.5f){
+#if MUTEX_ESP_ENABLE != 0
+	xSemaphoreTake(fcl.rate_controller_mutex, portMAX_DELAY);
+#endif
+	fcl.rate_controller.pid_pitch.Kp = pid_p;
+	fcl.rate_controller.pid_pitch.Ki = pid_i;
+	fcl.rate_controller.pid_pitch.Kd = pid_d;
+
+	fcl.rate_controller.pid_roll.Kp = pid_p;
+	fcl.rate_controller.pid_roll.Ki = pid_i;
+	fcl.rate_controller.pid_roll.Kd = pid_d;
+
+	fcl.rate_controller.pid_yaw.Kp = pid_p;
+	fcl.rate_controller.pid_yaw.Ki = pid_i;
+	fcl.rate_controller.pid_yaw.Kd = pid_d;
+
+#if MUTEX_ESP_ENABLE != 0
+	xSemaphoreGive(fcl.rate_controller_mutex);
+#endif
+
+#if MUTEX_ESP_ENABLE != 0
+	xSemaphoreTake(fcl.attitude_controller_mutex, portMAX_DELAY);
+#endif
+	fcl.attitude_controller.rate_gain = level_p;
+#if MUTEX_ESP_ENABLE != 0
+	xSemaphoreGive(fcl.attitude_controller_mutex);
+#endif
+          }
       }
 
       errors += current_message_corrupted;
@@ -338,7 +378,6 @@ static void rc_control_main(void *arg)
 
       vTaskDelay(pdMS_TO_TICKS(HzToMilliSec(RC_CONTROLLER_HZ)));
   }
-
 }
 
 

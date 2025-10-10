@@ -5,6 +5,16 @@
 extern "C" {
 #endif
 
+// example:
+/*
+add_command(&cli, "get");
+set rate_pid_kp 10/n
+set rate_pid 10, 1, 0
+
+*/
+
+void add_command(cli_t &cli, char* command, char* format, )
+
 //------------------------------------------------------------------------------
 // Parameter structure
 //------------------------------------------------------------------------------
