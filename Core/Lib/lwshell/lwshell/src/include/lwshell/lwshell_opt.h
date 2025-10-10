@@ -158,7 +158,7 @@ extern "C" {
  * \ref LWSHELL_CFG_USE_OUTPUT must be enabled to use this feature
  */
 #ifndef LWSHELL_CFG_USE_LIST_CMD
-#define LWSHELL_CFG_USE_LIST_CMD 0
+#define LWSHELL_CFG_USE_LIST_CMD 1
 #endif
 
 /**

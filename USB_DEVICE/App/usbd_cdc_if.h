@@ -110,6 +110,12 @@ uint8_t CDC_Transmit_FS(uint8_t* Buf, uint16_t Len);
 
 /* USER CODE BEGIN EXPORTED_FUNCTIONS */
 
+size_t CDC_recv_data(char* out_buf, size_t max_len);
+
+size_t CDC_data_available_for_read();
+
+void usb_printf(const char *fmt, ...);
+
 /* USER CODE END EXPORTED_FUNCTIONS */
 
 /**

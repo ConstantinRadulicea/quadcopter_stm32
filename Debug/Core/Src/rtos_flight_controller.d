@@ -67,7 +67,17 @@ Core/Src/rtos_flight_controller.o: ../Core/Src/rtos_flight_controller.c \
  C:/Programming/STM32F405RGT6_test/Core/Lib/flight_controller_libs/crc.h \
  C:/Programming/STM32F405RGT6_test/Core/Lib/flight_controller_libs/fp_cli.h \
  C:/Programming/STM32F405RGT6_test/Core/Lib/lwshell/lwshell/src/include/lwshell/lwshell.h \
- C:/Programming/STM32F405RGT6_test/Core/Lib/lwshell/lwshell/src/include/lwshell/lwshell_opt.h
+ C:/Programming/STM32F405RGT6_test/Core/Lib/lwshell/lwshell/src/include/lwshell/lwshell_opt.h \
+ ../USB_DEVICE/App/usb_device.h \
+ ../Middlewares/ST/STM32_USB_Device_Library/Core/Inc/usbd_def.h \
+ ../USB_DEVICE/Target/usbd_conf.h ../Core/Inc/main.h \
+ ../USB_DEVICE/App/usbd_cdc_if.h \
+ ../Middlewares/ST/STM32_USB_Device_Library/Class/CDC/Inc/usbd_cdc.h \
+ ../Middlewares/ST/STM32_USB_Device_Library/Core/Inc/usbd_ioreq.h \
+ ../Middlewares/ST/STM32_USB_Device_Library/Core/Inc/usbd_def.h \
+ ../Middlewares/ST/STM32_USB_Device_Library/Core/Inc/usbd_core.h \
+ ../Middlewares/ST/STM32_USB_Device_Library/Core/Inc/usbd_ioreq.h \
+ ../Middlewares/ST/STM32_USB_Device_Library/Core/Inc/usbd_ctlreq.h
 ../Core/Inc/rtos_flight_controller.h:
 C:/Programming/STM32F405RGT6_test/Core/Lib/flight_controller_libs/flight_control_loop.h:
 C:/Programming/STM32F405RGT6_test/Core/Lib/flight_controller_libs/imu.h:
@@ -140,3 +150,14 @@ C:/Programming/STM32F405RGT6_test/Core/Lib/flight_controller_libs/crc.h:
 C:/Programming/STM32F405RGT6_test/Core/Lib/flight_controller_libs/fp_cli.h:
 C:/Programming/STM32F405RGT6_test/Core/Lib/lwshell/lwshell/src/include/lwshell/lwshell.h:
 C:/Programming/STM32F405RGT6_test/Core/Lib/lwshell/lwshell/src/include/lwshell/lwshell_opt.h:
+../USB_DEVICE/App/usb_device.h:
+../Middlewares/ST/STM32_USB_Device_Library/Core/Inc/usbd_def.h:
+../USB_DEVICE/Target/usbd_conf.h:
+../Core/Inc/main.h:
+../USB_DEVICE/App/usbd_cdc_if.h:
+../Middlewares/ST/STM32_USB_Device_Library/Class/CDC/Inc/usbd_cdc.h:
+../Middlewares/ST/STM32_USB_Device_Library/Core/Inc/usbd_ioreq.h:
+../Middlewares/ST/STM32_USB_Device_Library/Core/Inc/usbd_def.h:
+../Middlewares/ST/STM32_USB_Device_Library/Core/Inc/usbd_core.h:
+../Middlewares/ST/STM32_USB_Device_Library/Core/Inc/usbd_ioreq.h:
+../Middlewares/ST/STM32_USB_Device_Library/Core/Inc/usbd_ctlreq.h:

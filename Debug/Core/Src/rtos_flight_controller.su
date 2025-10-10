@@ -6,6 +6,6 @@
 ../Core/Src/rtos_flight_controller.c:217:12:line_buffer_add_char	24	static
 ../Core/Src/rtos_flight_controller.c:244:13:rc_control_main	480	static
 ../Core/Src/rtos_flight_controller.c:387:13:print_telemetry_data	200	static
-../Core/Src/rtos_flight_controller.c:482:13:fp_cli_func	16	static
-../Core/Src/rtos_flight_controller.c:495:6:app_init	48	static,ignoring_inline_asm
-../Core/Src/rtos_flight_controller.c:511:6:app_main_start	216	static,ignoring_inline_asm
+../Core/Src/rtos_flight_controller.c:485:13:fp_cli_func	24	static
+../Core/Src/rtos_flight_controller.c:499:6:app_init	48	static,ignoring_inline_asm
+../Core/Src/rtos_flight_controller.c:515:6:app_main_start	216	static,ignoring_inline_asm

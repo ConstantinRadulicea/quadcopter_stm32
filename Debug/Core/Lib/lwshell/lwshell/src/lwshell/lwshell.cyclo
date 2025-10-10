@@ -1,4 +1,4 @@
-../Core/Lib/lwshell/lwshell/src/lwshell/lwshell.c:92:1:prv_parse_input	32
+../Core/Lib/lwshell/lwshell/src/lwshell/lwshell.c:92:1:prv_parse_input	41
 ../Core/Lib/lwshell/lwshell/src/lwshell/lwshell.c:235:1:lwshell_init_ex	2
 ../Core/Lib/lwshell/lwshell/src/lwshell/lwshell.c:251:1:lwshell_set_output_fn_ex	2
 ../Core/Lib/lwshell/lwshell/src/lwshell/lwshell.c:271:1:lwshell_register_cmd_ex	6

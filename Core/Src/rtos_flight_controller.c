@@ -479,15 +479,19 @@ static void print_telemetry_data(void *arg){
 }
 
 #include "fp_cli.h"
+#include "usb_device.h"
+#include "usbd_cdc_if.h"
+char fp_cli_read_buffer[128];
 static void fp_cli_func(void *arg){
+	size_t read_bytes = 0;
 	//CDC_Transmit_FS((uint8_t*)err_header, sizeof(err_header) - 1);
 	fp_cli_example_minimal_init();
 	//lwshellr_t lwshell_input_ex(lwshell_t* lwobj, const void* in_data, size_t len);
 	for(;;){
-		//lwshell_input_ex(&lwshell_cli, , );
+		read_bytes = CDC_recv_data(fp_cli_read_buffer, sizeof(fp_cli_read_buffer)-1);
+		lwshell_input_ex(&lwshell_cli, fp_cli_read_buffer, read_bytes);
 		vTaskDelay(pdMS_TO_TICKS(100));
 	}
-
 
 }
 

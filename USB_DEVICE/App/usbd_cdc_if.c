@@ -22,7 +22,8 @@
 #include "usbd_cdc_if.h"
 
 /* USER CODE BEGIN INCLUDE */
-
+#include "ringbuffer.h"
+#include "atomic_custom.h"
 /* USER CODE END INCLUDE */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -94,7 +95,9 @@ uint8_t UserRxBufferFS[APP_RX_DATA_SIZE];
 uint8_t UserTxBufferFS[APP_TX_DATA_SIZE];
 
 /* USER CODE BEGIN PRIVATE_VARIABLES */
-
+#define RX_BUFFER_SIZE 1024
+uint8_t rx_buffer[RX_BUFFER_SIZE];
+ring_buffer_t rx_ringbuffer;
 /* USER CODE END PRIVATE_VARIABLES */
 
 /**
@@ -152,9 +155,19 @@ USBD_CDC_ItfTypeDef USBD_Interface_fops_FS =
 static int8_t CDC_Init_FS(void)
 {
   /* USER CODE BEGIN 3 */
+	ATOMIC_BLOCK_CUSTOM(ATOMIC_RESTORESTATE_CUSTOM)
+	{
+		ring_buffer_init(&rx_ringbuffer, rx_buffer, RX_BUFFER_SIZE);
+	}
+
+
   /* Set Application Buffers */
   USBD_CDC_SetTxBuffer(&hUsbDeviceFS, UserTxBufferFS, 0);
   USBD_CDC_SetRxBuffer(&hUsbDeviceFS, UserRxBufferFS);
+
+  // Arm the first OUT transfer so the host can send data
+  USBD_CDC_ReceivePacket(&hUsbDeviceFS);
+
   return (USBD_OK);
   /* USER CODE END 3 */
 }
@@ -166,6 +179,11 @@ static int8_t CDC_Init_FS(void)
 static int8_t CDC_DeInit_FS(void)
 {
   /* USER CODE BEGIN 4 */
+	ATOMIC_BLOCK_CUSTOM(ATOMIC_RESTORESTATE_CUSTOM)
+	{
+		ring_buffer_clear(&rx_ringbuffer);
+	}
+
   return (USBD_OK);
   /* USER CODE END 4 */
 }
@@ -261,8 +279,13 @@ static int8_t CDC_Control_FS(uint8_t cmd, uint8_t* pbuf, uint16_t length)
 static int8_t CDC_Receive_FS(uint8_t* Buf, uint32_t *Len)
 {
   /* USER CODE BEGIN 6 */
-  USBD_CDC_SetRxBuffer(&hUsbDeviceFS, &Buf[0]);
-  USBD_CDC_ReceivePacket(&hUsbDeviceFS);
+	ATOMIC_BLOCK_CUSTOM(ATOMIC_RESTORESTATE_CUSTOM)
+	{
+		ring_buffer_enqueue_arr(&rx_ringbuffer, Buf, *Len);
+	}
+
+	USBD_CDC_SetRxBuffer(&hUsbDeviceFS, UserRxBufferFS);
+	USBD_CDC_ReceivePacket(&hUsbDeviceFS);
   return (USBD_OK);
   /* USER CODE END 6 */
 }
@@ -316,6 +339,46 @@ static int8_t CDC_TransmitCplt_FS(uint8_t *Buf, uint32_t *Len, uint8_t epnum)
 }
 
 /* USER CODE BEGIN PRIVATE_FUNCTIONS_IMPLEMENTATION */
+
+size_t CDC_recv_data(char* out_buf, size_t max_len)
+{
+    if (out_buf == NULL || max_len == 0) {
+        return 0;
+    }
+    size_t bytes_read;
+    ATOMIC_BLOCK_CUSTOM(ATOMIC_RESTORESTATE_CUSTOM)
+    {
+        usart1_read_dma_buffer();
+    	bytes_read = ring_buffer_dequeue_arr(&rx_ringbuffer, (uint8_t*)out_buf, max_len);
+    }
+
+    return bytes_read;
+}
+
+size_t CDC_data_available_for_read()
+{
+	size_t used;
+
+    ATOMIC_BLOCK_CUSTOM(ATOMIC_RESTORESTATE_CUSTOM)
+    {
+    	used = ring_buffer_used_space(&rx_ringbuffer);
+    }
+
+    return used;
+}
+#include "stdarg.h"
+char usb_printf_buffer[512];
+void usb_printf(const char *fmt, ...)
+{
+    va_list args;
+    va_start(args, fmt);
+    vsnprintf(usb_printf_buffer, sizeof(usb_printf_buffer), fmt, args);
+    va_end(args);
+
+    // wait until previous transmission is done
+    while (CDC_Transmit_FS((uint8_t*)usb_printf_buffer, strlen(usb_printf_buffer)) == USBD_BUSY)
+        ;  // simple blocking retry
+}
 
 /* USER CODE END PRIVATE_FUNCTIONS_IMPLEMENTATION */
 
