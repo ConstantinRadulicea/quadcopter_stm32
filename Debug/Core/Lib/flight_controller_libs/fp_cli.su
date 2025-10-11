@@ -1,3 +1,4 @@
-../Core/Lib/flight_controller_libs/fp_cli.c:10:9:set_cmd_fn	24	static
-../Core/Lib/flight_controller_libs/fp_cli.c:22:6:output_fn	16	static
-../Core/Lib/flight_controller_libs/fp_cli.c:27:6:fp_cli_example_minimal_init	8	static
+../Core/Lib/flight_controller_libs/fp_cli.c:23:9:set_cmd_fn	40	static
+../Core/Lib/flight_controller_libs/fp_cli.c:78:9:get_cmd_fn	24	static
+../Core/Lib/flight_controller_libs/fp_cli.c:113:6:output_fn	16	static
+../Core/Lib/flight_controller_libs/fp_cli.c:118:6:fp_cli_example_minimal_init	8	static

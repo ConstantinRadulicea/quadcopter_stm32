@@ -32,6 +32,7 @@ extern "C" {
 #define TELEMETRY_TASK_HZ 20
 #define WRITE_MOTOR_TASK_HZ ESC_PWM_HZ
 
+extern flight_control_loop_t fcl;
 
 void app_main(void *argument);
 

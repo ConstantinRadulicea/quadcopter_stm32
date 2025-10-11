@@ -43,7 +43,30 @@ Core/Lib/flight_controller_libs/fp_cli.o: \
  ../Core/Inc/esc_pwm.h \
  ../Middlewares/ST/STM32_USB_Device_Library/Core/Inc/usbd_core.h \
  ../Middlewares/ST/STM32_USB_Device_Library/Core/Inc/usbd_ioreq.h \
- ../Middlewares/ST/STM32_USB_Device_Library/Core/Inc/usbd_ctlreq.h
+ ../Middlewares/ST/STM32_USB_Device_Library/Core/Inc/usbd_ctlreq.h \
+ ../Core/Inc/rtos_flight_controller.h \
+ C:/Programming/STM32F405RGT6_test/Core/Lib/flight_controller_libs/flight_control_loop.h \
+ C:/Programming/STM32F405RGT6_test/Core/Lib/flight_controller_libs/imu.h \
+ C:/Programming/STM32F405RGT6_test/Core/Lib/flight_controller_libs/geometry3D.h \
+ C:/Programming/STM32F405RGT6_test/Core/Lib/flight_controller_libs/geometry2D.h \
+ C:/Programming/STM32F405RGT6_test/Core/Lib/flight_controller_libs/filters.h \
+ C:/Programming/STM32F405RGT6_test/Core/Lib/flight_controller_libs/madgwick_filter.h \
+ C:/Programming/STM32F405RGT6_test/Core/Lib/flight_controller_libs/attitude_controller.h \
+ C:/Programming/STM32F405RGT6_test/Core/Lib/flight_controller_libs/rate_controller.h \
+ C:/Programming/STM32F405RGT6_test/Core/Lib/flight_controller_libs/pid.h \
+ C:/Programming/STM32F405RGT6_test/Core/Lib/flight_controller_libs/motor_mixer.h \
+ C:/Programming/STM32F405RGT6_test/Core/Lib/flight_controller_libs/rc_control.h \
+ ../Middlewares/Third_Party/FreeRTOS/Source/include/FreeRTOS.h \
+ ../Core/Inc/FreeRTOSConfig.h \
+ ../Middlewares/Third_Party/FreeRTOS/Source/include/projdefs.h \
+ ../Middlewares/Third_Party/FreeRTOS/Source/include/portable.h \
+ ../Middlewares/Third_Party/FreeRTOS/Source/include/deprecated_definitions.h \
+ ../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F/portmacro.h \
+ ../Middlewares/Third_Party/FreeRTOS/Source/include/mpu_wrappers.h \
+ ../Middlewares/Third_Party/FreeRTOS/Source/include/semphr.h \
+ ../Middlewares/Third_Party/FreeRTOS/Source/include/queue.h \
+ ../Middlewares/Third_Party/FreeRTOS/Source/include/task.h \
+ ../Middlewares/Third_Party/FreeRTOS/Source/include/list.h
 ../Core/Lib/flight_controller_libs/fp_cli.h:
 C:/Programming/STM32F405RGT6_test/Core/Lib/lwshell/lwshell/src/include/lwshell/lwshell.h:
 C:/Programming/STM32F405RGT6_test/Core/Lib/lwshell/lwshell/src/include/lwshell/lwshell_opt.h:
@@ -89,3 +112,26 @@ C:/Programming/STM32F405RGT6_test/Core/Lib/lwshell/lwshell/src/include/lwshell/l
 ../Middlewares/ST/STM32_USB_Device_Library/Core/Inc/usbd_core.h:
 ../Middlewares/ST/STM32_USB_Device_Library/Core/Inc/usbd_ioreq.h:
 ../Middlewares/ST/STM32_USB_Device_Library/Core/Inc/usbd_ctlreq.h:
+../Core/Inc/rtos_flight_controller.h:
+C:/Programming/STM32F405RGT6_test/Core/Lib/flight_controller_libs/flight_control_loop.h:
+C:/Programming/STM32F405RGT6_test/Core/Lib/flight_controller_libs/imu.h:
+C:/Programming/STM32F405RGT6_test/Core/Lib/flight_controller_libs/geometry3D.h:
+C:/Programming/STM32F405RGT6_test/Core/Lib/flight_controller_libs/geometry2D.h:
+C:/Programming/STM32F405RGT6_test/Core/Lib/flight_controller_libs/filters.h:
+C:/Programming/STM32F405RGT6_test/Core/Lib/flight_controller_libs/madgwick_filter.h:
+C:/Programming/STM32F405RGT6_test/Core/Lib/flight_controller_libs/attitude_controller.h:
+C:/Programming/STM32F405RGT6_test/Core/Lib/flight_controller_libs/rate_controller.h:
+C:/Programming/STM32F405RGT6_test/Core/Lib/flight_controller_libs/pid.h:
+C:/Programming/STM32F405RGT6_test/Core/Lib/flight_controller_libs/motor_mixer.h:
+C:/Programming/STM32F405RGT6_test/Core/Lib/flight_controller_libs/rc_control.h:
+../Middlewares/Third_Party/FreeRTOS/Source/include/FreeRTOS.h:
+../Core/Inc/FreeRTOSConfig.h:
+../Middlewares/Third_Party/FreeRTOS/Source/include/projdefs.h:
+../Middlewares/Third_Party/FreeRTOS/Source/include/portable.h:
+../Middlewares/Third_Party/FreeRTOS/Source/include/deprecated_definitions.h:
+../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F/portmacro.h:
+../Middlewares/Third_Party/FreeRTOS/Source/include/mpu_wrappers.h:
+../Middlewares/Third_Party/FreeRTOS/Source/include/semphr.h:
+../Middlewares/Third_Party/FreeRTOS/Source/include/queue.h:
+../Middlewares/Third_Party/FreeRTOS/Source/include/task.h:
+../Middlewares/Third_Party/FreeRTOS/Source/include/list.h:
