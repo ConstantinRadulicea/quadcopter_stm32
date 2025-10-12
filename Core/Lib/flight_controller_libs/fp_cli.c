@@ -6,6 +6,34 @@
 #include <assert.h>
 
 lwshell_t lwshell_cli;
+
+static const char raw_accel[] = "raw_accel";
+static const char raw_gyro[] = "raw_gyro";
+static const char estimated_accel[] = "estimated_accel";
+static const char estimated_attitude[] = "estimated_attitude";
+static const char motors_throttle[] = "motors_throttle";
+static const char target_attitude[] = "target_attitude";
+static const char target_throttle[] = "target_throttle";
+static const char target_rate[] = "target_rate";
+static const char pid_output[] = "pid_output";
+
+struct telemetry_data_fags{
+	int get_telemetry_active : 1;
+	int raw_accel : 1;
+	int raw_gyro : 1;
+	int estimated_accel : 1;
+	int estimated_gyro : 1;
+	int estimated_attitude : 1;
+	int motors_throttle : 1;
+	int target_attitude : 1;
+	int target_throttle : 1;
+	int target_rate : 1;
+	int pid_output : 1;
+	char separator_char;
+};
+
+struct telemetry_data_fags get_telemetry_active = {};
+
 #define OUT_PRINTF(...) usb_printf(__VA_ARGS__)
 
 typedef int32_t (*parameter_state_switch_set_fn)(int32_t argc, char** argv);
@@ -437,8 +465,11 @@ int32_t get_cmd_fn(int32_t argc, char** argv) {
 }
 
 
-// get_telemetry frequency_hz data1 data2 data3 data...
+
+// get_telemetry frequency_hz separator_char data1 data2 data3 data...
 int32_t get_telemetry_cmd_fn(int32_t argc, char** argv){
+	memset(&get_telemetry_active, 0, sizeof(get_telemetry_active));
+	get_telemetry_active.get_telemetry_active = 0;
 
 }
 

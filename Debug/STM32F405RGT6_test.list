@@ -29,25 +29,25 @@ Idx Name          Size      VMA       LMA       File off  Algn
                   ALLOC
  12 .ARM.attributes 00000030  00000000  00000000  0002431c  2**0
                   CONTENTS, READONLY
- 13 .debug_info   000397f2  00000000  00000000  0002434c  2**0
+ 13 .debug_info   0003999c  00000000  00000000  0002434c  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 14 .debug_abbrev 000086ff  00000000  00000000  0005db3e  2**0
+ 14 .debug_abbrev 000086f9  00000000  00000000  0005dce8  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 15 .debug_aranges 00002e20  00000000  00000000  00066240  2**3
+ 15 .debug_aranges 00002e20  00000000  00000000  000663e8  2**3
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 16 .debug_rnglists 00002386  00000000  00000000  00069060  2**0
+ 16 .debug_rnglists 00002386  00000000  00000000  00069208  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 17 .debug_macro  0002a3a9  00000000  00000000  0006b3e6  2**0
+ 17 .debug_macro  0002a3a9  00000000  00000000  0006b58e  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 18 .debug_line   000398d2  00000000  00000000  0009578f  2**0
+ 18 .debug_line   000398d8  00000000  00000000  00095937  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 19 .debug_str    000dc442  00000000  00000000  000cf061  2**0
+ 19 .debug_str    000dc4b4  00000000  00000000  000cf20f  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 20 .comment      00000043  00000000  00000000  001ab4a3  2**0
+ 20 .comment      00000043  00000000  00000000  001ab6c3  2**0
                   CONTENTS, READONLY
- 21 .debug_frame  0000dddc  00000000  00000000  001ab4e8  2**2
+ 21 .debug_frame  0000ddd8  00000000  00000000  001ab708  2**2
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 22 .debug_line_str 00000050  00000000  00000000  001b92c4  2**0
+ 22 .debug_line_str 00000050  00000000  00000000  001b94e0  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
 
 Disassembly of section .text:
@@ -5067,8 +5067,8 @@ int32_t get_cmd_fn(int32_t argc, char** argv) {
  8002d9c:	0801feb0 	.word	0x0801feb0
 
 08002da0 <output_fn>:
-// get_telemetry frequency_hz data1 data2 data3 data...
-int32_t get_telemetry_cmd_fn(int32_t argc, char** argv){
+	memset(&get_telemetry_active, 0, sizeof(get_telemetry_active));
+	get_telemetry_active.get_telemetry_active = 0;
 
 }
 
