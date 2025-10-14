@@ -18,6 +18,7 @@
 ../Core/Lib/flight_controller_libs/fp_cli.c:367:6:command_get_list	4
 ../Core/Lib/flight_controller_libs/fp_cli.c:380:9:set_cmd_fn	9
 ../Core/Lib/flight_controller_libs/fp_cli.c:426:9:get_cmd_fn	8
-../Core/Lib/flight_controller_libs/fp_cli.c:469:9:get_telemetry_cmd_fn	1
-../Core/Lib/flight_controller_libs/fp_cli.c:475:6:output_fn	1
-../Core/Lib/flight_controller_libs/fp_cli.c:480:6:fp_cli_example_minimal_init	1
+../Core/Lib/flight_controller_libs/fp_cli.c:470:9:get_telemetry_cmd_fn	3
+../Core/Lib/flight_controller_libs/fp_cli.c:481:9:get_telemetry_stop_cmd_fn	1
+../Core/Lib/flight_controller_libs/fp_cli.c:486:6:output_fn	1
+../Core/Lib/flight_controller_libs/fp_cli.c:491:6:fp_cli_example_minimal_init	1

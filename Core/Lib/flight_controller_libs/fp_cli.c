@@ -464,13 +464,23 @@ int32_t get_cmd_fn(int32_t argc, char** argv) {
     return 0;
 }
 
-
+volatile int start_telemetry = 0;
 
 // get_telemetry frequency_hz separator_char data1 data2 data3 data...
 int32_t get_telemetry_cmd_fn(int32_t argc, char** argv){
 	memset(&get_telemetry_active, 0, sizeof(get_telemetry_active));
 	get_telemetry_active.get_telemetry_active = 0;
+	if(argc >= 2){
+		if(strcmp(argv[1], "start") == 0){
+			start_telemetry = 1;
+		}
+	}
+	return 0;
+}
 
+int32_t get_telemetry_stop_cmd_fn(int32_t argc, char** argv){
+	start_telemetry = 0;
+	return 0;
 }
 
 void output_fn(const char* str, struct lwshell* lwobj){
@@ -489,5 +499,7 @@ void fp_cli_example_minimal_init(void) {
     /* Define shell commands */
     lwshell_register_cmd_ex(&lwshell_cli, "set", set_cmd_fn, "set a parameter");
     lwshell_register_cmd_ex(&lwshell_cli, "get", get_cmd_fn, "get a parameter");
+    lwshell_register_cmd_ex(&lwshell_cli, "get_telemetry", get_telemetry_cmd_fn, "get telemetry");
+    lwshell_register_cmd_ex(&lwshell_cli, "stop", get_telemetry_stop_cmd_fn, "stop telemetry");
 
 }

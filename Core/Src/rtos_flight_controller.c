@@ -13,6 +13,7 @@
 #include "atomic_custom.h"
 #include "usart.h"
 #include "crc.h"
+#include "fp_cli.h"
 
 #define ENABLE_ESC_CALIBRATION_BUILD 0
 
@@ -395,6 +396,10 @@ static void print_telemetry_data(void *arg){
 
     for (;;)
     {
+    	vTaskDelay(pdMS_TO_TICKS(HzToMilliSec(TELEMETRY_TASK_HZ)));
+    	if(start_telemetry == 0){
+    		continue;
+    	}
     #if MUTEX_ESP_ENABLE != 0
         xSemaphoreTake(fcl.imu_mutex, portMAX_DELAY);
     #endif
@@ -474,7 +479,7 @@ static void print_telemetry_data(void *arg){
 
 
     printf("\n");
-    vTaskDelay(pdMS_TO_TICKS(HzToMilliSec(TELEMETRY_TASK_HZ)));
+
     }
 }
 
