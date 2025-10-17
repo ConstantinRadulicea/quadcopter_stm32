@@ -26,6 +26,7 @@
 "./Core/Lib/mpu9250/test/driver_mpu9250_register_test.o"
 "./Core/Lib/ringbuffer/ringbuffer.o"
 "./Core/Lib/rxtxbuffer/rxtxbuffer.o"
+"./Core/Lib/uart_driver/uart_driver.o"
 "./Core/Src/atomic_custom.o"
 "./Core/Src/cpu_load.o"
 "./Core/Src/dma.o"

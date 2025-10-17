@@ -47,6 +47,7 @@ Core/Lib/mpu9250/src \
 Core/Lib/mpu9250/test \
 Core/Lib/ringbuffer \
 Core/Lib/rxtxbuffer \
+Core/Lib/uart_driver \
 Core/Src \
 Core/Startup \
 Drivers/STM32F4xx_HAL_Driver/Src \
