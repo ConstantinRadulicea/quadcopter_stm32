@@ -348,7 +348,6 @@ size_t CDC_recv_data(char* out_buf, size_t max_len)
     size_t bytes_read;
     ATOMIC_BLOCK_CUSTOM(ATOMIC_RESTORESTATE_CUSTOM)
     {
-        usart1_read_dma_buffer();
     	bytes_read = ring_buffer_dequeue_arr(&rx_ringbuffer, (uint8_t*)out_buf, max_len);
     }
 

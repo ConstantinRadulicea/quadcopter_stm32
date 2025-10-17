@@ -28,18 +28,8 @@
 
 static uint8_t usart1_rx_buffer[USART1_RX_BUFFER_SIZE];
 static uint8_t usart1_tx_buffer[USART1_TX_BUFFER_SIZE];
-static ring_buffer_t usart1_tx_ring_buffer;
-static ring_buffer_t usart1_rx_ring_buffer;
-volatile uint16_t usart1_last_tx_size = 0;
-volatile uint16_t usart1_last_rx_len = 0;
-
-/* ---- RX DMA state ---- */
 static uint8_t  usart1_dma_rx[RX_DMA_BUF_SIZE];
-static volatile uint16_t usart1_dma_last_pos = 0;
-
-void usart1_start_tx_if_idle(int force_state);
-void usart1_recover(void);
-void usart1_restart(void);
+uart_driver_t usart1_driver;
 
 /* USER CODE END 0 */
 
@@ -53,10 +43,7 @@ void MX_USART1_UART_Init(void)
 {
 
   /* USER CODE BEGIN USART1_Init 0 */
-	ring_buffer_init(&usart1_tx_ring_buffer, usart1_tx_buffer, USART1_TX_BUFFER_SIZE);
-	ring_buffer_init(&usart1_rx_ring_buffer, usart1_rx_buffer, USART1_RX_BUFFER_SIZE);
-	usart1_last_tx_size = 0;
-	usart1_last_rx_len = 0;
+
   /* USER CODE END USART1_Init 0 */
 
   /* USER CODE BEGIN USART1_Init 1 */
@@ -75,16 +62,18 @@ void MX_USART1_UART_Init(void)
     Error_Handler();
   }
   /* USER CODE BEGIN USART1_Init 2 */
-  uint16_t rx_buffer_remaining_free = (uint16_t)ring_buffer_linear_free_space(&usart1_rx_ring_buffer);
-  uint8_t *write_ptr = ring_buffer_write_ptr(&usart1_rx_ring_buffer);
-//   usart1_last_rx_len = rx_buffer_remaining_free;
-//   HAL_UART_Receive_DMA(&huart1, write_ptr, rx_buffer_remaining_free);
 
-  HAL_UART_Receive_DMA(&huart1, usart1_dma_rx, RX_DMA_BUF_SIZE);
-  usart1_last_rx_len = RX_DMA_BUF_SIZE;
-  usart1_dma_last_pos = 0;
-
-  __HAL_UART_ENABLE_IT(&huart1, UART_IT_IDLE);
+  uart_driver_init(
+		  &usart1_driver,
+		  &huart1,
+		  usart1_rx_buffer,
+		  usart1_tx_buffer,
+		  usart1_dma_rx,
+		  USART1_RX_BUFFER_SIZE,
+		  USART1_TX_BUFFER_SIZE,
+		  RX_DMA_BUF_SIZE,
+		  USART1_TX_CHUNK_SIZE
+  );
   /* USER CODE END USART1_Init 2 */
 
 }
@@ -183,10 +172,7 @@ void HAL_UART_MspDeInit(UART_HandleTypeDef* uartHandle)
     /* USART1 interrupt Deinit */
     HAL_NVIC_DisableIRQ(USART1_IRQn);
   /* USER CODE BEGIN USART1_MspDeInit 1 */
-	usart1_last_tx_size = 0;
-	usart1_last_rx_len = 0;
-	ring_buffer_clear(&usart1_tx_ring_buffer);
-	ring_buffer_clear(&usart1_rx_ring_buffer);
+    uart_driver_deinit(&usart1_driver);
   /* USER CODE END USART1_MspDeInit 1 */
   }
 }
@@ -194,28 +180,9 @@ void HAL_UART_MspDeInit(UART_HandleTypeDef* uartHandle)
 /* USER CODE BEGIN 1 */
 void HAL_UART_TxCpltCallback(UART_HandleTypeDef *huart)
 {
-    if (huart->Instance == USART1)
+    if (huart->Instance == usart1_driver.uart_handle->Instance)
     {
-
-    	if(huart1.gState == HAL_UART_STATE_READY)
-    	{
-			// Advance tail for previously sent chunk
-			ring_buffer_advance_tail(&usart1_tx_ring_buffer, usart1_last_tx_size);
-
-			size_t linear_used = ring_buffer_linear_used_space(&usart1_tx_ring_buffer);
-			uint16_t frame_size = MIN(linear_used, USART1_TX_CHUNK_SIZE);
-			uint8_t *next_chunk = ring_buffer_read_ptr(&usart1_tx_ring_buffer);
-			usart1_last_tx_size = frame_size;
-
-			if (frame_size > 0)
-			{
-		        if (HAL_UART_Transmit_DMA(huart, next_chunk, frame_size) != HAL_OK) {
-		            usart1_last_tx_size = 0;
-		        }
-				//HAL_UART_Transmit_IT(huart, next_chunk, frame_size);
-				// Do NOT advance tail here. Advance it next time, after TX completes.
-			}
-    	}
+    	TxCpltCallback_routine(&usart1_driver, huart);
     }
 }
 
@@ -232,243 +199,23 @@ void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart)
 
 void HAL_UART_IDLECallback(UART_HandleTypeDef *huart)
 {
-    if (huart->Instance == USART1){
-
-    // Position DMA has written up to (bytes received so far)
-    int dma_pos = (int)(RX_DMA_BUF_SIZE - __HAL_DMA_GET_COUNTER(huart->hdmarx));
-
-    if (dma_pos == usart1_dma_last_pos) return; // nothing new
-
-    if (dma_pos > usart1_dma_last_pos) {
-        // linear chunk
-        size_t len = dma_pos - usart1_dma_last_pos;
-        ring_buffer_enqueue_arr(&usart1_rx_ring_buffer,
-                          &usart1_dma_rx[usart1_dma_last_pos], len);
-    } else {
-        // wrapped: tail then head
-        size_t tail_len = RX_DMA_BUF_SIZE - usart1_dma_last_pos;
-        ring_buffer_enqueue_arr(&usart1_rx_ring_buffer,
-                          &usart1_dma_rx[usart1_dma_last_pos], tail_len);
-        if (dma_pos) {
-        	ring_buffer_enqueue_arr(&usart1_rx_ring_buffer,
-                              &usart1_dma_rx[0], dma_pos);
-        }
-    }
-
-    usart1_dma_last_pos = dma_pos;
+	if (huart->Instance == usart1_driver.uart_handle->Instance)
+    {
+		IDLECallback_routine(&usart1_driver, huart);
     }
 }
-
-
-void usart1_read_dma_buffer()
-{
-	ATOMIC_BLOCK_CUSTOM(ATOMIC_RESTORESTATE_CUSTOM)
-	{
-    // Position DMA has written up to (bytes received so far)
-    int dma_pos = (int)(RX_DMA_BUF_SIZE - __HAL_DMA_GET_COUNTER(huart1.hdmarx));
-
-    if (dma_pos == usart1_dma_last_pos) return; // nothing new
-
-    if (dma_pos > usart1_dma_last_pos) {
-        // linear chunk
-        size_t len = dma_pos - usart1_dma_last_pos;
-        ring_buffer_enqueue_arr(&usart1_rx_ring_buffer,
-                          &usart1_dma_rx[usart1_dma_last_pos], len);
-    } else {
-        // wrapped: tail then head
-        size_t tail_len = RX_DMA_BUF_SIZE - usart1_dma_last_pos;
-        ring_buffer_enqueue_arr(&usart1_rx_ring_buffer,
-                          &usart1_dma_rx[usart1_dma_last_pos], tail_len);
-        if (dma_pos) {
-        	ring_buffer_enqueue_arr(&usart1_rx_ring_buffer,
-                              &usart1_dma_rx[0], dma_pos);
-        }
-    }
-
-    usart1_dma_last_pos = dma_pos;
-	}
-}
-
-
-
-
 
 
 
 void HAL_UART_ErrorCallback(UART_HandleTypeDef *huart)
 {
+    HAL_UART_DeInit(huart);
     if (huart->Instance == USART1)
     {
-        // Handle TX/RX recovery here
-        //usart1_recover();
-        usart1_restart();
+    	MX_USART1_UART_Init();
     }
 }
 
 
-void usart1_start_tx_if_idle(int force_state)
-{
-	ATOMIC_BLOCK_CUSTOM(ATOMIC_RESTORESTATE_CUSTOM)
-	{
-		if (((huart1.gState == HAL_UART_STATE_READY) || force_state != 0) && ring_buffer_used_space(&usart1_tx_ring_buffer) > 0)
-		{
-
-			size_t linear_used = ring_buffer_linear_used_space(&usart1_tx_ring_buffer);
-			uint16_t frame_size = MIN(linear_used, USART1_TX_CHUNK_SIZE);
-			uint8_t *data = ring_buffer_read_ptr(&usart1_tx_ring_buffer);
-
-			usart1_last_tx_size = frame_size;
-
-			//EXIT_CRITICAL();
-			if (HAL_UART_Transmit_DMA(&huart1, data, frame_size) != HAL_OK) {
-				//ENTER_CRITICAL();
-				usart1_last_tx_size = 0;
-				//EXIT_CRITICAL();
-			}
-			//HAL_UART_Transmit_IT(&huart1, data, frame_size);
-		}
-		else
-		{
-			//EXIT_CRITICAL();
-		}
-	}
-}
-
-void usart1_recover(void)
-{
-    HAL_UART_AbortTransmit(&huart1);
-    usart1_last_tx_size = 0;
-    usart1_start_tx_if_idle(1);
-
-    // Stop RX DMA if needed
-    if (HAL_DMA_GetState(huart1.hdmarx) != HAL_DMA_STATE_READY) {
-        HAL_UART_DMAStop(&huart1);
-    }
-
-    // Clear UART error flags
-    __HAL_UART_CLEAR_PEFLAG(&huart1);
-    __HAL_UART_CLEAR_FEFLAG(&huart1);
-    __HAL_UART_CLEAR_NEFLAG(&huart1);
-    __HAL_UART_CLEAR_OREFLAG(&huart1);
-
-    // Clear DMA TC flag safely
-    __HAL_DMA_CLEAR_FLAG(huart1.hdmarx, __HAL_DMA_GET_TC_FLAG_INDEX(huart1.hdmarx));
-
-    // Recover RX DMA
-    uint16_t remaining = __HAL_DMA_GET_COUNTER(huart1.hdmarx);
-    uint16_t received = usart1_last_rx_len - remaining;
-    ring_buffer_advance_head(&usart1_rx_ring_buffer, received);
-
-    uint16_t space = ring_buffer_linear_free_space(&usart1_rx_ring_buffer);
-    uint8_t *write_ptr = ring_buffer_write_ptr(&usart1_rx_ring_buffer);
-
-    // HAL_UART_Receive_DMA(&huart1, write_ptr, space);
-    // usart1_last_rx_len = space;
-
-      HAL_UART_Receive_DMA(&huart1, usart1_dma_rx, RX_DMA_BUF_SIZE);
-  usart1_last_rx_len = RX_DMA_BUF_SIZE;
-  usart1_dma_last_pos = 0;
-}
-
-
-void usart1_restart(void)
-{
-    // 1. Deinit UART (also unlinks DMA internally)
-    HAL_UART_DeInit(&huart1);
-
-    // 2. Deinit DMA streams manually
-    HAL_DMA_DeInit(huart1.hdmarx);
-    HAL_DMA_DeInit(huart1.hdmatx);
-
-    // 3. Reset USART1 peripheral
-    __HAL_RCC_USART1_FORCE_RESET();
-    __HAL_RCC_USART1_RELEASE_RESET();
-
-    // 4. Reinit USART1 and DMA
-    MX_USART1_UART_Init();  // Reinitializes UART and links DMA
-    //MX_DMA_Init();          // Only needed if you have a custom DMA init function
-
-    // 5. Restart RX DMA if needed
-    uint16_t space = ring_buffer_linear_free_space(&usart1_rx_ring_buffer);
-    uint8_t *write_ptr = ring_buffer_write_ptr(&usart1_rx_ring_buffer);
-    // usart1_last_rx_len = space;
-    // HAL_UART_Receive_DMA(&huart1, write_ptr, space);
-
-      HAL_UART_Receive_DMA(&huart1, usart1_dma_rx, RX_DMA_BUF_SIZE);
-  usart1_last_rx_len = RX_DMA_BUF_SIZE;
-  usart1_dma_last_pos = 0;
-
-    usart1_start_tx_if_idle(1);
-}
-
-
-
-
-size_t usart1_send_data(char* data, size_t len)
-{
-    if (data == NULL || len == 0) {
-        return 0;
-    }
-    size_t bytes_written;
-    ATOMIC_BLOCK_CUSTOM(ATOMIC_RESTORESTATE_CUSTOM)
-    {
-        // Try to enqueue data
-    	bytes_written = ring_buffer_enqueue_arr(&usart1_tx_ring_buffer, (uint8_t*)data, len);
-    }
-
-    usart1_start_tx_if_idle(0);
-
-    return bytes_written;
-}
-
-size_t usart1_recv_data(char* out_buf, size_t max_len)
-{
-    if (out_buf == NULL || max_len == 0) {
-        return 0;
-    }
-    size_t bytes_read;
-    ATOMIC_BLOCK_CUSTOM(ATOMIC_RESTORESTATE_CUSTOM)
-    {
-        usart1_read_dma_buffer();
-    	bytes_read = ring_buffer_dequeue_arr(&usart1_rx_ring_buffer, (uint8_t*)out_buf, max_len);
-    }
-
-    return bytes_read;
-}
-
-size_t usart1_data_available_for_read()
-{
-	size_t used;
-
-    ATOMIC_BLOCK_CUSTOM(ATOMIC_RESTORESTATE_CUSTOM)
-    {
-        usart1_read_dma_buffer();
-    	used = ring_buffer_used_space(&usart1_rx_ring_buffer);
-    }
-
-    return used;
-}
-
-size_t usart1_data_available_for_write()
-{
-	size_t free_space;
-
-    ATOMIC_BLOCK_CUSTOM(ATOMIC_RESTORESTATE_CUSTOM)
-    {
-    	free_space = ring_buffer_free_space(&usart1_tx_ring_buffer);
-    }
-
-    return free_space;
-}
-
-void usart1_data_rx_flush(){
-    ATOMIC_BLOCK_CUSTOM(ATOMIC_RESTORESTATE_CUSTOM)
-    {
-        usart1_read_dma_buffer();
-        __HAL_UART_CLEAR_FLAG(&huart1, UART_FLAG_RXNE);
-        __HAL_UART_CLEAR_OREFLAG(&huart1);
-        usart1_rx_ring_buffer.tail = usart1_rx_ring_buffer.head = 0;
-    }
-}
 
 /* USER CODE END 1 */

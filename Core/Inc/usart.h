@@ -27,12 +27,14 @@ extern "C" {
 
 /* Includes ------------------------------------------------------------------*/
 #include "main.h"
+#include "uart_driver.h"
 
 /* USER CODE BEGIN Includes */
 
 /* USER CODE END Includes */
 
 extern UART_HandleTypeDef huart1;
+extern uart_driver_t usart1_driver;
 
 /* USER CODE BEGIN Private defines */
 #define USART1_RX_BUFFER_SIZE 2048
@@ -44,12 +46,7 @@ extern UART_HandleTypeDef huart1;
 void MX_USART1_UART_Init(void);
 
 /* USER CODE BEGIN Prototypes */
-size_t usart1_send_data(char* data, size_t len);
-void HAL_UART_IDLECallback(UART_HandleTypeDef *huart);
-size_t usart1_recv_data(char* out_buf, size_t max_len);
-size_t usart1_data_available_for_read();
-size_t usart1_data_available_for_write();
-void usart1_data_rx_flush();
+
 //uint8_t usart1_is_connected(void);
 /* USER CODE END Prototypes */
 

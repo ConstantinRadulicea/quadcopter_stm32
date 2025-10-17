@@ -6,6 +6,7 @@
 #include <assert.h>
 
 lwshell_t lwshell_cli;
+volatile int start_telemetry = 1;
 
 static const char raw_accel[] = "raw_accel";
 static const char raw_gyro[] = "raw_gyro";
@@ -464,16 +465,17 @@ int32_t get_cmd_fn(int32_t argc, char** argv) {
     return 0;
 }
 
-volatile int start_telemetry = 0;
+
 
 // get_telemetry frequency_hz separator_char data1 data2 data3 data...
 int32_t get_telemetry_cmd_fn(int32_t argc, char** argv){
 	memset(&get_telemetry_active, 0, sizeof(get_telemetry_active));
 	get_telemetry_active.get_telemetry_active = 0;
+	start_telemetry = 1;
 	if(argc >= 2){
-		if(strcmp(argv[1], "start") == 0){
-			start_telemetry = 1;
-		}
+//		if(strcmp(argv[1], "start") == 0){
+//			start_telemetry = 1;
+//		}
 	}
 	return 0;
 }

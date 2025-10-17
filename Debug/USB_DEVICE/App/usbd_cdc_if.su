@@ -5,5 +5,5 @@
 ../USB_DEVICE/App/usbd_cdc_if.c:304:9:CDC_Transmit_FS	24	static
 ../USB_DEVICE/App/usbd_cdc_if.c:330:15:CDC_TransmitCplt_FS	32	static
 ../USB_DEVICE/App/usbd_cdc_if.c:343:8:CDC_recv_data	56	static,ignoring_inline_asm
-../USB_DEVICE/App/usbd_cdc_if.c:358:8:CDC_data_available_for_read	48	static,ignoring_inline_asm
-../USB_DEVICE/App/usbd_cdc_if.c:371:6:usb_printf	16	static
+../USB_DEVICE/App/usbd_cdc_if.c:357:8:CDC_data_available_for_read	48	static,ignoring_inline_asm
+../USB_DEVICE/App/usbd_cdc_if.c:370:6:usb_printf	16	static

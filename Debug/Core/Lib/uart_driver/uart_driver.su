@@ -2,10 +2,10 @@
 ../Core/Lib/uart_driver/uart_driver.c:37:13:start_tx_if_idle	64	static,ignoring_inline_asm
 ../Core/Lib/uart_driver/uart_driver.c:66:6:TxCpltCallback_routine	32	static
 ../Core/Lib/uart_driver/uart_driver.c:93:6:IDLECallback_routine	16	static
-../Core/Lib/uart_driver/uart_driver.c:132:8:uart_send_data	64	static,ignoring_inline_asm
-../Core/Lib/uart_driver/uart_driver.c:149:8:uart_recv_data	64	static,ignoring_inline_asm
-../Core/Lib/uart_driver/uart_driver.c:164:8:uart_data_available_for_read	56	static,ignoring_inline_asm
-../Core/Lib/uart_driver/uart_driver.c:177:8:uart_data_available_for_write	56	static,ignoring_inline_asm
-../Core/Lib/uart_driver/uart_driver.c:189:6:uart_data_rx_flush	56	static,ignoring_inline_asm
-../Core/Lib/uart_driver/uart_driver.c:200:6:uart_driver_init	32	static
-../Core/Lib/uart_driver/uart_driver.c:234:6:uart_driver_deinit	16	static
+../Core/Lib/uart_driver/uart_driver.c:168:8:uart_send_data	64	static,ignoring_inline_asm
+../Core/Lib/uart_driver/uart_driver.c:185:8:uart_recv_data	64	static,ignoring_inline_asm
+../Core/Lib/uart_driver/uart_driver.c:200:8:uart_data_available_for_read	56	static,ignoring_inline_asm
+../Core/Lib/uart_driver/uart_driver.c:213:8:uart_data_available_for_write	56	static,ignoring_inline_asm
+../Core/Lib/uart_driver/uart_driver.c:225:6:uart_data_rx_flush	56	static,ignoring_inline_asm
+../Core/Lib/uart_driver/uart_driver.c:236:6:uart_driver_init	32	static
+../Core/Lib/uart_driver/uart_driver.c:273:6:uart_driver_deinit	16	static

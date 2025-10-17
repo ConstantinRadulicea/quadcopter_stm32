@@ -11,7 +11,7 @@ static void read_rx_dma_buffer(uart_driver_t *uart_driver_handle)
 	ATOMIC_BLOCK_CUSTOM(ATOMIC_RESTORESTATE_CUSTOM)
 	{
 		// Position DMA has written up to (bytes received so far)
-		int dma_pos = (int)(uart_driver_handle->RX_DMA_BUF_SIZE - __HAL_DMA_GET_COUNTER(uart_driver_handle->uart_handle->hdmarx));
+		int dma_pos = (int)(uart_driver_handle->dma_rx_buffer_size - __HAL_DMA_GET_COUNTER(uart_driver_handle->uart_handle->hdmarx));
 
 		if (dma_pos == uart_driver_handle->dma_last_pos) return; // nothing new
 
@@ -21,7 +21,7 @@ static void read_rx_dma_buffer(uart_driver_t *uart_driver_handle)
 			ring_buffer_enqueue_arr(&(uart_driver_handle->rx_ring_buffer), &(uart_driver_handle->dma_rx_buffer[uart_driver_handle->dma_last_pos]), len);
 		} else {
 			// wrapped: tail then head
-			size_t tail_len = uart_driver_handle->RX_DMA_BUF_SIZE - uart_driver_handle->dma_last_pos;
+			size_t tail_len = uart_driver_handle->dma_rx_buffer_size - uart_driver_handle->dma_last_pos;
 			ring_buffer_enqueue_arr(&(uart_driver_handle->rx_ring_buffer), &(uart_driver_handle->dma_rx_buffer[uart_driver_handle->dma_last_pos]), tail_len);
 			if (dma_pos) {
 				ring_buffer_enqueue_arr(&(uart_driver_handle->rx_ring_buffer), &(uart_driver_handle->dma_rx_buffer[0]), dma_pos);
@@ -42,7 +42,7 @@ static void start_tx_if_idle(uart_driver_t *uart_driver_handle, int force_state)
 		{
 
 			size_t linear_used = ring_buffer_linear_used_space(&(uart_driver_handle->tx_ring_buffer));
-			uint16_t frame_size = MIN(linear_used, uart_driver_handle->TX_CHUNK_SIZE);
+			uint16_t frame_size = MIN(linear_used, uart_driver_handle->tx_chunk_size);
 			uint8_t *data = ring_buffer_read_ptr(&(uart_driver_handle->tx_ring_buffer));
 
 			uart_driver_handle->last_tx_size = frame_size;
@@ -73,7 +73,7 @@ void TxCpltCallback_routine(uart_driver_t *uart_driver_handle, UART_HandleTypeDe
 			ring_buffer_advance_tail(&(uart_driver_handle->tx_ring_buffer), uart_driver_handle->last_tx_size);
 
 			size_t linear_used = ring_buffer_linear_used_space(&(uart_driver_handle->tx_ring_buffer));
-			uint16_t frame_size = MIN(linear_used, uart_driver_handle->TX_CHUNK_SIZE);
+			uint16_t frame_size = MIN(linear_used, uart_driver_handle->tx_chunk_size);
 			uint8_t *next_chunk = ring_buffer_read_ptr(&(uart_driver_handle->tx_ring_buffer));
 			uart_driver_handle->last_tx_size = frame_size;
 
@@ -98,6 +98,42 @@ void IDLECallback_routine(uart_driver_t *uart_driver_handle, UART_HandleTypeDef 
 }
 
 
+//void usart1_recover(void)
+//{
+//    HAL_UART_AbortTransmit(&huart1);
+//    usart1_last_tx_size = 0;
+//    usart1_start_tx_if_idle(1);
+//
+//    // Stop RX DMA if needed
+//    if (HAL_DMA_GetState(huart1.hdmarx) != HAL_DMA_STATE_READY) {
+//        HAL_UART_DMAStop(&huart1);
+//    }
+//
+//    // Clear UART error flags
+//    __HAL_UART_CLEAR_PEFLAG(&huart1);
+//    __HAL_UART_CLEAR_FEFLAG(&huart1);
+//    __HAL_UART_CLEAR_NEFLAG(&huart1);
+//    __HAL_UART_CLEAR_OREFLAG(&huart1);
+//
+//    // Clear DMA TC flag safely
+//    __HAL_DMA_CLEAR_FLAG(huart1.hdmarx, __HAL_DMA_GET_TC_FLAG_INDEX(huart1.hdmarx));
+//
+//    // Recover RX DMA
+//    uint16_t remaining = __HAL_DMA_GET_COUNTER(huart1.hdmarx);
+//    uint16_t received = usart1_last_rx_len - remaining;
+//    ring_buffer_advance_head(&usart1_rx_ring_buffer, received);
+//
+//    uint16_t space = ring_buffer_linear_free_space(&usart1_rx_ring_buffer);
+//    uint8_t *write_ptr = ring_buffer_write_ptr(&usart1_rx_ring_buffer);
+//
+//    // HAL_UART_Receive_DMA(&huart1, write_ptr, space);
+//    // usart1_last_rx_len = space;
+//
+//      HAL_UART_Receive_DMA(&huart1, usart1_dma_rx, RX_DMA_BUF_SIZE);
+//  usart1_last_rx_len = RX_DMA_BUF_SIZE;
+//  usart1_dma_last_pos = 0;
+//}
+
 //void usart1_restart(uart_driver_t *uart_driver_handle)
 //{
 //    // 1. Deinit UART (also unlinks DMA internally)
@@ -121,8 +157,8 @@ void IDLECallback_routine(uart_driver_t *uart_driver_handle, UART_HandleTypeDef 
 //    // usart1_last_rx_len = space;
 //    // HAL_UART_Receive_DMA(&huart1, write_ptr, space);
 //
-//      HAL_UART_Receive_DMA(uart_driver_handle->uart_handle, uart_driver_handle->dma_rx_buffer, uart_driver_handle->RX_DMA_BUF_SIZE);
-//	  uart_driver_handle->last_rx_len = uart_driver_handle->RX_DMA_BUF_SIZE;
+//      HAL_UART_Receive_DMA(uart_driver_handle->uart_handle, uart_driver_handle->dma_rx_buffer, uart_driver_handle->dma_rx_buffer_size);
+//	  uart_driver_handle->last_rx_len = uart_driver_handle->dma_rx_buffer_size;
 //	  uart_driver_handle->dma_last_pos = 0;
 //
 //	  start_tx_if_idle(uart_driver_handle, 1);
@@ -205,18 +241,21 @@ void uart_driver_init(
 		uint8_t* dma_rx_ring_buffer,
 		size_t rx_ring_buffer_size,
 		size_t tx_ring_buffer_size,
-		size_t dma_rx_ring_buffer_size
+		size_t dma_rx_ring_buffer_size,
+		uint16_t tx_chunk_size
+
 		){
 	memset(uart_driver_handle, 0, sizeof(uart_driver_t));
 	uart_driver_handle->uart_handle = huart;
 	ring_buffer_init(&(uart_driver_handle->tx_ring_buffer), tx_ring_buffer, tx_ring_buffer_size);
 	ring_buffer_init(&(uart_driver_handle->rx_ring_buffer), rx_ring_buffer, rx_ring_buffer_size);
+	uart_driver_handle->tx_chunk_size = tx_chunk_size;
 
 	uart_driver_handle->last_rx_len = 0;
 	uart_driver_handle->last_tx_size = 0;
 
 	uart_driver_handle->dma_rx_buffer = dma_rx_ring_buffer;
-	uart_driver_handle->RX_DMA_BUF_SIZE = dma_rx_ring_buffer_size;
+	uart_driver_handle->dma_rx_buffer_size = dma_rx_ring_buffer_size;
 	uart_driver_handle->dma_last_pos = 0;
 
 	  uint16_t rx_buffer_remaining_free = (uint16_t)ring_buffer_linear_free_space(&(uart_driver_handle->rx_ring_buffer));
@@ -224,8 +263,8 @@ void uart_driver_init(
 	//   usart1_last_rx_len = rx_buffer_remaining_free;
 	//   HAL_UART_Receive_DMA(&huart1, write_ptr, rx_buffer_remaining_free);
 
-	  HAL_UART_Receive_DMA(uart_driver_handle->uart_handle, uart_driver_handle->dma_rx_buffer, uart_driver_handle->RX_DMA_BUF_SIZE);
-	  uart_driver_handle->last_rx_len = uart_driver_handle->RX_DMA_BUF_SIZE;
+	  HAL_UART_Receive_DMA(uart_driver_handle->uart_handle, uart_driver_handle->dma_rx_buffer, uart_driver_handle->dma_rx_buffer_size);
+	  uart_driver_handle->last_rx_len = uart_driver_handle->dma_rx_buffer_size;
 	  uart_driver_handle->dma_last_pos = 0;
 
 	  __HAL_UART_ENABLE_IT(uart_driver_handle->uart_handle, UART_IT_IDLE);

@@ -14,8 +14,8 @@ typedef struct uart_driver_s{
 	ring_buffer_t rx_ring_buffer;
 	volatile uint16_t last_tx_size;
 	volatile uint16_t last_rx_len;
-	uint16_t TX_CHUNK_SIZE;
-	uint16_t RX_DMA_BUF_SIZE;
+	uint16_t tx_chunk_size;
+	uint16_t dma_rx_buffer_size;
 
 	uint8_t  *dma_rx_buffer;
 	volatile uint16_t dma_last_pos;
@@ -29,7 +29,8 @@ void uart_driver_init(
 		uint8_t* dma_rx_ring_buffer,
 		size_t rx_ring_buffer_size,
 		size_t tx_ring_buffer_size,
-		size_t dma_rx_ring_buffer_size
+		size_t dma_rx_ring_buffer_size,
+		uint16_t tx_chunk_size
 		);
 
 void uart_driver_deinit(uart_driver_t *uart_driver_handle);

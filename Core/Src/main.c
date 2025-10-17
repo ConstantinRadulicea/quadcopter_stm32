@@ -68,10 +68,11 @@ int _write(int file, char *data, int len) {
 int sent_size = len;
     if (file == 2) { // stderror to usb
         //CDC_Transmit_FS((uint8_t*)err_header, sizeof(err_header) - 1);
-        usart1_send_data(err_header, sizeof(err_header) - 1);
+
+    	uart_send_data(&usart1_driver, err_header, sizeof(err_header) - 1);
     }
     //CDC_Transmit_FS((uint8_t*)data, len);
-    sent_size = usart1_send_data(data, len);
+    sent_size = uart_send_data(&usart1_driver, data, len);
     return sent_size;
 }
 

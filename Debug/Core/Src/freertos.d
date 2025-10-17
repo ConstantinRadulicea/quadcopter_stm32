@@ -44,8 +44,11 @@ Core/Src/freertos.o: ../Core/Src/freertos.c \
  ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2/cmsis_os.h \
  ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2/cmsis_os2.h \
  ../Core/Inc/usart.h ../Core/Inc/main.h \
+ C:/Programming/STM32F405RGT6_test/Core/Lib/uart_driver/uart_driver.h \
+ ../Core/Inc/atomic_custom.h \
+ C:/Programming/STM32F405RGT6_test/Core/Lib/ringbuffer/ringbuffer.h \
  C:/Programming/STM32F405RGT6_test/Core/Lib/flight_controller_libs/geometry2D.h \
- ../Core/Inc/atomic_custom.h ../Core/Inc/rtos_flight_controller.h \
+ ../Core/Inc/rtos_flight_controller.h \
  C:/Programming/STM32F405RGT6_test/Core/Lib/flight_controller_libs/flight_control_loop.h \
  C:/Programming/STM32F405RGT6_test/Core/Lib/flight_controller_libs/imu.h \
  C:/Programming/STM32F405RGT6_test/Core/Lib/flight_controller_libs/geometry3D.h \
@@ -108,8 +111,10 @@ Core/Src/freertos.o: ../Core/Src/freertos.c \
 ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2/cmsis_os2.h:
 ../Core/Inc/usart.h:
 ../Core/Inc/main.h:
-C:/Programming/STM32F405RGT6_test/Core/Lib/flight_controller_libs/geometry2D.h:
+C:/Programming/STM32F405RGT6_test/Core/Lib/uart_driver/uart_driver.h:
 ../Core/Inc/atomic_custom.h:
+C:/Programming/STM32F405RGT6_test/Core/Lib/ringbuffer/ringbuffer.h:
+C:/Programming/STM32F405RGT6_test/Core/Lib/flight_controller_libs/geometry2D.h:
 ../Core/Inc/rtos_flight_controller.h:
 C:/Programming/STM32F405RGT6_test/Core/Lib/flight_controller_libs/flight_control_loop.h:
 C:/Programming/STM32F405RGT6_test/Core/Lib/flight_controller_libs/imu.h:

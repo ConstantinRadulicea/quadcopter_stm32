@@ -32,7 +32,10 @@ Core/Src/stm32f4xx_it.o: ../Core/Src/stm32f4xx_it.c ../Core/Inc/main.h \
  ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_ll_usb.h \
  ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pcd_ex.h \
  ../Core/Inc/esc_pwm.h ../Core/Inc/stm32f4xx_it.h ../Core/Inc/usart.h \
- ../Core/Inc/main.h
+ ../Core/Inc/main.h \
+ C:/Programming/STM32F405RGT6_test/Core/Lib/uart_driver/uart_driver.h \
+ ../Core/Inc/atomic_custom.h \
+ C:/Programming/STM32F405RGT6_test/Core/Lib/ringbuffer/ringbuffer.h
 ../Core/Inc/main.h:
 ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h:
 ../Core/Inc/stm32f4xx_hal_conf.h:
@@ -70,3 +73,6 @@ Core/Src/stm32f4xx_it.o: ../Core/Src/stm32f4xx_it.c ../Core/Inc/main.h \
 ../Core/Inc/stm32f4xx_it.h:
 ../Core/Inc/usart.h:
 ../Core/Inc/main.h:
+C:/Programming/STM32F405RGT6_test/Core/Lib/uart_driver/uart_driver.h:
+../Core/Inc/atomic_custom.h:
+C:/Programming/STM32F405RGT6_test/Core/Lib/ringbuffer/ringbuffer.h:

@@ -276,9 +276,9 @@ static void rc_control_main(void *arg)
   for(;;)
   {
 	  current_message_corrupted = 1;
-      while (usart1_data_available_for_read() > 0)
+      while (uart_data_available_for_read(&usart1_driver) > 0)
       {
-          recv_data = usart1_recv_data((char*)uart_recv_buffer, sizeof(uart_recv_buffer));
+          recv_data = uart_recv_data(&usart1_driver, (char*)uart_recv_buffer, sizeof(uart_recv_buffer));
           for(int i=0; i<recv_data; i++){
 
 
