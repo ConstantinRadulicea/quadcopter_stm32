@@ -57,6 +57,14 @@ Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 \
 Middlewares/Third_Party/FreeRTOS/Source \
 Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F \
 Middlewares/Third_Party/FreeRTOS/Source/portable/MemMang \
+Middlewares/Third_Party/lwip/src/api \
+Middlewares/Third_Party/lwip/src/core \
+Middlewares/Third_Party/lwip/src/core/ipv4 \
+Middlewares/Third_Party/lwip/src/core/ipv6 \
+Middlewares/Third_Party/lwip/src/include/arch \
+Middlewares/Third_Party/lwip/src/netif \
+Middlewares/Third_Party/lwip/src/netif/ppp \
+Middlewares/Third_Party/lwip/src/netif/ppp/polarssl \
 USB_DEVICE/App \
 USB_DEVICE/Target \
 

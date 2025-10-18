@@ -1,0 +1,9 @@
+../Middlewares/Third_Party/lwip/src/core/mem.c:438:1:ptr_to_mem	16	static
+../Middlewares/Third_Party/lwip/src/core/mem.c:444:1:mem_to_ptr	16	static
+../Middlewares/Third_Party/lwip/src/core/mem.c:461:1:plug_holes	32	static,ignoring_inline_asm
+../Middlewares/Third_Party/lwip/src/core/mem.c:503:1:mem_init	16	static,ignoring_inline_asm
+../Middlewares/Third_Party/lwip/src/core/mem.c:538:1:mem_link_valid	32	static
+../Middlewares/Third_Party/lwip/src/core/mem.c:604:1:mem_free	24	static,ignoring_inline_asm
+../Middlewares/Third_Party/lwip/src/core/mem.c:686:1:mem_trim	56	static,ignoring_inline_asm
+../Middlewares/Third_Party/lwip/src/core/mem.c:818:1:mem_malloc	48	static,ignoring_inline_asm
+../Middlewares/Third_Party/lwip/src/core/mem.c:986:1:mem_calloc	24	static

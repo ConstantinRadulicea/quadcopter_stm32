@@ -1,0 +1,16 @@
+../Middlewares/Third_Party/lwip/src/include/arch/sys_arch.c:10:7:sys_now	8	static
+../Middlewares/Third_Party/lwip/src/include/arch/sys_arch.c:15:7:sys_sem_new	16	static
+../Middlewares/Third_Party/lwip/src/include/arch/sys_arch.c:21:6:sys_sem_signal	16	static
+../Middlewares/Third_Party/lwip/src/include/arch/sys_arch.c:23:7:sys_arch_sem_wait	24	static
+../Middlewares/Third_Party/lwip/src/include/arch/sys_arch.c:31:6:sys_sem_free	16	static
+../Middlewares/Third_Party/lwip/src/include/arch/sys_arch.c:34:7:sys_mutex_new	16	static
+../Middlewares/Third_Party/lwip/src/include/arch/sys_arch.c:38:6:sys_mutex_lock	16	static
+../Middlewares/Third_Party/lwip/src/include/arch/sys_arch.c:39:6:sys_mutex_unlock	16	static
+../Middlewares/Third_Party/lwip/src/include/arch/sys_arch.c:40:6:sys_mutex_free	16	static
+../Middlewares/Third_Party/lwip/src/include/arch/sys_arch.c:43:7:sys_mbox_new	16	static
+../Middlewares/Third_Party/lwip/src/include/arch/sys_arch.c:47:6:sys_mbox_post	16	static
+../Middlewares/Third_Party/lwip/src/include/arch/sys_arch.c:50:7:sys_mbox_trypost	16	static
+../Middlewares/Third_Party/lwip/src/include/arch/sys_arch.c:53:7:sys_arch_mbox_fetch	32	static
+../Middlewares/Third_Party/lwip/src/include/arch/sys_arch.c:61:7:sys_arch_mbox_tryfetch	24	static
+../Middlewares/Third_Party/lwip/src/include/arch/sys_arch.c:66:6:sys_mbox_free	16	static
+../Middlewares/Third_Party/lwip/src/include/arch/sys_arch.c:69:14:sys_thread_new	40	static

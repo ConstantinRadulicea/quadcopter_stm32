@@ -11,6 +11,14 @@ RM := rm -rf
 -include sources.mk
 -include USB_DEVICE/Target/subdir.mk
 -include USB_DEVICE/App/subdir.mk
+-include Middlewares/Third_Party/lwip/src/netif/ppp/polarssl/subdir.mk
+-include Middlewares/Third_Party/lwip/src/netif/ppp/subdir.mk
+-include Middlewares/Third_Party/lwip/src/netif/subdir.mk
+-include Middlewares/Third_Party/lwip/src/include/arch/subdir.mk
+-include Middlewares/Third_Party/lwip/src/core/ipv6/subdir.mk
+-include Middlewares/Third_Party/lwip/src/core/ipv4/subdir.mk
+-include Middlewares/Third_Party/lwip/src/core/subdir.mk
+-include Middlewares/Third_Party/lwip/src/api/subdir.mk
 -include Middlewares/Third_Party/FreeRTOS/Source/portable/MemMang/subdir.mk
 -include Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F/subdir.mk
 -include Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2/subdir.mk

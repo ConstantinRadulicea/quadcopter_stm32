@@ -1,0 +1,2 @@
+../Middlewares/Third_Party/lwip/src/api/err.c:69:1:err_to_errno	16	static
+../Middlewares/Third_Party/lwip/src/api/err.c:107:1:lwip_strerr	16	static
