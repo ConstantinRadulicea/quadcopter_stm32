@@ -8,15 +8,15 @@
 lwshell_t lwshell_cli;
 volatile int start_telemetry = 1;
 
-static const char raw_accel[] = "raw_accel";
-static const char raw_gyro[] = "raw_gyro";
-static const char estimated_accel[] = "estimated_accel";
-static const char estimated_attitude[] = "estimated_attitude";
-static const char motors_throttle[] = "motors_throttle";
-static const char target_attitude[] = "target_attitude";
-static const char target_throttle[] = "target_throttle";
-static const char target_rate[] = "target_rate";
-static const char pid_output[] = "pid_output";
+//static const char raw_accel[] = "raw_accel";
+//static const char raw_gyro[] = "raw_gyro";
+//static const char estimated_accel[] = "estimated_accel";
+//static const char estimated_attitude[] = "estimated_attitude";
+//static const char motors_throttle[] = "motors_throttle";
+//static const char target_attitude[] = "target_attitude";
+//static const char target_throttle[] = "target_throttle";
+//static const char target_rate[] = "target_rate";
+//static const char pid_output[] = "pid_output";
 
 struct telemetry_data_fags{
 	int get_telemetry_active : 1;
@@ -100,6 +100,7 @@ int32_t rate_controller_roll_pid_set_fn(int32_t argc, char** argv){
 int32_t rate_controller_roll_pid_set_info_fn(){
 	OUT_PRINTF("\r\n");
 	OUT_PRINTF("set %s (float)kp (float)ki (float)kd (float)max_integral_error (float)Kff\r\n", rate_controller_roll_pid);
+	return 0;
 }
 
 int32_t rate_controller_roll_pid_get_fn(){
@@ -116,6 +117,7 @@ int32_t rate_controller_roll_pid_get_fn(){
 #if MUTEX_ESP_ENABLE != 0
 	xSemaphoreGive(fcl.rate_controller_mutex);
 #endif
+	return 0;
 }
 /*=================================================================================*/
 
@@ -158,6 +160,7 @@ int32_t rate_controller_pitch_pid_set_fn(int32_t argc, char** argv){
 int32_t rate_controller_pitch_pid_set_info_fn(){
 	OUT_PRINTF("\r\n");
 	OUT_PRINTF("set %s (float)kp (float)ki (float)kd (float)max_integral_error (float)Kff\r\n", rate_controller_pitch_pid);
+	return 0;
 }
 
 int32_t rate_controller_pitch_pid_get_fn(){
@@ -174,6 +177,7 @@ int32_t rate_controller_pitch_pid_get_fn(){
 #if MUTEX_ESP_ENABLE != 0
 	xSemaphoreGive(fcl.rate_controller_mutex);
 #endif
+	return 0;
 }
 /*=================================================================================*/
 
@@ -216,6 +220,7 @@ int32_t rate_controller_yaw_pid_set_fn(int32_t argc, char** argv){
 int32_t rate_controller_yaw_pid_set_info_fn(){
 	OUT_PRINTF("\r\n");
 	OUT_PRINTF("set %s (float)kp (float)ki (float)kd (float)max_integral_error (float)Kff\r\n", rate_controller_yaw_pid);
+	return 0;
 }
 
 int32_t rate_controller_yaw_pid_get_fn(){
@@ -232,6 +237,7 @@ int32_t rate_controller_yaw_pid_get_fn(){
 #if MUTEX_ESP_ENABLE != 0
 	xSemaphoreGive(fcl.rate_controller_mutex);
 #endif
+	return 0;
 }
 /*=================================================================================*/
 
@@ -262,6 +268,7 @@ int32_t attitude_controller_level_p_set_fn(int32_t argc, char** argv){
 int32_t attitude_controller_level_p_set_info_fn(){
 	OUT_PRINTF("\r\n");
 	OUT_PRINTF("set %s (float)level_p\r\n", level_p);
+	return 0;
 }
 
 int32_t attitude_controller_level_p_get_fn(){
@@ -273,6 +280,7 @@ int32_t attitude_controller_level_p_get_fn(){
 #if MUTEX_ESP_ENABLE != 0
 	xSemaphoreGive(fcl.attitude_controller_mutex);
 #endif
+	return 0;
 }
 /*=================================================================================*/
 
@@ -303,6 +311,7 @@ int32_t attitude_controller_max_angle_set_fn(int32_t argc, char** argv){
 int32_t attitude_controller_max_angle_set_info_fn(){
 	OUT_PRINTF("\r\n");
 	OUT_PRINTF("set %s (float radians)max_angle\r\n", max_angle);
+	return 0;
 }
 
 int32_t attitude_controller_max_angle_get_fn(){
@@ -314,6 +323,7 @@ int32_t attitude_controller_max_angle_get_fn(){
 #if MUTEX_ESP_ENABLE != 0
 	xSemaphoreGive(fcl.attitude_controller_mutex);
 #endif
+	return 0;
 }
 /*=================================================================================*/
 

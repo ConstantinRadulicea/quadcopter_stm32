@@ -29,25 +29,25 @@ Idx Name          Size      VMA       LMA       File off  Algn
                   ALLOC
  12 .ARM.attributes 00000030  00000000  00000000  00024320  2**0
                   CONTENTS, READONLY
- 13 .debug_info   0003a7b6  00000000  00000000  00024350  2**0
+ 13 .debug_info   0003a68c  00000000  00000000  00024350  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 14 .debug_abbrev 00008848  00000000  00000000  0005eb06  2**0
+ 14 .debug_abbrev 0000881d  00000000  00000000  0005e9dc  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 15 .debug_aranges 00002e50  00000000  00000000  00067350  2**3
+ 15 .debug_aranges 00002e50  00000000  00000000  00067200  2**3
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 16 .debug_rnglists 000023a3  00000000  00000000  0006a1a0  2**0
+ 16 .debug_rnglists 000023a3  00000000  00000000  0006a050  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 17 .debug_macro  0002a7a8  00000000  00000000  0006c543  2**0
+ 17 .debug_macro  0002a7a8  00000000  00000000  0006c3f3  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 18 .debug_line   0003a2c2  00000000  00000000  00096ceb  2**0
+ 18 .debug_line   0003a2e0  00000000  00000000  00096b9b  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 19 .debug_str    000dc587  00000000  00000000  000d0fad  2**0
+ 19 .debug_str    000dc587  00000000  00000000  000d0e7b  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 20 .comment      00000043  00000000  00000000  001ad534  2**0
+ 20 .comment      00000043  00000000  00000000  001ad402  2**0
                   CONTENTS, READONLY
- 21 .debug_frame  0000de54  00000000  00000000  001ad578  2**2
+ 21 .debug_frame  0000de54  00000000  00000000  001ad448  2**2
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 22 .debug_line_str 00000050  00000000  00000000  001bb3cc  2**0
+ 22 .debug_line_str 00000050  00000000  00000000  001bb29c  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
 
 Disassembly of section .text:
@@ -3403,8 +3403,9 @@ int32_t rate_controller_roll_pid_set_info_fn(){
  8002162:	4904      	ldr	r1, [pc, #16]	@ (8002174 <rate_controller_roll_pid_set_info_fn+0x1c>)
  8002164:	4804      	ldr	r0, [pc, #16]	@ (8002178 <rate_controller_roll_pid_set_info_fn+0x20>)
  8002166:	f016 fc1b 	bl	80189a0 <usb_printf>
+	return 0;
+ 800216a:	2300      	movs	r3, #0
 }
- 800216a:	bf00      	nop
  800216c:	4618      	mov	r0, r3
  800216e:	bd80      	pop	{r7, pc}
  8002170:	0801fd64 	.word	0x0801fd64
@@ -3491,8 +3492,9 @@ int32_t rate_controller_roll_pid_get_fn(){
  8002226:	2100      	movs	r1, #0
  8002228:	f013 fb72 	bl	8015910 <xQueueGenericSend>
 #endif
+	return 0;
+ 800222c:	2300      	movs	r3, #0
 }
- 800222c:	bf00      	nop
  800222e:	4618      	mov	r0, r3
  8002230:	bd80      	pop	{r7, pc}
  8002232:	bf00      	nop
@@ -3696,8 +3698,9 @@ int32_t rate_controller_pitch_pid_set_info_fn(){
  80023ae:	4904      	ldr	r1, [pc, #16]	@ (80023c0 <rate_controller_pitch_pid_set_info_fn+0x1c>)
  80023b0:	4804      	ldr	r0, [pc, #16]	@ (80023c4 <rate_controller_pitch_pid_set_info_fn+0x20>)
  80023b2:	f016 faf5 	bl	80189a0 <usb_printf>
+	return 0;
+ 80023b6:	2300      	movs	r3, #0
 }
- 80023b6:	bf00      	nop
  80023b8:	4618      	mov	r0, r3
  80023ba:	bd80      	pop	{r7, pc}
  80023bc:	0801fd64 	.word	0x0801fd64
@@ -3784,8 +3787,9 @@ int32_t rate_controller_pitch_pid_get_fn(){
  8002472:	2100      	movs	r1, #0
  8002474:	f013 fa4c 	bl	8015910 <xQueueGenericSend>
 #endif
+	return 0;
+ 8002478:	2300      	movs	r3, #0
 }
- 8002478:	bf00      	nop
  800247a:	4618      	mov	r0, r3
  800247c:	bd80      	pop	{r7, pc}
  800247e:	bf00      	nop
@@ -3989,8 +3993,9 @@ int32_t rate_controller_yaw_pid_set_info_fn(){
  80025fa:	4904      	ldr	r1, [pc, #16]	@ (800260c <rate_controller_yaw_pid_set_info_fn+0x1c>)
  80025fc:	4804      	ldr	r0, [pc, #16]	@ (8002610 <rate_controller_yaw_pid_set_info_fn+0x20>)
  80025fe:	f016 f9cf 	bl	80189a0 <usb_printf>
+	return 0;
+ 8002602:	2300      	movs	r3, #0
 }
- 8002602:	bf00      	nop
  8002604:	4618      	mov	r0, r3
  8002606:	bd80      	pop	{r7, pc}
  8002608:	0801fd64 	.word	0x0801fd64
@@ -4077,8 +4082,9 @@ int32_t rate_controller_yaw_pid_get_fn(){
  80026be:	2100      	movs	r1, #0
  80026c0:	f013 f926 	bl	8015910 <xQueueGenericSend>
 #endif
+	return 0;
+ 80026c4:	2300      	movs	r3, #0
 }
- 80026c4:	bf00      	nop
  80026c6:	4618      	mov	r0, r3
  80026c8:	bd80      	pop	{r7, pc}
  80026ca:	bf00      	nop
@@ -4108,8 +4114,9 @@ int32_t attitude_controller_level_p_set_info_fn(){
  80026fa:	4904      	ldr	r1, [pc, #16]	@ (800270c <attitude_controller_level_p_set_info_fn+0x1c>)
  80026fc:	4804      	ldr	r0, [pc, #16]	@ (8002710 <attitude_controller_level_p_set_info_fn+0x20>)
  80026fe:	f016 f94f 	bl	80189a0 <usb_printf>
+	return 0;
+ 8002702:	2300      	movs	r3, #0
 }
- 8002702:	bf00      	nop
  8002704:	4618      	mov	r0, r3
  8002706:	bd80      	pop	{r7, pc}
  8002708:	0801fd64 	.word	0x0801fd64
@@ -4151,8 +4158,9 @@ int32_t attitude_controller_level_p_get_fn(){
  8002750:	2100      	movs	r1, #0
  8002752:	f013 f8dd 	bl	8015910 <xQueueGenericSend>
 #endif
+	return 0;
+ 8002756:	2300      	movs	r3, #0
 }
- 8002756:	bf00      	nop
  8002758:	4618      	mov	r0, r3
  800275a:	bd80      	pop	{r7, pc}
  800275c:	080220a4 	.word	0x080220a4
@@ -4176,8 +4184,9 @@ int32_t attitude_controller_max_angle_set_info_fn(){
  8002776:	4904      	ldr	r1, [pc, #16]	@ (8002788 <attitude_controller_max_angle_set_info_fn+0x1c>)
  8002778:	4804      	ldr	r0, [pc, #16]	@ (800278c <attitude_controller_max_angle_set_info_fn+0x20>)
  800277a:	f016 f911 	bl	80189a0 <usb_printf>
+	return 0;
+ 800277e:	2300      	movs	r3, #0
 }
- 800277e:	bf00      	nop
  8002780:	4618      	mov	r0, r3
  8002782:	bd80      	pop	{r7, pc}
  8002784:	0801fd64 	.word	0x0801fd64
@@ -4219,8 +4228,9 @@ int32_t attitude_controller_max_angle_get_fn(){
  80027cc:	2100      	movs	r1, #0
  80027ce:	f013 f89f 	bl	8015910 <xQueueGenericSend>
 #endif
+	return 0;
+ 80027d2:	2300      	movs	r3, #0
 }
- 80027d2:	bf00      	nop
  80027d4:	4618      	mov	r0, r3
  80027d6:	bd80      	pop	{r7, pc}
  80027d8:	080220a4 	.word	0x080220a4

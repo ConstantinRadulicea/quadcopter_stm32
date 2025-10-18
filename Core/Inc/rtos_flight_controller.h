@@ -34,7 +34,7 @@ extern "C" {
 
 extern flight_control_loop_t fcl;
 
-void app_main(void *argument);
+void app_main_start(void *argument);
 
 #ifdef __cplusplus
 }
