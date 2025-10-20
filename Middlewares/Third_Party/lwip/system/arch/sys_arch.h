@@ -33,6 +33,7 @@
 #define __SYS_ARCH_H__
 
 #include "lwip/opt.h"
+#include "atomic_custom.h"
 
 #if (NO_SYS != 0)
 #error "NO_SYS need to be set to 0 to use threaded API"
@@ -43,6 +44,10 @@
 #ifdef  __cplusplus
 extern "C" {
 #endif
+
+#define SYS_ARCH_DECL_PROTECT(lev)   crit_state_t lev
+#define SYS_ARCH_PROTECT(lev)        do { (lev)=enter_critical(); } while(0)
+#define SYS_ARCH_UNPROTECT(lev)      do { exit_critical(lev); } while(0)
 
 #define SYS_MBOX_NULL (osMessageQueueId_t)0
 #define SYS_SEM_NULL  (osSemaphoreId_t)0

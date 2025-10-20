@@ -157,8 +157,8 @@
 					</folderInfo>
 					<sourceEntries>
 						<entry excluding="Lib/lwshell/dev|Lib/lwshell/examples|Lib/lwshell/tests|Lib/mpu6500/example|Lib/mpu6500/project|Lib/mpu6500/test|Lib/Dshot|Lib/Dshot/stm32f411_fw_dshot|Lib/mpu9250/example" flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="Core"/>
-						<entry flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="Drivers"/>
 						<entry excluding="Third_Party/lwip/src/apps|Third_Party/lwip/contrib|Third_Party/lwip/doc|Third_Party/lwip/test" flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="Middlewares"/>
+						<entry flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="Drivers"/>
 						<entry flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="USB_DEVICE"/>
 					</sourceEntries>
 				</configuration>
@@ -314,8 +314,8 @@
 					</folderInfo>
 					<sourceEntries>
 						<entry excluding="Lib/lwshell/dev|Lib/lwshell/examples|Lib/lwshell/tests|Lib/mpu6500/example|Lib/mpu6500/project|Lib/mpu6500/test|Lib/Dshot|Lib/Dshot/stm32f411_fw_dshot|Lib/mpu9250/example" flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="Core"/>
-						<entry flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="Drivers"/>
 						<entry excluding="Third_Party/lwip/src/apps|Third_Party/lwip/contrib|Third_Party/lwip/doc|Third_Party/lwip/test" flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="Middlewares"/>
+						<entry flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="Drivers"/>
 						<entry flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="USB_DEVICE"/>
 					</sourceEntries>
 				</configuration>

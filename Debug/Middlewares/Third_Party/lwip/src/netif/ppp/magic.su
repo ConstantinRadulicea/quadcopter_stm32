@@ -1,0 +1,5 @@
+../Middlewares/Third_Party/lwip/src/netif/ppp/magic.c:213:6:magic_init	8	static
+../Middlewares/Third_Party/lwip/src/netif/ppp/magic.c:228:6:magic_randomize	8	static
+../Middlewares/Third_Party/lwip/src/netif/ppp/magic.c:255:7:magic	16	static
+../Middlewares/Third_Party/lwip/src/netif/ppp/magic.c:266:6:magic_random_bytes	24	static
+../Middlewares/Third_Party/lwip/src/netif/ppp/magic.c:282:7:magic_pow	16	static
