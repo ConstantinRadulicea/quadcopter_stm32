@@ -50,7 +50,7 @@
 
 /* MEM_SIZE: the size of the heap memory. If the application will send
 a lot of data that needs to be copied, this should be set high. */
-#define MEM_SIZE                (16*1024)
+#define MEM_SIZE                (20*1024)
 
 /* Relocate the LwIP RAM heap pointer */
 #include "stdint.h"
@@ -185,8 +185,8 @@ The STM32H7xx allows computing and verifying the IP, UDP, TCP and ICMP checksums
 
 #define PPP_SUPPORT               1
 #define PPPOS_SUPPORT             1
-#define PAP_SUPPORT               0
-#define CHAP_SUPPORT              0
+#define PAP_SUPPORT               1
+#define CHAP_SUPPORT              1
 
 /*
    ------------------------------------
@@ -233,7 +233,7 @@ The STM32H7xx allows computing and verifying the IP, UDP, TCP and ICMP checksums
 #define DEFAULT_TCP_RECVMBOX_SIZE       6
 #define DEFAULT_ACCEPTMBOX_SIZE         6
 #define DEFAULT_THREAD_STACKSIZE        1024
-#define TCPIP_THREAD_PRIO               osPriorityHigh
+#define TCPIP_THREAD_PRIO               osPriorityNormal
 
 #endif /* __LWIPOPTS_H__ */
 

@@ -79,7 +79,8 @@ Core/Src/rtos_flight_controller.o: ../Core/Src/rtos_flight_controller.c \
  ../Middlewares/ST/STM32_USB_Device_Library/Core/Inc/usbd_def.h \
  ../Middlewares/ST/STM32_USB_Device_Library/Core/Inc/usbd_core.h \
  ../Middlewares/ST/STM32_USB_Device_Library/Core/Inc/usbd_ioreq.h \
- ../Middlewares/ST/STM32_USB_Device_Library/Core/Inc/usbd_ctlreq.h
+ ../Middlewares/ST/STM32_USB_Device_Library/Core/Inc/usbd_ctlreq.h \
+ ../Core/Inc/lwip_example.h
 ../Core/Inc/rtos_flight_controller.h:
 C:/Programming/STM32F405RGT6_test/Core/Lib/flight_controller_libs/flight_control_loop.h:
 C:/Programming/STM32F405RGT6_test/Core/Lib/flight_controller_libs/imu.h:
@@ -165,3 +166,4 @@ C:/Programming/STM32F405RGT6_test/Core/Lib/lwshell/lwshell/src/include/lwshell/l
 ../Middlewares/ST/STM32_USB_Device_Library/Core/Inc/usbd_core.h:
 ../Middlewares/ST/STM32_USB_Device_Library/Core/Inc/usbd_ioreq.h:
 ../Middlewares/ST/STM32_USB_Device_Library/Core/Inc/usbd_ctlreq.h:
+../Core/Inc/lwip_example.h:

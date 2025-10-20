@@ -1,0 +1,10 @@
+../Middlewares/Third_Party/lwip/src/netif/ppp/upap.c:137:13:upap_init	16	static
+../Middlewares/Third_Party/lwip/src/netif/ppp/upap.c:155:6:upap_authwithpeer	24	static
+../Middlewares/Third_Party/lwip/src/netif/ppp/upap.c:201:13:upap_timeout	24	static
+../Middlewares/Third_Party/lwip/src/netif/ppp/upap.c:240:13:upap_lowerup	16	static
+../Middlewares/Third_Party/lwip/src/netif/ppp/upap.c:265:13:upap_lowerdown	16	static
+../Middlewares/Third_Party/lwip/src/netif/ppp/upap.c:286:13:upap_protrej	16	static
+../Middlewares/Third_Party/lwip/src/netif/ppp/upap.c:305:13:upap_input	40	static
+../Middlewares/Third_Party/lwip/src/netif/ppp/upap.c:458:13:upap_rauthack	32	static
+../Middlewares/Third_Party/lwip/src/netif/ppp/upap.c:494:13:upap_rauthnak	32	static
+../Middlewares/Third_Party/lwip/src/netif/ppp/upap.c:531:13:upap_sauthreq	32	static

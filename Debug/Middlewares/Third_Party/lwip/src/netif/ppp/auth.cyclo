@@ -2,10 +2,13 @@
 ../Middlewares/Third_Party/lwip/src/netif/ppp/auth.c:620:6:link_terminated	2
 ../Middlewares/Third_Party/lwip/src/netif/ppp/auth.c:698:6:link_down	2
 ../Middlewares/Third_Party/lwip/src/netif/ppp/auth.c:716:6:upper_layers_down	6
-../Middlewares/Third_Party/lwip/src/netif/ppp/auth.c:734:6:link_established	4
+../Middlewares/Third_Party/lwip/src/netif/ppp/auth.c:734:6:link_established	8
 ../Middlewares/Third_Party/lwip/src/netif/ppp/auth.c:860:13:network_phase	1
 ../Middlewares/Third_Party/lwip/src/netif/ppp/auth.c:917:6:start_networks	1
 ../Middlewares/Third_Party/lwip/src/netif/ppp/auth.c:971:6:continue_networks	5
+../Middlewares/Third_Party/lwip/src/netif/ppp/auth.c:1118:6:auth_withpeer_fail	1
+../Middlewares/Third_Party/lwip/src/netif/ppp/auth.c:1137:6:auth_withpeer_success	5
 ../Middlewares/Third_Party/lwip/src/netif/ppp/auth.c:1200:6:np_up	2
 ../Middlewares/Third_Party/lwip/src/netif/ppp/auth.c:1251:6:np_down	2
 ../Middlewares/Third_Party/lwip/src/netif/ppp/auth.c:1270:6:np_finished	2
+../Middlewares/Third_Party/lwip/src/netif/ppp/auth.c:1906:5:get_secret	7

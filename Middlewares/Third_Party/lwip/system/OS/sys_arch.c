@@ -403,6 +403,8 @@ void sys_mutex_unlock(sys_mutex_t *mutex)
   thread() function. The id of the new thread is returned. Both the id and
   the priority are system dependent.
 */
+#include "lwip/sys.h"
+#include "lwip/opt.h"
 sys_thread_t sys_thread_new(const char *name, lwip_thread_fn thread , void *arg, int stacksize, int prio)
 {
   const osThreadAttr_t attributes = {
@@ -410,7 +412,11 @@ sys_thread_t sys_thread_new(const char *name, lwip_thread_fn thread , void *arg,
                         .stack_size = stacksize,
                         .priority = (osPriority_t)prio,
                       };
-  return osThreadNew(thread, arg, &attributes);
+  osThreadId_t tid = osThreadNew((osThreadFunc_t)thread, arg, &attributes);
+  /* assert if the thread wasn't created */
+  LWIP_ASSERT("sys_thread_new: osThreadNew() failed", tid != NULL);
+
+  return (sys_thread_t)tid;
 }
 
 /*
@@ -450,6 +456,28 @@ void sys_arch_unprotect(sys_prot_t pval)
 {
   ( void ) pval;
   osMutexRelease(lwip_sys_mutex);
+}
+
+/**
+ * @brief Returns system time in milliseconds (required by lwIP timers)
+ */
+u32_t sys_now(void)
+{
+    // Get current kernel tick count and tick frequency
+    uint32_t ticks      = osKernelGetTickCount();
+    uint32_t tick_freq  = osKernelGetTickFreq();  // ticks per second
+
+    // Convert ticks to milliseconds safely and portably
+    return (u32_t)((ticks * 1000U) / tick_freq);
+}
+
+/**
+ * @brief Returns system jiffies (raw OS ticks)
+ * @note  Used by some lwIP PPP debug or timing features.
+ */
+u32_t sys_jiffies(void)
+{
+    return (u32_t)osKernelGetTickCount();
 }
 
 /*-----------------------------------------------------------------------------------*/

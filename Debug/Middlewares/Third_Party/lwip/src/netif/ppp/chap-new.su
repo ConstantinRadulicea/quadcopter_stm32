@@ -1,0 +1,8 @@
+../Middlewares/Third_Party/lwip/src/netif/ppp/chap-new.c:124:13:chap_init	16	static
+../Middlewares/Third_Party/lwip/src/netif/ppp/chap-new.c:138:13:chap_lowerup	16	static
+../Middlewares/Third_Party/lwip/src/netif/ppp/chap-new.c:148:13:chap_lowerdown	16	static
+../Middlewares/Third_Party/lwip/src/netif/ppp/chap-new.c:193:6:chap_auth_with_peer	32	static
+../Middlewares/Third_Party/lwip/src/netif/ppp/chap-new.c:435:13:chap_respond	592	static
+../Middlewares/Third_Party/lwip/src/netif/ppp/chap-new.c:497:13:chap_handle_status	40	static
+../Middlewares/Third_Party/lwip/src/netif/ppp/chap-new.c:535:13:chap_input	40	static
+../Middlewares/Third_Party/lwip/src/netif/ppp/chap-new.c:566:13:chap_protrej	16	static

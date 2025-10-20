@@ -63,10 +63,14 @@ Middlewares/Third_Party/lwip/src/netif/ppp/auth.o: \
  C:/Programming/STM32F405RGT6_test/Middlewares/Third_Party/lwip/src/include/netif/ppp/fsm.h \
  C:/Programming/STM32F405RGT6_test/Middlewares/Third_Party/lwip/src/include/netif/ppp/lcp.h \
  C:/Programming/STM32F405RGT6_test/Middlewares/Third_Party/lwip/src/include/netif/ppp/ipcp.h \
+ C:/Programming/STM32F405RGT6_test/Middlewares/Third_Party/lwip/src/include/netif/ppp/upap.h \
+ C:/Programming/STM32F405RGT6_test/Middlewares/Third_Party/lwip/src/include/netif/ppp/chap-new.h \
  C:/Programming/STM32F405RGT6_test/Middlewares/Third_Party/lwip/src/include/netif/ppp/pppdebug.h \
  C:/Programming/STM32F405RGT6_test/Middlewares/Third_Party/lwip/src/include/netif/ppp/fsm.h \
  C:/Programming/STM32F405RGT6_test/Middlewares/Third_Party/lwip/src/include/netif/ppp/lcp.h \
- C:/Programming/STM32F405RGT6_test/Middlewares/Third_Party/lwip/src/include/netif/ppp/ipcp.h
+ C:/Programming/STM32F405RGT6_test/Middlewares/Third_Party/lwip/src/include/netif/ppp/ipcp.h \
+ C:/Programming/STM32F405RGT6_test/Middlewares/Third_Party/lwip/src/include/netif/ppp/upap.h \
+ C:/Programming/STM32F405RGT6_test/Middlewares/Third_Party/lwip/src/include/netif/ppp/chap-new.h
 C:/Programming/STM32F405RGT6_test/Middlewares/Third_Party/lwip/src/include/netif/ppp/ppp_opts.h:
 C:/Programming/STM32F405RGT6_test/Middlewares/Third_Party/lwip/src/include/lwip/opt.h:
 ../Core/Inc/lwipopts.h:
@@ -130,7 +134,11 @@ C:/Programming/STM32F405RGT6_test/Middlewares/Third_Party/lwip/src/include/netif
 C:/Programming/STM32F405RGT6_test/Middlewares/Third_Party/lwip/src/include/netif/ppp/fsm.h:
 C:/Programming/STM32F405RGT6_test/Middlewares/Third_Party/lwip/src/include/netif/ppp/lcp.h:
 C:/Programming/STM32F405RGT6_test/Middlewares/Third_Party/lwip/src/include/netif/ppp/ipcp.h:
+C:/Programming/STM32F405RGT6_test/Middlewares/Third_Party/lwip/src/include/netif/ppp/upap.h:
+C:/Programming/STM32F405RGT6_test/Middlewares/Third_Party/lwip/src/include/netif/ppp/chap-new.h:
 C:/Programming/STM32F405RGT6_test/Middlewares/Third_Party/lwip/src/include/netif/ppp/pppdebug.h:
 C:/Programming/STM32F405RGT6_test/Middlewares/Third_Party/lwip/src/include/netif/ppp/fsm.h:
 C:/Programming/STM32F405RGT6_test/Middlewares/Third_Party/lwip/src/include/netif/ppp/lcp.h:
 C:/Programming/STM32F405RGT6_test/Middlewares/Third_Party/lwip/src/include/netif/ppp/ipcp.h:
+C:/Programming/STM32F405RGT6_test/Middlewares/Third_Party/lwip/src/include/netif/ppp/upap.h:
+C:/Programming/STM32F405RGT6_test/Middlewares/Third_Party/lwip/src/include/netif/ppp/chap-new.h:

@@ -1,3 +1,4 @@
+../Middlewares/Third_Party/lwip/src/netif/ppp/ppp.c:218:6:ppp_set_auth	24	static
 ../Middlewares/Third_Party/lwip/src/netif/ppp/ppp.c:275:7:ppp_connect	16	static
 ../Middlewares/Third_Party/lwip/src/netif/ppp/ppp.c:335:1:ppp_close	16	static
 ../Middlewares/Third_Party/lwip/src/netif/ppp/ppp.c:397:7:ppp_free	24	static

@@ -33,6 +33,7 @@
 "./Core/Src/esc_pwm.o"
 "./Core/Src/freertos.o"
 "./Core/Src/gpio.o"
+"./Core/Src/lwip_example.o"
 "./Core/Src/lwip_port.o"
 "./Core/Src/main.o"
 "./Core/Src/rtos_flight_controller.o"

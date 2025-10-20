@@ -292,7 +292,7 @@ int ipaddr_aton(const char *cp, ip_addr_t *addr);
 #if LWIP_IPV4
 
 typedef ip4_addr_t ip_addr_t;
-#define IPADDR4_INIT(u32val)                    { u32val }
+#define IPADDR4_INIT(u32val)                    ((ip4_addr_t){ u32val })
 #define IPADDR4_INIT_BYTES(a,b,c,d)             IPADDR4_INIT(PP_HTONL(LWIP_MAKEU32(a,b,c,d)))
 #define IP_IS_V4_VAL(ipaddr)                    1
 #define IP_IS_V6_VAL(ipaddr)                    0

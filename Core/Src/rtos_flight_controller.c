@@ -16,6 +16,7 @@
 #include "fp_cli.h"
 
 #define ENABLE_ESC_CALIBRATION_BUILD 0
+#define ENABLE_CLI 1
 
 flight_control_loop_t fcl;
 
@@ -30,20 +31,30 @@ static uint8_t flight_stack[2048];
 static uint8_t write_stack[2048];
 static uint8_t rc_stack[2048];
 static uint8_t telem_stack[2048];
-static uint8_t fp_cli_stack[2048];
 
-osThreadAttr_t flight_attr, write_attr, rc_attr, telem_attr, fp_cli_attr;
+#if ENABLE_CLI != 0
+static uint8_t fp_cli_stack[2048];
+#endif
+
+static uint8_t lwip_feed_stack[2048];
+static uint8_t lwip_example_stack[2048];
+
+osThreadAttr_t flight_attr, write_attr, rc_attr, telem_attr, fp_cli_attr, lwip_feed_attr, lwip_example_attr;
 StaticTask_t flight_h_taskControlBlock;
 StaticTask_t write_h_taskControlBlock;
 StaticTask_t rc_h_taskControlBlock;
 StaticTask_t telem_h_taskControlBlock;
 StaticTask_t fp_cli_h_taskControlBlock;
+StaticTask_t lwip_feed_h_taskControlBlock;
+StaticTask_t lwip_example_h_taskControlBlock;
 // Thread IDs
 static osThreadId_t flight_h;
 static osThreadId_t write_h;
 static osThreadId_t rc_h;
 static osThreadId_t telem_h;
 static osThreadId_t fp_cli_h;
+static osThreadId_t lwip_feed_h;
+static osThreadId_t lwip_example_h;
 
 
 #define STACK_WORDS(bytes) ((bytes)/sizeof(StackType_t))
@@ -516,6 +527,7 @@ void app_init(){
 	}
 }
 
+#include "lwip_example.h"
 
 void app_main_start(void *argument)
 {
@@ -573,7 +585,7 @@ void app_main_start(void *argument)
     telem_h = osThreadNew(print_telemetry_data, NULL, &telem_attr);
     configASSERT(telem_h != NULL);
 
-
+#if ENABLE_CLI != 0
     fp_cli_attr = (osThreadAttr_t){
         .name       = "fp_cli_func",
         .priority   = osPriorityBelowNormal,
@@ -584,5 +596,30 @@ void app_main_start(void *argument)
     };
     fp_cli_h = osThreadNew(fp_cli_func, NULL, &fp_cli_attr);
     configASSERT(fp_cli_h != NULL);
+#endif
+
+//    net_ppp_start();
+//
+//    telem_attr = (osThreadAttr_t){
+//        .name       = "lwip_feed",
+//        .priority   = osPriorityBelowNormal,
+//        .stack_mem  = lwip_feed_stack,
+//        .stack_size = sizeof(lwip_feed_stack),
+//		.cb_mem = &lwip_feed_h_taskControlBlock,
+//		.cb_size = sizeof(lwip_feed_h_taskControlBlock)
+//    };
+//    lwip_feed_h = osThreadNew(ppp_feed_task, NULL, &lwip_feed_attr);
+//    configASSERT(lwip_feed_h != NULL);
+
+//    telem_attr = (osThreadAttr_t){
+//        .name       = "lwip_example",
+//        .priority   = osPriorityBelowNormal,
+//        .stack_mem  = lwip_example_stack,
+//        .stack_size = sizeof(lwip_example_stack),
+//		.cb_mem = &lwip_example_h_taskControlBlock,
+//		.cb_size = sizeof(lwip_example_h_taskControlBlock)
+//    };
+//    lwip_example_h = osThreadNew(tcp_echo_socket_task, NULL, &lwip_example_attr);
+//    configASSERT(lwip_example_h != NULL);
 
 }

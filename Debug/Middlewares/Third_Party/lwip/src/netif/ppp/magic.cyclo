@@ -1,5 +1,6 @@
-../Middlewares/Third_Party/lwip/src/netif/ppp/magic.c:213:6:magic_init	1
-../Middlewares/Third_Party/lwip/src/netif/ppp/magic.c:228:6:magic_randomize	1
-../Middlewares/Third_Party/lwip/src/netif/ppp/magic.c:255:7:magic	1
-../Middlewares/Third_Party/lwip/src/netif/ppp/magic.c:266:6:magic_random_bytes	2
+../Middlewares/Third_Party/lwip/src/netif/ppp/magic.c:100:13:magic_churnrand	2
+../Middlewares/Third_Party/lwip/src/netif/ppp/magic.c:133:6:magic_init	1
+../Middlewares/Third_Party/lwip/src/netif/ppp/magic.c:140:6:magic_randomize	1
+../Middlewares/Third_Party/lwip/src/netif/ppp/magic.c:162:6:magic_random_bytes	2
+../Middlewares/Third_Party/lwip/src/netif/ppp/magic.c:185:7:magic	1
 ../Middlewares/Third_Party/lwip/src/netif/ppp/magic.c:282:7:magic_pow	1

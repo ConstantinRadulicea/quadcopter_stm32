@@ -40,22 +40,22 @@ uint8_t ring_buffer_init(ring_buffer_t* rb, uint8_t* buffer, size_t size) {
 
 
 size_t ring_buffer_free_space(ring_buffer_t* rb) {
-	//if (rb == NULL) return (size_t)0;
+	if (rb == NULL) return (size_t)0;
 	return (rb->tail + rb->size - rb->head - (size_t)1) % rb->size;
 }
 
 uint8_t ring_buffer_is_empty(ring_buffer_t* rb) {
-	//if (rb == NULL) return (size_t)0;
+	if (rb == NULL) return (size_t)0;
 	return (uint8_t)(rb->head == rb->tail);
 }
 
 uint8_t ring_buffer_is_full(ring_buffer_t* rb) {
-	//if (rb == NULL) return (size_t)0;
+	if (rb == NULL) return (size_t)0;
 	return (uint8_t) (((rb->head + (size_t)1) % rb->size) == rb->tail);
 }
 
 size_t ring_buffer_used_space(ring_buffer_t* rb) {
-	//if (rb == NULL) return (size_t)0;
+	if (rb == NULL) return (size_t)0;
 	return (rb->head + rb->size - rb->tail) % rb->size;
 }
 
@@ -102,7 +102,7 @@ uint8_t ring_buffer_dequeue(ring_buffer_t* rb, uint8_t* out_byte) {
  returns: 7 - 2 - 1 = 4 bytes available before reaching tail
 */
 size_t ring_buffer_linear_free_space(ring_buffer_t* rb) {
-	//if (rb == NULL) return (size_t)0;
+	if (rb == NULL) return (size_t)0;
 
 	if (rb->head >= rb->tail) {
 		if (rb->tail == (size_t)0) {
@@ -122,7 +122,7 @@ size_t ring_buffer_linear_free_space(ring_buffer_t* rb) {
 
 
 size_t ring_buffer_linear_used_space(ring_buffer_t* rb) {
-	//if (rb == NULL) return (size_t)0;
+	if (rb == NULL) return (size_t)0;
 
 	if (rb->head >= rb->tail) {
 		// All used data is linear
@@ -137,26 +137,26 @@ size_t ring_buffer_linear_used_space(ring_buffer_t* rb) {
 
 
 uint8_t* ring_buffer_write_ptr(ring_buffer_t* rb) {
-//	if (rb == NULL || rb->buffer == NULL || rb->size == (size_t)0) {
-//		return NULL;
-//	}
+	if (rb == NULL || rb->buffer == NULL || rb->size == (size_t)0) {
+		return NULL;
+	}
 
 	return &rb->buffer[rb->head];
 }
 
 
 uint8_t* ring_buffer_read_ptr(ring_buffer_t* rb) {
-//	if (rb == NULL || rb->buffer == NULL || rb->size == (size_t)0) {
-//		return NULL;
-//	}
+	if (rb == NULL || rb->buffer == NULL || rb->size == (size_t)0) {
+		return NULL;
+	}
 
 	return &rb->buffer[rb->tail];
 }
 
 size_t ring_buffer_enqueue_arr(ring_buffer_t* rb, uint8_t* byte_array, size_t len) {
-//	if (rb == NULL || rb->buffer == NULL || byte_array == NULL || rb->size == (size_t)0) {
-//		return (size_t)0;
-//	}
+	if (rb == NULL || rb->buffer == NULL || byte_array == NULL || rb->size == (size_t)0) {
+		return (size_t)0;
+	}
 
 	size_t free_space = ring_buffer_free_space(rb);
 	size_t to_write = MIN(len, free_space);
@@ -176,9 +176,9 @@ size_t ring_buffer_enqueue_arr(ring_buffer_t* rb, uint8_t* byte_array, size_t le
 
 
 size_t ring_buffer_dequeue_arr(ring_buffer_t* rb, uint8_t* out_array, size_t len) {
-//	if (rb == NULL || rb->buffer == NULL || rb->size == (size_t)0 || out_array == NULL) {
-//		return (size_t)0;
-//	}
+	if (rb == NULL || rb->buffer == NULL || rb->size == (size_t)0 || out_array == NULL) {
+		return (size_t)0;
+	}
 
 	size_t used = ring_buffer_used_space(rb);
 	if (used == (size_t)0) {
@@ -224,9 +224,9 @@ uint8_t ring_buffer_peek(ring_buffer_t* rb, uint8_t* out_byte) {
 }
 
 size_t ring_buffer_peek_arr(ring_buffer_t* rb, uint8_t* out_array, size_t len) {
-//	if (rb == NULL || rb->buffer == NULL || rb->size == (size_t)0 || out_array == NULL) {
-//		return (size_t)0;
-//	}
+	if (rb == NULL || rb->buffer == NULL || rb->size == (size_t)0 || out_array == NULL) {
+		return (size_t)0;
+	}
 
 	size_t used = ring_buffer_used_space(rb);
 	if (used == (size_t)0) {
@@ -252,9 +252,9 @@ size_t ring_buffer_peek_arr(ring_buffer_t* rb, uint8_t* out_array, size_t len) {
 
 
 size_t ring_buffer_peek_arr_offset(ring_buffer_t* rb, uint8_t* out_array, size_t len, size_t offset) {
-//	if (rb == NULL || rb->buffer == NULL || rb->size == (size_t)0 || out_array == NULL) {
-//		return (size_t)0;
-//	}
+	if (rb == NULL || rb->buffer == NULL || rb->size == (size_t)0 || out_array == NULL) {
+		return (size_t)0;
+	}
 
 	size_t temp_offset = offset; // Preserve original offset
 	size_t used = ring_buffer_used_space(rb);
@@ -293,27 +293,27 @@ size_t ring_buffer_peek_arr_offset(ring_buffer_t* rb, uint8_t* out_array, size_t
 }
 
 void ring_buffer_advance_tail(ring_buffer_t* rb, size_t len) {
-//	if (rb == NULL) {
-//		return;
-//	}
+	if (rb == NULL) {
+		return;
+	}
 	size_t used = ring_buffer_used_space(rb);
 	size_t advance_len = MIN(len, used);
 	rb->tail = (rb->tail + advance_len) % rb->size;
 }
 
 void ring_buffer_advance_head(ring_buffer_t* rb, size_t len) {
-//	if (rb == NULL) {
-//		return;
-//	}
+	if (rb == NULL) {
+		return;
+	}
 	size_t free_space = ring_buffer_free_space(rb);
 	size_t advance_len = MIN(len, free_space);
 	rb->head = (rb->head + advance_len) % rb->size;
 }
 
 void ring_buffer_clear(ring_buffer_t* rb) {
-//	if (rb == NULL) {
-//		return;
-//	}
+	if (rb == NULL) {
+		return;
+	}
 	rb->head = (size_t)0;
 	rb->tail = (size_t)0;
 }

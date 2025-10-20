@@ -18,6 +18,8 @@
 ../Middlewares/Third_Party/lwip/system/OS/sys_arch.c:375:6:sys_mutex_free	1
 ../Middlewares/Third_Party/lwip/system/OS/sys_arch.c:385:6:sys_mutex_lock	1
 ../Middlewares/Third_Party/lwip/system/OS/sys_arch.c:392:6:sys_mutex_unlock	1
-../Middlewares/Third_Party/lwip/system/OS/sys_arch.c:406:14:sys_thread_new	1
-../Middlewares/Third_Party/lwip/system/OS/sys_arch.c:432:12:sys_arch_protect	1
-../Middlewares/Third_Party/lwip/system/OS/sys_arch.c:449:6:sys_arch_unprotect	1
+../Middlewares/Third_Party/lwip/system/OS/sys_arch.c:408:14:sys_thread_new	2
+../Middlewares/Third_Party/lwip/system/OS/sys_arch.c:438:12:sys_arch_protect	1
+../Middlewares/Third_Party/lwip/system/OS/sys_arch.c:455:6:sys_arch_unprotect	1
+../Middlewares/Third_Party/lwip/system/OS/sys_arch.c:464:7:sys_now	1
+../Middlewares/Third_Party/lwip/system/OS/sys_arch.c:478:7:sys_jiffies	1
