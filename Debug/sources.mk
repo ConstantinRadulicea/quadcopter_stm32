@@ -61,10 +61,10 @@ Middlewares/Third_Party/lwip/src/api \
 Middlewares/Third_Party/lwip/src/core \
 Middlewares/Third_Party/lwip/src/core/ipv4 \
 Middlewares/Third_Party/lwip/src/core/ipv6 \
-Middlewares/Third_Party/lwip/src/include/arch \
 Middlewares/Third_Party/lwip/src/netif \
 Middlewares/Third_Party/lwip/src/netif/ppp \
 Middlewares/Third_Party/lwip/src/netif/ppp/polarssl \
+Middlewares/Third_Party/lwip/system/OS \
 USB_DEVICE/App \
 USB_DEVICE/Target \
 

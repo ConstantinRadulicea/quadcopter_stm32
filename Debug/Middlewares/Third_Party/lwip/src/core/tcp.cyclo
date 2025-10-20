@@ -31,7 +31,7 @@
 ../Middlewares/Third_Party/lwip/src/core/tcp.c:1756:1:tcp_kill_state	7
 ../Middlewares/Third_Party/lwip/src/core/tcp.c:1788:1:tcp_kill_timewait	4
 ../Middlewares/Third_Party/lwip/src/core/tcp.c:1815:1:tcp_handle_closepend	3
-../Middlewares/Third_Party/lwip/src/core/tcp.c:1838:1:tcp_alloc	10
+../Middlewares/Third_Party/lwip/src/core/tcp.c:1838:1:tcp_alloc	6
 ../Middlewares/Third_Party/lwip/src/core/tcp.c:1953:1:tcp_new	1
 ../Middlewares/Third_Party/lwip/src/core/tcp.c:1971:1:tcp_new_ip_type	1
 ../Middlewares/Third_Party/lwip/src/core/tcp.c:1997:1:tcp_arg	2

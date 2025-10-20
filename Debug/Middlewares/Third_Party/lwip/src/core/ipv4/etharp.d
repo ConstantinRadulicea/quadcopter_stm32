@@ -4,7 +4,8 @@ Middlewares/Third_Party/lwip/src/core/ipv4/etharp.o: \
  ../Core/Inc/lwipopts.h \
  C:/Programming/STM32F405RGT6_test/Middlewares/Third_Party/lwip/src/include/lwip/debug.h \
  C:/Programming/STM32F405RGT6_test/Middlewares/Third_Party/lwip/src/include/lwip/arch.h \
- C:/Programming/STM32F405RGT6_test/Middlewares/Third_Party/lwip/src/include/arch/cc.h \
+ C:/Programming/STM32F405RGT6_test/Middlewares/Third_Party/lwip/system/arch/cc.h \
+ C:/Programming/STM32F405RGT6_test/Middlewares/Third_Party/lwip/system/arch/cpu.h \
  C:/Programming/STM32F405RGT6_test/Middlewares/Third_Party/lwip/src/include/lwip/etharp.h \
  C:/Programming/STM32F405RGT6_test/Middlewares/Third_Party/lwip/src/include/lwip/pbuf.h \
  C:/Programming/STM32F405RGT6_test/Middlewares/Third_Party/lwip/src/include/lwip/err.h \
@@ -27,15 +28,22 @@ Middlewares/Third_Party/lwip/src/core/ipv4/etharp.o: \
  C:/Programming/STM32F405RGT6_test/Middlewares/Third_Party/lwip/src/include/lwip/prot/etharp.h \
  C:/Programming/STM32F405RGT6_test/Middlewares/Third_Party/lwip/src/include/lwip/snmp.h \
  C:/Programming/STM32F405RGT6_test/Middlewares/Third_Party/lwip/src/include/lwip/dhcp.h \
- C:/Programming/STM32F405RGT6_test/Middlewares/Third_Party/lwip/src/include/lwip/autoip.h \
+ C:/Programming/STM32F405RGT6_test/Middlewares/Third_Party/lwip/src/include/lwip/udp.h \
+ C:/Programming/STM32F405RGT6_test/Middlewares/Third_Party/lwip/src/include/lwip/ip.h \
+ C:/Programming/STM32F405RGT6_test/Middlewares/Third_Party/lwip/src/include/lwip/ip6.h \
+ C:/Programming/STM32F405RGT6_test/Middlewares/Third_Party/lwip/src/include/lwip/prot/ip.h \
+ C:/Programming/STM32F405RGT6_test/Middlewares/Third_Party/lwip/src/include/lwip/prot/udp.h \
  C:/Programming/STM32F405RGT6_test/Middlewares/Third_Party/lwip/src/include/lwip/acd.h \
+ C:/Programming/STM32F405RGT6_test/Middlewares/Third_Party/lwip/src/include/lwip/prot/acd.h \
+ C:/Programming/STM32F405RGT6_test/Middlewares/Third_Party/lwip/src/include/lwip/autoip.h \
  C:/Programming/STM32F405RGT6_test/Middlewares/Third_Party/lwip/src/include/lwip/prot/iana.h \
  C:/Programming/STM32F405RGT6_test/Middlewares/Third_Party/lwip/src/include/netif/ethernet.h
 C:/Programming/STM32F405RGT6_test/Middlewares/Third_Party/lwip/src/include/lwip/opt.h:
 ../Core/Inc/lwipopts.h:
 C:/Programming/STM32F405RGT6_test/Middlewares/Third_Party/lwip/src/include/lwip/debug.h:
 C:/Programming/STM32F405RGT6_test/Middlewares/Third_Party/lwip/src/include/lwip/arch.h:
-C:/Programming/STM32F405RGT6_test/Middlewares/Third_Party/lwip/src/include/arch/cc.h:
+C:/Programming/STM32F405RGT6_test/Middlewares/Third_Party/lwip/system/arch/cc.h:
+C:/Programming/STM32F405RGT6_test/Middlewares/Third_Party/lwip/system/arch/cpu.h:
 C:/Programming/STM32F405RGT6_test/Middlewares/Third_Party/lwip/src/include/lwip/etharp.h:
 C:/Programming/STM32F405RGT6_test/Middlewares/Third_Party/lwip/src/include/lwip/pbuf.h:
 C:/Programming/STM32F405RGT6_test/Middlewares/Third_Party/lwip/src/include/lwip/err.h:
@@ -58,7 +66,13 @@ C:/Programming/STM32F405RGT6_test/Middlewares/Third_Party/lwip/src/include/lwip/
 C:/Programming/STM32F405RGT6_test/Middlewares/Third_Party/lwip/src/include/lwip/prot/etharp.h:
 C:/Programming/STM32F405RGT6_test/Middlewares/Third_Party/lwip/src/include/lwip/snmp.h:
 C:/Programming/STM32F405RGT6_test/Middlewares/Third_Party/lwip/src/include/lwip/dhcp.h:
-C:/Programming/STM32F405RGT6_test/Middlewares/Third_Party/lwip/src/include/lwip/autoip.h:
+C:/Programming/STM32F405RGT6_test/Middlewares/Third_Party/lwip/src/include/lwip/udp.h:
+C:/Programming/STM32F405RGT6_test/Middlewares/Third_Party/lwip/src/include/lwip/ip.h:
+C:/Programming/STM32F405RGT6_test/Middlewares/Third_Party/lwip/src/include/lwip/ip6.h:
+C:/Programming/STM32F405RGT6_test/Middlewares/Third_Party/lwip/src/include/lwip/prot/ip.h:
+C:/Programming/STM32F405RGT6_test/Middlewares/Third_Party/lwip/src/include/lwip/prot/udp.h:
 C:/Programming/STM32F405RGT6_test/Middlewares/Third_Party/lwip/src/include/lwip/acd.h:
+C:/Programming/STM32F405RGT6_test/Middlewares/Third_Party/lwip/src/include/lwip/prot/acd.h:
+C:/Programming/STM32F405RGT6_test/Middlewares/Third_Party/lwip/src/include/lwip/autoip.h:
 C:/Programming/STM32F405RGT6_test/Middlewares/Third_Party/lwip/src/include/lwip/prot/iana.h:
 C:/Programming/STM32F405RGT6_test/Middlewares/Third_Party/lwip/src/include/netif/ethernet.h:

@@ -20,15 +20,6 @@
 extern "C" {
 #endif
 
-
-#define PID_GYRO_SCALE 16.0f
-#define PID_SCALE      0.032029f // 1 / 31.23
-
-#define BetaFlight2PID(x) ((x) * PID_GYRO_SCALE * PID_SCALE)
-
-
-
-
 #define FLIGHT_CONTROLLER_PID_FREQ_HZ 1000
 
 #define ACCELEROMETER_FILTER_CUTOFF_FREQ_HZ 30

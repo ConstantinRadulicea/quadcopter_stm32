@@ -4,7 +4,8 @@ Middlewares/Third_Party/lwip/src/core/ipv4/ip4.o: \
  ../Core/Inc/lwipopts.h \
  C:/Programming/STM32F405RGT6_test/Middlewares/Third_Party/lwip/src/include/lwip/debug.h \
  C:/Programming/STM32F405RGT6_test/Middlewares/Third_Party/lwip/src/include/lwip/arch.h \
- C:/Programming/STM32F405RGT6_test/Middlewares/Third_Party/lwip/src/include/arch/cc.h \
+ C:/Programming/STM32F405RGT6_test/Middlewares/Third_Party/lwip/system/arch/cc.h \
+ C:/Programming/STM32F405RGT6_test/Middlewares/Third_Party/lwip/system/arch/cpu.h \
  C:/Programming/STM32F405RGT6_test/Middlewares/Third_Party/lwip/src/include/lwip/ip.h \
  C:/Programming/STM32F405RGT6_test/Middlewares/Third_Party/lwip/src/include/lwip/def.h \
  C:/Programming/STM32F405RGT6_test/Middlewares/Third_Party/lwip/src/include/lwip/pbuf.h \
@@ -30,7 +31,6 @@ Middlewares/Third_Party/lwip/src/core/ipv4/ip4.o: \
  C:/Programming/STM32F405RGT6_test/Middlewares/Third_Party/lwip/src/include/lwip/prot/icmp.h \
  C:/Programming/STM32F405RGT6_test/Middlewares/Third_Party/lwip/src/include/lwip/igmp.h \
  C:/Programming/STM32F405RGT6_test/Middlewares/Third_Party/lwip/src/include/lwip/priv/raw_priv.h \
- C:/Programming/STM32F405RGT6_test/Middlewares/Third_Party/lwip/src/include/lwip/raw.h \
  C:/Programming/STM32F405RGT6_test/Middlewares/Third_Party/lwip/src/include/lwip/udp.h \
  C:/Programming/STM32F405RGT6_test/Middlewares/Third_Party/lwip/src/include/lwip/prot/udp.h \
  C:/Programming/STM32F405RGT6_test/Middlewares/Third_Party/lwip/src/include/lwip/priv/tcp_priv.h \
@@ -43,7 +43,8 @@ C:/Programming/STM32F405RGT6_test/Middlewares/Third_Party/lwip/src/include/lwip/
 ../Core/Inc/lwipopts.h:
 C:/Programming/STM32F405RGT6_test/Middlewares/Third_Party/lwip/src/include/lwip/debug.h:
 C:/Programming/STM32F405RGT6_test/Middlewares/Third_Party/lwip/src/include/lwip/arch.h:
-C:/Programming/STM32F405RGT6_test/Middlewares/Third_Party/lwip/src/include/arch/cc.h:
+C:/Programming/STM32F405RGT6_test/Middlewares/Third_Party/lwip/system/arch/cc.h:
+C:/Programming/STM32F405RGT6_test/Middlewares/Third_Party/lwip/system/arch/cpu.h:
 C:/Programming/STM32F405RGT6_test/Middlewares/Third_Party/lwip/src/include/lwip/ip.h:
 C:/Programming/STM32F405RGT6_test/Middlewares/Third_Party/lwip/src/include/lwip/def.h:
 C:/Programming/STM32F405RGT6_test/Middlewares/Third_Party/lwip/src/include/lwip/pbuf.h:
@@ -69,7 +70,6 @@ C:/Programming/STM32F405RGT6_test/Middlewares/Third_Party/lwip/src/include/lwip/
 C:/Programming/STM32F405RGT6_test/Middlewares/Third_Party/lwip/src/include/lwip/prot/icmp.h:
 C:/Programming/STM32F405RGT6_test/Middlewares/Third_Party/lwip/src/include/lwip/igmp.h:
 C:/Programming/STM32F405RGT6_test/Middlewares/Third_Party/lwip/src/include/lwip/priv/raw_priv.h:
-C:/Programming/STM32F405RGT6_test/Middlewares/Third_Party/lwip/src/include/lwip/raw.h:
 C:/Programming/STM32F405RGT6_test/Middlewares/Third_Party/lwip/src/include/lwip/udp.h:
 C:/Programming/STM32F405RGT6_test/Middlewares/Third_Party/lwip/src/include/lwip/prot/udp.h:
 C:/Programming/STM32F405RGT6_test/Middlewares/Third_Party/lwip/src/include/lwip/priv/tcp_priv.h:

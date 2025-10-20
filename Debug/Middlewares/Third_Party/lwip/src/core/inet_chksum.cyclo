@@ -7,4 +7,3 @@
 ../Middlewares/Third_Party/lwip/src/core/inet_chksum.c:526:1:ip_chksum_pseudo_partial	1
 ../Middlewares/Third_Party/lwip/src/core/inet_chksum.c:555:1:inet_chksum	1
 ../Middlewares/Third_Party/lwip/src/core/inet_chksum.c:568:1:inet_chksum_pbuf	4
-../Middlewares/Third_Party/lwip/src/core/inet_chksum.c:603:1:lwip_chksum_copy	1

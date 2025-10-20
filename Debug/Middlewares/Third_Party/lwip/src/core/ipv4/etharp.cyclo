@@ -8,7 +8,9 @@
 ../Middlewares/Third_Party/lwip/src/core/ipv4/etharp.c:642:1:etharp_input	12
 ../Middlewares/Third_Party/lwip/src/core/ipv4/etharp.c:749:1:etharp_output_to_arp_index	7
 ../Middlewares/Third_Party/lwip/src/core/ipv4/etharp.c:792:1:etharp_output	16
-../Middlewares/Third_Party/lwip/src/core/ipv4/etharp.c:934:1:etharp_query	27
+../Middlewares/Third_Party/lwip/src/core/ipv4/etharp.c:934:1:etharp_query	26
 ../Middlewares/Third_Party/lwip/src/core/ipv4/etharp.c:1110:1:etharp_raw	5
 ../Middlewares/Third_Party/lwip/src/core/ipv4/etharp.c:1190:1:etharp_request_dst	1
 ../Middlewares/Third_Party/lwip/src/core/ipv4/etharp.c:1207:1:etharp_request	1
+../Middlewares/Third_Party/lwip/src/core/ipv4/etharp.c:1225:1:etharp_acd_probe	1
+../Middlewares/Third_Party/lwip/src/core/ipv4/etharp.c:1243:1:etharp_acd_announce	1
