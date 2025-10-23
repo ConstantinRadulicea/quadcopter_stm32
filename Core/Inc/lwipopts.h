@@ -225,7 +225,7 @@ The STM32H7xx allows computing and verifying the IP, UDP, TCP and ICMP checksums
    ---------- OS options ----------
    ---------------------------------
 */
-
+#define LWIP_CHECK_MULTITHREADING 1
 #define TCPIP_THREAD_NAME              "TCP/IP"
 #define TCPIP_THREAD_STACKSIZE          2048
 #define TCPIP_MBOX_SIZE                 6

@@ -1,4 +1,4 @@
-../Middlewares/Third_Party/lwip/src/core/udp.c:87:1:udp_init	8	static
+../Middlewares/Third_Party/lwip/src/core/udp.c:87:1:udp_init	4	static
 ../Middlewares/Third_Party/lwip/src/core/udp.c:100:1:udp_new_port	16	static
 ../Middlewares/Third_Party/lwip/src/core/udp.c:130:1:udp_input_local_match	24	static
 ../Middlewares/Third_Party/lwip/src/core/udp.c:194:1:udp_input	64	static

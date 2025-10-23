@@ -64,16 +64,22 @@ void SystemClock_Config(void);
 void MX_FREERTOS_Init(void);
 /* USER CODE BEGIN PFP */
 int _write(int file, char *data, int len) {
-    static char err_header[] = "ERROR->";
-int sent_size = len;
-    if (file == 2) { // stderror to usb
-        //CDC_Transmit_FS((uint8_t*)err_header, sizeof(err_header) - 1);
-
-    	uart_send_data(&usart1_driver, err_header, sizeof(err_header) - 1);
-    }
+//    static char err_header[] = "ERROR->";
+    int sent_size = len;
+//    if (file == 2) { // stderror to usb
+//        //CDC_Transmit_FS((uint8_t*)err_header, sizeof(err_header) - 1);
+//
+//    	uart_send_data(&usart1_driver, err_header, sizeof(err_header) - 1);
+//    }
     //CDC_Transmit_FS((uint8_t*)data, len);
-    sent_size = uart_send_data(&usart1_driver, data, len);
+    uart_send_data(&usart1_driver, data, len);
     return sent_size;
+}
+
+int __io_putchar(int ch) {
+      char chr = (char)ch;
+      uart_send_data(&usart1_driver, &chr, 1);
+      return ch;
 }
 
 /* USER CODE END PFP */

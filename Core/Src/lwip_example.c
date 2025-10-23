@@ -8,6 +8,9 @@
 #include <string.h>
 #include <stdio.h>
 #include "usbd_cdc_if.h"
+#include <time.h>
+#include <stdlib.h>
+
 
 static ppp_pcb*     g_ppp = NULL;
 static struct netif g_pppif;
@@ -38,6 +41,7 @@ static void ppp_status_cb(ppp_pcb* pcb, int err, void* ctx) {
 }
 
 void net_ppp_start(void) {
+	srand(1);
 	  /* 1) Start lwIP core thread and mboxes */
 	  tcpip_init(tcpip_init_done, NULL);
 

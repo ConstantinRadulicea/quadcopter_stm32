@@ -16,7 +16,7 @@
 #include "fp_cli.h"
 
 #define ENABLE_ESC_CALIBRATION_BUILD 0
-#define ENABLE_CLI 1
+#define ENABLE_CLI 0
 
 flight_control_loop_t fcl;
 
@@ -598,18 +598,18 @@ void app_main_start(void *argument)
     configASSERT(fp_cli_h != NULL);
 #endif
 
-//    net_ppp_start();
-//
-//    telem_attr = (osThreadAttr_t){
-//        .name       = "lwip_feed",
-//        .priority   = osPriorityBelowNormal,
-//        .stack_mem  = lwip_feed_stack,
-//        .stack_size = sizeof(lwip_feed_stack),
-//		.cb_mem = &lwip_feed_h_taskControlBlock,
-//		.cb_size = sizeof(lwip_feed_h_taskControlBlock)
-//    };
-//    lwip_feed_h = osThreadNew(ppp_feed_task, NULL, &lwip_feed_attr);
-//    configASSERT(lwip_feed_h != NULL);
+    net_ppp_start();
+
+    telem_attr = (osThreadAttr_t){
+        .name       = "lwip_feed",
+        .priority   = osPriorityBelowNormal,
+        .stack_mem  = lwip_feed_stack,
+        .stack_size = sizeof(lwip_feed_stack),
+		.cb_mem = &lwip_feed_h_taskControlBlock,
+		.cb_size = sizeof(lwip_feed_h_taskControlBlock)
+    };
+    lwip_feed_h = osThreadNew(ppp_feed_task, NULL, &lwip_feed_attr);
+    configASSERT(lwip_feed_h != NULL);
 
 //    telem_attr = (osThreadAttr_t){
 //        .name       = "lwip_example",

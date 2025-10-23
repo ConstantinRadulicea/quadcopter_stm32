@@ -23,3 +23,7 @@
 ../Middlewares/Third_Party/lwip/system/OS/sys_arch.c:455:6:sys_arch_unprotect	16	static
 ../Middlewares/Third_Party/lwip/system/OS/sys_arch.c:464:7:sys_now	16	static
 ../Middlewares/Third_Party/lwip/system/OS/sys_arch.c:478:7:sys_jiffies	8	static
+../Middlewares/Third_Party/lwip/system/OS/sys_arch.c:487:6:sys_lock_tcpip_core	8	static
+../Middlewares/Third_Party/lwip/system/OS/sys_arch.c:497:6:sys_unlock_tcpip_core	8	static
+../Middlewares/Third_Party/lwip/system/OS/sys_arch.c:508:6:sys_mark_tcpip_thread	8	static
+../Middlewares/Third_Party/lwip/system/OS/sys_arch.c:516:6:sys_check_core_locking	16	static,ignoring_inline_asm
