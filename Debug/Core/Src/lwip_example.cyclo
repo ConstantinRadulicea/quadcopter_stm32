@@ -1,7 +1,7 @@
 ../Core/Src/lwip_example.c:20:13:tcpip_init_done	1
 ../Core/Src/lwip_example.c:26:14:ppp_output_cb	1
-../Core/Src/lwip_example.c:32:13:ppp_status_cb	2
-../Core/Src/lwip_example.c:43:6:net_ppp_start	2
-../Core/Src/lwip_example.c:67:6:ppp_feed_task	4
-../Core/Src/lwip_example.c:79:6:tcp_echo_socket_task	22
-../Core/Src/lwip_example.c:173:6:udp_telemetry_task	1
+../Core/Src/lwip_example.c:33:13:ppp_status_cb	2
+../Core/Src/lwip_example.c:44:6:net_ppp_start	2
+../Core/Src/lwip_example.c:69:6:ppp_feed_task	4
+../Core/Src/lwip_example.c:80:6:tcp_echo_socket_task	22
+../Core/Src/lwip_example.c:174:6:udp_telemetry_task	1

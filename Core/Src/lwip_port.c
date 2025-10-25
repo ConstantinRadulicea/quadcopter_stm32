@@ -2,10 +2,17 @@
 #include "lwip/mem.h"
 #include "stdint.h"
 
-/* Place the heap in a chosen RAM region */
-#if defined ( __CC_ARM )
-  __attribute__((section(".lwip_heap"))) __attribute__((aligned(4)))
-#elif defined ( __GNUC__ )
-  __attribute__((section(".lwip_heap"))) __attribute__((aligned(4)))
-#endif
+#if defined ( __ICCARM__ )     /* IAR Compiler */
+#pragma data_alignment=4
 uint8_t lwip_heap[MEM_SIZE];
+
+#elif defined ( __CC_ARM )     /* Keil / ARMCC */
+__align(4) uint8_t lwip_heap[MEM_SIZE];
+
+#elif defined ( __GNUC__ )     /* GCC / ARM-GCC (STM32CubeIDE) */
+uint8_t lwip_heap[MEM_SIZE] __attribute__((aligned(32)));
+
+#else
+#warning "Compiler not supported for alignment"
+uint8_t lwip_heap[MEM_SIZE];
+#endif

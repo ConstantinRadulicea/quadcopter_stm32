@@ -23,9 +23,10 @@ static void tcpip_init_done(void *arg) {
 }
 
 /* TX callback for PPP: write bytes to UART */
-static u32_t ppp_output_cb(ppp_pcb* pcb, u8_t* data, u32_t len, void* ctx) {
-  (void)pcb; (void)ctx;
-  CDC_Transmit_FS(data, len);   // blocking is fine at 115200
+static u32_t ppp_output_cb(ppp_pcb *pcb, const void *data, u32_t len, void *ctx) {
+  (void)pcb;
+  (void)ctx;
+  CDC_Transmit_FS((uint8_t*)data, len);   // blocking is fine at 115200
   return len;
 }
 
@@ -41,7 +42,7 @@ static void ppp_status_cb(ppp_pcb* pcb, int err, void* ctx) {
 }
 
 void net_ppp_start(void) {
-	srand(1);
+	//srand(1);
 	  /* 1) Start lwIP core thread and mboxes */
 	  tcpip_init(tcpip_init_done, NULL);
 
@@ -63,9 +64,9 @@ void net_ppp_start(void) {
   pppapi_connect(g_ppp, 0);
 }
 
+char tmp[256];
 /* Task: feed PPP with UART RX */
 void ppp_feed_task(void *arg) {
-  uint8_t tmp[256];
   //net_ppp_start();
   for (;;) {
     size_t n = CDC_recv_data(tmp, sizeof(tmp));
