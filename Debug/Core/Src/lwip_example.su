@@ -1,7 +1,7 @@
-../Core/Src/lwip_example.c:20:13:tcpip_init_done	16	static
-../Core/Src/lwip_example.c:26:14:ppp_output_cb	24	static
-../Core/Src/lwip_example.c:33:13:ppp_status_cb	32	static
-../Core/Src/lwip_example.c:44:6:net_ppp_start	16	static
-../Core/Src/lwip_example.c:69:6:ppp_feed_task	24	static
-../Core/Src/lwip_example.c:80:6:tcp_echo_socket_task	368	static
-../Core/Src/lwip_example.c:174:6:udp_telemetry_task	64	static
+../Core/Src/lwip_example.c:21:13:tcpip_init_done	16	static
+../Core/Src/lwip_example.c:27:14:ppp_output_cb	24	static
+../Core/Src/lwip_example.c:34:13:ppp_status_cb	32	static
+../Core/Src/lwip_example.c:45:6:net_ppp_start	16	static
+../Core/Src/lwip_example.c:70:6:ppp_feed_task	24	static
+../Core/Src/lwip_example.c:81:6:tcp_echo_socket_task	16	static
+../Core/Src/lwip_example.c:93:6:udp_telemetry_task	64	static

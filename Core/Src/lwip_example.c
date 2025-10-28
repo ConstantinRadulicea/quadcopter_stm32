@@ -1,6 +1,7 @@
 #include "lwip/init.h"
 #include "lwip/sockets.h"
 #include "lwip/inet.h"
+#include "lwip/tcp.h"
 #include "netif/ppp/pppapi.h"
 #include "netif/ppp/pppos.h"
 #include "netif/ppp/ppp.h"
@@ -76,99 +77,17 @@ void ppp_feed_task(void *arg) {
   }
 }
 
-/* TCP echo server on port 5760 (sockets API) */
-void tcp_echo_socket_task(void *arg)
-{
-    (void)arg;
-
+#include "tcp_echoserver.h"
+void tcp_echo_socket_task(void *arg){
     // Wait until TCP/IP stack is initialized
     while (!tcpip_ready) {
         osDelay(100);
     }
-
-    // 1️⃣ Create listening socket
-    int listen_fd = socket(AF_INET, SOCK_STREAM, 0);
-    LWIP_ASSERT("socket() failed", listen_fd >= 0);
-
-    struct sockaddr_in addr = {0};
-    addr.sin_family = AF_INET;
-    addr.sin_port = PP_HTONS(5760);
-    addr.sin_addr.s_addr = PP_HTONL(INADDR_ANY);
-
-    LWIP_ASSERT("bind() failed", bind(listen_fd, (struct sockaddr*)&addr, sizeof(addr)) == 0);
-    LWIP_ASSERT("listen() failed", listen(listen_fd, 4) == 0);
-
-    // Set listening socket non-blocking
-    int flags = fcntl(listen_fd, F_GETFL, 0);
-    fcntl(listen_fd, F_SETFL, flags | O_NONBLOCK);
-
-    printf("Echo server listening on port 5760\r\n");
-
-    // 2️⃣ Manage clients
-    int client_fd = -1;
-    char buf[256];
-
-    for (;;) {
-        fd_set rfds;
-        FD_ZERO(&rfds);
-        FD_SET(listen_fd, &rfds);
-        int max_fd = listen_fd;
-
-        if (client_fd >= 0) {
-            FD_SET(client_fd, &rfds);
-            if (client_fd > max_fd)
-                max_fd = client_fd;
-        }
-
-        struct timeval tv = { .tv_sec = 0, .tv_usec = 50000 }; // 50 ms timeout
-        int ready = select(max_fd + 1, &rfds, NULL, NULL, &tv);
-
-        if (ready > 0) {
-            // New connection
-            if (FD_ISSET(listen_fd, &rfds)) {
-                int new_fd = accept(listen_fd, NULL, NULL);
-                if (new_fd >= 0) {
-                    // Set client non-blocking
-                    int fl = fcntl(new_fd, F_GETFL, 0);
-                    fcntl(new_fd, F_SETFL, fl | O_NONBLOCK);
-
-                    if (client_fd >= 0) {
-                        closesocket(client_fd); // close old client
-                    }
-                    client_fd = new_fd;
-                    printf("Client connected\r\n");
-                }
-            }
-
-            // Handle client data
-            if (client_fd >= 0 && FD_ISSET(client_fd, &rfds)) {
-                int n = recv(client_fd, buf, sizeof(buf), 0);
-                if (n > 0) {
-                    send(client_fd, buf, n, 0); // echo
-                } else if (n == 0) {
-                    // client closed
-                    printf("Client disconnected\r\n");
-                    closesocket(client_fd);
-                    client_fd = -1;
-                } else {
-                    // n < 0, possible EWOULDBLOCK or error
-                    int err = errno;
-                    if (err != EWOULDBLOCK && err != EAGAIN) {
-                        printf("recv() error %d\r\n", err);
-                        closesocket(client_fd);
-                        client_fd = -1;
-                    }
-                }
-            }
-        }
-
-        // Periodic housekeeping can go here
-        osDelay(100);
-    }
+    tcp_echoserver_init(5760);
+	for(;;){
+		osDelay(1000);
+	}
 }
-
-//Description	Resource	Path	Location	Type
-//undefined reference to `sys_now'	STM32F405RGT6_test		line 0, external location: C:\Programming\STM32F405RGT6_test\Middlewares\Third_Party\lwip\src\netif\ppp\pppos.c:230	C/C++ Problem
 
 /* UDP telemetry to PC:5762 @50 Hz */
 void udp_telemetry_task(void *arg) {

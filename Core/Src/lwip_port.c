@@ -10,7 +10,7 @@ uint8_t lwip_heap[MEM_SIZE];
 __align(4) uint8_t lwip_heap[MEM_SIZE];
 
 #elif defined ( __GNUC__ )     /* GCC / ARM-GCC (STM32CubeIDE) */
-uint8_t lwip_heap[MEM_SIZE] __attribute__((aligned(32)));
+__attribute__((aligned(8))) uint8_t lwip_heap[MEM_SIZE];
 
 #else
 #warning "Compiler not supported for alignment"

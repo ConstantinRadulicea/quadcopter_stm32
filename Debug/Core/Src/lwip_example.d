@@ -23,6 +23,15 @@ Core/Src/lwip_example.o: ../Core/Src/lwip_example.c \
  C:/Programming/STM32F405RGT6_test/Middlewares/Third_Party/lwip/src/include/lwip/priv/mem_priv.h \
  C:/Programming/STM32F405RGT6_test/Middlewares/Third_Party/lwip/src/include/lwip/inet.h \
  C:/Programming/STM32F405RGT6_test/Middlewares/Third_Party/lwip/src/include/lwip/errno.h \
+ C:/Programming/STM32F405RGT6_test/Middlewares/Third_Party/lwip/src/include/lwip/tcp.h \
+ C:/Programming/STM32F405RGT6_test/Middlewares/Third_Party/lwip/src/include/lwip/tcpbase.h \
+ C:/Programming/STM32F405RGT6_test/Middlewares/Third_Party/lwip/src/include/lwip/ip.h \
+ C:/Programming/STM32F405RGT6_test/Middlewares/Third_Party/lwip/src/include/lwip/ip4.h \
+ C:/Programming/STM32F405RGT6_test/Middlewares/Third_Party/lwip/src/include/lwip/prot/ip4.h \
+ C:/Programming/STM32F405RGT6_test/Middlewares/Third_Party/lwip/src/include/lwip/ip6.h \
+ C:/Programming/STM32F405RGT6_test/Middlewares/Third_Party/lwip/src/include/lwip/prot/ip.h \
+ C:/Programming/STM32F405RGT6_test/Middlewares/Third_Party/lwip/src/include/lwip/icmp.h \
+ C:/Programming/STM32F405RGT6_test/Middlewares/Third_Party/lwip/src/include/lwip/prot/icmp.h \
  C:/Programming/STM32F405RGT6_test/Middlewares/Third_Party/lwip/src/include/netif/ppp/pppapi.h \
  C:/Programming/STM32F405RGT6_test/Middlewares/Third_Party/lwip/src/include/netif/ppp/ppp_opts.h \
  C:/Programming/STM32F405RGT6_test/Middlewares/Third_Party/lwip/src/include/lwip/sys.h \
@@ -92,7 +101,8 @@ Core/Src/lwip_example.o: ../Core/Src/lwip_example.c \
  ../Core/Inc/esc_pwm.h \
  ../Middlewares/ST/STM32_USB_Device_Library/Core/Inc/usbd_core.h \
  ../Middlewares/ST/STM32_USB_Device_Library/Core/Inc/usbd_ioreq.h \
- ../Middlewares/ST/STM32_USB_Device_Library/Core/Inc/usbd_ctlreq.h
+ ../Middlewares/ST/STM32_USB_Device_Library/Core/Inc/usbd_ctlreq.h \
+ ../Core/Inc/tcp_echoserver.h
 C:/Programming/STM32F405RGT6_test/Middlewares/Third_Party/lwip/src/include/lwip/init.h:
 C:/Programming/STM32F405RGT6_test/Middlewares/Third_Party/lwip/src/include/lwip/opt.h:
 ../Core/Inc/lwipopts.h:
@@ -117,6 +127,15 @@ C:/Programming/STM32F405RGT6_test/Middlewares/Third_Party/lwip/src/include/lwip/
 C:/Programming/STM32F405RGT6_test/Middlewares/Third_Party/lwip/src/include/lwip/priv/mem_priv.h:
 C:/Programming/STM32F405RGT6_test/Middlewares/Third_Party/lwip/src/include/lwip/inet.h:
 C:/Programming/STM32F405RGT6_test/Middlewares/Third_Party/lwip/src/include/lwip/errno.h:
+C:/Programming/STM32F405RGT6_test/Middlewares/Third_Party/lwip/src/include/lwip/tcp.h:
+C:/Programming/STM32F405RGT6_test/Middlewares/Third_Party/lwip/src/include/lwip/tcpbase.h:
+C:/Programming/STM32F405RGT6_test/Middlewares/Third_Party/lwip/src/include/lwip/ip.h:
+C:/Programming/STM32F405RGT6_test/Middlewares/Third_Party/lwip/src/include/lwip/ip4.h:
+C:/Programming/STM32F405RGT6_test/Middlewares/Third_Party/lwip/src/include/lwip/prot/ip4.h:
+C:/Programming/STM32F405RGT6_test/Middlewares/Third_Party/lwip/src/include/lwip/ip6.h:
+C:/Programming/STM32F405RGT6_test/Middlewares/Third_Party/lwip/src/include/lwip/prot/ip.h:
+C:/Programming/STM32F405RGT6_test/Middlewares/Third_Party/lwip/src/include/lwip/icmp.h:
+C:/Programming/STM32F405RGT6_test/Middlewares/Third_Party/lwip/src/include/lwip/prot/icmp.h:
 C:/Programming/STM32F405RGT6_test/Middlewares/Third_Party/lwip/src/include/netif/ppp/pppapi.h:
 C:/Programming/STM32F405RGT6_test/Middlewares/Third_Party/lwip/src/include/netif/ppp/ppp_opts.h:
 C:/Programming/STM32F405RGT6_test/Middlewares/Third_Party/lwip/src/include/lwip/sys.h:
@@ -188,3 +207,4 @@ C:/Programming/STM32F405RGT6_test/Middlewares/Third_Party/lwip/src/include/netif
 ../Middlewares/ST/STM32_USB_Device_Library/Core/Inc/usbd_core.h:
 ../Middlewares/ST/STM32_USB_Device_Library/Core/Inc/usbd_ioreq.h:
 ../Middlewares/ST/STM32_USB_Device_Library/Core/Inc/usbd_ctlreq.h:
+../Core/Inc/tcp_echoserver.h:

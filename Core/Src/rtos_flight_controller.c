@@ -611,15 +611,15 @@ void app_main_start(void *argument)
     lwip_feed_h = osThreadNew(ppp_feed_task, NULL, &lwip_feed_attr);
     configASSERT(lwip_feed_h != NULL);
 
-//    telem_attr = (osThreadAttr_t){
-//        .name       = "lwip_example",
-//        .priority   = osPriorityBelowNormal,
-//        .stack_mem  = lwip_example_stack,
-//        .stack_size = sizeof(lwip_example_stack),
-//		.cb_mem = &lwip_example_h_taskControlBlock,
-//		.cb_size = sizeof(lwip_example_h_taskControlBlock)
-//    };
-//    lwip_example_h = osThreadNew(tcp_echo_socket_task, NULL, &lwip_example_attr);
-//    configASSERT(lwip_example_h != NULL);
+    telem_attr = (osThreadAttr_t){
+        .name       = "lwip_example",
+        .priority   = osPriorityBelowNormal,
+        .stack_mem  = lwip_example_stack,
+        .stack_size = sizeof(lwip_example_stack),
+		.cb_mem = &lwip_example_h_taskControlBlock,
+		.cb_size = sizeof(lwip_example_h_taskControlBlock)
+    };
+    lwip_example_h = osThreadNew(tcp_echo_socket_task, NULL, &lwip_example_attr);
+    configASSERT(lwip_example_h != NULL);
 
 }

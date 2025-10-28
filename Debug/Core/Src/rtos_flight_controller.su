@@ -8,4 +8,4 @@
 ../Core/Src/rtos_flight_controller.c:399:13:print_telemetry_data	200	static
 ../Core/Src/rtos_flight_controller.c:501:13:fp_cli_func	24	static
 ../Core/Src/rtos_flight_controller.c:515:6:app_init	48	static,ignoring_inline_asm
-../Core/Src/rtos_flight_controller.c:532:6:app_main_start	216	static,ignoring_inline_asm
+../Core/Src/rtos_flight_controller.c:532:6:app_main_start	256	static,ignoring_inline_asm

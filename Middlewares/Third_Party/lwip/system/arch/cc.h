@@ -84,6 +84,5 @@ typedef int sys_prot_t;
 
 /* Define random number generator function */
 //#define LWIP_RAND() ((u32_t)rand())
-//#define LWIP_RAND() ((u32_t)rand)
 
 #endif /* __CC_H__ */
