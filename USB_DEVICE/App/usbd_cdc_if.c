@@ -366,9 +366,9 @@ size_t CDC_data_available_for_read()
     return used;
 }
 #include "stdarg.h"
-char usb_printf_buffer[512];
 void usb_printf(const char *fmt, ...)
 {
+	char usb_printf_buffer[512];
     va_list args;
     va_start(args, fmt);
     vsnprintf(usb_printf_buffer, sizeof(usb_printf_buffer), fmt, args);

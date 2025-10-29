@@ -36,7 +36,8 @@ static void ppp_status_cb(ppp_pcb* pcb, int err, void* ctx) {
   if (err == PPPERR_NONE) {
     printf("PPP UP: local=%s remote=%s\r\n",
            ipaddr_ntoa(netif_ip_addr4(&g_pppif)),
-           ipaddr_ntoa(netif_ip_gw4(&g_pppif)));
+           ipaddr_ntoa(netif_ip_gw4(&g_pppif))
+		   );
   } else {
     printf("PPP status: %d\r\n", err);
   }
@@ -59,19 +60,19 @@ void net_ppp_start(void) {
   /* Static IPCP pair: PC 10.0.0.1 <-> MCU 10.0.0.2 */
   ip4_addr_t our_ip = IPADDR4_INIT_BYTES(10,0,0,2);
   ip4_addr_t his_ip = IPADDR4_INIT_BYTES(10,0,0,1);
-  ppp_set_ipcp_ouraddr(g_ppp, &our_ip);
-  ppp_set_ipcp_hisaddr(g_ppp, &his_ip);
+//  ppp_set_ipcp_ouraddr(g_ppp, &our_ip);
+//  ppp_set_ipcp_hisaddr(g_ppp, &his_ip);
 
   pppapi_connect(g_ppp, 0);
 }
 
-char tmp[256];
+__attribute__((section(".ccmram"), aligned(8))) char tmp[256];
 /* Task: feed PPP with UART RX */
 void ppp_feed_task(void *arg) {
   //net_ppp_start();
   for (;;) {
     size_t n = CDC_recv_data(tmp, sizeof(tmp));
-    printf("%.*s", n, tmp);
+    //printf("%.*s", n, tmp);
     if (n && g_ppp && tcpip_ready) pppos_input_tcpip(g_ppp, tmp, (int)n);
     osDelay(1);
   }
