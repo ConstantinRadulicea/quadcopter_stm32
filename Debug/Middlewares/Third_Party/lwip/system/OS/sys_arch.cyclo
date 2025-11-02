@@ -27,3 +27,6 @@
 ../Middlewares/Third_Party/lwip/system/OS/sys_arch.c:497:6:sys_unlock_tcpip_core	2
 ../Middlewares/Third_Party/lwip/system/OS/sys_arch.c:508:6:sys_mark_tcpip_thread	1
 ../Middlewares/Third_Party/lwip/system/OS/sys_arch.c:516:6:sys_check_core_locking	5
+../Middlewares/Third_Party/lwip/system/OS/sys_arch.c:574:6:sys_arch_netconn_sem_alloc	4
+../Middlewares/Third_Party/lwip/system/OS/sys_arch.c:600:12:sys_arch_netconn_sem_get	2
+../Middlewares/Third_Party/lwip/system/OS/sys_arch.c:614:6:sys_arch_netconn_sem_free	2

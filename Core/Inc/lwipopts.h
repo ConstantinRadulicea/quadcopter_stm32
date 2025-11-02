@@ -50,7 +50,7 @@
 
 /* MEM_SIZE: the size of the heap memory. If the application will send
 a lot of data that needs to be copied, this should be set high. */
-#define MEM_SIZE                (24*1024)
+#define MEM_SIZE                (32*1024)
 
 /* Relocate the LwIP RAM heap pointer */
 #include "stdint.h"
@@ -196,7 +196,7 @@ The STM32H7xx allows computing and verifying the IP, UDP, TCP and ICMP checksums
 /**
  * LWIP_SOCKET==1: Enable Socket API (require to use sockets.c)
  */
-#define LWIP_SOCKET                     1
+#define LWIP_SOCKET                     0
 
 /*
    ------------------------------------
@@ -226,14 +226,23 @@ The STM32H7xx allows computing and verifying the IP, UDP, TCP and ICMP checksums
    ---------------------------------
 */
 #define LWIP_CHECK_MULTITHREADING 1
-#define TCPIP_THREAD_NAME              "TCP/IP"
-#define TCPIP_THREAD_STACKSIZE          (4*1024)
+#define TCPIP_THREAD_NAME              "TCP_IP_thread"
+#define TCPIP_THREAD_STACKSIZE          (2*1024)
 #define TCPIP_MBOX_SIZE                 6
 #define DEFAULT_UDP_RECVMBOX_SIZE       6
 #define DEFAULT_TCP_RECVMBOX_SIZE       6
 #define DEFAULT_ACCEPTMBOX_SIZE         6
-#define DEFAULT_THREAD_STACKSIZE        (4*1024)
+#define DEFAULT_THREAD_STACKSIZE        (2*1024)
 #define TCPIP_THREAD_PRIO               osPriorityNormal
+
+#include <stdio.h>
+//#define LWIP_TCPIP_THREAD_ALIVE() printf("ciao\n");
+
+//#define LWIP_TCPIP_CORE_LOCKING         1
+//#define LWIP_TCPIP_CORE_LOCKING_INPUT   1
+//#define LWIP_NETCONN_SEM_PER_THREAD     0
+//#define SYS_LIGHTWEIGHT_PROT            1
+
 
 #endif /* __LWIPOPTS_H__ */
 

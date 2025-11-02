@@ -57,6 +57,10 @@ typedef osMutexId_t         sys_mutex_t;
 typedef osMessageQueueId_t  sys_mbox_t;
 typedef osThreadId_t        sys_thread_t;
 
+void sys_arch_netconn_sem_alloc(void);
+void sys_arch_netconn_sem_free(void);
+sys_sem_t *sys_arch_netconn_sem_get(void);
+
 #ifdef  __cplusplus
 }
 #endif

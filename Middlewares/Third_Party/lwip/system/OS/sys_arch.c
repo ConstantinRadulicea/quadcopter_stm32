@@ -538,4 +538,93 @@ void sys_check_core_locking(void)
 }
 #endif /* LWIP_CHECK_MULTITHREADING */
 
+
+
+
+/* sys_arch_netconn_sem_* helpers for FreeRTOS TLS for lwIP
+ *
+ * Requires:
+ *  - FreeRTOS with task-local-storage API (pvTaskGetThreadLocalStoragePointer /
+ *    vTaskSetThreadLocalStoragePointer)
+ *  - configNUM_THREAD_LOCAL_STORAGE_POINTERS >= LWIP_THREAD_SEM_TLS_INDEX+1
+ *  - lwIP sys.h, mem.h and semaphores available
+ */
+
+#include "FreeRTOS.h"
+#include "task.h"
+#include "semphr.h"      /* for type compatibility if needed */
+#include "lwip/sys.h"
+#include "lwip/err.h"
+#include "lwip/mem.h"    /* mem_malloc / mem_free (optional) */
+
+/* Choose TLS index (0 is common). Make sure FreeRTOS config allows it. */
+#ifndef LWIP_THREAD_SEM_TLS_INDEX
+#define LWIP_THREAD_SEM_TLS_INDEX 0
+#endif
+
+#if LWIP_NETCONN_SEM_PER_THREAD != 0
+#if defined(FREERTOS_CONFIG_H)
+  #if (configNUM_THREAD_LOCAL_STORAGE_POINTERS < (LWIP_THREAD_SEM_TLS_INDEX + 1))
+    #error "FreeRTOS: configNUM_THREAD_LOCAL_STORAGE_POINTERS too small for lwIP NETCONN TLS"
+  #endif
+#endif
+#endif
+
+/* Helper: allocate a lwIP sys_sem_t and set it into TLS */
+void sys_arch_netconn_sem_alloc(void)
+{
+    sys_sem_t *sem;
+
+    /* Check if already allocated for this task */
+    sem = (sys_sem_t *)pvTaskGetThreadLocalStoragePointer(NULL, LWIP_THREAD_SEM_TLS_INDEX);
+    if (sem != NULL) {
+        return;
+    }
+
+    sem = (sys_sem_t *)mem_malloc(sizeof(sys_sem_t));
+    if (sem == NULL) {
+        /* allocation failed; you may choose pvPortMalloc instead */
+        return;
+    }
+
+    /* Create the semaphore with initial count = 0 (thread will wait on it) */
+    if (sys_sem_new(sem, 0) != ERR_OK) {
+        mem_free(sem);
+        return;
+    }
+
+    vTaskSetThreadLocalStoragePointer(NULL, LWIP_THREAD_SEM_TLS_INDEX, (void *)sem);
+}
+
+/* Return pointer to the calling thread's semaphore (allocates on demand) */
+sys_sem_t *sys_arch_netconn_sem_get(void)
+{
+    sys_sem_t *sem = (sys_sem_t *)pvTaskGetThreadLocalStoragePointer(NULL, LWIP_THREAD_SEM_TLS_INDEX);
+
+    if (sem == NULL) {
+        /* Lazy allocate so existing tasks don't have to call alloc explicitly */
+        sys_arch_netconn_sem_alloc();
+        sem = (sys_sem_t *)pvTaskGetThreadLocalStoragePointer(NULL, LWIP_THREAD_SEM_TLS_INDEX);
+    }
+
+    return sem;
+}
+
+/* Free and remove the TLS semaphore for the current task */
+void sys_arch_netconn_sem_free(void)
+{
+    sys_sem_t *sem = (sys_sem_t *)pvTaskGetThreadLocalStoragePointer(NULL, LWIP_THREAD_SEM_TLS_INDEX);
+    if (sem == NULL) {
+        return;
+    }
+
+    /* Free the lwIP semaphore and the memory */
+    sys_sem_free(sem);
+    mem_free(sem);
+
+    vTaskSetThreadLocalStoragePointer(NULL, LWIP_THREAD_SEM_TLS_INDEX, NULL);
+}
+
+
+
 #endif /* !NO_SYS */

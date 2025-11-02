@@ -27,17 +27,17 @@ pwm_t esc_motors[4];
 static TaskHandle_t ctrl_task_h;
 static TaskHandle_t write_motor_main_h;
 
-__attribute__((section(".ccmram"), aligned(8))) uint8_t flight_stack[2048];
-__attribute__((section(".ccmram"), aligned(8))) uint8_t write_stack[2048];
-__attribute__((section(".ccmram"), aligned(8))) uint8_t rc_stack[2048];
-__attribute__((section(".ccmram"), aligned(8))) uint8_t telem_stack[2048];
+/*__attribute__((section(".ccmram"), aligned(32)))*/ uint8_t flight_stack[2048];
+/*__attribute__((section(".ccmram"), aligned(32)))*/ uint8_t write_stack[2048];
+/*__attribute__((section(".ccmram"), aligned(32)))*/ uint8_t rc_stack[2048];
+/*__attribute__((section(".ccmram"), aligned(32)))*/ uint8_t telem_stack[(2*1024)];
 
 #if ENABLE_CLI != 0
-__attribute__((section(".ccmram"), aligned(8))) uint8_t fp_cli_stack[2048];
+/*__attribute__((section(".ccmram"), aligned(32)))*/ uint8_t fp_cli_stack[2048];
 #endif
 
-__attribute__((section(".ccmram"), aligned(8))) uint8_t lwip_feed_stack[(4*1024)];
-__attribute__((section(".ccmram"), aligned(8))) uint8_t lwip_example_stack[(4*1024)];
+/*__attribute__((section(".ccmram"), aligned(32)))*/ uint8_t lwip_feed_stack[(1*1024)];
+__attribute__((section(".ccmram"), aligned(32))) uint8_t lwip_example_stack[(50*1024)];
 
 osThreadAttr_t flight_attr, write_attr, rc_attr, telem_attr, fp_cli_attr, lwip_feed_attr, lwip_example_attr;
 StaticTask_t flight_h_taskControlBlock;
@@ -56,8 +56,6 @@ static osThreadId_t fp_cli_h;
 static osThreadId_t lwip_feed_h;
 static osThreadId_t lwip_example_h;
 
-
-#define STACK_WORDS(bytes) ((bytes)/sizeof(StackType_t))
 
 static void ctrl_timer_cb(TimerHandle_t arg)
 {
@@ -621,5 +619,8 @@ void app_main_start(void *argument)
     };
     lwip_example_h = osThreadNew(tcp_echo_socket_task, NULL, &lwip_example_attr);
     configASSERT(lwip_example_h != NULL);
+//    for(;;){
+//    	osDelay(1000);
+//    }
 
 }

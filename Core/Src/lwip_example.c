@@ -66,25 +66,28 @@ void net_ppp_start(void) {
   pppapi_connect(g_ppp, 0);
 }
 
-__attribute__((section(".ccmram"), aligned(8))) char tmp[256];
+char tmp[256];
 /* Task: feed PPP with UART RX */
 void ppp_feed_task(void *arg) {
-  //net_ppp_start();
   for (;;) {
     size_t n = CDC_recv_data(tmp, sizeof(tmp));
-    //printf("%.*s", n, tmp);
-    if (n && g_ppp && tcpip_ready) pppos_input_tcpip(g_ppp, tmp, (int)n);
-    osDelay(1);
+	if (n && g_ppp && tcpip_ready){
+		pppos_input_tcpip(g_ppp, tmp, (int)n);
+	}
+	osDelay(20);
   }
 }
 
 #include "tcp_echoserver.h"
+#include "fp_cli_server.h"
 void tcp_echo_socket_task(void *arg){
+	int port = 5760;
     // Wait until TCP/IP stack is initialized
     while (!tcpip_ready) {
         osDelay(100);
     }
-    tcp_echoserver_init(5760);
+    tcp_echoserver_init((uint16_t)port);
+    //echo_netconn_server_thread(&port);
 	for(;;){
 		osDelay(1000);
 	}
@@ -92,16 +95,9 @@ void tcp_echo_socket_task(void *arg){
 
 /* UDP telemetry to PC:5762 @50 Hz */
 void udp_telemetry_task(void *arg) {
-  int u = socket(AF_INET, SOCK_DGRAM, 0);
-  struct sockaddr_in pc = {0};
-  pc.sin_family = AF_INET; pc.sin_port = PP_HTONS(5762);
-  pc.sin_addr.s_addr = ipaddr_addr("10.0.0.1");
-  uint32_t seq=0;
-  struct __attribute__((packed)) { uint32_t seq, t_ms; float vbat; } pkt;
+
 
   for (;;) {
-    pkt.seq=seq++; pkt.t_ms=HAL_GetTick(); pkt.vbat=12.3f;
-    sendto(u, &pkt, sizeof(pkt), 0, (struct sockaddr*)&pc, sizeof(pc));
     osDelay(20);
   }
 }

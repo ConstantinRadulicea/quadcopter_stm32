@@ -3,6 +3,7 @@
 "./Core/Lib/flight_controller_libs/filters.o"
 "./Core/Lib/flight_controller_libs/flight_control_loop.o"
 "./Core/Lib/flight_controller_libs/fp_cli.o"
+"./Core/Lib/flight_controller_libs/fp_cli_server.o"
 "./Core/Lib/flight_controller_libs/geometry2D.o"
 "./Core/Lib/flight_controller_libs/geometry3D.o"
 "./Core/Lib/flight_controller_libs/imu.o"
