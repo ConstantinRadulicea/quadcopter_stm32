@@ -18,8 +18,6 @@ void echo_netconn_server_thread(int *port_in)
     u16_t port = (u16_t)(*port_in);
 
 
-
-
     /* 1. Create a new TCP connection handle */
     conn = netconn_new(NETCONN_TCP);
     if (conn == NULL) {

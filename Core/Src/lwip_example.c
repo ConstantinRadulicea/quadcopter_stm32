@@ -74,7 +74,7 @@ void ppp_feed_task(void *arg) {
 	if (n && g_ppp && tcpip_ready){
 		pppos_input_tcpip(g_ppp, tmp, (int)n);
 	}
-	osDelay(20);
+	osDelay(1);
   }
 }
 
@@ -86,8 +86,8 @@ void tcp_echo_socket_task(void *arg){
     while (!tcpip_ready) {
         osDelay(100);
     }
-    tcp_echoserver_init((uint16_t)port);
-    //echo_netconn_server_thread(&port);
+    //tcp_echoserver_init((uint16_t)port);
+    echo_netconn_server_thread(&port);
 	for(;;){
 		osDelay(1000);
 	}

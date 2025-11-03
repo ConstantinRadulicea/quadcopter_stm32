@@ -10,8 +10,8 @@ uint8_t lwip_heap[MEM_SIZE];
 __align(MEM_ALIGNMENT) uint8_t lwip_heap[MEM_SIZE];
 
 #elif defined ( __GNUC__ )     /* GCC / ARM-GCC (STM32CubeIDE) */
-//__attribute__((section(".ccmram"), aligned(MEM_ALIGNMENT))) uint8_t lwip_heap[MEM_SIZE];
-__attribute__((aligned(MEM_ALIGNMENT))) uint8_t lwip_heap[MEM_SIZE];
+__attribute__((section(".ccmram"), aligned(MEM_ALIGNMENT))) uint8_t lwip_heap[MEM_SIZE];
+//__attribute__((aligned(MEM_ALIGNMENT))) uint8_t lwip_heap[MEM_SIZE];
 
 
 #else

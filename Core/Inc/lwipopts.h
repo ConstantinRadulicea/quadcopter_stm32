@@ -50,7 +50,7 @@
 
 /* MEM_SIZE: the size of the heap memory. If the application will send
 a lot of data that needs to be copied, this should be set high. */
-#define MEM_SIZE                (32*1024)
+#define MEM_SIZE                (24*1024)
 
 /* Relocate the LwIP RAM heap pointer */
 #include "stdint.h"

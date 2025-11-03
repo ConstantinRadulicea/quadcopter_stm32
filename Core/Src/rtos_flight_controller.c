@@ -27,17 +27,17 @@ pwm_t esc_motors[4];
 static TaskHandle_t ctrl_task_h;
 static TaskHandle_t write_motor_main_h;
 
-/*__attribute__((section(".ccmram"), aligned(32)))*/ uint8_t flight_stack[2048];
-/*__attribute__((section(".ccmram"), aligned(32)))*/ uint8_t write_stack[2048];
-/*__attribute__((section(".ccmram"), aligned(32)))*/ uint8_t rc_stack[2048];
+/*__attribute__((section(".ccmram"), aligned(32)))*/ uint8_t flight_stack[(2*1024)];
+/*__attribute__((section(".ccmram"), aligned(32)))*/ uint8_t write_stack[(2*1024)];
+/*__attribute__((section(".ccmram"), aligned(32)))*/ uint8_t rc_stack[(2*1024)];
 /*__attribute__((section(".ccmram"), aligned(32)))*/ uint8_t telem_stack[(2*1024)];
 
 #if ENABLE_CLI != 0
-/*__attribute__((section(".ccmram"), aligned(32)))*/ uint8_t fp_cli_stack[2048];
+/*__attribute__((section(".ccmram"), aligned(32)))*/ uint8_t fp_cli_stack[(2*1024)];
 #endif
 
-/*__attribute__((section(".ccmram"), aligned(32)))*/ uint8_t lwip_feed_stack[(1*1024)];
-__attribute__((section(".ccmram"), aligned(32))) uint8_t lwip_example_stack[(50*1024)];
+/*__attribute__((section(".ccmram"), aligned(32)))*/ uint8_t lwip_feed_stack[(2*1024)];
+/*__attribute__((section(".ccmram"), aligned(32)))*/ uint8_t lwip_example_stack[(2*1024)];
 
 osThreadAttr_t flight_attr, write_attr, rc_attr, telem_attr, fp_cli_attr, lwip_feed_attr, lwip_example_attr;
 StaticTask_t flight_h_taskControlBlock;
@@ -598,7 +598,7 @@ void app_main_start(void *argument)
 
     net_ppp_start();
 
-    telem_attr = (osThreadAttr_t){
+    lwip_feed_attr = (osThreadAttr_t){
         .name       = "lwip_feed",
         .priority   = osPriorityBelowNormal,
         .stack_mem  = lwip_feed_stack,
@@ -609,7 +609,7 @@ void app_main_start(void *argument)
     lwip_feed_h = osThreadNew(ppp_feed_task, NULL, &lwip_feed_attr);
     configASSERT(lwip_feed_h != NULL);
 
-    telem_attr = (osThreadAttr_t){
+    lwip_example_attr = (osThreadAttr_t){
         .name       = "lwip_example",
         .priority   = osPriorityBelowNormal,
         .stack_mem  = lwip_example_stack,
