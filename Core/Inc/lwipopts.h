@@ -185,6 +185,8 @@ The STM32H7xx allows computing and verifying the IP, UDP, TCP and ICMP checksums
 
 #define PPP_SUPPORT               1
 #define PPPOS_SUPPORT             1
+#define PPPOE_SUPPORT			1
+#define PPPOE_DISCO_SUPPORT 1   /* optional, discovery */
 #define PAP_SUPPORT               1
 #define CHAP_SUPPORT              1
 

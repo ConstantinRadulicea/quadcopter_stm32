@@ -8,4 +8,4 @@
 ../Core/Src/rtos_flight_controller.c:397:13:print_telemetry_data	2
 ../Core/Src/rtos_flight_controller.c:499:13:fp_cli_func	1
 ../Core/Src/rtos_flight_controller.c:513:6:app_init	3
-../Core/Src/rtos_flight_controller.c:530:6:app_main_start	7
+../Core/Src/rtos_flight_controller.c:530:6:app_main_start	6

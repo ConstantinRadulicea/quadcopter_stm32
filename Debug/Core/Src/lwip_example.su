@@ -1,7 +1,8 @@
-../Core/Src/lwip_example.c:21:13:tcpip_init_done	16	static
-../Core/Src/lwip_example.c:27:14:ppp_output_cb	24	static
-../Core/Src/lwip_example.c:34:13:ppp_status_cb	32	static
-../Core/Src/lwip_example.c:46:6:net_ppp_start	16	static
-../Core/Src/lwip_example.c:71:6:ppp_feed_task	24	static
-../Core/Src/lwip_example.c:83:6:tcp_echo_socket_task	24	static
-../Core/Src/lwip_example.c:97:6:udp_telemetry_task	16	static
+../Core/Src/lwip_example.c:26:13:reconnect_timeout	24	static
+../Core/Src/lwip_example.c:39:13:ppp_status_cb	24	static
+../Core/Src/lwip_example.c:56:13:tcpip_init_done	16	static
+../Core/Src/lwip_example.c:62:14:ppp_output_cb	24	static
+../Core/Src/lwip_example.c:71:6:net_ppp_start	8	static
+../Core/Src/lwip_example.c:97:6:ppp_feed_task	24	static
+../Core/Src/lwip_example.c:112:6:tcp_echo_socket_task	24	static
+../Core/Src/lwip_example.c:126:6:udp_telemetry_task	16	static

@@ -71,8 +71,8 @@ int _write(int file, char *data, int len) {
 //
 //    	uart_send_data(&usart1_driver, err_header, sizeof(err_header) - 1);
 //    }
-    //CDC_Transmit_FS((uint8_t*)data, len);
-    uart_send_data(&usart1_driver, data, len);
+    CDC_Transmit_FS((uint8_t*)data, len);
+    //uart_send_data(&usart1_driver, data, len);
     return sent_size;
 }
 

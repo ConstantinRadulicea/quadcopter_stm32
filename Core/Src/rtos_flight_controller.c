@@ -561,16 +561,16 @@ void app_main_start(void *argument)
     write_h = osThreadNew(write_motor_main, NULL, &write_attr);
     configASSERT(write_h != NULL);
 
-    rc_attr = (osThreadAttr_t){
-        .name       = "rc_control_main",
-        .priority   = osPriorityNormal,
-        .stack_mem  = rc_stack,
-        .stack_size = sizeof(rc_stack),
-		.cb_mem = &rc_h_taskControlBlock,
-		.cb_size = sizeof(rc_h_taskControlBlock)
-    };
-    rc_h = osThreadNew(rc_control_main, NULL, &rc_attr);
-    configASSERT(rc_h != NULL);
+//    rc_attr = (osThreadAttr_t){
+//        .name       = "rc_control_main",
+//        .priority   = osPriorityNormal,
+//        .stack_mem  = rc_stack,
+//        .stack_size = sizeof(rc_stack),
+//		.cb_mem = &rc_h_taskControlBlock,
+//		.cb_size = sizeof(rc_h_taskControlBlock)
+//    };
+//    rc_h = osThreadNew(rc_control_main, NULL, &rc_attr);
+//    configASSERT(rc_h != NULL);
 
     telem_attr = (osThreadAttr_t){
         .name       = "print_telemetry_data",

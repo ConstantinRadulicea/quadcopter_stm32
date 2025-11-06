@@ -2,6 +2,8 @@
 ../Middlewares/Third_Party/lwip/src/netif/ppp/pppapi.c:73:1:pppapi_set_default	1
 ../Middlewares/Third_Party/lwip/src/netif/ppp/pppapi.c:126:1:pppapi_do_pppos_create	1
 ../Middlewares/Third_Party/lwip/src/netif/ppp/pppapi.c:142:1:pppapi_pppos_create	1
+../Middlewares/Third_Party/lwip/src/netif/ppp/pppapi.c:167:1:pppapi_do_pppoe_create	1
+../Middlewares/Third_Party/lwip/src/netif/ppp/pppapi.c:184:1:pppapi_pppoe_create	1
 ../Middlewares/Third_Party/lwip/src/netif/ppp/pppapi.c:271:1:pppapi_do_ppp_connect	1
 ../Middlewares/Third_Party/lwip/src/netif/ppp/pppapi.c:285:1:pppapi_connect	1
 ../Middlewares/Third_Party/lwip/src/netif/ppp/pppapi.c:336:1:pppapi_do_ppp_close	1

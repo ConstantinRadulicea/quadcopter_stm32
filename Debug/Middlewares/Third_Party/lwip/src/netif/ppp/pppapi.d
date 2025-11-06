@@ -71,6 +71,12 @@ Middlewares/Third_Party/lwip/src/netif/ppp/pppapi.o: \
  C:/Programming/STM32F405RGT6_test/Middlewares/Third_Party/lwip/src/include/netif/ppp/pppos.h \
  C:/Programming/STM32F405RGT6_test/Middlewares/Third_Party/lwip/src/include/netif/ppp/vj.h \
  C:/Programming/STM32F405RGT6_test/Middlewares/Third_Party/lwip/src/include/netif/ppp/pppoe.h \
+ C:/Programming/STM32F405RGT6_test/Middlewares/Third_Party/lwip/src/include/lwip/etharp.h \
+ C:/Programming/STM32F405RGT6_test/Middlewares/Third_Party/lwip/src/include/lwip/ip4.h \
+ C:/Programming/STM32F405RGT6_test/Middlewares/Third_Party/lwip/src/include/lwip/prot/ip4.h \
+ C:/Programming/STM32F405RGT6_test/Middlewares/Third_Party/lwip/src/include/lwip/prot/ethernet.h \
+ C:/Programming/STM32F405RGT6_test/Middlewares/Third_Party/lwip/src/include/lwip/prot/ieee.h \
+ C:/Programming/STM32F405RGT6_test/Middlewares/Third_Party/lwip/src/include/lwip/prot/etharp.h \
  C:/Programming/STM32F405RGT6_test/Middlewares/Third_Party/lwip/src/include/netif/ppp/pppol2tp.h
 C:/Programming/STM32F405RGT6_test/Middlewares/Third_Party/lwip/src/include/netif/ppp/ppp_opts.h:
 C:/Programming/STM32F405RGT6_test/Middlewares/Third_Party/lwip/src/include/lwip/opt.h:
@@ -143,4 +149,10 @@ C:/Programming/STM32F405RGT6_test/Middlewares/Third_Party/lwip/src/include/netif
 C:/Programming/STM32F405RGT6_test/Middlewares/Third_Party/lwip/src/include/netif/ppp/pppos.h:
 C:/Programming/STM32F405RGT6_test/Middlewares/Third_Party/lwip/src/include/netif/ppp/vj.h:
 C:/Programming/STM32F405RGT6_test/Middlewares/Third_Party/lwip/src/include/netif/ppp/pppoe.h:
+C:/Programming/STM32F405RGT6_test/Middlewares/Third_Party/lwip/src/include/lwip/etharp.h:
+C:/Programming/STM32F405RGT6_test/Middlewares/Third_Party/lwip/src/include/lwip/ip4.h:
+C:/Programming/STM32F405RGT6_test/Middlewares/Third_Party/lwip/src/include/lwip/prot/ip4.h:
+C:/Programming/STM32F405RGT6_test/Middlewares/Third_Party/lwip/src/include/lwip/prot/ethernet.h:
+C:/Programming/STM32F405RGT6_test/Middlewares/Third_Party/lwip/src/include/lwip/prot/ieee.h:
+C:/Programming/STM32F405RGT6_test/Middlewares/Third_Party/lwip/src/include/lwip/prot/etharp.h:
 C:/Programming/STM32F405RGT6_test/Middlewares/Third_Party/lwip/src/include/netif/ppp/pppol2tp.h:
