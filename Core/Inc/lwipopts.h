@@ -198,7 +198,7 @@ The STM32H7xx allows computing and verifying the IP, UDP, TCP and ICMP checksums
 /**
  * LWIP_SOCKET==1: Enable Socket API (require to use sockets.c)
  */
-#define LWIP_SOCKET                     0
+#define LWIP_SOCKET                     1
 
 /*
    ------------------------------------
@@ -229,12 +229,12 @@ The STM32H7xx allows computing and verifying the IP, UDP, TCP and ICMP checksums
 */
 #define LWIP_CHECK_MULTITHREADING 1
 #define TCPIP_THREAD_NAME              "TCP_IP_thread"
-#define TCPIP_THREAD_STACKSIZE          (2*1024)
+#define TCPIP_THREAD_STACKSIZE          (3*1024)
 #define TCPIP_MBOX_SIZE                 6
 #define DEFAULT_UDP_RECVMBOX_SIZE       6
 #define DEFAULT_TCP_RECVMBOX_SIZE       6
 #define DEFAULT_ACCEPTMBOX_SIZE         6
-#define DEFAULT_THREAD_STACKSIZE        (2*1024)
+#define DEFAULT_THREAD_STACKSIZE        (3*1024)
 #define TCPIP_THREAD_PRIO               osPriorityNormal
 
 #include <stdio.h>

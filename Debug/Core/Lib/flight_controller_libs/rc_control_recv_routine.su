@@ -1,0 +1,2 @@
+../Core/Lib/flight_controller_libs/rc_control_recv_routine.c:11:12:line_buffer_add_char	24	static
+../Core/Lib/flight_controller_libs/rc_control_recv_routine.c:40:6:rc_control_main	656	static

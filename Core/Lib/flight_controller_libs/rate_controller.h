@@ -1,7 +1,7 @@
 #ifndef RATE_CONTROLLER_H
 #define RATE_CONTROLLER_H
 
-#include "pid.h"
+#include <pid_controller.h>
 #include "filters.h"
 #include "geometry2D.h"
 
@@ -42,9 +42,9 @@ typedef struct rate_controller_s {
     float sample_rate_hz;     ///< Controller loop frequency [Hz]
 
     /* ---------------- PID CONTROLLERS ----------------------- */
-    pid_t pid_roll;           ///< Roll axis PID (X-axis)
-    pid_t pid_pitch;          ///< Pitch axis PID (Y-axis)
-    pid_t pid_yaw;            ///< Yaw axis PID (Z-axis)
+    pid_controller_t pid_roll;           ///< Roll axis PID (X-axis)
+    pid_controller_t pid_pitch;          ///< Pitch axis PID (Y-axis)
+    pid_controller_t pid_yaw;            ///< Yaw axis PID (Z-axis)
 
     /* ---------------- PID D-TERM FILTERING ------------------ */
     float pid_roll_k_d;

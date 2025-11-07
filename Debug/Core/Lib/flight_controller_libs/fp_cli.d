@@ -53,7 +53,7 @@ Core/Lib/flight_controller_libs/fp_cli.o: \
  C:/Programming/STM32F405RGT6_test/Core/Lib/flight_controller_libs/madgwick_filter.h \
  C:/Programming/STM32F405RGT6_test/Core/Lib/flight_controller_libs/attitude_controller.h \
  C:/Programming/STM32F405RGT6_test/Core/Lib/flight_controller_libs/rate_controller.h \
- C:/Programming/STM32F405RGT6_test/Core/Lib/flight_controller_libs/pid.h \
+ C:/Programming/STM32F405RGT6_test/Core/Lib/flight_controller_libs/pid_controller.h \
  C:/Programming/STM32F405RGT6_test/Core/Lib/flight_controller_libs/motor_mixer.h \
  C:/Programming/STM32F405RGT6_test/Core/Lib/flight_controller_libs/rc_control.h \
  ../Middlewares/Third_Party/FreeRTOS/Source/include/FreeRTOS.h \
@@ -121,7 +121,7 @@ C:/Programming/STM32F405RGT6_test/Core/Lib/flight_controller_libs/filters.h:
 C:/Programming/STM32F405RGT6_test/Core/Lib/flight_controller_libs/madgwick_filter.h:
 C:/Programming/STM32F405RGT6_test/Core/Lib/flight_controller_libs/attitude_controller.h:
 C:/Programming/STM32F405RGT6_test/Core/Lib/flight_controller_libs/rate_controller.h:
-C:/Programming/STM32F405RGT6_test/Core/Lib/flight_controller_libs/pid.h:
+C:/Programming/STM32F405RGT6_test/Core/Lib/flight_controller_libs/pid_controller.h:
 C:/Programming/STM32F405RGT6_test/Core/Lib/flight_controller_libs/motor_mixer.h:
 C:/Programming/STM32F405RGT6_test/Core/Lib/flight_controller_libs/rc_control.h:
 ../Middlewares/Third_Party/FreeRTOS/Source/include/FreeRTOS.h:

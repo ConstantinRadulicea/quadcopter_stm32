@@ -8,7 +8,7 @@ Core/Src/rtos_flight_controller.o: ../Core/Src/rtos_flight_controller.c \
  C:/Programming/STM32F405RGT6_test/Core/Lib/flight_controller_libs/madgwick_filter.h \
  C:/Programming/STM32F405RGT6_test/Core/Lib/flight_controller_libs/attitude_controller.h \
  C:/Programming/STM32F405RGT6_test/Core/Lib/flight_controller_libs/rate_controller.h \
- C:/Programming/STM32F405RGT6_test/Core/Lib/flight_controller_libs/pid.h \
+ C:/Programming/STM32F405RGT6_test/Core/Lib/flight_controller_libs/pid_controller.h \
  C:/Programming/STM32F405RGT6_test/Core/Lib/flight_controller_libs/motor_mixer.h \
  C:/Programming/STM32F405RGT6_test/Core/Lib/flight_controller_libs/rc_control.h \
  ../Middlewares/Third_Party/FreeRTOS/Source/include/FreeRTOS.h \
@@ -70,6 +70,7 @@ Core/Src/rtos_flight_controller.o: ../Core/Src/rtos_flight_controller.c \
  C:/Programming/STM32F405RGT6_test/Core/Lib/flight_controller_libs/fp_cli.h \
  C:/Programming/STM32F405RGT6_test/Core/Lib/lwshell/lwshell/src/include/lwshell/lwshell.h \
  C:/Programming/STM32F405RGT6_test/Core/Lib/lwshell/lwshell/src/include/lwshell/lwshell_opt.h \
+ C:/Programming/STM32F405RGT6_test/Core/Lib/flight_controller_libs/rc_control_recv_routine.h \
  ../USB_DEVICE/App/usb_device.h \
  ../Middlewares/ST/STM32_USB_Device_Library/Core/Inc/usbd_def.h \
  ../USB_DEVICE/Target/usbd_conf.h ../Core/Inc/main.h \
@@ -90,7 +91,7 @@ C:/Programming/STM32F405RGT6_test/Core/Lib/flight_controller_libs/filters.h:
 C:/Programming/STM32F405RGT6_test/Core/Lib/flight_controller_libs/madgwick_filter.h:
 C:/Programming/STM32F405RGT6_test/Core/Lib/flight_controller_libs/attitude_controller.h:
 C:/Programming/STM32F405RGT6_test/Core/Lib/flight_controller_libs/rate_controller.h:
-C:/Programming/STM32F405RGT6_test/Core/Lib/flight_controller_libs/pid.h:
+C:/Programming/STM32F405RGT6_test/Core/Lib/flight_controller_libs/pid_controller.h:
 C:/Programming/STM32F405RGT6_test/Core/Lib/flight_controller_libs/motor_mixer.h:
 C:/Programming/STM32F405RGT6_test/Core/Lib/flight_controller_libs/rc_control.h:
 ../Middlewares/Third_Party/FreeRTOS/Source/include/FreeRTOS.h:
@@ -155,6 +156,7 @@ C:/Programming/STM32F405RGT6_test/Core/Lib/flight_controller_libs/crc.h:
 C:/Programming/STM32F405RGT6_test/Core/Lib/flight_controller_libs/fp_cli.h:
 C:/Programming/STM32F405RGT6_test/Core/Lib/lwshell/lwshell/src/include/lwshell/lwshell.h:
 C:/Programming/STM32F405RGT6_test/Core/Lib/lwshell/lwshell/src/include/lwshell/lwshell_opt.h:
+C:/Programming/STM32F405RGT6_test/Core/Lib/flight_controller_libs/rc_control_recv_routine.h:
 ../USB_DEVICE/App/usb_device.h:
 ../Middlewares/ST/STM32_USB_Device_Library/Core/Inc/usbd_def.h:
 ../USB_DEVICE/Target/usbd_conf.h:
