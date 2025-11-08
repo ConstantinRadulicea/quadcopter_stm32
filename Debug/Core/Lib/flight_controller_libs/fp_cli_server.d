@@ -51,7 +51,18 @@ Core/Lib/flight_controller_libs/fp_cli_server.o: \
  C:/Programming/STM32F405RGT6_test/Middlewares/Third_Party/lwip/src/include/lwip/def.h \
  C:/Programming/STM32F405RGT6_test/Middlewares/Third_Party/lwip/src/include/lwip/ip4_addr.h \
  C:/Programming/STM32F405RGT6_test/Middlewares/Third_Party/lwip/src/include/lwip/ip6_addr.h \
- C:/Programming/STM32F405RGT6_test/Middlewares/Third_Party/lwip/src/include/lwip/def.h
+ C:/Programming/STM32F405RGT6_test/Middlewares/Third_Party/lwip/src/include/lwip/def.h \
+ C:/Programming/STM32F405RGT6_test/Middlewares/Third_Party/lwip/src/include/lwip/sockets.h \
+ C:/Programming/STM32F405RGT6_test/Middlewares/Third_Party/lwip/src/include/lwip/netif.h \
+ C:/Programming/STM32F405RGT6_test/Middlewares/Third_Party/lwip/src/include/lwip/stats.h \
+ C:/Programming/STM32F405RGT6_test/Middlewares/Third_Party/lwip/src/include/lwip/mem.h \
+ C:/Programming/STM32F405RGT6_test/Middlewares/Third_Party/lwip/src/include/lwip/memp.h \
+ C:/Programming/STM32F405RGT6_test/Middlewares/Third_Party/lwip/src/include/lwip/priv/memp_std.h \
+ C:/Programming/STM32F405RGT6_test/Middlewares/Third_Party/lwip/src/include/lwip/priv/memp_priv.h \
+ C:/Programming/STM32F405RGT6_test/Middlewares/Third_Party/lwip/src/include/lwip/priv/mem_priv.h \
+ C:/Programming/STM32F405RGT6_test/Middlewares/Third_Party/lwip/src/include/lwip/inet.h \
+ C:/Programming/STM32F405RGT6_test/Middlewares/Third_Party/lwip/src/include/lwip/errno.h \
+ C:/Programming/STM32F405RGT6_test/Middlewares/Third_Party/lwip/src/include/lwip/netdb.h
 ../Core/Lib/flight_controller_libs/fp_cli_server.h:
 C:/Programming/STM32F405RGT6_test/Middlewares/Third_Party/lwip/src/include/lwip/opt.h:
 ../Core/Inc/lwipopts.h:
@@ -104,3 +115,14 @@ C:/Programming/STM32F405RGT6_test/Middlewares/Third_Party/lwip/src/include/lwip/
 C:/Programming/STM32F405RGT6_test/Middlewares/Third_Party/lwip/src/include/lwip/ip4_addr.h:
 C:/Programming/STM32F405RGT6_test/Middlewares/Third_Party/lwip/src/include/lwip/ip6_addr.h:
 C:/Programming/STM32F405RGT6_test/Middlewares/Third_Party/lwip/src/include/lwip/def.h:
+C:/Programming/STM32F405RGT6_test/Middlewares/Third_Party/lwip/src/include/lwip/sockets.h:
+C:/Programming/STM32F405RGT6_test/Middlewares/Third_Party/lwip/src/include/lwip/netif.h:
+C:/Programming/STM32F405RGT6_test/Middlewares/Third_Party/lwip/src/include/lwip/stats.h:
+C:/Programming/STM32F405RGT6_test/Middlewares/Third_Party/lwip/src/include/lwip/mem.h:
+C:/Programming/STM32F405RGT6_test/Middlewares/Third_Party/lwip/src/include/lwip/memp.h:
+C:/Programming/STM32F405RGT6_test/Middlewares/Third_Party/lwip/src/include/lwip/priv/memp_std.h:
+C:/Programming/STM32F405RGT6_test/Middlewares/Third_Party/lwip/src/include/lwip/priv/memp_priv.h:
+C:/Programming/STM32F405RGT6_test/Middlewares/Third_Party/lwip/src/include/lwip/priv/mem_priv.h:
+C:/Programming/STM32F405RGT6_test/Middlewares/Third_Party/lwip/src/include/lwip/inet.h:
+C:/Programming/STM32F405RGT6_test/Middlewares/Third_Party/lwip/src/include/lwip/errno.h:
+C:/Programming/STM32F405RGT6_test/Middlewares/Third_Party/lwip/src/include/lwip/netdb.h:

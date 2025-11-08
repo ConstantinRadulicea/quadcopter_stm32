@@ -48,7 +48,7 @@ void echo_netconn_server_thread(int *port_in)
     //printf("Echo Server: Listening on port %d\n", port);
 
     /* 4. Main server loop: Accept new connections */
-    while (1) {
+    for(;;) {
 
         // netconn_accept() blocks the task until a new client connects
         err = netconn_accept(conn, &newconn);
@@ -101,3 +101,96 @@ void echo_netconn_server_thread(int *port_in)
         }
     }
 }
+
+
+#include "lwip/sockets.h"
+#include "lwip/inet.h"
+#include "lwip/netdb.h"
+#include <string.h>
+#include <stdio.h>
+
+#define TCP_ECHO_PORT 12345
+#define TCP_ECHO_BUF_SIZE 512
+
+void tcp_socket_server_task(void *arg)
+{
+    (void)arg;
+    int listen_fd, client_fd;
+    struct sockaddr_in server_addr, client_addr;
+    socklen_t client_len = sizeof(client_addr);
+    char buf[TCP_ECHO_BUF_SIZE];
+    int ret;
+
+    // 1️⃣ Create socket
+    listen_fd = socket(AF_INET, SOCK_STREAM, 0);
+    if (listen_fd < 0) {
+        printf("socket() failed, errno=%d\n", errno);
+        vTaskDelete(NULL);
+        return;
+    }
+
+    // Allow quick rebinding if the connection closes
+    int yes = 1;
+    setsockopt(listen_fd, SOL_SOCKET, SO_REUSEADDR, &yes, sizeof(yes));
+
+    // 2️⃣ Bind socket
+    memset(&server_addr, 0, sizeof(server_addr));
+    server_addr.sin_family = AF_INET;
+    server_addr.sin_port = htons(TCP_ECHO_PORT);
+    server_addr.sin_addr.s_addr = INADDR_ANY;
+
+    ret = bind(listen_fd, (struct sockaddr *)&server_addr, sizeof(server_addr));
+    if (ret < 0) {
+        printf("bind() failed, errno=%d\n", errno);
+        closesocket(listen_fd);
+        vTaskDelete(NULL);
+        return;
+    }
+
+    // 3️⃣ Listen for clients
+    ret = listen(listen_fd, 5);
+    if (ret < 0) {
+        printf("listen() failed, errno=%d\n", errno);
+        closesocket(listen_fd);
+        vTaskDelete(NULL);
+        return;
+    }
+
+    printf("TCP echo server listening on port %d\n", TCP_ECHO_PORT);
+
+    for (;;) {
+        // 4️⃣ Accept client
+        client_fd = accept(listen_fd, (struct sockaddr *)&client_addr, &client_len);
+        if (client_fd < 0) {
+            printf("accept() failed, errno=%d\n", errno);
+            continue;
+        }
+
+        char ipstr[16];
+        inet_ntoa_r(client_addr.sin_addr, ipstr, sizeof(ipstr));
+        printf("Client connected: %s:%u\n", ipstr, ntohs(client_addr.sin_port));
+
+        // 5️⃣ Echo loop
+        for (;;) {
+            ret = recv(client_fd, buf, sizeof(buf), 0);
+            if (ret < 0) {
+                printf("recv() failed, errno=%d\n", errno);
+                break;
+            } else if (ret == 0) {
+                // client closed connection
+                printf("Client disconnected: %s:%u\n", ipstr, ntohs(client_addr.sin_port));
+                break;
+            }
+
+            // echo data back
+            int sent = send(client_fd, buf, ret, 0);
+            if (sent < 0) {
+                printf("send() failed, errno=%d\n", errno);
+                break;
+            }
+        }
+
+        closesocket(client_fd);
+    }
+}
+

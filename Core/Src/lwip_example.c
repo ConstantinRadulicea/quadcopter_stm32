@@ -115,8 +115,8 @@ void tcp_echo_socket_task(void *arg){
     while (!tcpip_ready) {
         osDelay(100);
     }
-    //tcp_echoserver_init((uint16_t)port);
-    echo_netconn_server_thread(&port);
+    //echo_netconn_server_thread(&port);
+    tcp_socket_server_task(NULL);
 	for(;;){
 		osDelay(1000);
 	}

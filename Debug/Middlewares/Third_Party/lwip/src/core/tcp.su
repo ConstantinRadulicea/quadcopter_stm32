@@ -1,4 +1,4 @@
-../Middlewares/Third_Party/lwip/src/core/tcp.c:201:1:tcp_init	4	static
+../Middlewares/Third_Party/lwip/src/core/tcp.c:201:1:tcp_init	8	static
 ../Middlewares/Third_Party/lwip/src/core/tcp.c:210:1:tcp_free	16	static
 ../Middlewares/Third_Party/lwip/src/core/tcp.c:221:1:tcp_free_listen	16	static
 ../Middlewares/Third_Party/lwip/src/core/tcp.c:234:1:tcp_tmr	8	static

@@ -6,6 +6,7 @@
  * @param arg Unused argument
  */
 void echo_netconn_server_thread(int *port_in);
+void tcp_socket_server_task(void *arg);
 
 
 #endif

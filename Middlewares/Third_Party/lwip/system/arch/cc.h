@@ -83,6 +83,6 @@ typedef int sys_prot_t;
                                      x, __LINE__, __FILE__); } while(0)
 
 /* Define random number generator function */
-//#define LWIP_RAND() ((u32_t)rand())
+#define LWIP_RAND() ((u32_t)rand())
 
 #endif /* __CC_H__ */
