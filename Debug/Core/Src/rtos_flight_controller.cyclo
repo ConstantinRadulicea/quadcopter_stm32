@@ -4,6 +4,6 @@
 ../Core/Src/rtos_flight_controller.c:107:13:flight_controller_main	4
 ../Core/Src/rtos_flight_controller.c:164:13:write_motor_main	6
 ../Core/Src/rtos_flight_controller.c:228:13:print_telemetry_data	2
-../Core/Src/rtos_flight_controller.c:330:13:fp_cli_func	1
-../Core/Src/rtos_flight_controller.c:344:6:app_init	3
-../Core/Src/rtos_flight_controller.c:361:6:app_main_start	7
+../Core/Src/rtos_flight_controller.c:331:13:fp_cli_func	1
+../Core/Src/rtos_flight_controller.c:345:6:app_init	3
+../Core/Src/rtos_flight_controller.c:362:6:app_main_start	7

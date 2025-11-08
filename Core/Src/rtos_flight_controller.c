@@ -17,7 +17,7 @@
 #include "rc_control_recv_routine.h"
 
 #define ENABLE_ESC_CALIBRATION_BUILD 0
-#define ENABLE_CLI 0
+#define ENABLE_CLI 1
 
 flight_control_loop_t fcl;
 
@@ -253,12 +253,12 @@ static void print_telemetry_data(void *arg){
         flight_control_loop_get_motors_throttle(&fcl, local_motors_throttle);
         angles3D angles = quat2angle(&(body_frame_estimated_q));
 
-        printf("%.3f;%.3f;%.3f;", degrees(angles.x), degrees(angles.y), degrees(angles.z));
-        printf("%.3f;%.3f;%.3f;", body_frame_accel.x, body_frame_accel.y, body_frame_accel.z);
-        printf("%.3f;%.3f;%.3f;", body_frame_gyro.x, body_frame_gyro.y, body_frame_gyro.z);
-//        printf("%.3f;%.3f;%.3f;", raw_accel.x, raw_accel.y, raw_accel.z);
-//        printf("%.3f;%.3f;%.3f;", raw_gyro.x, raw_gyro.y, raw_gyro.z);
-        printf("%.3f;%.3f;%.3f;%.3f;", local_motors_throttle[0], local_motors_throttle[1], local_motors_throttle[2], local_motors_throttle[3]);
+        OUT_PRINTF("%.3f;%.3f;%.3f;", degrees(angles.x), degrees(angles.y), degrees(angles.z));
+        OUT_PRINTF("%.3f;%.3f;%.3f;", body_frame_accel.x, body_frame_accel.y, body_frame_accel.z);
+        OUT_PRINTF("%.3f;%.3f;%.3f;", body_frame_gyro.x, body_frame_gyro.y, body_frame_gyro.z);
+//        OUT_PRINTF("%.3f;%.3f;%.3f;", raw_accel.x, raw_accel.y, raw_accel.z);
+//        OUT_PRINTF("%.3f;%.3f;%.3f;", raw_gyro.x, raw_gyro.y, raw_gyro.z);
+        OUT_PRINTF("%.3f;%.3f;%.3f;%.3f;", local_motors_throttle[0], local_motors_throttle[1], local_motors_throttle[2], local_motors_throttle[3]);
 
 #if MUTEX_ESP_ENABLE != 0
 	xSemaphoreTake(fcl.rc_attitude_control_mutex, portMAX_DELAY);
@@ -273,8 +273,8 @@ static void print_telemetry_data(void *arg){
 #if MUTEX_ESP_ENABLE != 0
 	xSemaphoreGive(fcl.rc_attitude_control_mutex);
 #endif
-	//	printf("%.3f;%.3f;%.3f;", target_attitude.x, target_attitude.y, target_attitude.z);
-	printf("%.3f;", target_throttle);
+	//	OUT_PRINTF("%.3f;%.3f;%.3f;", target_attitude.x, target_attitude.y, target_attitude.z);
+	OUT_PRINTF("%.3f;", target_throttle);
 
 #if MUTEX_ESP_ENABLE != 0
 	xSemaphoreTake(fcl.attitude_controller_mutex, portMAX_DELAY);
@@ -291,7 +291,7 @@ static void print_telemetry_data(void *arg){
 #if MUTEX_ESP_ENABLE != 0
 	xSemaphoreGive(fcl.attitude_controller_mutex);
 #endif
-//	printf("%.3f;%.3f;%.3f;", target_roll_rate, target_pitch_rate, target_yaw_rate);
+//	OUT_PRINTF("%.3f;%.3f;%.3f;", target_roll_rate, target_pitch_rate, target_yaw_rate);
 
 
 #if MUTEX_ESP_ENABLE != 0
@@ -310,15 +310,15 @@ static void print_telemetry_data(void *arg){
 #if MUTEX_ESP_ENABLE != 0
 	xSemaphoreGive(fcl.rate_controller_mutex);
 #endif
-	printf("%.3f;%.3f;%.3f;", degrees(pid_roll_output), degrees(pid_pitch_output), degrees(pid_yaw_output));
+	OUT_PRINTF("%.3f;%.3f;%.3f;", degrees(pid_roll_output), degrees(pid_pitch_output), degrees(pid_yaw_output));
 
-//    printf("%lu;", (unsigned long)(uxTaskGetStackHighWaterMark((TaskHandle_t)flight_h) * sizeof(StackType_t)));
-//    printf("%lu;", (unsigned long)(uxTaskGetStackHighWaterMark((TaskHandle_t)write_h) * sizeof(StackType_t)));
-//    printf("%lu;", (unsigned long)(uxTaskGetStackHighWaterMark((TaskHandle_t)rc_h)     * sizeof(StackType_t)));
-//    printf("%lu;", (unsigned long)(uxTaskGetStackHighWaterMark((TaskHandle_t)telem_h)  * sizeof(StackType_t)));
+//    OUT_PRINTF("%lu;", (unsigned long)(uxTaskGetStackHighWaterMark((TaskHandle_t)flight_h) * sizeof(StackType_t)));
+//    OUT_PRINTF("%lu;", (unsigned long)(uxTaskGetStackHighWaterMark((TaskHandle_t)write_h) * sizeof(StackType_t)));
+//    OUT_PRINTF("%lu;", (unsigned long)(uxTaskGetStackHighWaterMark((TaskHandle_t)rc_h)     * sizeof(StackType_t)));
+//    OUT_PRINTF("%lu;", (unsigned long)(uxTaskGetStackHighWaterMark((TaskHandle_t)telem_h)  * sizeof(StackType_t)));
 
 
-    printf("\n");
+	OUT_PRINTF("\r\n");
 
     }
 }
@@ -326,17 +326,18 @@ static void print_telemetry_data(void *arg){
 #include "fp_cli.h"
 #include "usb_device.h"
 #include "usbd_cdc_if.h"
-char fp_cli_read_buffer[128];
+#include "fp_cli_server.h"
+//char fp_cli_read_buffer[128];
 static void fp_cli_func(void *arg){
-	size_t read_bytes = 0;
-	//CDC_Transmit_FS((uint8_t*)err_header, sizeof(err_header) - 1);
+	//size_t read_bytes = 0;
 	fp_cli_example_minimal_init();
-	//lwshellr_t lwshell_input_ex(lwshell_t* lwobj, const void* in_data, size_t len);
-	for(;;){
-		read_bytes = CDC_recv_data(fp_cli_read_buffer, sizeof(fp_cli_read_buffer)-1);
-		lwshell_input_ex(&lwshell_cli, fp_cli_read_buffer, read_bytes);
-		vTaskDelay(pdMS_TO_TICKS(100));
-	}
+//	for(;;){
+//		read_bytes = CDC_recv_data(fp_cli_read_buffer, sizeof(fp_cli_read_buffer)-1);
+//		lwshell_input_ex(&lwshell_cli, fp_cli_read_buffer, read_bytes);
+//		vTaskDelay(pdMS_TO_TICKS(100));
+//	}
+
+	tcp_socket_fp_cli_server_task(NULL);
 
 }
 
@@ -375,7 +376,7 @@ void app_main_start(void *argument)
 
     lwip_feed_attr = (osThreadAttr_t){
         .name       = "lwip_feed",
-        .priority   = osPriorityBelowNormal,
+        .priority   = osPriorityAboveNormal,
         .stack_mem  = lwip_feed_stack,
         .stack_size = sizeof(lwip_feed_stack),
 		.cb_mem = &lwip_feed_h_taskControlBlock,
@@ -419,7 +420,7 @@ void app_main_start(void *argument)
 
     telem_attr = (osThreadAttr_t){
         .name       = "print_telemetry_data",
-        .priority   = osPriorityBelowNormal,
+        .priority   = osPriorityNormal,
         .stack_mem  = telem_stack,
         .stack_size = sizeof(telem_stack),
 		.cb_mem = &telem_h_taskControlBlock,
@@ -431,7 +432,7 @@ void app_main_start(void *argument)
 #if ENABLE_CLI != 0
     fp_cli_attr = (osThreadAttr_t){
         .name       = "fp_cli_func",
-        .priority   = osPriorityBelowNormal,
+        .priority   = osPriorityNormal,
         .stack_mem  = fp_cli_stack,
         .stack_size = sizeof(fp_cli_stack),
 		.cb_mem = &fp_cli_h_taskControlBlock,
@@ -443,16 +444,16 @@ void app_main_start(void *argument)
 
 
 
-    lwip_example_attr = (osThreadAttr_t){
-        .name       = "lwip_example",
-        .priority   = osPriorityBelowNormal,
-        .stack_mem  = lwip_example_stack,
-        .stack_size = sizeof(lwip_example_stack),
-		.cb_mem = &lwip_example_h_taskControlBlock,
-		.cb_size = sizeof(lwip_example_h_taskControlBlock)
-    };
-    lwip_example_h = osThreadNew(tcp_echo_socket_task, NULL, &lwip_example_attr);
-    configASSERT(lwip_example_h != NULL);
+//    lwip_example_attr = (osThreadAttr_t){
+//        .name       = "lwip_example",
+//        .priority   = osPriorityBelowNormal,
+//        .stack_mem  = lwip_example_stack,
+//        .stack_size = sizeof(lwip_example_stack),
+//		.cb_mem = &lwip_example_h_taskControlBlock,
+//		.cb_size = sizeof(lwip_example_h_taskControlBlock)
+//    };
+//    lwip_example_h = osThreadNew(tcp_echo_socket_task, NULL, &lwip_example_attr);
+//    configASSERT(lwip_example_h != NULL);
 //    for(;;){
 //    	osDelay(1000);
 //    }

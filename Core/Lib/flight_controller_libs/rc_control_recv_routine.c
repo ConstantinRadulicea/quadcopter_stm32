@@ -36,14 +36,20 @@ static int line_buffer_add_char(char c, char *buf, size_t buf_size, size_t *len)
 }
 
 
+#include "lwip/sockets.h"
+#include "lwip/inet.h"
+#include <stdio.h>
+#include <string.h>
+#include <errno.h>
 
+#define UDP_RX_BUF_SIZE    PBUF_POOL_BUFSIZE   /* enough for full Ethernet MTU */
+
+char rxbuf[UDP_RX_BUF_SIZE];
 void rc_control_main(void *arg)
 {
 	flight_control_loop_t *fcl_ptr = (flight_control_loop_t*)arg;
 
-	char data_buffer[256];
     char linebuf[256];
-    int data_len;
     size_t line_len = 0;
 
     float target_throttle = 0;
@@ -64,54 +70,80 @@ void rc_control_main(void *arg)
     unsigned int crc_received = 0;
 
     uint16_t udpPort = (uint16_t)RC_CONTROL_PORT;
-    struct netconn *conn;
-      err_t err;
+    int sock = -1;
+    struct sockaddr_in srv_addr;
 
-      LWIP_UNUSED_ARG(arg); // Suppress compiler warning
+    sock = socket(AF_INET, SOCK_DGRAM, 0);
+    if (sock < 0) {
+        printf("udp_server: socket() failed errno=%d (%s)\n", errno, strerror(errno));
+        vTaskDelete(NULL);
+        return;
+    }
 
-      // 1. Create a new UDP connection
-      conn = netconn_new(NETCONN_UDP);
-      if (conn == NULL) {
-        printf("udp_server: Failed to create netconn\n");
-        return; // Thread exits
-      }
+    /* Optional: allow rebind quickly after restart */
+    {
+        int yes = 1;
+        setsockopt(sock, SOL_SOCKET, SO_REUSEADDR, &yes, sizeof(yes));
+    }
 
-      // 2. Bind the connection to a local port
-      //    We listen on IP_ADDR_ANY (all interfaces) and our defined port
-      err = netconn_bind(conn, IP_ADDR_ANY, udpPort);
-      if (err != ERR_OK) {
-        printf("udp_server: Failed to bind, err: %d\n", err);
-        netconn_delete(conn);
-        return; // Thread exits
-      }
+    /* optional: set receive timeout so recvfrom doesn't block forever */
+//    {
+//        struct timeval tv;
+//        tv.tv_sec = UDP_RX_TIMEOUT_MS / 1000;
+//        tv.tv_usec = (UDP_RX_TIMEOUT_MS % 1000) * 1000;
+//        setsockopt(sock, SOL_SOCKET, SO_RCVTIMEO, &tv, sizeof(tv));
+//    }
 
-      printf("UDP Server listening on port %d\n", udpPort);
+    /* After creating socket 'sock' */
+    int on = 1;
+    if (ioctl(sock, FIONBIO, &on) < 0) {
+        printf("ioctl(FIONBIO) failed errno=%d (%s)\n", errno, strerror(errno));
+    }
+
+    memset(&srv_addr, 0, sizeof(srv_addr));
+    srv_addr.sin_family = AF_INET;
+    srv_addr.sin_port = htons(udpPort);
+    srv_addr.sin_addr.s_addr = INADDR_ANY;
+
+    if (bind(sock, (struct sockaddr *)&srv_addr, sizeof(srv_addr)) < 0) {
+        printf("udp_server: bind() failed errno=%d (%s)\n", errno, strerror(errno));
+        closesocket(sock);
+        vTaskDelete(NULL);
+        return;
+    }
+
+    printf("udp_server: listening on port %d\n", udpPort);
 
   /* Infinite loop */
   for(;;)
   {
+
+	  int r = 0;
+	  do {
 	  current_message_corrupted = 1;
 
-	  struct netbuf *buf;
+      struct sockaddr_in client;
+      socklen_t client_len = sizeof(client);
+       r = recvfrom(sock, rxbuf, UDP_RX_BUF_SIZE, MSG_DONTWAIT,
+                       (struct sockaddr *)&client, &client_len);
+      if (r < 0) {
+          int e = errno;
+          if (e == EWOULDBLOCK || e == EAGAIN) {
+              /* timed out - not an error, continue */
+              //continue;
+          }
 
-	      // 3. Block and wait for a packet
-	      //    This is the main blocking call. The RTOS will switch to
-	      //    other tasks while this thread waits for data.
-	      err = netconn_recv(conn, &buf);
-	      if (err == ERR_OK){
-	    	        data_len = netbuf_len(buf);
-	    	        if (data_len < sizeof(data_buffer)) {
-	    	          netbuf_copy(buf, data_buffer, data_len);
-	    	        }
-	    	        // 5. Clean up the received buffer
-	    	              //    This is CRITICAL. You MUST delete the netbuf
-	    	              //    to free its memory from the LwIP PBUF pool.
-	    	              netbuf_delete(buf);
+          /* common lwIP allocation errors you may see here:
+             - ENOMEM  : mem_malloc()/memp_malloc() failed
+             - ENOBUFS : no pbuf / buffer available
+             Print details and keep server alive. */
+//          printf("udp_server: recvfrom() failed r=%d errno=%d (%s)\n", r, e, strerror(e));
+      }
 
-          for(int i=0; i<data_len; i++){
+          for(int i=0; i<r; i++){
 
 
-			  if (line_buffer_add_char(data_buffer[i], linebuf, sizeof(linebuf), &line_len)) {
+			  if (line_buffer_add_char(rxbuf[i], linebuf, sizeof(linebuf), &line_len)) {
 
 				  int temp_str_len = strlen(linebuf);
 				  temp_str_len -= 6;
@@ -138,11 +170,10 @@ void rc_control_main(void *arg)
 				  }
 				  if(crc_received != (unsigned int)crc_calculated){
 					  current_message_corrupted = 1;
-					  continue;
 				  }
 			  }
-          }
-	      }
+
+
 
 
       if(current_message_corrupted == 0){
@@ -153,6 +184,8 @@ void rc_control_main(void *arg)
           disarm_flag = (temp_disarm_flag);
           target_throttle = temp_target_throttle;
       }
+          }
+	  } while(r>0);
 
       errors += current_message_corrupted;
 
@@ -178,5 +211,6 @@ void rc_control_main(void *arg)
 
       vTaskDelay(pdMS_TO_TICKS(HzToMilliSec(RC_CONTROLLER_HZ)));
   }
+	closesocket(sock);
 }
 

@@ -69,7 +69,7 @@ static u32_t ppp_output_cb(ppp_pcb *pcb, const void *data, u32_t len, void *ctx)
 
 
 void net_ppp_start(void) {
-	//srand(1);
+	srand(sys_now());
 	  /* 1) Start lwIP core thread and mboxes */
 	  tcpip_init(tcpip_init_done, NULL);
 
@@ -92,9 +92,10 @@ void net_ppp_start(void) {
   pppapi_connect(g_ppp, 0);
 }
 
-char tmp[256];
+
 /* Task: feed PPP with UART RX */
 void ppp_feed_task(void *arg) {
+	char tmp[256];
 	size_t n;
   for (;;) {
 	  //n = CDC_recv_data(tmp, sizeof(tmp));
@@ -115,8 +116,8 @@ void tcp_echo_socket_task(void *arg){
     while (!tcpip_ready) {
         osDelay(100);
     }
-    //echo_netconn_server_thread(&port);
-    tcp_socket_server_task(NULL);
+    echo_netconn_server_thread(&port);
+    //tcp_socket_server_task(NULL);
 	for(;;){
 		osDelay(1000);
 	}

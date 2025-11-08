@@ -5,8 +5,10 @@
 #include "rtos_flight_controller.h"
 #include <assert.h>
 
+#include "fp_cli_server.h"
+
 lwshell_t lwshell_cli;
-volatile int start_telemetry = 1;
+volatile int start_telemetry = 0;
 
 //static const char raw_accel[] = "raw_accel";
 //static const char raw_gyro[] = "raw_gyro";
@@ -34,8 +36,6 @@ struct telemetry_data_fags{
 };
 
 struct telemetry_data_fags get_telemetry_active = {};
-
-#define OUT_PRINTF(...) usb_printf(__VA_ARGS__)
 
 typedef int32_t (*parameter_state_switch_set_fn)(int32_t argc, char** argv);
 typedef int32_t (*parameter_state_switch_set_info_fn)();

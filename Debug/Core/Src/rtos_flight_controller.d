@@ -70,6 +70,7 @@ Core/Src/rtos_flight_controller.o: ../Core/Src/rtos_flight_controller.c \
  C:/Programming/STM32F405RGT6_test/Core/Lib/flight_controller_libs/fp_cli.h \
  C:/Programming/STM32F405RGT6_test/Core/Lib/lwshell/lwshell/src/include/lwshell/lwshell.h \
  C:/Programming/STM32F405RGT6_test/Core/Lib/lwshell/lwshell/src/include/lwshell/lwshell_opt.h \
+ C:/Programming/STM32F405RGT6_test/Core/Lib/flight_controller_libs/fp_cli_server.h \
  C:/Programming/STM32F405RGT6_test/Core/Lib/flight_controller_libs/rc_control_recv_routine.h \
  ../USB_DEVICE/App/usb_device.h \
  ../Middlewares/ST/STM32_USB_Device_Library/Core/Inc/usbd_def.h \
@@ -81,6 +82,7 @@ Core/Src/rtos_flight_controller.o: ../Core/Src/rtos_flight_controller.c \
  ../Middlewares/ST/STM32_USB_Device_Library/Core/Inc/usbd_core.h \
  ../Middlewares/ST/STM32_USB_Device_Library/Core/Inc/usbd_ioreq.h \
  ../Middlewares/ST/STM32_USB_Device_Library/Core/Inc/usbd_ctlreq.h \
+ C:/Programming/STM32F405RGT6_test/Core/Lib/flight_controller_libs/fp_cli_server.h \
  ../Core/Inc/lwip_example.h
 ../Core/Inc/rtos_flight_controller.h:
 C:/Programming/STM32F405RGT6_test/Core/Lib/flight_controller_libs/flight_control_loop.h:
@@ -156,6 +158,7 @@ C:/Programming/STM32F405RGT6_test/Core/Lib/flight_controller_libs/crc.h:
 C:/Programming/STM32F405RGT6_test/Core/Lib/flight_controller_libs/fp_cli.h:
 C:/Programming/STM32F405RGT6_test/Core/Lib/lwshell/lwshell/src/include/lwshell/lwshell.h:
 C:/Programming/STM32F405RGT6_test/Core/Lib/lwshell/lwshell/src/include/lwshell/lwshell_opt.h:
+C:/Programming/STM32F405RGT6_test/Core/Lib/flight_controller_libs/fp_cli_server.h:
 C:/Programming/STM32F405RGT6_test/Core/Lib/flight_controller_libs/rc_control_recv_routine.h:
 ../USB_DEVICE/App/usb_device.h:
 ../Middlewares/ST/STM32_USB_Device_Library/Core/Inc/usbd_def.h:
@@ -168,4 +171,5 @@ C:/Programming/STM32F405RGT6_test/Core/Lib/flight_controller_libs/rc_control_rec
 ../Middlewares/ST/STM32_USB_Device_Library/Core/Inc/usbd_core.h:
 ../Middlewares/ST/STM32_USB_Device_Library/Core/Inc/usbd_ioreq.h:
 ../Middlewares/ST/STM32_USB_Device_Library/Core/Inc/usbd_ctlreq.h:
+C:/Programming/STM32F405RGT6_test/Core/Lib/flight_controller_libs/fp_cli_server.h:
 ../Core/Inc/lwip_example.h:

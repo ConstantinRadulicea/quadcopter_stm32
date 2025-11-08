@@ -3,6 +3,7 @@ Core/Lib/flight_controller_libs/fp_cli.o: \
  ../Core/Lib/flight_controller_libs/fp_cli.h \
  C:/Programming/STM32F405RGT6_test/Core/Lib/lwshell/lwshell/src/include/lwshell/lwshell.h \
  C:/Programming/STM32F405RGT6_test/Core/Lib/lwshell/lwshell/src/include/lwshell/lwshell_opt.h \
+ ../Core/Lib/flight_controller_libs/fp_cli_server.h \
  ../USB_DEVICE/App/usbd_cdc_if.h \
  ../Middlewares/ST/STM32_USB_Device_Library/Class/CDC/Inc/usbd_cdc.h \
  ../Middlewares/ST/STM32_USB_Device_Library/Core/Inc/usbd_ioreq.h \
@@ -70,6 +71,7 @@ Core/Lib/flight_controller_libs/fp_cli.o: \
 ../Core/Lib/flight_controller_libs/fp_cli.h:
 C:/Programming/STM32F405RGT6_test/Core/Lib/lwshell/lwshell/src/include/lwshell/lwshell.h:
 C:/Programming/STM32F405RGT6_test/Core/Lib/lwshell/lwshell/src/include/lwshell/lwshell_opt.h:
+../Core/Lib/flight_controller_libs/fp_cli_server.h:
 ../USB_DEVICE/App/usbd_cdc_if.h:
 ../Middlewares/ST/STM32_USB_Device_Library/Class/CDC/Inc/usbd_cdc.h:
 ../Middlewares/ST/STM32_USB_Device_Library/Core/Inc/usbd_ioreq.h:

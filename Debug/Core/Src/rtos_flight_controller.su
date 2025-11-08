@@ -3,7 +3,7 @@
 ../Core/Src/rtos_flight_controller.c:77:13:init_imu	16	static
 ../Core/Src/rtos_flight_controller.c:107:13:flight_controller_main	96	static
 ../Core/Src/rtos_flight_controller.c:164:13:write_motor_main	80	static,ignoring_inline_asm
-../Core/Src/rtos_flight_controller.c:228:13:print_telemetry_data	200	static
-../Core/Src/rtos_flight_controller.c:330:13:fp_cli_func	24	static
-../Core/Src/rtos_flight_controller.c:344:6:app_init	48	static,ignoring_inline_asm
-../Core/Src/rtos_flight_controller.c:361:6:app_main_start	256	static,ignoring_inline_asm
+../Core/Src/rtos_flight_controller.c:228:13:print_telemetry_data	208	static
+../Core/Src/rtos_flight_controller.c:331:13:fp_cli_func	16	static
+../Core/Src/rtos_flight_controller.c:345:6:app_init	48	static,ignoring_inline_asm
+../Core/Src/rtos_flight_controller.c:362:6:app_main_start	256	static,ignoring_inline_asm
