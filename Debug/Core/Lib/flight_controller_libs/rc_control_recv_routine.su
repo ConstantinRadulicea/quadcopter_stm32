@@ -1,2 +1,6 @@
 ../Core/Lib/flight_controller_libs/rc_control_recv_routine.c:11:12:line_buffer_add_char	24	static
+<<<<<<< HEAD
 ../Core/Lib/flight_controller_libs/rc_control_recv_routine.c:48:6:rc_control_main	448	static
+=======
+../Core/Lib/flight_controller_libs/rc_control_recv_routine.c:48:6:rc_control_main	728	static
+>>>>>>> 62d325f0148f2da1da1c9b4c189809999080db6b

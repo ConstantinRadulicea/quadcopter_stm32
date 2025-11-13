@@ -144,6 +144,7 @@ void rc_control_main(void *arg)
 
 
 			  if (line_buffer_add_char(rxbuf[i], linebuf, sizeof(linebuf), &line_len)) {
+			  if (line_buffer_add_char(rxbuf[i], linebuf, sizeof(linebuf), &line_len)) {
 
 				  int temp_str_len = strlen(linebuf);
 				  temp_str_len -= 6;
