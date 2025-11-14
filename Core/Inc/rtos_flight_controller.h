@@ -29,7 +29,7 @@ extern "C" {
 
 #define MAIN_LOOP_HZ FLIGHT_CONTROLLER_PID_FREQ_HZ
 #define RC_CONTROLLER_HZ RC_INPUT_SAMPLE_RATE_HZ
-#define TELEMETRY_TASK_HZ 20
+#define TELEMETRY_TASK_HZ 10
 #define WRITE_MOTOR_TASK_HZ ESC_PWM_HZ
 
 extern flight_control_loop_t fcl;

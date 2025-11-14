@@ -64,7 +64,7 @@ static u32_t ppp_output_cb(ppp_pcb *pcb, const void *data, u32_t len, void *ctx)
   (void)ctx;
   //CDC_Transmit_FS((uint8_t*)data, len);   // blocking is fine at 115200
   return uart_send_data(&usart1_driver, (char*)data, len);
-  return len;
+  //return len;
 }
 
 
@@ -97,15 +97,16 @@ void net_ppp_start(void) {
 void ppp_feed_task(void *arg) {
 	char tmp[256];
 	size_t n;
-  for (;;) {
+	for (;;) {
 	  //n = CDC_recv_data(tmp, sizeof(tmp));
-	  while((n = uart_recv_data(&usart1_driver, tmp, sizeof(tmp))) > 0){
-		if ((n > 0) && (g_ppp != NULL) && (tcpip_ready != 0)){
-			pppos_input_tcpip(g_ppp, tmp, (int)n);
-		}
-	  }
-	osDelay(1);
-  }
+	  do{
+		  n = uart_recv_data(&usart1_driver, tmp, sizeof(tmp));
+		  if ((n > 0) && (g_ppp != NULL) && (tcpip_ready != 0)){
+			  pppos_input_tcpip(g_ppp, tmp, (int)n);
+		  }
+	  }while(n>0);
+	  osDelay(1);
+	}
 }
 
 #include "tcp_echoserver.h"

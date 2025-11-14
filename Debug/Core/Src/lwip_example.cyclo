@@ -4,5 +4,5 @@
 ../Core/Src/lwip_example.c:62:14:ppp_output_cb	1
 ../Core/Src/lwip_example.c:71:6:net_ppp_start	2
 ../Core/Src/lwip_example.c:97:6:ppp_feed_task	5
-../Core/Src/lwip_example.c:113:6:tcp_echo_socket_task	2
-../Core/Src/lwip_example.c:127:6:udp_telemetry_task	1
+../Core/Src/lwip_example.c:114:6:tcp_echo_socket_task	2
+../Core/Src/lwip_example.c:128:6:udp_telemetry_task	1

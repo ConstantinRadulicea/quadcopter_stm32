@@ -220,7 +220,7 @@ void tcp_socket_fp_cli_server_task(void *arg)
 
     // Allow quick rebinding if the connection closes
     int yes = 1;
-    //setsockopt(listen_fd, SOL_SOCKET, SO_REUSEADDR, &yes, sizeof(yes));
+    setsockopt(listen_fd, SOL_SOCKET, SO_REUSEADDR, &yes, sizeof(yes));
 
     // 2️⃣ Bind socket
     memset(&server_addr, 0, sizeof(server_addr));

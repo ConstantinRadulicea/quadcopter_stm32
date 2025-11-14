@@ -376,7 +376,7 @@ void app_main_start(void *argument)
 
     lwip_feed_attr = (osThreadAttr_t){
         .name       = "lwip_feed",
-        .priority   = osPriorityAboveNormal,
+        .priority   = osPriorityHigh7,
         .stack_mem  = lwip_feed_stack,
         .stack_size = sizeof(lwip_feed_stack),
 		.cb_mem = &lwip_feed_h_taskControlBlock,

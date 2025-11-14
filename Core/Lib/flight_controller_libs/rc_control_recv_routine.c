@@ -100,6 +100,8 @@ void rc_control_main(void *arg)
         printf("ioctl(FIONBIO) failed errno=%d (%s)\n", errno, strerror(errno));
     }
 
+    fcntl(sock, F_SETFL, O_NONBLOCK);
+
     memset(&srv_addr, 0, sizeof(srv_addr));
     srv_addr.sin_family = AF_INET;
     srv_addr.sin_port = htons(udpPort);
@@ -142,8 +144,6 @@ void rc_control_main(void *arg)
 
           for(int i=0; i<r; i++){
 
-
-			  if (line_buffer_add_char(rxbuf[i], linebuf, sizeof(linebuf), &line_len)) {
 			  if (line_buffer_add_char(rxbuf[i], linebuf, sizeof(linebuf), &line_len)) {
 
 				  int temp_str_len = strlen(linebuf);
@@ -198,7 +198,6 @@ void rc_control_main(void *arg)
     	  disarm_flag = 1.0f;
     	  arm_flag = 0.0f;
       }
-
 
       if (arm_flag > 0.5f){
     	  flight_control_loop_arm_esc(fcl_ptr);
