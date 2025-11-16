@@ -47,7 +47,7 @@ extern "C" {
 #define MAX_ANGLE radians(35.0f)
 #define MAX_RATE radians(300.0f)
 
-#define RC_INPUT_SAMPLE_RATE_HZ 100
+#define RC_INPUT_SAMPLE_RATE_HZ 10
 #define RC_INPUT_FILTER_CUTOFF_FREQUENCY_HZ 40
 #define RC_INPUT_DEADBAND 0.06f
 

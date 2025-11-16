@@ -31,10 +31,10 @@ static TaskHandle_t write_motor_main_h;
 /*__attribute__((section(".ccmram"), aligned(32)))*/ uint8_t flight_stack[(2*1024)];
 /*__attribute__((section(".ccmram"), aligned(32)))*/ uint8_t write_stack[(2*1024)];
 /*__attribute__((section(".ccmram"), aligned(32)))*/ uint8_t rc_stack[(3*1024)];
-/*__attribute__((section(".ccmram"), aligned(32)))*/ uint8_t telem_stack[(3*1024)];
+/*__attribute__((section(".ccmram"), aligned(32)))*/ uint8_t telem_stack[(4*1024)];
 
 #if ENABLE_CLI != 0
-/*__attribute__((section(".ccmram"), aligned(32)))*/ uint8_t fp_cli_stack[(2*1024)];
+/*__attribute__((section(".ccmram"), aligned(32)))*/ uint8_t fp_cli_stack[(4*1024)];
 #endif
 
 /*__attribute__((section(".ccmram"), aligned(32)))*/ uint8_t lwip_feed_stack[(2*1024)];
@@ -225,6 +225,10 @@ static void write_motor_main(void *arg){
     }
 }
 
+
+#define TELEM_BUF_SZ 512
+char telem_frame[TELEM_BUF_SZ];
+
 static void print_telemetry_data(void *arg){
     // Get estimated attitude and body frame accel/gyro
 	coord3D body_frame_accel, body_frame_gyro;
@@ -253,12 +257,12 @@ static void print_telemetry_data(void *arg){
         flight_control_loop_get_motors_throttle(&fcl, local_motors_throttle);
         angles3D angles = quat2angle(&(body_frame_estimated_q));
 
-        OUT_PRINTF("%.3f;%.3f;%.3f;", degrees(angles.x), degrees(angles.y), degrees(angles.z));
-        OUT_PRINTF("%.3f;%.3f;%.3f;", body_frame_accel.x, body_frame_accel.y, body_frame_accel.z);
-        OUT_PRINTF("%.3f;%.3f;%.3f;", body_frame_gyro.x, body_frame_gyro.y, body_frame_gyro.z);
-//        OUT_PRINTF("%.3f;%.3f;%.3f;", raw_accel.x, raw_accel.y, raw_accel.z);
-//        OUT_PRINTF("%.3f;%.3f;%.3f;", raw_gyro.x, raw_gyro.y, raw_gyro.z);
-        OUT_PRINTF("%.3f;%.3f;%.3f;%.3f;", local_motors_throttle[0], local_motors_throttle[1], local_motors_throttle[2], local_motors_throttle[3]);
+//        OUT_PRINTF("%.3f;%.3f;%.3f;", degrees(angles.x), degrees(angles.y), degrees(angles.z));
+//        OUT_PRINTF("%.3f;%.3f;%.3f;", body_frame_accel.x, body_frame_accel.y, body_frame_accel.z);
+//        OUT_PRINTF("%.3f;%.3f;%.3f;", body_frame_gyro.x, body_frame_gyro.y, body_frame_gyro.z);
+////        OUT_PRINTF("%.3f;%.3f;%.3f;", raw_accel.x, raw_accel.y, raw_accel.z);
+////        OUT_PRINTF("%.3f;%.3f;%.3f;", raw_gyro.x, raw_gyro.y, raw_gyro.z);
+//        OUT_PRINTF("%.3f;%.3f;%.3f;%.3f;", local_motors_throttle[0], local_motors_throttle[1], local_motors_throttle[2], local_motors_throttle[3]);
 
 #if MUTEX_ESP_ENABLE != 0
 	xSemaphoreTake(fcl.rc_attitude_control_mutex, portMAX_DELAY);
@@ -274,7 +278,7 @@ static void print_telemetry_data(void *arg){
 	xSemaphoreGive(fcl.rc_attitude_control_mutex);
 #endif
 	//	OUT_PRINTF("%.3f;%.3f;%.3f;", target_attitude.x, target_attitude.y, target_attitude.z);
-	OUT_PRINTF("%.3f;", target_throttle);
+//	OUT_PRINTF("%.3f;", target_throttle);
 
 #if MUTEX_ESP_ENABLE != 0
 	xSemaphoreTake(fcl.attitude_controller_mutex, portMAX_DELAY);
@@ -310,7 +314,7 @@ static void print_telemetry_data(void *arg){
 #if MUTEX_ESP_ENABLE != 0
 	xSemaphoreGive(fcl.rate_controller_mutex);
 #endif
-	OUT_PRINTF("%.3f;%.3f;%.3f;", degrees(pid_roll_output), degrees(pid_pitch_output), degrees(pid_yaw_output));
+//	OUT_PRINTF("%.3f;%.3f;%.3f;", degrees(pid_roll_output), degrees(pid_pitch_output), degrees(pid_yaw_output));
 
 //    OUT_PRINTF("%lu;", (unsigned long)(uxTaskGetStackHighWaterMark((TaskHandle_t)flight_h) * sizeof(StackType_t)));
 //    OUT_PRINTF("%lu;", (unsigned long)(uxTaskGetStackHighWaterMark((TaskHandle_t)write_h) * sizeof(StackType_t)));
@@ -318,8 +322,24 @@ static void print_telemetry_data(void *arg){
 //    OUT_PRINTF("%lu;", (unsigned long)(uxTaskGetStackHighWaterMark((TaskHandle_t)telem_h)  * sizeof(StackType_t)));
 
 
-	OUT_PRINTF("\r\n");
+//	OUT_PRINTF("\r\n");
 
+	snprintf(telem_frame, TELEM_BUF_SZ,
+			"%.3f;%.3f;%.3f;"
+			"%.3f;%.3f;%.3f;"
+			"%.3f;%.3f;%.3f;"
+			"%.3f;%.3f;%.3f;%.3f;"
+			"%.3f;"
+			"%.3f;%.3f;%.3f;"
+			"\r\n",
+			degrees(angles.x), degrees(angles.y), degrees(angles.z),
+			body_frame_accel.x, body_frame_accel.y, body_frame_accel.z,
+			body_frame_gyro.x, body_frame_gyro.y, body_frame_gyro.z,
+			local_motors_throttle[0], local_motors_throttle[1], local_motors_throttle[2], local_motors_throttle[3],
+			target_throttle,
+			degrees(pid_roll_output), degrees(pid_pitch_output), degrees(pid_yaw_output)
+			);
+	OUT_PRINTF("%s", telem_frame);
     }
 }
 

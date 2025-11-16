@@ -190,7 +190,7 @@ void rc_control_main(void *arg)
 
       errors += current_message_corrupted;
 
-      if (errors >= (RC_CONTROLLER_HZ / 2.0f)){
+      if (errors >= (RC_CONTROLLER_HZ)){
     	  target_attitude.x = 0.0f;
     	  target_attitude.y = 0.0f;
     	  target_attitude.z = 0.0f;

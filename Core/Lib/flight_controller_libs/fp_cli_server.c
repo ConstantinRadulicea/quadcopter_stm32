@@ -255,6 +255,8 @@ void tcp_socket_fp_cli_server_task(void *arg)
             printf("accept() failed, errno=%d\n", errno);
             continue;
         }
+        int one = 1;
+        setsockopt(client_fd, IPPROTO_TCP, TCP_NODELAY, &one, sizeof(one));
 
         char ipstr[16];
         inet_ntoa_r(client_addr.sin_addr, ipstr, sizeof(ipstr));
@@ -292,7 +294,7 @@ void tcp_socket_fp_cli_server_task(void *arg)
 
 void vfprintfsock( int s, const char* f, va_list va)
 {
-	char local_buffer[128];
+	char local_buffer[256];
 	int local_buffer_size = sizeof(local_buffer);
 	int buffer_size;
 	char *buf;
