@@ -41,3 +41,6 @@ sudo iptables -t nat -A POSTROUTING -s 10.202.78.100 -o enp0s3 -j MASQUERADE
 
 
 
+
+
+

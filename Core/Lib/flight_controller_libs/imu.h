@@ -172,7 +172,7 @@ void imu_set_accel_bias(imu_t* im, coord3D accel_bias, float accel_misalignment_
  *        This is the output of the IMU pipeline after applying all filters and offsets.
  *
  * @param im                 Pointer to IMU struct.
- * @param estimated_q        Pointer to store the estimated orientation quaternion (body → world).
+ * @param estimated_q        Pointer to store the estimated orientation quaternion (world → body).
  * @param estimated_acc      Pointer to store the body-frame accelerometer data [m/s²].
  * @param estimated_gyro     Pointer to store the body-frame gyroscope data [rad/s].
  */

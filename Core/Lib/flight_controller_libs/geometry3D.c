@@ -332,7 +332,7 @@ quaternion quatsub(quaternion *L, quaternion *R){
     return res;
 }
 
-// Compute error quaternion: q_err = conj(current) * desired
+// Compute error quaternion: q_err = desired * conj(current)
 quaternion quat_error(quaternion *q_current, quaternion *q_desired) {
     quaternion q_conj = quatconj(q_current);
     return quatmultiply(q_desired, &q_conj);

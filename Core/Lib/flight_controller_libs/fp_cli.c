@@ -8,7 +8,7 @@
 #include "fp_cli_server.h"
 
 lwshell_t lwshell_cli;
-volatile int start_telemetry = 0;
+volatile int start_telemetry = 1;
 
 //static const char raw_accel[] = "raw_accel";
 //static const char raw_gyro[] = "raw_gyro";

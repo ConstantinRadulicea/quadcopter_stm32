@@ -235,14 +235,14 @@ The STM32H7xx allows computing and verifying the IP, UDP, TCP and ICMP checksums
 #define DEFAULT_TCP_RECVMBOX_SIZE       12
 #define DEFAULT_ACCEPTMBOX_SIZE         12
 #define DEFAULT_THREAD_STACKSIZE        (4*1024)
-#define TCPIP_THREAD_PRIO               osPriorityHigh7
+#define TCPIP_THREAD_PRIO               osPriorityLow
 
 #include <stdio.h>
 //#define LWIP_TCPIP_THREAD_ALIVE() printf("ciao\n");
 
 //#define LWIP_TCPIP_CORE_LOCKING         1
 //#define LWIP_TCPIP_CORE_LOCKING_INPUT   1
-//#define LWIP_NETCONN_SEM_PER_THREAD     0
+//#define LWIP_NETCONN_SEM_PER_THREAD     1
 //#define SYS_LIGHTWEIGHT_PROT            1
 
 

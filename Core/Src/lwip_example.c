@@ -124,11 +124,3 @@ void tcp_echo_socket_task(void *arg){
 	}
 }
 
-/* UDP telemetry to PC:5762 @50 Hz */
-void udp_telemetry_task(void *arg) {
-
-
-  for (;;) {
-    osDelay(20);
-  }
-}
