@@ -54,6 +54,17 @@ uint16_t crc16_ccitt_add(uint16_t crc, uint8_t a);
 uint16_t crc16_ccitt_add_arr(uint16_t crc, uint8_t* data, size_t len);
 
 
+uint8_t crc8_add(uint8_t crc, uint8_t data, uint8_t poly);
+uint8_t crc8_add_arr(uint8_t crc, uint8_t* data, size_t len, uint8_t poly);
+
+#define CRC8_DVB_S2_POLY 0xD5
+#define CRC8_DVB_S2_START_CRC 0x0
+
+#define crc8_dvb_s2_init(void) ((uint8_t) CRC8_DVB_S2_START_CRC)
+#define crc8_dvb_s2_add(crc, data) (crc8_add(crc, data, CRC8_DVB_S2_POLY))
+#define crc8_dvb_s2_add_arr(crc, data, len) (crc8_add_arr(crc, data, len, CRC8_DVB_S2_POLY))
+
+
 #ifdef __cplusplus
 }
 #endif

@@ -1,0 +1,16 @@
+../Core/Lib/crsf/crsf.c:9:6:crsf_set_output_cb_fn	1
+../Core/Lib/crsf/crsf.c:14:5:crsf_init	5
+../Core/Lib/crsf/crsf.c:36:12:crsf_receive_frame	17
+../Core/Lib/crsf/crsf.c:135:5:crsf_getFailSafe	3
+../Core/Lib/crsf/crsf.c:148:13:_crsf_getRcChannels	3
+../Core/Lib/crsf/crsf.c:181:6:crsf_getLinkStatistics	1
+../Core/Lib/crsf/crsf.c:186:6:crsf_getRcChannels	1
+../Core/Lib/crsf/crsf.c:191:13:crsf_setLinkUp	1
+../Core/Lib/crsf/crsf.c:198:13:crsf_checkLinkDown	3
+../Core/Lib/crsf/crsf.c:207:5:crsf_isLinkUp	1
+../Core/Lib/crsf/crsf.c:213:5:crsf_update	2
+../Core/Lib/crsf/crsf.c:260:6:crsf_setAttitudeData	1
+../Core/Lib/crsf/crsf.c:263:6:crsf_setBaroAltitudeData	1
+../Core/Lib/crsf/crsf.c:266:6:crsf_setBatteryData	1
+../Core/Lib/crsf/crsf.c:271:6:crsf_setFlightModeData	1
+../Core/Lib/crsf/crsf.c:275:6:crsf_setGPSData	1

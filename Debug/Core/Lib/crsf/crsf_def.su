@@ -1,0 +1,5 @@
+../Core/Lib/crsf/crsf_def.c:33:1:crsf_htons	16	static
+../Core/Lib/crsf/crsf_def.c:47:1:crsf_htonl	16	static
+../Core/Lib/crsf/crsf_def.c:55:10:writeU24BE	16	static
+../Core/Lib/crsf/crsf_def.c:65:10:crsf_rcToUs	16	static
+../Core/Lib/crsf/crsf_def.c:70:10:crsf_usToRc	16	static

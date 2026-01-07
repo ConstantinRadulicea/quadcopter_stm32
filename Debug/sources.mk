@@ -38,6 +38,7 @@ CPP_DEPS :=
 
 # Every subdirectory with source files must be described here
 SUBDIRS := \
+Core/Lib/crsf \
 Core/Lib/flight_controller_libs \
 Core/Lib/lwshell/lwshell/src/lwshell \
 Core/Lib/mpu6500/interface \

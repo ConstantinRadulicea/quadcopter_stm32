@@ -1,0 +1,15 @@
+../Core/Lib/crsf/crsf_telemetry.c:6:17:WriteAttitudeDataFrame	48	static
+../Core/Lib/crsf/crsf_telemetry.c:37:17:WriteBaroAltitudeDataFrame	48	static
+../Core/Lib/crsf/crsf_telemetry.c:65:17:WriteBatterySensorDataFrame	48	static
+../Core/Lib/crsf/crsf_telemetry.c:97:17:WriteFlightModeDataFrame	40	static
+../Core/Lib/crsf/crsf_telemetry.c:130:17:WriteGPSDataFrame	48	static
+../Core/Lib/crsf/crsf_telemetry.c:171:6:crsf_telemetry_setAttitudeData	24	static
+../Core/Lib/crsf/crsf_telemetry.c:178:6:crsf_telemetry_setBaroAltitudeData	16	static
+../Core/Lib/crsf/crsf_telemetry.c:184:6:crsf_telemetry_setBatteryData	32	static
+../Core/Lib/crsf/crsf_telemetry.c:193:6:crsf_telemetry_setFlightModeData	40	static
+../Core/Lib/crsf/crsf_telemetry.c:211:6:crsf_telemetry_setGPSData	40	static
+../Core/Lib/crsf/crsf_telemetry.c:224:10:crsf_telemetry_update	24	static
+../Core/Lib/crsf/crsf_telemetry.c:255:6:crsf_telemetry_init	24	static
+../Core/Lib/crsf/crsf_telemetry.c:287:10:crsf_telemetry_get_tx_data	16	static
+../Core/Lib/crsf/crsf_telemetry.c:297:10:crsf_telemetry_get_tx_data_size	16	static
+../Core/Lib/crsf/crsf_telemetry.c:307:6:crsf_telemetry_update_tx_data_sent	16	static
