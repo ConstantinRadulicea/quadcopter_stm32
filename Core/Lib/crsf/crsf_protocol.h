@@ -27,12 +27,12 @@
 #pragma once
 
 #ifndef ENV_DEFECT_DETECTOR
-#include "csf_config.h"
+#include "crsf_config.h"
 #endif
 
 //namespace crsfProtocol
 //{
-    enum rc_channels_e
+typedef enum rc_channels_e
     {
         RC_CHANNEL_ROLL = 0,
         RC_CHANNEL_PITCH,
@@ -51,7 +51,7 @@
         RC_CHANNEL_AUX11,
         RC_CHANNEL_AUX12,
         RC_CHANNEL_COUNT
-    };
+    }rc_channels_t;
 
     enum syncByte_e
     {

@@ -1,11 +1,44 @@
 #ifndef CRSF_H
 #define CRSF_H
 // https://github.com/tbs-fpv/tbs-crsf-spec/blob/main/crsf.md
+#include "crsf_config.h"
 #include "stdint.h"
 #include "crsf_protocol.h"
 #include "crsf_telemetry.h"
 
 #define CRSF_FAILSAFE_STAGE1_MS 300
+
+typedef struct flightMode_s
+{
+	char name[CRSF_FRAME_FLIGHT_MODE_PAYLOAD_SIZE];
+	uint8_t channel;
+	uint16_t min;
+	uint16_t max;
+} flightMode_t;
+
+typedef enum flightModeId_e
+{
+	FLIGHT_MODE_DISARMED = 0,
+	FLIGHT_MODE_ACRO,
+	FLIGHT_MODE_WAIT,
+	FLIGHT_MODE_FAILSAFE,
+	FLIGHT_MODE_GPS_RESCUE,
+	FLIGHT_MODE_PASSTHROUGH,
+	FLIGHT_MODE_ANGLE,
+	FLIGHT_MODE_HORIZON,
+	FLIGHT_MODE_AIRMODE,
+
+	CUSTOM_FLIGHT_MODE1,
+	CUSTOM_FLIGHT_MODE2,
+	CUSTOM_FLIGHT_MODE3,
+	CUSTOM_FLIGHT_MODE4,
+	CUSTOM_FLIGHT_MODE5,
+	CUSTOM_FLIGHT_MODE6,
+	CUSTOM_FLIGHT_MODE7,
+	CUSTOM_FLIGHT_MODE8,
+
+	FLIGHT_MODE_COUNT
+} flightModeId_t;
 
 typedef struct rcChannels_s
 {
@@ -57,6 +90,9 @@ typedef struct crsf_s{
 	crsf_telemetry_t telemetry;
 
 	uint32_t _lastChannelsPacket;
+#if CRSF_FLIGHTMODES_ENABLED > 0
+	flightMode_t _flightModes[FLIGHT_MODE_COUNT];
+#endif
 }crsf_t;
 
 int crsf_init(crsf_t *crsf,
@@ -71,6 +107,8 @@ int crsf_update(crsf_t *crsf, uint8_t rxByte);
 
 void crsf_getLinkStatistics(crsf_t *crsf, crsf_link_statistics_t *linkStats);
 void crsf_getRcChannels(crsf_t *crsf, rcChannels_t* rc_channels);
+uint16_t crsf_getRcChannel(crsf_t *crsf, rc_channels_t channel);
+int crsf_isRcDataValid(crsf_t *crsf);
 int crsf_getFailSafe(crsf_t *crsf);
 int crsf_isLinkUp(crsf_t *crsf);
 
@@ -78,10 +116,10 @@ int crsf_isLinkUp(crsf_t *crsf);
 void crsf_setAttitudeData(crsf_t *crsf, int16_t roll_rad, int16_t pitch_rad, int16_t yaw_rad);
 void crsf_setBaroAltitudeData(crsf_t *crsf, uint16_t altitude, int16_t vario);
 void crsf_setBatteryData(crsf_t *crsf, float voltage, float current, uint32_t capacity, uint8_t percent);
-
-// strlen(flightMode) must be less than CRSF_FRAME_FLIGHT_MODE_PAYLOAD_SIZE
-void crsf_setFlightModeData(crsf_t *crsf, char *flightMode, int armed_bool);
-
 void crsf_setGPSData(crsf_t *crsf, float latitude, float longitude, float altitude, float speed, float course, uint8_t satellites);
+
+#if CRSF_FLIGHTMODES_ENABLED > 0
+void crsf_setFlightModeData(crsf_t *crsf, flightModeId_t flightMode, int disarmed);
+#endif
 
 #endif

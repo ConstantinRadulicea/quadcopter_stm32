@@ -31,7 +31,7 @@ void crsf_telemetry_setAttitudeData(crsf_telemetry_t *crsf_telemetry, int16_t ro
 void crsf_telemetry_setBaroAltitudeData(crsf_telemetry_t *crsf_telemetry, uint16_t altitude, int16_t vario);
 void crsf_telemetry_setBatteryData(crsf_telemetry_t *crsf_telemetry, float voltage, float current, uint32_t capacity, uint8_t percent);
 
-// strlen(flightMode) must be less than CRSF_FRAME_FLIGHT_MODE_PAYLOAD_SIZE
+// strlen(flightMode) must be less than CRSF_FRAME_FLIGHT_MODE_PAYLOAD_SIZE - 2
 void crsf_telemetry_setFlightModeData(crsf_telemetry_t *crsf_telemetry, char *flightMode, int armed_bool);
 
 void crsf_telemetry_setGPSData(crsf_telemetry_t *crsf_telemetry, float latitude, float longitude, float altitude, float speed, float course, uint8_t satellites);

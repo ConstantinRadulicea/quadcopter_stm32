@@ -231,7 +231,7 @@ int crsf_update(crsf_t *crsf, uint8_t rxByte){
 #endif
 
 #if CRSF_RC_ENABLED > 0
-		crsf->_rcChannels.failsafe = _crsf_getFailSafe(crsf);
+		crsf->_rcChannels.failsafe = crsf_getFailSafe(crsf);
 		_crsf_getRcChannels(crsf, crsf->_rcChannels.value);
 //		if (_rcChannelsCallback != nullptr)
 //		{
@@ -257,6 +257,60 @@ int crsf_update(crsf_t *crsf, uint8_t rxByte){
 
 
 
+#if CRSF_FLIGHTMODES_ENABLED > 0
+    void crsf_setFlightModeData(crsf_t *crsf, flightModeId_t flightMode, int disarmed)
+    {
+    	char flightModeStr[CRSF_FRAME_FLIGHT_MODE_PAYLOAD_SIZE];
+        if (flightMode != FLIGHT_MODE_DISARMED)
+        {
+            switch (flightMode)
+            {
+                case FLIGHT_MODE_FAILSAFE:
+                	strncpy(flightModeStr, "!FS!", CRSF_FRAME_FLIGHT_MODE_PAYLOAD_SIZE-2);
+                    break;
+                case FLIGHT_MODE_GPS_RESCUE:
+                	strncpy(flightModeStr, "RTH", CRSF_FRAME_FLIGHT_MODE_PAYLOAD_SIZE-2);
+                    break;
+                case FLIGHT_MODE_PASSTHROUGH:
+                	strncpy(flightModeStr, "MANU", CRSF_FRAME_FLIGHT_MODE_PAYLOAD_SIZE-2);
+                    break;
+                case FLIGHT_MODE_ANGLE:
+                	strncpy(flightModeStr, "STAB", CRSF_FRAME_FLIGHT_MODE_PAYLOAD_SIZE-2);
+                    break;
+                case FLIGHT_MODE_HORIZON:
+                	strncpy(flightModeStr, "HOR", CRSF_FRAME_FLIGHT_MODE_PAYLOAD_SIZE-2);
+                    break;
+                case FLIGHT_MODE_AIRMODE:
+                	strncpy(flightModeStr, "AIR", CRSF_FRAME_FLIGHT_MODE_PAYLOAD_SIZE-2);
+                    break;
+
+                /* All 8 custom flight modes are handled here. */
+                case CUSTOM_FLIGHT_MODE1:
+                case CUSTOM_FLIGHT_MODE2:
+                case CUSTOM_FLIGHT_MODE3:
+                case CUSTOM_FLIGHT_MODE4:
+                case CUSTOM_FLIGHT_MODE5:
+                case CUSTOM_FLIGHT_MODE6:
+                case CUSTOM_FLIGHT_MODE7:
+                case CUSTOM_FLIGHT_MODE8:
+                	strncpy(flightModeStr, crsf->_flightModes[flightMode].name, CRSF_FRAME_FLIGHT_MODE_PAYLOAD_SIZE-2);
+                    break;
+
+                default:
+                	strncpy(flightModeStr, "ACRO", CRSF_FRAME_FLIGHT_MODE_PAYLOAD_SIZE-2);
+                    break;
+            }
+        }
+        else
+        {
+            disarmed = 1;
+        }
+
+		crsf_telemetry_setFlightModeData(&(crsf->telemetry), flightModeStr, disarmed);
+    }
+#endif
+
+
 void crsf_setAttitudeData(crsf_t *crsf, int16_t roll_rad, int16_t pitch_rad, int16_t yaw_rad){
 	return crsf_telemetry_setAttitudeData(&(crsf->telemetry), roll_rad, pitch_rad, yaw_rad);
 }
@@ -267,13 +321,22 @@ void crsf_setBatteryData(crsf_t *crsf, float voltage, float current, uint32_t ca
 	return crsf_telemetry_setBatteryData(&(crsf->telemetry), voltage, current, capacity, percent);
 }
 
-// strlen(flightMode) must be less than CRSF_FRAME_FLIGHT_MODE_PAYLOAD_SIZE
-void crsf_setFlightModeData(crsf_t *crsf, char *flightMode, int armed_bool){
-	return crsf_telemetry_setFlightModeData(&(crsf->telemetry), flightMode, armed_bool);
-}
-
 void crsf_setGPSData(crsf_t *crsf, float latitude, float longitude, float altitude, float speed, float course, uint8_t satellites){
 	return crsf_telemetry_setGPSData(&(crsf->telemetry), latitude, longitude, altitude, speed, course, satellites);
 }
 
+
+uint16_t crsf_getRcChannel(crsf_t *crsf, rc_channels_t channel){
+	if (channel >= RC_CHANNEL_COUNT ||
+			crsf->_rcChannels.valid == 0)
+	{
+		return 0;
+	}
+	uint16_t channel_value = crsf->_rcChannels.value[(int)channel];
+	return channel_value;
+}
+
+int crsf_isRcDataValid(crsf_t *crsf){
+	return crsf->_rcChannels.valid;
+}
 

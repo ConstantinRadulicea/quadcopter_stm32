@@ -9,8 +9,9 @@
 ../Core/Lib/crsf/crsf.c:198:13:crsf_checkLinkDown	3
 ../Core/Lib/crsf/crsf.c:207:5:crsf_isLinkUp	1
 ../Core/Lib/crsf/crsf.c:213:5:crsf_update	2
-../Core/Lib/crsf/crsf.c:260:6:crsf_setAttitudeData	1
-../Core/Lib/crsf/crsf.c:263:6:crsf_setBaroAltitudeData	1
-../Core/Lib/crsf/crsf.c:266:6:crsf_setBatteryData	1
-../Core/Lib/crsf/crsf.c:271:6:crsf_setFlightModeData	1
-../Core/Lib/crsf/crsf.c:275:6:crsf_setGPSData	1
+../Core/Lib/crsf/crsf.c:314:6:crsf_setAttitudeData	1
+../Core/Lib/crsf/crsf.c:317:6:crsf_setBaroAltitudeData	1
+../Core/Lib/crsf/crsf.c:320:6:crsf_setBatteryData	1
+../Core/Lib/crsf/crsf.c:324:6:crsf_setGPSData	1
+../Core/Lib/crsf/crsf.c:329:10:crsf_getRcChannel	3
+../Core/Lib/crsf/crsf.c:339:5:crsf_isRcDataValid	1

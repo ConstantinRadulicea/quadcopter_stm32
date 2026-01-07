@@ -93,7 +93,7 @@ information back to your controller. */
 Enables or disables the Custom Flight Modes.
 When enabled, this allows you to implement flight modes with custom names
 and assign them to a switch on your controller. */
-#define CRSF_CUSTOM_FLIGHT_MODES_ENABLED 0
+#define CRSF_CUSTOM_FLIGHT_MODES_ENABLED 1
 
 /* Telemetry Options
 - TELEMETRY_ENABLED: Enables or disables the Telemetry API.
