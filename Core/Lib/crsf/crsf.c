@@ -11,9 +11,9 @@ void crsf_set_output_cb_fn(crsf_t *crsf, crsf_output_cb_fn fn, void *ctx){
 	crsf->crsf_output_cb_fn_ctx = ctx;
 }
 
-int crsf_init(crsf_t *crsf, uint32_t frame_rate_hz, crsf_sys_now_us_cb_fn sys_now_us, crsf_output_cb_fn crsf_output, void* crsf_output_cb_fn_ctx){
+int8_t crsf_init(crsf_t *crsf, uint32_t frame_rate_hz, crsf_sys_now_us_cb_fn sys_now_us, crsf_output_cb_fn crsf_output, void* crsf_output_cb_fn_ctx){
 	if(crsf == NULL) {
-		return 1;
+		return (int8_t)1;
 	}
 	memset(crsf, 0, sizeof(*crsf));
 
@@ -21,19 +21,19 @@ int crsf_init(crsf_t *crsf, uint32_t frame_rate_hz, crsf_sys_now_us_cb_fn sys_no
 			crsf_output == NULL ||
 			frame_rate_hz == 0)
 	{
-		return 1;
+		return (int8_t)1;
 	}
 
 	crsf_set_output_cb_fn(crsf, crsf_output, crsf_output_cb_fn_ctx);
 	crsf->frame_rate_hz = frame_rate_hz;
 	crsf->sys_now_us = sys_now_us;
 	crsf_telemetry_init(&(crsf->telemetry));
-	return 0;
+	return (int8_t)0;
 }
 
 
 // returns 1 when a frame is received valid
-static int crsf_receive_frame(crsf_t *crsf, uint8_t rxByte)
+static int8_t crsf_receive_frame(crsf_t *crsf, uint8_t rxByte)
 {
 	uint8_t framePosition = crsf->rx_frame_position;
 	uint32_t frameStartTime = crsf->rx_frame_start_time_us;
@@ -132,16 +132,16 @@ static int crsf_receive_frame(crsf_t *crsf, uint8_t rxByte)
 }
 
 
-int crsf_getFailSafe(crsf_t *crsf)
+int8_t crsf_getFailSafe(crsf_t *crsf)
 {
     /* Set the failsafe flag based on the link statistics thresholds. */
     if (crsf->linkStatistics.lqi <= CRSF_FAILSAFE_LQI_THRESHOLD || crsf->linkStatistics.rssi >= CRSF_FAILSAFE_RSSI_THRESHOLD)
     {
-        return 1;
+        return (int8_t)1;
     }
     else
     {
-    	return 0;
+    	return (int8_t)0;
     }
 }
 
@@ -204,16 +204,59 @@ static void crsf_checkLinkDown(crsf_t *crsf)
     }
 }
 
-int crsf_isLinkUp(crsf_t *crsf){
+int8_t crsf_isLinkUp(crsf_t *crsf){
 	return crsf->_linkIsUp;
 }
 
 
 
-int crsf_update(crsf_t *crsf, uint8_t rxByte){
+/**
+ * @brief Updates the is_armed state based on the configured switch and throttle safety.
+ * Call this function immediately after parsing a new RC frame.
+ */
+void crsf_update_arming_state(crsf_t *dev) {
+    if (!dev) return;
+
+    // 1. Get the current value of the configured Arm Switch
+    // Assuming _rcChannels contains a 'channels' array of floats
+    // normalized between -1.0 and 1.0
+    float arm_switch_val = dev->_rcChannels.value[CRSF_ARM_CHANNEL_INDEX];
+
+    // 2. Get the current Throttle value (for safety check)
+    float throttle_val = dev->_rcChannels.value[RC_CHANNEL_THROTTLE];
+
+    // 3. Logic Implementation
+
+    // CASE A: Switch is LOW (Disarm Command)
+    if (arm_switch_val < CRSF_ARM_THRESHOLD_RC) {
+        // Always disarm immediately if switch is low
+        dev->is_armed = 0;
+    }
+    // CASE B: Switch is HIGH (Arm Command)
+    // Only proceed if we are currently DISARMED (to perform the safety check once)
+    else if (dev->is_armed == 0) {
+
+        // SAFETY CHECK: PRE-ARM
+        // Only allow arming if the throttle stick is at the bottom.
+        // This prevents the drone from spinning up unexpectedly.
+        if (throttle_val < CRSF_SAFE_THROTTLE_VAL_RC) {
+            dev->is_armed = 1;
+        }
+    }
+    // CASE C: Already Armed and Switch is High -> Stay Armed
+    // (No code needed, state remains 1)
+}
+
+int8_t crsf_isArmed(crsf_t *crsf){
+	return crsf->is_armed;
+}
+
+
+
+int8_t crsf_update(crsf_t *crsf, uint8_t rxByte){
 
 	uint8_t byteReceived = (uint8_t)rxByte;
-	int frame_received =  crsf_receive_frame(crsf, byteReceived);
+	int8_t frame_received =  crsf_receive_frame(crsf, byteReceived);
 	if (frame_received)
 	{
 		//flushRemainingFrames();
@@ -231,8 +274,9 @@ int crsf_update(crsf_t *crsf, uint8_t rxByte){
 #endif
 
 #if CRSF_RC_ENABLED > 0
-		crsf->_rcChannels.failsafe = crsf_getFailSafe(crsf);
+//		crsf->_rcChannels.failsafe = crsf_getFailSafe(crsf);
 		_crsf_getRcChannels(crsf, crsf->_rcChannels.value);
+		crsf_update_arming_state(crsf);
 //		if (_rcChannelsCallback != nullptr)
 //		{
 //			rcChannelsCallback(_rcChannels);
@@ -258,7 +302,7 @@ int crsf_update(crsf_t *crsf, uint8_t rxByte){
 
 
 #if CRSF_FLIGHTMODES_ENABLED > 0
-    void crsf_setFlightModeData(crsf_t *crsf, flightModeId_t flightMode, int disarmed)
+    void crsf_setFlightModeData(crsf_t *crsf, flightModeId_t flightMode, int8_t disarmed)
     {
     	char flightModeStr[CRSF_FRAME_FLIGHT_MODE_PAYLOAD_SIZE];
         if (flightMode != FLIGHT_MODE_DISARMED)
@@ -336,7 +380,95 @@ uint16_t crsf_getRcChannel(crsf_t *crsf, rc_channels_t channel){
 	return channel_value;
 }
 
-int crsf_isRcDataValid(crsf_t *crsf){
+int8_t crsf_isRcDataValid(crsf_t *crsf){
 	return crsf->_rcChannels.valid;
 }
+
+
+/* Convert RC value from raw to microseconds.
+- Minimum: 172 (988us)
+- Middle: 992 (1500us)
+- Maximum: 1811 (2012us)
+- Scale factor = (2012 - 988) / (1811 - 172) = 0.62477120195241
+- Offset = 988 - 172 * 0.62477120195241 = 880.53935326418548
+*/
+uint16_t crsf_rcToUs(uint16_t rc)
+{
+	float factor = (float)(CRSF_US_CHANNEL_MAX - CRSF_US_CHANNEL_MIN) / (float)(CRSF_RC_CHANNEL_MAX - CRSF_RC_CHANNEL_MIN);
+	float offset = (float)(CRSF_RC_CHANNEL_MIN) * factor;
+	return (uint16_t)(((float)rc * factor) + offset);
+//    return (uint16_t)((rc * 0.62477120195241f) + 881);
+}
+
+uint16_t crsf_usToRc(uint16_t us)
+{
+	float factor = (float)(CRSF_US_CHANNEL_MAX - CRSF_US_CHANNEL_MIN) / (float)(CRSF_RC_CHANNEL_MAX - CRSF_RC_CHANNEL_MIN);
+	float offset = (float)(CRSF_RC_CHANNEL_MIN) * factor;
+	return (uint16_t)(((float)us - offset) / factor);
+//    return (uint16_t)((us - 881) / 0.62477120195241f);
+}
+
+/**
+ * @brief Converts microseconds to normalized float (-1.0 to 1.0)
+ * @param us Input in microseconds (usually 988-2012)
+ * @return float Value between -1.0f and 1.0f
+ */
+float crsf_usToNormalized(uint16_t us) {
+	float factor = 1.0f / (CRSF_US_CHANNEL_MAX - CRSF_US_CHANNEL_CENTER);
+    // Use float literal 1500.0f to ensure floating point subtraction
+    float val = ((float)us - (float)CRSF_US_CHANNEL_CENTER) * factor;
+
+    // 2. Clamp (Saturation)
+    // Ensures value never exceeds -1.0 or 1.0 due to jitter or extended travel
+    if (val > 1.0f) {
+        return 1.0f;
+    } else if (val < -1.0f) {
+        return -1.0f;
+    }
+
+    return val;
+}
+
+
+/**
+ * @brief Converts raw CRSF (11-bit) directly to float (-1.0 to 1.0)
+ * Skips the intermediate microsecond conversion for speed.
+ */
+
+float crsf_rcToNormalized(uint16_t us) {
+	float factor = 1.0f / (CRSF_RC_CHANNEL_MAX - CRSF_RC_CHANNEL_CENTER);
+    float val = ((float)us - (float)CRSF_RC_CHANNEL_CENTER) * factor;
+
+    // 2. Clamp (Saturation)
+    // Ensures value never exceeds -1.0 or 1.0 due to jitter or extended travel
+    if (val > 1.0f) {
+        return 1.0f;
+    } else if (val < -1.0f) {
+        return -1.0f;
+    }
+
+    return val;
+}
+
+
+/**
+ * @brief Checks if a raw CRSF channel value is within valid bounds.
+ * @param raw The 11-bit channel value (0-2047)
+ * @return true if valid, false if likely garbage or connection loss
+ */
+int8_t crsf_isRcValueValid(uint16_t raw) {
+
+    // 2. Check Lower Bound
+    if (raw < (CRSF_RC_CHANNEL_MIN)) {
+        return 0;
+    }
+
+    // 3. Check Upper Bound
+    if (raw > (CRSF_RC_CHANNEL_MAX)) {
+        return 0;
+    }
+
+    return 1;
+}
+
 

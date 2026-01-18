@@ -3,69 +3,13 @@
 // https://github.com/tbs-fpv/tbs-crsf-spec/blob/main/crsf.md
 #include "crsf_config.h"
 #include "stdint.h"
+#include "stddef.h"
 #include "crsf_protocol.h"
 #include "crsf_telemetry.h"
 
-#define CRSF_FAILSAFE_STAGE1_MS 300
-
-typedef struct flightMode_s
-{
-	char name[CRSF_FRAME_FLIGHT_MODE_PAYLOAD_SIZE];
-	uint8_t channel;
-	uint16_t min;
-	uint16_t max;
-} flightMode_t;
-
-typedef enum flightModeId_e
-{
-	FLIGHT_MODE_DISARMED = 0,
-	FLIGHT_MODE_ACRO,
-	FLIGHT_MODE_WAIT,
-	FLIGHT_MODE_FAILSAFE,
-	FLIGHT_MODE_GPS_RESCUE,
-	FLIGHT_MODE_PASSTHROUGH,
-	FLIGHT_MODE_ANGLE,
-	FLIGHT_MODE_HORIZON,
-	FLIGHT_MODE_AIRMODE,
-
-	CUSTOM_FLIGHT_MODE1,
-	CUSTOM_FLIGHT_MODE2,
-	CUSTOM_FLIGHT_MODE3,
-	CUSTOM_FLIGHT_MODE4,
-	CUSTOM_FLIGHT_MODE5,
-	CUSTOM_FLIGHT_MODE6,
-	CUSTOM_FLIGHT_MODE7,
-	CUSTOM_FLIGHT_MODE8,
-
-	FLIGHT_MODE_COUNT
-} flightModeId_t;
-
-typedef struct rcChannels_s
-{
-	int valid : 1;
-    int failsafe : 1;
-    uint16_t value[RC_CHANNEL_COUNT];
-} rcChannels_t;
-
-typedef struct crsf_link_statistics_s
-{
-	int16_t rssi;
-	int16_t lqi;
-	int16_t snr;
-	int16_t tx_power;
-} crsf_link_statistics_t;
-
-const uint16_t crsf_tx_power_table[9] = {
-	0,    // 0 mW
-	10,   // 10 mW
-	25,   // 25 mW
- 	100,  // 100 mW
-	500,  // 500 mW
-	1000, // 1 W
-	2000, // 2 W
-	250,  // 250 mW
-	50    // 50 mW
-};
+#ifdef __cplusplus
+extern "C" {
+#endif
 
 struct crsf_s;
 
@@ -83,11 +27,13 @@ typedef struct crsf_s{
 	crsf_frame_t rxFrame;
 	crsf_frame_t rcChannelsFrame;
 	crsf_link_statistics_t linkStatistics;
-	int rcFrameReceived : 1;
-	int _linkIsUp : 1;
+	int8_t rcFrameReceived;
+	int8_t _linkIsUp;
 
 	rcChannels_t _rcChannels;
 	crsf_telemetry_t telemetry;
+
+	int8_t is_armed;
 
 	uint32_t _lastChannelsPacket;
 #if CRSF_FLIGHTMODES_ENABLED > 0
@@ -95,7 +41,7 @@ typedef struct crsf_s{
 #endif
 }crsf_t;
 
-int crsf_init(crsf_t *crsf,
+int8_t crsf_init(crsf_t *crsf,
 		uint32_t frame_rate_hz,
 		crsf_sys_now_us_cb_fn sys_now_us,
 		crsf_output_cb_fn crsf_output,
@@ -103,14 +49,15 @@ int crsf_init(crsf_t *crsf,
 		);
 
 void crsf_set_output_cb_fn(crsf_t *crsf, crsf_output_cb_fn fn, void *ctx);
-int crsf_update(crsf_t *crsf, uint8_t rxByte);
+int8_t crsf_update(crsf_t *crsf, uint8_t rxByte);
 
 void crsf_getLinkStatistics(crsf_t *crsf, crsf_link_statistics_t *linkStats);
 void crsf_getRcChannels(crsf_t *crsf, rcChannels_t* rc_channels);
 uint16_t crsf_getRcChannel(crsf_t *crsf, rc_channels_t channel);
-int crsf_isRcDataValid(crsf_t *crsf);
-int crsf_getFailSafe(crsf_t *crsf);
-int crsf_isLinkUp(crsf_t *crsf);
+int8_t crsf_isRcDataValid(crsf_t *crsf);
+int8_t crsf_getFailSafe(crsf_t *crsf);
+int8_t crsf_isLinkUp(crsf_t *crsf);
+int8_t crsf_isArmed(crsf_t *crsf);
 
 
 void crsf_setAttitudeData(crsf_t *crsf, int16_t roll_rad, int16_t pitch_rad, int16_t yaw_rad);
@@ -119,7 +66,118 @@ void crsf_setBatteryData(crsf_t *crsf, float voltage, float current, uint32_t ca
 void crsf_setGPSData(crsf_t *crsf, float latitude, float longitude, float altitude, float speed, float course, uint8_t satellites);
 
 #if CRSF_FLIGHTMODES_ENABLED > 0
-void crsf_setFlightModeData(crsf_t *crsf, flightModeId_t flightMode, int disarmed);
+void crsf_setFlightModeData(crsf_t *crsf, flightModeId_t flightMode, int8_t disarmed);
+#endif
+
+/* Convert RC value from raw to microseconds.
+- Minimum: 172 (988us)
+- Middle: 992 (1500us)
+- Maximum: 1811 (2012us)
+- Scale factor = (2012 - 988) / (1811 - 172) = 0.62477120195241
+- Offset = 988 - 172 * 0.62477120195241 = 880.53935326418548
+*/
+uint16_t crsf_rcToUs(uint16_t rc);
+
+uint16_t crsf_usToRc(uint16_t us);
+
+
+/**
+ * @brief Converts microseconds to normalized float (-1.0 to 1.0)
+ * @param us Input in microseconds (usually 988-2012)
+ * @return float Value between -1.0f and 1.0f
+ */
+float crsf_usToNormalized(uint16_t us);
+
+
+/**
+ * @brief Converts raw CRSF (11-bit) directly to float (-1.0 to 1.0)
+ * Skips the intermediate microsecond conversion for speed.
+ */
+
+float crsf_rcToNormalized(uint16_t us);
+
+
+/**
+ * @brief Checks if a raw CRSF channel value is within valid bounds.
+ * @param raw The 11-bit channel value (0-2047)
+ * @return true if valid, false if likely garbage or connection loss
+ */
+int8_t crsf_isRcValueValid(uint16_t raw);
+
+
+/* //////////////////////////////////////////Examples////////////////////////////////////////////////////  */
+
+
+uint32_t crsf_sys_now_example(void){
+	static int temp_time = 0;
+	temp_time += 1;
+	return temp_time;
+
+
+//    // Get current kernel tick count and tick frequency
+//    uint32_t ticks      = osKernelGetTickCount();
+//    uint32_t tick_freq  = osKernelGetTickFreq();  // ticks per second
+//
+//    // Convert ticks to milliseconds safely and portably
+//    return (uint32_t)((ticks * 1000U) / tick_freq) * 1000;
+}
+
+uint32_t crsf_output_cb_fn_example(crsf_t *crsf, const void *data, uint32_t len, void *ctx) {
+	return len;
+
+//	(void) crsf;
+//	(void) ctx;
+//	return uart_send_data(&usart1_driver, (char*)data, len);
+}
+
+static void crsf_loop_example(){
+	crsf_t crsf;
+	uint32_t frame_rate_hz = 250;
+	char rx_data = 'a';
+	int8_t crsf_result;
+	uint16_t raw_channel_data;
+	float roll;
+	float pitch;
+	float yaw;
+	int8_t failsafe;
+	int8_t is_armed;
+	int8_t isLinkUp = 0;
+
+	crsf_init(&crsf, frame_rate_hz, crsf_sys_now_example, crsf_output_cb_fn_example, NULL);
+
+	for(;;) {
+		crsf_result = crsf_update(&crsf, rx_data);
+		if(crsf_result != 0){ // new frame was received
+
+			roll = 0.0f;
+			pitch = 0.0f;
+			yaw = 0.0f;
+			failsafe = 0;
+			is_armed = 0;
+
+			raw_channel_data = crsf_getRcChannel(&crsf, RC_CHANNEL_ROLL);
+			roll = crsf_rcToNormalized(raw_channel_data);
+
+			raw_channel_data = crsf_getRcChannel(&crsf, RC_CHANNEL_PITCH);
+			pitch = crsf_rcToNormalized(raw_channel_data);
+
+			raw_channel_data = crsf_getRcChannel(&crsf, RC_CHANNEL_YAW);
+			yaw = crsf_rcToNormalized(raw_channel_data);
+
+			failsafe = crsf_getFailSafe(&crsf);
+
+			is_armed = crsf_isArmed(&crsf);
+
+			crsf_setFlightModeData(&crsf, FLIGHT_MODE_ANGLE, is_armed);
+		}
+		isLinkUp = crsf_isLinkUp(&crsf);
+	}
+}
+
+
+
+#ifdef __cplusplus
+}
 #endif
 
 #endif

@@ -61,13 +61,3 @@ uint32_t writeU24BE(uint8_t* buffer, uint32_t value)
 }
 
 
-
-uint16_t crsf_rcToUs(uint16_t rc)
-{
-    return (uint16_t)((rc * 0.62477120195241F) + 881);
-}
-
-uint16_t crsf_usToRc(uint16_t us)
-{
-    return (uint16_t)((us - 881) / 0.62477120195241F);
-}

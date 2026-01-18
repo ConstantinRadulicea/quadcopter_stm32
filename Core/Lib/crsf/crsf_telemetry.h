@@ -3,6 +3,10 @@
 
 #include "crsf_protocol.h"
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 #define TELEMETRY_TX_BUFFER_SIZE CRSF_FRAME_SIZE_MAX
 
 typedef struct crsf_telemetry_s{
@@ -36,5 +40,8 @@ void crsf_telemetry_setFlightModeData(crsf_telemetry_t *crsf_telemetry, char *fl
 
 void crsf_telemetry_setGPSData(crsf_telemetry_t *crsf_telemetry, float latitude, float longitude, float altitude, float speed, float course, uint8_t satellites);
 
+#ifdef __cplusplus
+}
+#endif
 
 #endif

@@ -113,7 +113,7 @@ C:/ST/STM32CubeIDE_1.18.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.external
 C:/ST/STM32CubeIDE_1.18.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-strncmp.o)
                               ./Core/Lib/lwshell/lwshell/src/lwshell/lwshell.o (strncmp)
 C:/ST/STM32CubeIDE_1.18.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-strncpy.o)
-                              ./Core/Lib/mpu6500/src/driver_mpu6500.o (strncpy)
+                              ./Core/Lib/crsf/crsf.o (strncpy)
 C:/ST/STM32CubeIDE_1.18.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-u_strerr.o)
                               C:/ST/STM32CubeIDE_1.18.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-strerror.o) (_user_strerror)
 C:/ST/STM32CubeIDE_1.18.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-localeconv.o)
@@ -282,28 +282,41 @@ Discarded input sections
  .bss           0x00000000        0x0 ./Core/Lib/crsf/crsf.o
  .rodata.crsf_tx_power_table
                 0x00000000       0x12 ./Core/Lib/crsf/crsf.o
+ .text.crsf_sys_now_example
+                0x00000000       0x20 ./Core/Lib/crsf/crsf.o
+ .text.crsf_output_cb_fn_example
+                0x00000000       0x1c ./Core/Lib/crsf/crsf.o
+ .text.crsf_loop_example
+                0x00000000      0x108 ./Core/Lib/crsf/crsf.o
  .text.crsf_set_output_cb_fn
                 0x00000000       0x24 ./Core/Lib/crsf/crsf.o
  .text.crsf_init
                 0x00000000       0x64 ./Core/Lib/crsf/crsf.o
  .text.crsf_receive_frame
-                0x00000000      0x1d4 ./Core/Lib/crsf/crsf.o
+                0x00000000      0x1cc ./Core/Lib/crsf/crsf.o
  .text.crsf_getFailSafe
                 0x00000000       0x2e ./Core/Lib/crsf/crsf.o
  .text._crsf_getRcChannels
-                0x00000000      0x16a ./Core/Lib/crsf/crsf.o
+                0x00000000      0x15e ./Core/Lib/crsf/crsf.o
  .text.crsf_getLinkStatistics
                 0x00000000       0x20 ./Core/Lib/crsf/crsf.o
  .text.crsf_getRcChannels
                 0x00000000       0x20 ./Core/Lib/crsf/crsf.o
  .text.crsf_setLinkUp
-                0x00000000       0x2c ./Core/Lib/crsf/crsf.o
+                0x00000000       0x26 ./Core/Lib/crsf/crsf.o
  .text.crsf_checkLinkDown
-                0x00000000       0x44 ./Core/Lib/crsf/crsf.o
+                0x00000000       0x38 ./Core/Lib/crsf/crsf.o
  .text.crsf_isLinkUp
-                0x00000000       0x20 ./Core/Lib/crsf/crsf.o
+                0x00000000       0x1a ./Core/Lib/crsf/crsf.o
+ .text.crsf_update_arming_state
+                0x00000000       0x88 ./Core/Lib/crsf/crsf.o
+ .text.crsf_isArmed
+                0x00000000       0x1a ./Core/Lib/crsf/crsf.o
  .text.crsf_update
-                0x00000000       0xa2 ./Core/Lib/crsf/crsf.o
+                0x00000000       0x90 ./Core/Lib/crsf/crsf.o
+ .rodata        0x00000000       0x29 ./Core/Lib/crsf/crsf.o
+ .text.crsf_setFlightModeData
+                0x00000000      0x128 ./Core/Lib/crsf/crsf.o
  .text.crsf_setAttitudeData
                 0x00000000       0x36 ./Core/Lib/crsf/crsf.o
  .text.crsf_setBaroAltitudeData
@@ -316,27 +329,39 @@ Discarded input sections
                 0x00000000       0x42 ./Core/Lib/crsf/crsf.o
  .text.crsf_isRcDataValid
                 0x00000000       0x20 ./Core/Lib/crsf/crsf.o
- .debug_info    0x00000000     0x10ed ./Core/Lib/crsf/crsf.o
- .debug_abbrev  0x00000000      0x35f ./Core/Lib/crsf/crsf.o
+ .text.crsf_rcToUs
+                0x00000000       0x58 ./Core/Lib/crsf/crsf.o
+ .text.crsf_usToRc
+                0x00000000       0x58 ./Core/Lib/crsf/crsf.o
+ .text.crsf_usToNormalized
+                0x00000000       0x78 ./Core/Lib/crsf/crsf.o
+ .text.crsf_rcToNormalized
+                0x00000000       0x7c ./Core/Lib/crsf/crsf.o
+ .text.crsf_isRcValueValid
+                0x00000000       0x30 ./Core/Lib/crsf/crsf.o
+ .bss.temp_time.0
+                0x00000000        0x4 ./Core/Lib/crsf/crsf.o
+ .debug_info    0x00000000     0x153b ./Core/Lib/crsf/crsf.o
+ .debug_abbrev  0x00000000      0x3c1 ./Core/Lib/crsf/crsf.o
  .debug_aranges
-                0x00000000       0xa0 ./Core/Lib/crsf/crsf.o
+                0x00000000       0xf8 ./Core/Lib/crsf/crsf.o
  .debug_rnglists
-                0x00000000       0x76 ./Core/Lib/crsf/crsf.o
- .debug_macro   0x00000000      0x188 ./Core/Lib/crsf/crsf.o
+                0x00000000       0xbb ./Core/Lib/crsf/crsf.o
+ .debug_macro   0x00000000      0x194 ./Core/Lib/crsf/crsf.o
  .debug_macro   0x00000000      0xad8 ./Core/Lib/crsf/crsf.o
- .debug_macro   0x00000000       0xbb ./Core/Lib/crsf/crsf.o
+ .debug_macro   0x00000000       0xe1 ./Core/Lib/crsf/crsf.o
  .debug_macro   0x00000000       0x22 ./Core/Lib/crsf/crsf.o
  .debug_macro   0x00000000       0x8e ./Core/Lib/crsf/crsf.o
  .debug_macro   0x00000000       0x51 ./Core/Lib/crsf/crsf.o
  .debug_macro   0x00000000      0x103 ./Core/Lib/crsf/crsf.o
  .debug_macro   0x00000000       0x6a ./Core/Lib/crsf/crsf.o
  .debug_macro   0x00000000      0x1df ./Core/Lib/crsf/crsf.o
+ .debug_macro   0x00000000      0x190 ./Core/Lib/crsf/crsf.o
  .debug_macro   0x00000000       0x10 ./Core/Lib/crsf/crsf.o
  .debug_macro   0x00000000       0x61 ./Core/Lib/crsf/crsf.o
  .debug_macro   0x00000000       0x2a ./Core/Lib/crsf/crsf.o
  .debug_macro   0x00000000       0x43 ./Core/Lib/crsf/crsf.o
  .debug_macro   0x00000000       0x34 ./Core/Lib/crsf/crsf.o
- .debug_macro   0x00000000      0x190 ./Core/Lib/crsf/crsf.o
  .debug_macro   0x00000000      0x370 ./Core/Lib/crsf/crsf.o
  .debug_macro   0x00000000       0x16 ./Core/Lib/crsf/crsf.o
  .debug_macro   0x00000000       0x4a ./Core/Lib/crsf/crsf.o
@@ -351,10 +376,10 @@ Discarded input sections
  .debug_macro   0x00000000       0x20 ./Core/Lib/crsf/crsf.o
  .debug_macro   0x00000000       0x22 ./Core/Lib/crsf/crsf.o
  .debug_macro   0x00000000       0x6a ./Core/Lib/crsf/crsf.o
- .debug_line    0x00000000      0xa25 ./Core/Lib/crsf/crsf.o
- .debug_str     0x00000000     0x8e52 ./Core/Lib/crsf/crsf.o
+ .debug_line    0x00000000      0xc1d ./Core/Lib/crsf/crsf.o
+ .debug_str     0x00000000     0x917a ./Core/Lib/crsf/crsf.o
  .comment       0x00000000       0x44 ./Core/Lib/crsf/crsf.o
- .debug_frame   0x00000000      0x294 ./Core/Lib/crsf/crsf.o
+ .debug_frame   0x00000000      0x438 ./Core/Lib/crsf/crsf.o
  .ARM.attributes
                 0x00000000       0x34 ./Core/Lib/crsf/crsf.o
  .group         0x00000000        0xc ./Core/Lib/crsf/crsf_def.o
@@ -374,16 +399,12 @@ Discarded input sections
                 0x00000000       0x32 ./Core/Lib/crsf/crsf_def.o
  .text.writeU24BE
                 0x00000000       0x38 ./Core/Lib/crsf/crsf_def.o
- .text.crsf_rcToUs
-                0x00000000       0x44 ./Core/Lib/crsf/crsf_def.o
- .text.crsf_usToRc
-                0x00000000       0x3c ./Core/Lib/crsf/crsf_def.o
- .debug_info    0x00000000      0x18a ./Core/Lib/crsf/crsf_def.o
- .debug_abbrev  0x00000000       0xa2 ./Core/Lib/crsf/crsf_def.o
+ .debug_info    0x00000000      0x13a ./Core/Lib/crsf/crsf_def.o
+ .debug_abbrev  0x00000000       0xa3 ./Core/Lib/crsf/crsf_def.o
  .debug_aranges
-                0x00000000       0x40 ./Core/Lib/crsf/crsf_def.o
+                0x00000000       0x30 ./Core/Lib/crsf/crsf_def.o
  .debug_rnglists
-                0x00000000       0x2b ./Core/Lib/crsf/crsf_def.o
+                0x00000000       0x1f ./Core/Lib/crsf/crsf_def.o
  .debug_macro   0x00000000       0x72 ./Core/Lib/crsf/crsf_def.o
  .debug_macro   0x00000000      0xad8 ./Core/Lib/crsf/crsf_def.o
  .debug_macro   0x00000000       0x22 ./Core/Lib/crsf/crsf_def.o
@@ -393,13 +414,12 @@ Discarded input sections
  .debug_macro   0x00000000       0x6a ./Core/Lib/crsf/crsf_def.o
  .debug_macro   0x00000000      0x1df ./Core/Lib/crsf/crsf_def.o
  .debug_macro   0x00000000       0x6a ./Core/Lib/crsf/crsf_def.o
- .debug_line    0x00000000      0x49f ./Core/Lib/crsf/crsf_def.o
- .debug_str     0x00000000     0x417c ./Core/Lib/crsf/crsf_def.o
+ .debug_line    0x00000000      0x463 ./Core/Lib/crsf/crsf_def.o
+ .debug_str     0x00000000     0x4164 ./Core/Lib/crsf/crsf_def.o
  .comment       0x00000000       0x44 ./Core/Lib/crsf/crsf_def.o
- .debug_frame   0x00000000       0xd8 ./Core/Lib/crsf/crsf_def.o
+ .debug_frame   0x00000000       0x88 ./Core/Lib/crsf/crsf_def.o
  .ARM.attributes
                 0x00000000       0x34 ./Core/Lib/crsf/crsf_def.o
- .group         0x00000000        0xc ./Core/Lib/crsf/crsf_telemetry.o
  .group         0x00000000        0xc ./Core/Lib/crsf/crsf_telemetry.o
  .group         0x00000000        0xc ./Core/Lib/crsf/crsf_telemetry.o
  .group         0x00000000        0xc ./Core/Lib/crsf/crsf_telemetry.o
@@ -429,6 +449,8 @@ Discarded input sections
  .text          0x00000000        0x0 ./Core/Lib/crsf/crsf_telemetry.o
  .data          0x00000000        0x0 ./Core/Lib/crsf/crsf_telemetry.o
  .bss           0x00000000        0x0 ./Core/Lib/crsf/crsf_telemetry.o
+ .rodata.crsf_tx_power_table
+                0x00000000       0x12 ./Core/Lib/crsf/crsf_telemetry.o
  .text.WriteAttitudeDataFrame
                 0x00000000       0xd6 ./Core/Lib/crsf/crsf_telemetry.o
  .text.WriteBaroAltitudeDataFrame
@@ -453,20 +475,20 @@ Discarded input sections
  .text.crsf_telemetry_update
                 0x00000000      0x138 ./Core/Lib/crsf/crsf_telemetry.o
  .text.crsf_telemetry_init
-                0x00000000       0x86 ./Core/Lib/crsf/crsf_telemetry.o
+                0x00000000       0x46 ./Core/Lib/crsf/crsf_telemetry.o
  .text.crsf_telemetry_get_tx_data
                 0x00000000       0x3e ./Core/Lib/crsf/crsf_telemetry.o
  .text.crsf_telemetry_get_tx_data_size
                 0x00000000       0x3e ./Core/Lib/crsf/crsf_telemetry.o
  .text.crsf_telemetry_update_tx_data_sent
                 0x00000000       0x22 ./Core/Lib/crsf/crsf_telemetry.o
- .debug_info    0x00000000      0xa99 ./Core/Lib/crsf/crsf_telemetry.o
+ .debug_info    0x00000000      0xb3c ./Core/Lib/crsf/crsf_telemetry.o
  .debug_abbrev  0x00000000      0x255 ./Core/Lib/crsf/crsf_telemetry.o
  .debug_aranges
                 0x00000000       0x90 ./Core/Lib/crsf/crsf_telemetry.o
  .debug_rnglists
-                0x00000000       0x6f ./Core/Lib/crsf/crsf_telemetry.o
- .debug_macro   0x00000000      0x175 ./Core/Lib/crsf/crsf_telemetry.o
+                0x00000000       0x6e ./Core/Lib/crsf/crsf_telemetry.o
+ .debug_macro   0x00000000      0x16c ./Core/Lib/crsf/crsf_telemetry.o
  .debug_macro   0x00000000      0xad8 ./Core/Lib/crsf/crsf_telemetry.o
  .debug_macro   0x00000000       0x22 ./Core/Lib/crsf/crsf_telemetry.o
  .debug_macro   0x00000000       0x8e ./Core/Lib/crsf/crsf_telemetry.o
@@ -474,7 +496,6 @@ Discarded input sections
  .debug_macro   0x00000000      0x103 ./Core/Lib/crsf/crsf_telemetry.o
  .debug_macro   0x00000000       0x6a ./Core/Lib/crsf/crsf_telemetry.o
  .debug_macro   0x00000000      0x1df ./Core/Lib/crsf/crsf_telemetry.o
- .debug_macro   0x00000000       0xbb ./Core/Lib/crsf/crsf_telemetry.o
  .debug_macro   0x00000000       0x70 ./Core/Lib/crsf/crsf_telemetry.o
  .debug_macro   0x00000000      0x190 ./Core/Lib/crsf/crsf_telemetry.o
  .debug_macro   0x00000000       0x22 ./Core/Lib/crsf/crsf_telemetry.o
@@ -494,8 +515,8 @@ Discarded input sections
  .debug_macro   0x00000000       0x10 ./Core/Lib/crsf/crsf_telemetry.o
  .debug_macro   0x00000000       0x3c ./Core/Lib/crsf/crsf_telemetry.o
  .debug_macro   0x00000000       0x20 ./Core/Lib/crsf/crsf_telemetry.o
- .debug_line    0x00000000      0xb79 ./Core/Lib/crsf/crsf_telemetry.o
- .debug_str     0x00000000     0x869e ./Core/Lib/crsf/crsf_telemetry.o
+ .debug_line    0x00000000      0xb52 ./Core/Lib/crsf/crsf_telemetry.o
+ .debug_str     0x00000000     0x8410 ./Core/Lib/crsf/crsf_telemetry.o
  .comment       0x00000000       0x44 ./Core/Lib/crsf/crsf_telemetry.o
  .debug_frame   0x00000000      0x25c ./Core/Lib/crsf/crsf_telemetry.o
  .ARM.attributes

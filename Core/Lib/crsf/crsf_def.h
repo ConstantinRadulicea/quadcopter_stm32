@@ -98,8 +98,7 @@ uint32_t crsf_htonl(uint32_t x);
 
 
 uint32_t writeU24BE(uint8_t* buffer, uint32_t value);
-uint16_t crsf_rcToUs(uint16_t rc);
-uint16_t crsf_usToRc(uint16_t us);
+
 #ifdef __cplusplus
 }
 #endif

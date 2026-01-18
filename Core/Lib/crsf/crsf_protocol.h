@@ -24,14 +24,14 @@
 
 #include "stdint.h"
 
-#pragma once
+#ifndef CRSF_PROTOCOL_H
+#define CRSF_PROTOCOL_H
 
-#ifndef ENV_DEFECT_DETECTOR
-#include "crsf_config.h"
+#ifdef __cplusplus
+extern "C" {
 #endif
 
-//namespace crsfProtocol
-//{
+
 typedef enum rc_channels_e
     {
         RC_CHANNEL_ROLL = 0,
@@ -276,4 +276,68 @@ typedef enum rc_channels_e
         BAUD_RATE_LEGACY = 420000,
         BAUD_RATE = 416666
     };
-//} // namespace crsfProtocol
+
+    typedef struct flightMode_s
+    {
+    	char name[CRSF_FRAME_FLIGHT_MODE_PAYLOAD_SIZE];
+    	uint8_t channel;
+    	uint16_t min;
+    	uint16_t max;
+    } flightMode_t;
+
+    typedef enum flightModeId_e
+    {
+    	FLIGHT_MODE_DISARMED = 0,
+    	FLIGHT_MODE_ACRO,
+    	FLIGHT_MODE_WAIT,
+    	FLIGHT_MODE_FAILSAFE,
+    	FLIGHT_MODE_GPS_RESCUE,
+    	FLIGHT_MODE_PASSTHROUGH,
+    	FLIGHT_MODE_ANGLE,
+    	FLIGHT_MODE_HORIZON,
+    	FLIGHT_MODE_AIRMODE,
+
+    	CUSTOM_FLIGHT_MODE1,
+    	CUSTOM_FLIGHT_MODE2,
+    	CUSTOM_FLIGHT_MODE3,
+    	CUSTOM_FLIGHT_MODE4,
+    	CUSTOM_FLIGHT_MODE5,
+    	CUSTOM_FLIGHT_MODE6,
+    	CUSTOM_FLIGHT_MODE7,
+    	CUSTOM_FLIGHT_MODE8,
+
+    	FLIGHT_MODE_COUNT
+    } flightModeId_t;
+
+    typedef struct rcChannels_s
+    {
+    	int valid : 1;
+    //    int failsafe : 1;
+        uint16_t value[RC_CHANNEL_COUNT];
+    } rcChannels_t;
+
+    typedef struct crsf_link_statistics_s
+    {
+    	int16_t rssi;
+    	int16_t lqi;
+    	int16_t snr;
+    	int16_t tx_power;
+    } crsf_link_statistics_t;
+
+    static const uint16_t crsf_tx_power_table[9] = {
+    	0,    // 0 mW
+    	10,   // 10 mW
+    	25,   // 25 mW
+     	100,  // 100 mW
+    	500,  // 500 mW
+    	1000, // 1 W
+    	2000, // 2 W
+    	250,  // 250 mW
+    	50    // 50 mW
+    };
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#endif
