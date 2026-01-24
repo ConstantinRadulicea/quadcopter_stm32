@@ -109,8 +109,8 @@ int8_t crsf_isRcValueValid(uint16_t raw);
 
 
 uint32_t crsf_sys_now_example(void){
-	static int temp_time = 0;
-	temp_time += 1;
+	static uint32_t temp_time = 0;
+	temp_time += 1000;
 	return temp_time;
 
 
@@ -127,13 +127,14 @@ uint32_t crsf_output_cb_fn_example(crsf_t *crsf, const void *data, uint32_t len,
 
 //	(void) crsf;
 //	(void) ctx;
-//	return uart_send_data(&usart1_driver, (char*)data, len);
+//	return uart_send_data(&usart3_driver, (char*)data, len);
 }
 
 static void crsf_loop_example(){
 	crsf_t crsf;
 	uint32_t frame_rate_hz = 250;
-	char rx_data = 'a';
+	char rx_data = 0;
+	size_t rx_data_size = 0;
 	int8_t crsf_result;
 	uint16_t raw_channel_data;
 	float roll;
@@ -146,7 +147,12 @@ static void crsf_loop_example(){
 	crsf_init(&crsf, frame_rate_hz, crsf_sys_now_example, crsf_output_cb_fn_example, NULL);
 
 	for(;;) {
-		crsf_result = crsf_update(&crsf, rx_data);
+//		rx_data_size = uart_recv_data(&usart3_driver, rx_data, sizeof(rx_data));
+
+		crsf_result = 0;
+		if(rx_data_size > 0){
+			crsf_result = crsf_update(&crsf, rx_data);
+		}
 		if(crsf_result != 0){ // new frame was received
 
 			roll = 0.0f;

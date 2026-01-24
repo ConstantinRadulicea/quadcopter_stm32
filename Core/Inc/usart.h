@@ -34,16 +34,29 @@ extern "C" {
 
 extern UART_HandleTypeDef huart1;
 
+extern UART_HandleTypeDef huart3;
+
 /* USER CODE BEGIN Private defines */
 #define USART1_RX_BUFFER_SIZE 2048
 #define USART1_TX_BUFFER_SIZE 2048
 #define USART1_TX_CHUNK_SIZE 128
 #define USART1_RX_DMA_BUF_SIZE 128
 extern uart_driver_t usart1_driver;
+
+
+#define USART3_RX_BUFFER_SIZE 2048
+#define USART3_TX_BUFFER_SIZE 2048
+#define USART3_TX_CHUNK_SIZE 128
+#define USART3_RX_DMA_BUF_SIZE 128
+extern uart_driver_t usart3_driver;
+
+
+
 void HAL_UART_IDLECallback(UART_HandleTypeDef *huart);
 /* USER CODE END Private defines */
 
 void MX_USART1_UART_Init(void);
+void MX_USART3_UART_Init(void);
 
 /* USER CODE BEGIN Prototypes */
 
