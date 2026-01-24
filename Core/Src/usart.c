@@ -29,7 +29,7 @@
 //__attribute__((section(".ccmram"), aligned(8))) static uint8_t usart1_rx_buffer[USART1_RX_BUFFER_SIZE];
 static uint8_t usart1_rx_buffer[USART1_RX_BUFFER_SIZE];
 static uint8_t usart1_tx_buffer[USART1_TX_BUFFER_SIZE];
-static uint8_t  usart1_dma_rx[RX_DMA_BUF_SIZE];
+static uint8_t  usart1_dma_rx[USART1_RX_DMA_BUF_SIZE];
 uart_driver_t usart1_driver;
 
 /* USER CODE END 0 */
@@ -72,7 +72,7 @@ void MX_USART1_UART_Init(void)
 		  usart1_dma_rx,
 		  USART1_RX_BUFFER_SIZE,
 		  USART1_TX_BUFFER_SIZE,
-		  RX_DMA_BUF_SIZE,
+		  USART1_RX_DMA_BUF_SIZE,
 		  USART1_TX_CHUNK_SIZE
   );
   /* USER CODE END USART1_Init 2 */

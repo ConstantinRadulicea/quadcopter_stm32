@@ -17,7 +17,7 @@ typedef uint32_t (*crsf_output_cb_fn)(struct crsf_s *crsf, const void *data, uin
 typedef uint32_t (*crsf_sys_now_us_cb_fn)(void);
 
 typedef struct crsf_s{
-	uint32_t baudrate_bps;
+//	uint32_t baudrate_bps;
 	uint32_t frame_rate_hz;
 	crsf_sys_now_us_cb_fn sys_now_us;
 	crsf_output_cb_fn crsf_output;

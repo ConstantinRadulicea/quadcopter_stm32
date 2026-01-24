@@ -1,5 +1,4 @@
-../Core/Lib/flight_controller_libs/crc.c:4:10:crc16_ccitt_init	1
-../Core/Lib/flight_controller_libs/crc.c:8:10:crc16_ccitt_add	3
-../Core/Lib/flight_controller_libs/crc.c:22:10:crc16_ccitt_add_arr	2
-../Core/Lib/flight_controller_libs/crc.c:30:9:crc8_add	3
-../Core/Lib/flight_controller_libs/crc.c:42:9:crc8_add_arr	2
+../Core/Lib/flight_controller_libs/crc.c:3:10:crc16_add	3
+../Core/Lib/flight_controller_libs/crc.c:18:10:crc16_add_arr	2
+../Core/Lib/flight_controller_libs/crc.c:26:9:crc8_add	3
+../Core/Lib/flight_controller_libs/crc.c:38:9:crc8_add_arr	2

@@ -38,7 +38,7 @@ extern UART_HandleTypeDef huart1;
 #define USART1_RX_BUFFER_SIZE 2048
 #define USART1_TX_BUFFER_SIZE 2048
 #define USART1_TX_CHUNK_SIZE 128
-#define RX_DMA_BUF_SIZE 128
+#define USART1_RX_DMA_BUF_SIZE 128
 extern uart_driver_t usart1_driver;
 void HAL_UART_IDLECallback(UART_HandleTypeDef *huart);
 /* USER CODE END Private defines */

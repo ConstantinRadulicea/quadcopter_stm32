@@ -1,16 +1,11 @@
 #include "crc.h"
 
-
-uint16_t crc16_ccitt_init(void) {
-	return (uint16_t)0xFFFF; // Initial value for CRC-16-CCITT
-}
-
-uint16_t crc16_ccitt_add(uint16_t crc, uint8_t a)
+uint16_t crc16_add(uint16_t crc, uint8_t data, uint16_t poly)
 {
-    crc ^= (uint16_t)a << (uint8_t)8;
+    crc ^= (uint16_t)data << (uint8_t)8;
     for (uint8_t ii = (uint8_t)0; ii < (uint8_t)8; ++ii) {
         if (crc & (uint16_t)0x8000) {
-            crc = (crc << (uint8_t)1) ^ (uint16_t)0x1021;
+            crc = (crc << (uint8_t)1) ^ (uint16_t)poly;
         }
         else{
         	crc = (crc << (uint8_t)1);
@@ -19,9 +14,10 @@ uint16_t crc16_ccitt_add(uint16_t crc, uint8_t a)
     return crc;
 }
 
-uint16_t crc16_ccitt_add_arr(uint16_t crc, uint8_t* data, size_t len) {
+
+uint16_t crc16_add_arr(uint16_t crc, uint8_t* data, size_t len, uint16_t poly){
     for (size_t i = (size_t)0; i < len; i++) {
-        crc = crc16_ccitt_add(crc, data[i]);
+        crc = crc16_add(crc, data[i], poly);
     }
     return crc;
 }

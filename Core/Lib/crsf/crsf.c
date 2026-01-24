@@ -38,7 +38,7 @@ static int8_t crsf_receive_frame(crsf_t *crsf, uint8_t rxByte)
 	uint8_t framePosition = crsf->rx_frame_position;
 	uint32_t frameStartTime = crsf->rx_frame_start_time_us;
 	uint32_t currentTime = crsf->sys_now_us();
-	uint32_t timePerFrame = HzToUs_int(crsf->frame_rate_hz);
+	uint32_t timePerFrame = (uint32_t)HzToUs_int(crsf->frame_rate_hz);
 	uint32_t fullFrameLength = 0;
 
 	/* Reset the frame position if the frame time has expired. */

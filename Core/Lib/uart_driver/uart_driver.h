@@ -12,11 +12,12 @@ typedef struct uart_driver_s{
 	UART_HandleTypeDef *uart_handle;
 	ring_buffer_t tx_ring_buffer;
 	ring_buffer_t rx_ring_buffer;
+//	ring_buffer_t dma_rx_ring_buffer;
 	volatile uint16_t last_tx_size;
 	volatile uint16_t last_rx_len;
 	uint16_t tx_chunk_size;
-	uint16_t dma_rx_buffer_size;
 
+	uint16_t dma_rx_buffer_size;
 	uint8_t  *dma_rx_buffer;
 	volatile uint16_t dma_last_pos;
 }uart_driver_t;
