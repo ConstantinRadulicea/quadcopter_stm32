@@ -11,7 +11,7 @@
 
 #ifndef BETA
     //#define BETA(gyro_mean_error) (sqrt(3.0f/4.0f) * gyro_mean_error)    //*from paper*
-	#define BETA(gyro_mean_error) (0.866025403784439f * gyro_mean_error)    //*from paper*
+	#define BETA(gyro_mean_error) ((0.866025403784439f) * (gyro_mean_error))    //*from paper*
 #endif
 
 

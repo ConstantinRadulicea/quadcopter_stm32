@@ -9,13 +9,13 @@ extern "C" {
 #endif
 
     // Return codes
-#define RING_BUFFER_TRUE                      1
-#define RING_BUFFER_FALSE                     0
+#define RING_BUFFER_TRUE                      ((uint8_t)1)
+#define RING_BUFFER_FALSE                     ((uint8_t)0)
 
-#define RING_BUFFER_SUCCESS                   0
-#define RING_BUFFER_ERROR_INVALID_PARAMETERS  1
-#define RING_BUFFER_ERROR_BUFFER_IS_FULL      2
-#define RING_BUFFER_ERROR_BUFFER_IS_EMPTY     3
+#define RING_BUFFER_SUCCESS                   ((uint8_t)0)
+#define RING_BUFFER_ERROR_INVALID_PARAMETERS  ((uint8_t)1)
+#define RING_BUFFER_ERROR_BUFFER_IS_FULL      ((uint8_t)2)
+#define RING_BUFFER_ERROR_BUFFER_IS_EMPTY     ((uint8_t)3)
 
 // Ring buffer structure
     typedef struct ring_buffer {

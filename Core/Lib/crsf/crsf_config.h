@@ -76,8 +76,8 @@ See https://semver.org/ for more information. */
 #define CRSF_RC_ENABLED                    1
 #define CRSF_RC_MAX_CHANNELS               16
 #define CRSF_RC_CHANNEL_MIN                172
-#define CRSF_RC_CHANNEL_MAX                1811
 #define CRSF_RC_CHANNEL_CENTER             992
+#define CRSF_RC_CHANNEL_MAX                1811
 #define CRSF_RC_INITIALISE_CHANNELS        1
 #define CRSF_RC_INITIALISE_ARMCHANNEL      1
 #define CRSF_RC_INITIALISE_THROTTLECHANNEL 1
@@ -87,7 +87,7 @@ See https://semver.org/ for more information. */
 #define CRSF_US_CHANNEL_MAX                2012
 
 // Constants for Arming Logic
-#define CRSF_ARM_THRESHOLD_RC       CRSF_RC_CHANNEL_CENTER
+#define CRSF_ARM_THRESHOLD_RC       (CRSF_RC_CHANNEL_CENTER)
 #define CRSF_SAFE_THROTTLE_VAL_RC  (CRSF_RC_CHANNEL_MIN + ((CRSF_RC_CHANNEL_MAX - CRSF_RC_CHANNEL_MIN)*0.1f))  // Throttle must be below this to ARM
 #define CRSF_ARM_CHANNEL_INDEX	(RC_CHANNEL_AUX1)
 

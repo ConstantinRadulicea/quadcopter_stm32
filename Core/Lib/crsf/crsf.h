@@ -170,13 +170,12 @@ static void crsf_loop_example(){
 			raw_channel_data = crsf_getRcChannel(&crsf, RC_CHANNEL_YAW);
 			yaw = crsf_rcToNormalized(raw_channel_data);
 
-			failsafe = crsf_getFailSafe(&crsf);
-
 			is_armed = crsf_isArmed(&crsf);
 
 			crsf_setFlightModeData(&crsf, FLIGHT_MODE_ANGLE, is_armed);
 		}
 		isLinkUp = crsf_isLinkUp(&crsf);
+		failsafe = crsf_getFailSafe(&crsf);
 	}
 }
 

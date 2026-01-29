@@ -62,8 +62,8 @@ static int8_t crsf_receive_frame(crsf_t *crsf, uint8_t rxByte)
 		fullFrameLength = crsf->rxFrame.frame.frameLength + CRSF_FRAME_LENGTH_ADDRESS + CRSF_FRAME_LENGTH_FRAMELENGTH;
 	}
 
-	if(crsf->rxFrame.frame.frameLength > (CRSF_FRAME_SIZE_MAX - CRSF_FRAME_LENGTH_ADDRESS - CRSF_FRAME_LENGTH_FRAMELENGTH) ||
-			crsf->rxFrame.frame.frameLength < CRSF_FRAME_LENGTH_TYPE + CRSF_FRAME_LENGTH_CRC){
+	if(crsf->rxFrame.frame.frameLength > CRSF_FRAME_LENGTH_MAX ||
+			crsf->rxFrame.frame.frameLength < CRSF_FRAME_LENGTH_MIN){
 		/* Clear the frame buffer and reset the frame position. */
 		//memset(crsf->rxFrame.raw, 0, CRSF_FRAME_SIZE_MAX);
 		framePosition = 0;
@@ -90,9 +90,12 @@ static int8_t crsf_receive_frame(crsf_t *crsf, uint8_t rxByte)
 				switch (crsf->rxFrame.frame.type)
 				{
 					case CRSF_FRAMETYPE_RC_CHANNELS_PACKED:
+					case CRSF_FRAMETYPE_SUBSET_RC_CHANNELS_PACKED:
 						if (crsf->rxFrame.frame.deviceAddress == CRSF_ADDRESS_FLIGHT_CONTROLLER)
 						{
 							memcpy(&(crsf->rcChannelsFrame), &(crsf->rxFrame), sizeof(crsf->rcChannelsFrame));
+							crsf->_lastChannelsPacket = crsf->sys_now_us();
+							crsf->_linkIsUp = 1;
 							crsf->rcFrameReceived = 1;
 						}
 						break;
@@ -132,6 +135,7 @@ static int8_t crsf_receive_frame(crsf_t *crsf, uint8_t rxByte)
 }
 
 
+
 int8_t crsf_getFailSafe(crsf_t *crsf)
 {
     /* Set the failsafe flag based on the link statistics thresholds. */
@@ -139,10 +143,11 @@ int8_t crsf_getFailSafe(crsf_t *crsf)
     {
         return (int8_t)1;
     }
-    else
-    {
-    	return (int8_t)0;
+    else if (crsf_isLinkUp(crsf) == 0) {
+    	return (int8_t)1;
     }
+
+    return (int8_t)0;
 }
 
 static void _crsf_getRcChannels(crsf_t *crsf, uint16_t *rcChannels)
@@ -188,13 +193,6 @@ void crsf_getRcChannels(crsf_t *crsf, rcChannels_t* rc_channels)
     memcpy(rc_channels, &(crsf->_rcChannels), sizeof(*rc_channels));
 }
 
-static void crsf_setLinkUp(crsf_t *crsf)
-{
-    //if (!crsf->_linkIsUp && _linkUpCallback) _linkUpCallback();
-    crsf->_linkIsUp = 1;
-    crsf->_lastChannelsPacket = crsf->sys_now_us();
-}
-
 static void crsf_checkLinkDown(crsf_t *crsf)
 {
     if (crsf->_linkIsUp && ((crsf->sys_now_us() - crsf->_lastChannelsPacket) > CRSF_FAILSAFE_STAGE1_MS))
@@ -220,31 +218,16 @@ void crsf_update_arming_state(crsf_t *dev) {
     // 1. Get the current value of the configured Arm Switch
     // Assuming _rcChannels contains a 'channels' array of floats
     // normalized between -1.0 and 1.0
-    float arm_switch_val = dev->_rcChannels.value[CRSF_ARM_CHANNEL_INDEX];
-
-    // 2. Get the current Throttle value (for safety check)
-    float throttle_val = dev->_rcChannels.value[RC_CHANNEL_THROTTLE];
-
-    // 3. Logic Implementation
+    uint16_t arm_switch_val = dev->_rcChannels.value[CRSF_ARM_CHANNEL_INDEX];
 
     // CASE A: Switch is LOW (Disarm Command)
     if (arm_switch_val < CRSF_ARM_THRESHOLD_RC) {
         // Always disarm immediately if switch is low
         dev->is_armed = 0;
     }
-    // CASE B: Switch is HIGH (Arm Command)
-    // Only proceed if we are currently DISARMED (to perform the safety check once)
-    else if (dev->is_armed == 0) {
-
-        // SAFETY CHECK: PRE-ARM
-        // Only allow arming if the throttle stick is at the bottom.
-        // This prevents the drone from spinning up unexpectedly.
-        if (throttle_val < CRSF_SAFE_THROTTLE_VAL_RC) {
-            dev->is_armed = 1;
-        }
+    else{
+    	dev->is_armed = 1;
     }
-    // CASE C: Already Armed and Switch is High -> Stay Armed
-    // (No code needed, state remains 1)
 }
 
 int8_t crsf_isArmed(crsf_t *crsf){
@@ -259,30 +242,15 @@ int8_t crsf_update(crsf_t *crsf, uint8_t rxByte){
 	int8_t frame_received =  crsf_receive_frame(crsf, byteReceived);
 	if (frame_received)
 	{
-		//flushRemainingFrames();
-
-//#if CRSF_LINK_STATISTICS_ENABLED > 0
-//                getLinkStatistics(&_linkStatistics);
-//                if (_linkStatisticsCallback != nullptr)
-//                {
-//                    _linkStatisticsCallback(_linkStatistics);
-//                }
-//#endif
 
 #if CRSF_TELEMETRY_ENABLED > 0
 		crsf_telemetry_update(&(crsf->telemetry));
 #endif
 
 #if CRSF_RC_ENABLED > 0
-//		crsf->_rcChannels.failsafe = crsf_getFailSafe(crsf);
 		_crsf_getRcChannels(crsf, crsf->_rcChannels.value);
 		crsf_update_arming_state(crsf);
-//		if (_rcChannelsCallback != nullptr)
-//		{
-//			rcChannelsCallback(_rcChannels);
-//		}
 #endif
-		crsf_setLinkUp(crsf);
 	}
 #if CRSF_TELEMETRY_ENABLED > 0
 	uint8_t* data_to_send = crsf_telemetry_get_tx_data(&(crsf->telemetry));
@@ -291,10 +259,6 @@ int8_t crsf_update(crsf_t *crsf, uint8_t rxByte){
 	crsf_telemetry_update_tx_data_sent(&(crsf->telemetry), data_size_sent);
 #endif
 
-//            if (_rawDataCallback != nullptr)
-//            {
-//                _rawDataCallback(byteReceived);
-//            }
 	crsf_checkLinkDown(crsf);
 	return frame_received;
 }

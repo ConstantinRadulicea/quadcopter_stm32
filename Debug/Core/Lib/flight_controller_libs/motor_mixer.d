@@ -2,7 +2,7 @@ Core/Lib/flight_controller_libs/motor_mixer.o: \
  ../Core/Lib/flight_controller_libs/motor_mixer.c \
  ../Core/Lib/flight_controller_libs/motor_mixer.h \
  ../Core/Lib/flight_controller_libs/rate_controller.h \
- C:/Programming/STM32F405RGT6_test/Core/Lib/flight_controller_libs/pid_controller.h \
+ ../Core/Lib/flight_controller_libs/pid_controller.h \
  ../Core/Lib/flight_controller_libs/filters.h \
  ../Core/Lib/flight_controller_libs/geometry2D.h \
  ../Core/Lib/flight_controller_libs/flight_control_loop.h \
@@ -24,7 +24,7 @@ Core/Lib/flight_controller_libs/motor_mixer.o: \
  ../Middlewares/Third_Party/FreeRTOS/Source/include/list.h
 ../Core/Lib/flight_controller_libs/motor_mixer.h:
 ../Core/Lib/flight_controller_libs/rate_controller.h:
-C:/Programming/STM32F405RGT6_test/Core/Lib/flight_controller_libs/pid_controller.h:
+../Core/Lib/flight_controller_libs/pid_controller.h:
 ../Core/Lib/flight_controller_libs/filters.h:
 ../Core/Lib/flight_controller_libs/geometry2D.h:
 ../Core/Lib/flight_controller_libs/flight_control_loop.h:

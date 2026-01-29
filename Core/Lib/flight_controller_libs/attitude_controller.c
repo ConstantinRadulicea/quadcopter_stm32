@@ -1,6 +1,10 @@
 ﻿#include "attitude_controller.h"
-#include "geometry2D.h"
+//#include "geometry2D.h"
 #include <string.h>
+
+#define CLAMP(x, lo, hi) (((x) < (lo)) ? (lo) : ((x) > (hi)) ? (hi) : (x))
+#define MIN(a,b) (((a)<(b))?(a):(b))
+#define MAX(a,b) (((a)>(b))?(a):(b))
 
 #define FC_DEFAULT_LEVELD_POSITION_Q ((quaternion){ 1.0f, 0.0f, 0.0f, 0.0f }) ///< Identity quaternion (scalar-first)
 

@@ -58,11 +58,6 @@ typedef enum rc_channels_e
         CRSF_SYNC_BYTE = 0xC8,
     };
 
-    enum frameSize_e
-    {
-        CRSF_FRAME_SIZE_MAX = 64,
-        CRSF_PAYLOAD_SIZE_MAX = CRSF_FRAME_SIZE_MAX - 6
-    };
 
     enum payloadSize_e
     {
@@ -87,7 +82,16 @@ typedef enum rc_channels_e
         CRSF_FRAME_LENGTH_CRC = 1,                                                   // Length of the CRC field in bytes.
         CRSF_FRAME_LENGTH_TYPE_CRC = CRSF_FRAME_LENGTH_TYPE + CRSF_FRAME_LENGTH_CRC, // Length of the type and CRC fields in bytes.
         CRSF_FRAME_LENGTH_EXT_TYPE_CRC = 4,                                          // Length of the extended Dest/Origin, type, and CRC fields in bytes.
-        CRSF_FRAME_LENGTH_NON_PAYLOAD = 4                                            // Combined length of all fields except the payload in bytes.
+        CRSF_FRAME_LENGTH_NON_PAYLOAD = CRSF_FRAME_LENGTH_ADDRESS + CRSF_FRAME_LENGTH_FRAMELENGTH + CRSF_FRAME_LENGTH_TYPE + CRSF_FRAME_LENGTH_CRC     // Combined length of all fields except the payload in bytes.
+    };
+
+    enum frameSize_e
+    {
+        CRSF_FRAME_SIZE_MAX = 64,
+//        CRSF_PAYLOAD_SIZE_MAX = CRSF_FRAME_SIZE_MAX - 6
+        CRSF_PAYLOAD_SIZE_MAX = CRSF_FRAME_SIZE_MAX - CRSF_FRAME_LENGTH_NON_PAYLOAD,
+		CRSF_FRAME_LENGTH_MIN = CRSF_FRAME_LENGTH_TYPE + CRSF_FRAME_LENGTH_CRC,
+		CRSF_FRAME_LENGTH_MAX = CRSF_PAYLOAD_SIZE_MAX + CRSF_FRAME_LENGTH_CRC + CRSF_FRAME_LENGTH_TYPE
     };
 
     typedef enum frameType_e
@@ -280,7 +284,7 @@ typedef enum rc_channels_e
     typedef struct flightMode_s
     {
     	char name[CRSF_FRAME_FLIGHT_MODE_PAYLOAD_SIZE];
-    	uint8_t channel;
+    	rc_channels_t channel;
     	uint16_t min;
     	uint16_t max;
     } flightMode_t;
@@ -311,7 +315,7 @@ typedef enum rc_channels_e
 
     typedef struct rcChannels_s
     {
-    	int valid : 1;
+    	int8_t valid;
     //    int failsafe : 1;
         uint16_t value[RC_CHANNEL_COUNT];
     } rcChannels_t;

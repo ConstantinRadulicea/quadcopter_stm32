@@ -1,9 +1,12 @@
 ﻿#include "rate_controller.h"
-#include "geometry2D.h"
+//#include "geometry2D.h"
 #include <string.h>
 #include <math.h>
 #include <float.h>
 
+#define CLAMP(x, lo, hi) (((x) < (lo)) ? (lo) : ((x) > (hi)) ? (hi) : (x))
+#define MIN(a,b) (((a)<(b))?(a):(b))
+#define MAX(a,b) (((a)>(b))?(a):(b))
 
 void rate_controller_init(
     rate_controller_t* fc,
