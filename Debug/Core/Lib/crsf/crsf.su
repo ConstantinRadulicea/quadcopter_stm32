@@ -1,6 +1,3 @@
-../Core/Lib/crsf/crsf.h:111:10:crsf_sys_now_example	4	static
-../Core/Lib/crsf/crsf.h:125:10:crsf_output_cb_fn_example	24	static
-../Core/Lib/crsf/crsf.h:133:13:crsf_loop_example	768	static
 ../Core/Lib/crsf/crsf.c:9:6:crsf_set_output_cb_fn	24	static
 ../Core/Lib/crsf/crsf.c:14:8:crsf_init	24	static
 ../Core/Lib/crsf/crsf.c:36:15:crsf_receive_frame	48	static

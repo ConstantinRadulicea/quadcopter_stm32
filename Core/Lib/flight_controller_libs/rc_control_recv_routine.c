@@ -3,6 +3,8 @@
 #include "flight_control_loop.h"
 #include "crc.h"
 #include "string.h"
+#include "crsf.h"
+#include "usart.h"
 
 // Headers for raw socket programming
 #include "lwip/api.h"
@@ -45,7 +47,7 @@ static int line_buffer_add_char(char c, char *buf, size_t buf_size, size_t *len)
 #define UDP_RX_BUF_SIZE    PBUF_POOL_BUFSIZE   /* enough for full Ethernet MTU */
 
 char rxbuf[UDP_RX_BUF_SIZE];
-void rc_control_main(void *arg)
+void rc_control_udp(void *arg)
 {
 	flight_control_loop_t *fcl_ptr = (flight_control_loop_t*)arg;
 
@@ -214,3 +216,104 @@ void rc_control_main(void *arg)
 	closesocket(sock);
 }
 
+
+
+static uint32_t crsf_sys_now_example(void){
+    // Get current kernel tick count and tick frequency
+    uint32_t ticks      = osKernelGetTickCount();
+    uint32_t tick_freq  = osKernelGetTickFreq();  // ticks per second
+
+    // Convert ticks to milliseconds safely and portably
+    return (uint32_t)((ticks * 1000U) / tick_freq) * 1000;
+}
+
+static uint32_t crsf_output_cb_fn_example(crsf_t *crsf, const void *data, uint32_t len, void *ctx) {
+	(void) crsf;
+	(void) ctx;
+	return uart_send_data(&usart3_driver, (char*)data, len);
+}
+
+void rc_control_crsf(void *arg){
+	crsf_t crsf;
+	uint32_t frame_rate_hz = 250;
+	size_t rx_data_size = 0;
+	size_t total_loops = 0;
+	int8_t crsf_result;
+	uint16_t raw_channel_data;
+	float roll;
+	float pitch;
+	float yaw;
+	float throttle;
+	int8_t failsafe;
+	int8_t is_armed;
+	int8_t isLinkUp = 0;
+	coord3D target_attitude = {0};
+	flight_control_loop_t *fcl_ptr = (flight_control_loop_t*)arg;
+	crsf_init(&crsf, frame_rate_hz, crsf_sys_now_example, crsf_output_cb_fn_example, NULL);
+
+	for(;;) {
+		total_loops = 0;
+		do{
+			rx_data_size = uart_recv_data(&usart3_driver, rxbuf, UDP_RX_BUF_SIZE);
+			for(size_t i=0; i < rx_data_size; i++, total_loops++){
+				crsf_result = 0;
+				if(rx_data_size > 0){
+					crsf_result = crsf_update(&crsf, rxbuf[i]);
+				}
+				if(crsf_result != 0){ // new frame was received
+					roll = 0.0f;
+					pitch = 0.0f;
+					yaw = 0.0f;
+					throttle = 0.0f;
+					failsafe = 0;
+					is_armed = 0;
+
+					raw_channel_data = crsf_getRcChannel(&crsf, RC_CHANNEL_ROLL);
+					roll = crsf_rcToNormalized(raw_channel_data);
+
+					raw_channel_data = crsf_getRcChannel(&crsf, RC_CHANNEL_PITCH);
+					pitch = crsf_rcToNormalized(raw_channel_data);
+
+					raw_channel_data = crsf_getRcChannel(&crsf, RC_CHANNEL_YAW);
+					yaw = crsf_rcToNormalized(raw_channel_data);
+
+					raw_channel_data = crsf_getRcChannel(&crsf, RC_CHANNEL_THROTTLE);
+					throttle = crsf_rcToNormalized(raw_channel_data);
+
+					is_armed = crsf_isArmed(&crsf);
+
+					int8_t armed_fp = (int8_t)flight_control_loop_are_esc_armed(fcl_ptr);
+
+					crsf_setFlightModeData(&crsf, FLIGHT_MODE_ANGLE, armed_fp);
+				}
+			}
+		 }
+		while(rx_data_size > 0 && total_loops < 1000);
+
+		isLinkUp = crsf_isLinkUp(&crsf);
+		failsafe = crsf_getFailSafe(&crsf);
+
+		target_attitude.x = roll;
+		target_attitude.y = pitch;
+		target_attitude.z = yaw;
+
+	    if (is_armed != 0 && failsafe != 0){
+	    	flight_control_loop_arm_esc(fcl_ptr);
+	    }
+	    else {
+	    	flight_control_loop_disarm_esc(fcl_ptr);
+	     }
+
+	     flight_control_loop_update_rc_control(fcl_ptr, target_attitude, throttle);
+
+	     vTaskDelay(pdMS_TO_TICKS(HzToMilliSec(1)));
+	}
+}
+
+
+
+
+
+void rc_control_main(void *arg){
+	rc_control_crsf(arg);
+}

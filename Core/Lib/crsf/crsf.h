@@ -107,7 +107,7 @@ int8_t crsf_isRcValueValid(uint16_t raw);
 
 /* //////////////////////////////////////////Examples////////////////////////////////////////////////////  */
 
-
+/*
 uint32_t crsf_sys_now_example(void){
 	static uint32_t temp_time = 0;
 	temp_time += 1000;
@@ -179,7 +179,7 @@ static void crsf_loop_example(){
 	}
 }
 
-
+*/
 
 #ifdef __cplusplus
 }

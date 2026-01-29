@@ -26,24 +26,11 @@ Core/Lib/flight_controller_libs/rc_control_recv_routine.o: \
  ../Middlewares/Third_Party/FreeRTOS/Source/include/list.h \
  ../Core/Lib/flight_controller_libs/flight_control_loop.h \
  ../Core/Lib/flight_controller_libs/crc.h \
- C:/Programming/STM32F405RGT6_test/Middlewares/Third_Party/lwip/src/include/lwip/api.h \
- C:/Programming/STM32F405RGT6_test/Middlewares/Third_Party/lwip/src/include/lwip/opt.h \
- ../Core/Inc/lwipopts.h \
- C:/Programming/STM32F405RGT6_test/Middlewares/Third_Party/lwip/src/include/lwip/debug.h \
- C:/Programming/STM32F405RGT6_test/Middlewares/Third_Party/lwip/src/include/lwip/arch.h \
- C:/Programming/STM32F405RGT6_test/Middlewares/Third_Party/lwip/system/arch/cc.h \
- C:/Programming/STM32F405RGT6_test/Middlewares/Third_Party/lwip/system/arch/cpu.h \
- C:/Programming/STM32F405RGT6_test/Middlewares/Third_Party/lwip/src/include/lwip/netbuf.h \
- C:/Programming/STM32F405RGT6_test/Middlewares/Third_Party/lwip/src/include/lwip/pbuf.h \
- C:/Programming/STM32F405RGT6_test/Middlewares/Third_Party/lwip/src/include/lwip/err.h \
- C:/Programming/STM32F405RGT6_test/Middlewares/Third_Party/lwip/src/include/lwip/ip_addr.h \
- C:/Programming/STM32F405RGT6_test/Middlewares/Third_Party/lwip/src/include/lwip/def.h \
- C:/Programming/STM32F405RGT6_test/Middlewares/Third_Party/lwip/src/include/lwip/ip4_addr.h \
- C:/Programming/STM32F405RGT6_test/Middlewares/Third_Party/lwip/src/include/lwip/ip6_addr.h \
- C:/Programming/STM32F405RGT6_test/Middlewares/Third_Party/lwip/src/include/lwip/def.h \
- C:/Programming/STM32F405RGT6_test/Middlewares/Third_Party/lwip/src/include/lwip/sys.h \
- C:/Programming/STM32F405RGT6_test/Middlewares/Third_Party/lwip/system/arch/sys_arch.h \
- ../Core/Inc/atomic_custom.h \
+ C:/Programming/STM32F405RGT6_test/Core/Lib/crsf/crsf.h \
+ C:/Programming/STM32F405RGT6_test/Core/Lib/crsf/crsf_config.h \
+ C:/Programming/STM32F405RGT6_test/Core/Lib/crsf/crsf_protocol.h \
+ C:/Programming/STM32F405RGT6_test/Core/Lib/crsf/crsf_telemetry.h \
+ ../Core/Inc/usart.h ../Core/Inc/main.h \
  ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h \
  ../Core/Inc/stm32f4xx_hal_conf.h \
  ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rcc.h \
@@ -76,6 +63,27 @@ Core/Lib/flight_controller_libs/rc_control_recv_routine.o: \
  ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pcd.h \
  ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_ll_usb.h \
  ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pcd_ex.h \
+ ../Core/Inc/esc_pwm.h \
+ C:/Programming/STM32F405RGT6_test/Core/Lib/uart_driver/uart_driver.h \
+ ../Core/Inc/atomic_custom.h \
+ C:/Programming/STM32F405RGT6_test/Core/Lib/ringbuffer/ringbuffer.h \
+ C:/Programming/STM32F405RGT6_test/Middlewares/Third_Party/lwip/src/include/lwip/api.h \
+ C:/Programming/STM32F405RGT6_test/Middlewares/Third_Party/lwip/src/include/lwip/opt.h \
+ ../Core/Inc/lwipopts.h \
+ C:/Programming/STM32F405RGT6_test/Middlewares/Third_Party/lwip/src/include/lwip/debug.h \
+ C:/Programming/STM32F405RGT6_test/Middlewares/Third_Party/lwip/src/include/lwip/arch.h \
+ C:/Programming/STM32F405RGT6_test/Middlewares/Third_Party/lwip/system/arch/cc.h \
+ C:/Programming/STM32F405RGT6_test/Middlewares/Third_Party/lwip/system/arch/cpu.h \
+ C:/Programming/STM32F405RGT6_test/Middlewares/Third_Party/lwip/src/include/lwip/netbuf.h \
+ C:/Programming/STM32F405RGT6_test/Middlewares/Third_Party/lwip/src/include/lwip/pbuf.h \
+ C:/Programming/STM32F405RGT6_test/Middlewares/Third_Party/lwip/src/include/lwip/err.h \
+ C:/Programming/STM32F405RGT6_test/Middlewares/Third_Party/lwip/src/include/lwip/ip_addr.h \
+ C:/Programming/STM32F405RGT6_test/Middlewares/Third_Party/lwip/src/include/lwip/def.h \
+ C:/Programming/STM32F405RGT6_test/Middlewares/Third_Party/lwip/src/include/lwip/ip4_addr.h \
+ C:/Programming/STM32F405RGT6_test/Middlewares/Third_Party/lwip/src/include/lwip/ip6_addr.h \
+ C:/Programming/STM32F405RGT6_test/Middlewares/Third_Party/lwip/src/include/lwip/def.h \
+ C:/Programming/STM32F405RGT6_test/Middlewares/Third_Party/lwip/src/include/lwip/sys.h \
+ C:/Programming/STM32F405RGT6_test/Middlewares/Third_Party/lwip/system/arch/sys_arch.h \
  ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2/cmsis_os2.h \
  C:/Programming/STM32F405RGT6_test/Middlewares/Third_Party/lwip/src/include/lwip/sockets.h \
  C:/Programming/STM32F405RGT6_test/Middlewares/Third_Party/lwip/src/include/lwip/netif.h \
@@ -113,24 +121,12 @@ C:/Programming/STM32F405RGT6_test/Core/Lib/flight_controller_libs/rc_control.h:
 ../Middlewares/Third_Party/FreeRTOS/Source/include/list.h:
 ../Core/Lib/flight_controller_libs/flight_control_loop.h:
 ../Core/Lib/flight_controller_libs/crc.h:
-C:/Programming/STM32F405RGT6_test/Middlewares/Third_Party/lwip/src/include/lwip/api.h:
-C:/Programming/STM32F405RGT6_test/Middlewares/Third_Party/lwip/src/include/lwip/opt.h:
-../Core/Inc/lwipopts.h:
-C:/Programming/STM32F405RGT6_test/Middlewares/Third_Party/lwip/src/include/lwip/debug.h:
-C:/Programming/STM32F405RGT6_test/Middlewares/Third_Party/lwip/src/include/lwip/arch.h:
-C:/Programming/STM32F405RGT6_test/Middlewares/Third_Party/lwip/system/arch/cc.h:
-C:/Programming/STM32F405RGT6_test/Middlewares/Third_Party/lwip/system/arch/cpu.h:
-C:/Programming/STM32F405RGT6_test/Middlewares/Third_Party/lwip/src/include/lwip/netbuf.h:
-C:/Programming/STM32F405RGT6_test/Middlewares/Third_Party/lwip/src/include/lwip/pbuf.h:
-C:/Programming/STM32F405RGT6_test/Middlewares/Third_Party/lwip/src/include/lwip/err.h:
-C:/Programming/STM32F405RGT6_test/Middlewares/Third_Party/lwip/src/include/lwip/ip_addr.h:
-C:/Programming/STM32F405RGT6_test/Middlewares/Third_Party/lwip/src/include/lwip/def.h:
-C:/Programming/STM32F405RGT6_test/Middlewares/Third_Party/lwip/src/include/lwip/ip4_addr.h:
-C:/Programming/STM32F405RGT6_test/Middlewares/Third_Party/lwip/src/include/lwip/ip6_addr.h:
-C:/Programming/STM32F405RGT6_test/Middlewares/Third_Party/lwip/src/include/lwip/def.h:
-C:/Programming/STM32F405RGT6_test/Middlewares/Third_Party/lwip/src/include/lwip/sys.h:
-C:/Programming/STM32F405RGT6_test/Middlewares/Third_Party/lwip/system/arch/sys_arch.h:
-../Core/Inc/atomic_custom.h:
+C:/Programming/STM32F405RGT6_test/Core/Lib/crsf/crsf.h:
+C:/Programming/STM32F405RGT6_test/Core/Lib/crsf/crsf_config.h:
+C:/Programming/STM32F405RGT6_test/Core/Lib/crsf/crsf_protocol.h:
+C:/Programming/STM32F405RGT6_test/Core/Lib/crsf/crsf_telemetry.h:
+../Core/Inc/usart.h:
+../Core/Inc/main.h:
 ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h:
 ../Core/Inc/stm32f4xx_hal_conf.h:
 ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rcc.h:
@@ -163,6 +159,27 @@ C:/Programming/STM32F405RGT6_test/Middlewares/Third_Party/lwip/system/arch/sys_a
 ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pcd.h:
 ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_ll_usb.h:
 ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pcd_ex.h:
+../Core/Inc/esc_pwm.h:
+C:/Programming/STM32F405RGT6_test/Core/Lib/uart_driver/uart_driver.h:
+../Core/Inc/atomic_custom.h:
+C:/Programming/STM32F405RGT6_test/Core/Lib/ringbuffer/ringbuffer.h:
+C:/Programming/STM32F405RGT6_test/Middlewares/Third_Party/lwip/src/include/lwip/api.h:
+C:/Programming/STM32F405RGT6_test/Middlewares/Third_Party/lwip/src/include/lwip/opt.h:
+../Core/Inc/lwipopts.h:
+C:/Programming/STM32F405RGT6_test/Middlewares/Third_Party/lwip/src/include/lwip/debug.h:
+C:/Programming/STM32F405RGT6_test/Middlewares/Third_Party/lwip/src/include/lwip/arch.h:
+C:/Programming/STM32F405RGT6_test/Middlewares/Third_Party/lwip/system/arch/cc.h:
+C:/Programming/STM32F405RGT6_test/Middlewares/Third_Party/lwip/system/arch/cpu.h:
+C:/Programming/STM32F405RGT6_test/Middlewares/Third_Party/lwip/src/include/lwip/netbuf.h:
+C:/Programming/STM32F405RGT6_test/Middlewares/Third_Party/lwip/src/include/lwip/pbuf.h:
+C:/Programming/STM32F405RGT6_test/Middlewares/Third_Party/lwip/src/include/lwip/err.h:
+C:/Programming/STM32F405RGT6_test/Middlewares/Third_Party/lwip/src/include/lwip/ip_addr.h:
+C:/Programming/STM32F405RGT6_test/Middlewares/Third_Party/lwip/src/include/lwip/def.h:
+C:/Programming/STM32F405RGT6_test/Middlewares/Third_Party/lwip/src/include/lwip/ip4_addr.h:
+C:/Programming/STM32F405RGT6_test/Middlewares/Third_Party/lwip/src/include/lwip/ip6_addr.h:
+C:/Programming/STM32F405RGT6_test/Middlewares/Third_Party/lwip/src/include/lwip/def.h:
+C:/Programming/STM32F405RGT6_test/Middlewares/Third_Party/lwip/src/include/lwip/sys.h:
+C:/Programming/STM32F405RGT6_test/Middlewares/Third_Party/lwip/system/arch/sys_arch.h:
 ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2/cmsis_os2.h:
 C:/Programming/STM32F405RGT6_test/Middlewares/Third_Party/lwip/src/include/lwip/sockets.h:
 C:/Programming/STM32F405RGT6_test/Middlewares/Third_Party/lwip/src/include/lwip/netif.h:
