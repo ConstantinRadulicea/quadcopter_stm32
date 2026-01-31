@@ -239,7 +239,6 @@ void rc_control_crsf(void *arg){
 	size_t rx_data_size = 0;
 	size_t total_loops = 0;
 	int8_t crsf_result;
-	uint16_t raw_channel_data;
 	float roll;
 	float pitch;
 	float yaw;
@@ -251,6 +250,13 @@ void rc_control_crsf(void *arg){
 	flight_control_loop_t *fcl_ptr = (flight_control_loop_t*)arg;
 	crsf_init(&crsf, frame_rate_hz, crsf_sys_now_example, crsf_output_cb_fn_example, NULL);
 
+	roll = 0.0f;
+	pitch = 0.0f;
+	yaw = 0.0f;
+	throttle = 0.0f;
+	failsafe = 0;
+	is_armed = 0;
+
 	for(;;) {
 		total_loops = 0;
 		do{
@@ -260,25 +266,22 @@ void rc_control_crsf(void *arg){
 				if(rx_data_size > 0){
 					crsf_result = crsf_update(&crsf, rxbuf[i]);
 				}
-				if(crsf_result != 0){ // new frame was received
-					roll = 0.0f;
-					pitch = 0.0f;
-					yaw = 0.0f;
-					throttle = 0.0f;
-					failsafe = 0;
-					is_armed = 0;
+				if(crsf_result != 0 && crsf_isNewRcDataAvailable(&crsf)){ // new frame was received
 
-					raw_channel_data = crsf_getRcChannel(&crsf, RC_CHANNEL_ROLL);
-					roll = crsf_rcToNormalized(raw_channel_data);
+					if(crsf_isChannelUpdated(&crsf, RC_CHANNEL_ROLL) != 0){
+						roll = crsf_getChannelNormalized(&crsf, RC_CHANNEL_ROLL);
+					}
 
-					raw_channel_data = crsf_getRcChannel(&crsf, RC_CHANNEL_PITCH);
-					pitch = crsf_rcToNormalized(raw_channel_data);
+					if(crsf_isChannelUpdated(&crsf, RC_CHANNEL_PITCH) != 0){
+						pitch = crsf_getChannelNormalized(&crsf, RC_CHANNEL_PITCH);
+					}
+					if(crsf_isChannelUpdated(&crsf, RC_CHANNEL_YAW) != 0){
+						yaw = crsf_getChannelNormalized(&crsf, RC_CHANNEL_YAW);
+					}
 
-					raw_channel_data = crsf_getRcChannel(&crsf, RC_CHANNEL_YAW);
-					yaw = crsf_rcToNormalized(raw_channel_data);
-
-					raw_channel_data = crsf_getRcChannel(&crsf, RC_CHANNEL_THROTTLE);
-					throttle = crsf_rcToNormalized(raw_channel_data);
+					if(crsf_isChannelUpdated(&crsf, RC_CHANNEL_THROTTLE) != 0){
+						throttle = crsf_getChannelNormalized(&crsf, RC_CHANNEL_THROTTLE);
+					}
 
 					is_armed = crsf_isArmed(&crsf);
 

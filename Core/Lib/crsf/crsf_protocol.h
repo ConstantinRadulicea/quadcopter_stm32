@@ -22,10 +22,13 @@
  *
  */
 
-#include "stdint.h"
+
 
 #ifndef CRSF_PROTOCOL_H
 #define CRSF_PROTOCOL_H
+
+#include "stdint.h"
+#include "crsf_config.h"
 
 #ifdef __cplusplus
 extern "C" {
@@ -180,6 +183,14 @@ typedef enum rc_channels_e
 
     typedef struct rcChannelsPacked_s rcChannelsPacked_t;
 
+    typedef enum{
+    	CRSF_SUBSET_RC_RES_CONF_10B = 0,
+		CRSF_SUBSET_RC_RES_CONF_11B,
+		CRSF_SUBSET_RC_RES_CONF_12B,
+		CRSF_SUBSET_RC_RES_CONF_13B
+
+    }crsf_subset_rc_channel_resolution;
+
     typedef struct crsf_frame_definition_s
     {
         uint8_t deviceAddress;                                          // Frame address.
@@ -316,8 +327,10 @@ typedef enum rc_channels_e
     typedef struct rcChannels_s
     {
     	int8_t valid;
-    //    int failsafe : 1;
-        uint16_t value[RC_CHANNEL_COUNT];
+    	crsf_subset_rc_channel_resolution resolution;
+    	uint32_t value[RC_CHANNEL_COUNT];
+    	int8_t updated_channel[RC_CHANNEL_COUNT];
+    	float value_norm[RC_CHANNEL_COUNT];
     } rcChannels_t;
 
     typedef struct crsf_link_statistics_s
@@ -325,10 +338,16 @@ typedef enum rc_channels_e
     	int16_t rssi;
     	int16_t lqi;
     	int16_t snr;
+#if USE_RX_LINK_UPLINK_POWER != 0
     	int16_t tx_power;
+#endif
     } crsf_link_statistics_t;
 
-    static const uint16_t crsf_tx_power_table[9] = {
+
+#if USE_RX_LINK_UPLINK_POWER != 0
+#define CRSF_UPLINK_POWER_LEVEL_MW_ITEMS_COUNT 9
+// Uplink power levels by uplinkTXPower expressed in mW (250 mW is from ver >=4.00, 50 mW in a future version and for ExpressLRS)
+    static const uint16_t crsf_tx_power_table[CRSF_UPLINK_POWER_LEVEL_MW_ITEMS_COUNT] = {
     	0,    // 0 mW
     	10,   // 10 mW
     	25,   // 25 mW
@@ -339,6 +358,9 @@ typedef enum rc_channels_e
     	250,  // 250 mW
     	50    // 50 mW
     };
+#endif
+
+
 
 #ifdef __cplusplus
 extern "C" {

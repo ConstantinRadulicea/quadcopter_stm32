@@ -51,10 +51,7 @@ int8_t crsf_init(crsf_t *crsf,
 void crsf_set_output_cb_fn(crsf_t *crsf, crsf_output_cb_fn fn, void *ctx);
 int8_t crsf_update(crsf_t *crsf, uint8_t rxByte);
 
-void crsf_getLinkStatistics(crsf_t *crsf, crsf_link_statistics_t *linkStats);
-void crsf_getRcChannels(crsf_t *crsf, rcChannels_t* rc_channels);
-uint16_t crsf_getRcChannel(crsf_t *crsf, rc_channels_t channel);
-int8_t crsf_isRcDataValid(crsf_t *crsf);
+int8_t crsf_isNewRcDataAvailable(crsf_t *crsf);
 int8_t crsf_getFailSafe(crsf_t *crsf);
 int8_t crsf_isLinkUp(crsf_t *crsf);
 int8_t crsf_isArmed(crsf_t *crsf);
@@ -69,40 +66,10 @@ void crsf_setGPSData(crsf_t *crsf, float latitude, float longitude, float altitu
 void crsf_setFlightModeData(crsf_t *crsf, flightModeId_t flightMode, int8_t disarmed);
 #endif
 
-/* Convert RC value from raw to microseconds.
-- Minimum: 172 (988us)
-- Middle: 992 (1500us)
-- Maximum: 1811 (2012us)
-- Scale factor = (2012 - 988) / (1811 - 172) = 0.62477120195241
-- Offset = 988 - 172 * 0.62477120195241 = 880.53935326418548
-*/
-uint16_t crsf_rcToUs(uint16_t rc);
+float crsf_getChannelNormalized(crsf_t *crsf, rc_channels_t channel);
 
-uint16_t crsf_usToRc(uint16_t us);
+int8_t crsf_isChannelUpdated(crsf_t *crsf, rc_channels_t channel);
 
-
-/**
- * @brief Converts microseconds to normalized float (-1.0 to 1.0)
- * @param us Input in microseconds (usually 988-2012)
- * @return float Value between -1.0f and 1.0f
- */
-float crsf_usToNormalized(uint16_t us);
-
-
-/**
- * @brief Converts raw CRSF (11-bit) directly to float (-1.0 to 1.0)
- * Skips the intermediate microsecond conversion for speed.
- */
-
-float crsf_rcToNormalized(uint16_t us);
-
-
-/**
- * @brief Checks if a raw CRSF channel value is within valid bounds.
- * @param raw The 11-bit channel value (0-2047)
- * @return true if valid, false if likely garbage or connection loss
- */
-int8_t crsf_isRcValueValid(uint16_t raw);
 
 
 /* //////////////////////////////////////////Examples////////////////////////////////////////////////////  */

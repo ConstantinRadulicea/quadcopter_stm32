@@ -87,7 +87,7 @@ See https://semver.org/ for more information. */
 #define CRSF_US_CHANNEL_MAX                2012
 
 // Constants for Arming Logic
-#define CRSF_ARM_THRESHOLD_RC       (CRSF_RC_CHANNEL_CENTER)
+#define CRSF_ARM_THRESHOLD_NORM       (0.0f)
 #define CRSF_SAFE_THROTTLE_VAL_RC  (CRSF_RC_CHANNEL_MIN + ((CRSF_RC_CHANNEL_MAX - CRSF_RC_CHANNEL_MIN)*0.1f))  // Throttle must be below this to ARM
 #define CRSF_ARM_CHANNEL_INDEX	(RC_CHANNEL_AUX1)
 
@@ -128,6 +128,7 @@ and assign them to a switch on your controller. */
 #define CRSF_TELEMETRY_GPS_ENABLED 0
 
 #define CRSF_LINK_STATISTICS_ENABLED 1
+#define USE_RX_LINK_UPLINK_POWER 1
 
 /* Debug Options
 - DEBUG_ENABLED: Enables or disables debug output over the selected serial port.
@@ -140,6 +141,40 @@ and assign them to a switch on your controller. */
 #define CRSF_DEBUG_ENABLE_COMPATIBILITY_TABLE_OUTPUT 0
 #define CRSF_DEBUG_ENABLE_CONFIGURATION_DUMP         0
 #define CRSF_DEBUG_ENABLE_VERSION_OUTPUT             1
+
+
+#define CRSFV3_MAX_CHANNEL      24
+
+#define CRSF_SUBSET_RC_STARTING_CHANNEL_BITS        5
+#define CRSF_SUBSET_RC_STARTING_CHANNEL_MASK        0x1F
+#define CRSF_SUBSET_RC_RES_CONFIGURATION_BITS       2
+#define CRSF_SUBSET_RC_RES_CONFIGURATION_MASK       0x03
+#define CRSF_SUBSET_RC_RESERVED_CONFIGURATION_BITS  1
+
+#define CRSF_RC_CHANNEL_SCALE_LEGACY                0.62477120195241f
+//#define CRSF_SUBSET_RC_RES_CONF_10B                 0
+#define CRSF_SUBSET_RC_RES_BITS_10B                 10
+#define CRSF_SUBSET_RC_RES_MASK_10B                 0x03FF
+#define CRSF_SUBSET_RC_CHANNEL_SCALE_10B            1.0f
+//#define CRSF_SUBSET_RC_RES_CONF_11B                 1
+#define CRSF_SUBSET_RC_RES_BITS_11B                 11
+#define CRSF_SUBSET_RC_RES_MASK_11B                 0x07FF
+#define CRSF_SUBSET_RC_CHANNEL_SCALE_11B            0.5f
+//#define CRSF_SUBSET_RC_RES_CONF_12B                 2
+#define CRSF_SUBSET_RC_RES_BITS_12B                 12
+#define CRSF_SUBSET_RC_RES_MASK_12B                 0x0FFF
+#define CRSF_SUBSET_RC_CHANNEL_SCALE_12B            0.25f
+//#define CRSF_SUBSET_RC_RES_CONF_13B                 3
+#define CRSF_SUBSET_RC_RES_BITS_13B                 13
+#define CRSF_SUBSET_RC_RES_MASK_13B                 0x1FFF
+#define CRSF_SUBSET_RC_CHANNEL_SCALE_13B            0.125f
+
+#define CRSF_RSSI_MIN (-130)
+#define CRSF_RSSI_MAX 0
+#define CRSF_SNR_MIN (-30)
+#define CRSF_SNR_MAX 20
+
+
 
 /* All warnings and asserts below this point are to ensure that the configuration is valid. */
 
