@@ -167,6 +167,31 @@ static uint32_t WriteGPSDataFrame(telemetryData_t *_telemetryData, uint8_t *buff
 	return frame_size;
 }
 
+static uint32_t WriteHeartbeatDataFrame(uint8_t *buffer, uint32_t buffer_size)
+{
+	uint32_t frame_size = 0;
+	uint32_t start_of_crc;
+	uint8_t crc;
+	if(buffer_size < (CRSF_FRAME_HEARTBEAT_PAYLOAD_SIZE + CRSF_FRAME_LENGTH_NON_PAYLOAD)) {
+		return 0;
+	}
+
+	buffer[frame_size++] = CRSF_SYNC_BYTE;
+	buffer[frame_size++] = CRSF_FRAME_HEARTBEAT_PAYLOAD_SIZE + CRSF_FRAME_LENGTH_TYPE_CRC;
+
+	start_of_crc = frame_size;
+	buffer[frame_size++] = CRSF_FRAMETYPE_HEARTBEAT;
+
+	(*((uint16_t*)(&(buffer[frame_size])))) = crsf_htons(CRSF_ADDRESS_FLIGHT_CONTROLLER);
+	frame_size += 2;
+
+	crc = crc8_dvb_s2_init();
+	crc = crc8_dvb_s2_add_arr(crc, &(buffer[start_of_crc]), frame_size - start_of_crc);
+	buffer[frame_size++] = crc;
+
+	return frame_size;
+}
+
 
 void crsf_telemetry_setAttitudeData(crsf_telemetry_t *crsf_telemetry, int16_t roll_rad, int16_t pitch_rad, int16_t yaw_rad){
 	crsf_telemetry->_telemetryData.attitude.roll = roll_rad;
@@ -221,7 +246,7 @@ void crsf_telemetry_setGPSData(crsf_telemetry_t *crsf_telemetry, float latitude,
 
 
 
-uint32_t crsf_telemetry_update(crsf_telemetry_t *crsf_telemetry){
+static uint32_t crsf_telemetry_process_frame_to_send(crsf_telemetry_t *crsf_telemetry){
 
     const uint8_t currentSchedule = crsf_telemetry->_telemetryFrameSchedule[crsf_telemetry->_telemetryFrameScheduleIndex];
 
@@ -248,9 +273,31 @@ uint32_t crsf_telemetry_update(crsf_telemetry_t *crsf_telemetry){
     	crsf_telemetry->tx_buffer_tx_len += WriteGPSDataFrame(&(crsf_telemetry->_telemetryData), crsf_telemetry->tx_buffer, TELEMETRY_TX_BUFFER_SIZE - crsf_telemetry->tx_buffer_tx_len);
     }
 
+    if (currentSchedule & (1 << CRSF_TELEMETRY_FRAME_HEARTBEAT_INDEX)) {
+    	crsf_telemetry->tx_buffer_tx_len += WriteHeartbeatDataFrame(crsf_telemetry->tx_buffer, TELEMETRY_TX_BUFFER_SIZE - crsf_telemetry->tx_buffer_tx_len);
+    }
+
+
 	crsf_telemetry->_telemetryFrameScheduleIndex = (crsf_telemetry->_telemetryFrameScheduleIndex + 1) % crsf_telemetry->_telemetryFrameScheduleCount;
     return crsf_telemetry->tx_buffer_tx_len;
 }
+
+
+/*
+ * Called periodically by the scheduler
+ */
+uint32_t crsf_telemetry_update(crsf_telemetry_t *crsf_telemetry, uint32_t currentTimeUs)
+{
+    uint32_t written_bytes_in_buf = 0;
+    // Actual telemetry data only needs to be sent at a low frequency, ie 10Hz
+    // Spread out scheduled frames evenly so each frame is sent at the same frequency.
+    if ((currentTimeUs - crsf_telemetry->crsfLastCycleTime_us) >= (CRSF_CYCLETIME_US / crsf_telemetry->_telemetryFrameScheduleCount)) {
+    	crsf_telemetry->crsfLastCycleTime_us = currentTimeUs;
+        written_bytes_in_buf = crsf_telemetry_process_frame_to_send(crsf_telemetry);
+    }
+    return written_bytes_in_buf;
+}
+
 
 void crsf_telemetry_init(crsf_telemetry_t *crsf_telemetry)
 {
@@ -278,6 +325,10 @@ void crsf_telemetry_init(crsf_telemetry_t *crsf_telemetry)
 
 #if CRSF_TELEMETRY_ENABLED > 0 && CRSF_TELEMETRY_GPS_ENABLED > 0
     crsf_telemetry->_telemetryFrameSchedule[index++] = (1 << CRSF_TELEMETRY_FRAME_GPS_INDEX);
+#endif
+
+#if CRSF_HEARTBEAT_ENABLED > 0
+    crsf_telemetry->_telemetryFrameSchedule[index++] = (1 << CRSF_TELEMETRY_FRAME_HEARTBEAT_INDEX);
 #endif
 
     crsf_telemetry->_telemetryFrameScheduleCount = index;

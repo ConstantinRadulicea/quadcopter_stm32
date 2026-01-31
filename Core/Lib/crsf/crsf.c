@@ -382,13 +382,10 @@ int8_t crsf_isArmed(crsf_t *crsf){
 int8_t crsf_update(crsf_t *crsf, uint8_t rxByte){
 
 	uint8_t byteReceived = (uint8_t)rxByte;
+	uint32_t currentTime = crsf->sys_now_us();
 	int8_t frame_received =  crsf_receive_frame(crsf, byteReceived);
 	if (frame_received)
 	{
-
-#if CRSF_TELEMETRY_ENABLED > 0
-		crsf_telemetry_update(&(crsf->telemetry));
-#endif
 
 #if CRSF_RC_ENABLED > 0
 		_crsf_getRcChannels(crsf, &(crsf->_rcChannels));
@@ -396,6 +393,7 @@ int8_t crsf_update(crsf_t *crsf, uint8_t rxByte){
 #endif
 	}
 #if CRSF_TELEMETRY_ENABLED > 0
+	crsf_telemetry_update(&(crsf->telemetry), currentTime);
 	uint8_t* data_to_send = crsf_telemetry_get_tx_data(&(crsf->telemetry));
 	uint32_t data_size_to_send = crsf_telemetry_get_tx_data_size(&(crsf->telemetry));
 	uint32_t data_size_sent = crsf->crsf_output(crsf, data_to_send, data_size_to_send, crsf->crsf_output_cb_fn_ctx);

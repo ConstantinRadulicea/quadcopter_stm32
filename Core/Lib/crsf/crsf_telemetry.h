@@ -12,17 +12,18 @@ extern "C" {
 typedef struct crsf_telemetry_s{
 
     uint8_t _telemetryFrameScheduleCount;
-    uint8_t _telemetryFrameSchedule[CRSF_TELEMETRY_FRAME_SCHEDULE_MAX];
+    uint16_t _telemetryFrameSchedule[CRSF_TELEMETRY_FRAME_SCHEDULE_MAX];
     uint8_t _telemetryFrameScheduleIndex;
     telemetryData_t _telemetryData;
     uint32_t tx_buffer_tx_len;
     uint32_t tx_buffer_tx_sent_len;
     uint8_t tx_buffer[TELEMETRY_TX_BUFFER_SIZE];
+    uint32_t crsfLastCycleTime_us;
 }crsf_telemetry_t;
 
 
 void crsf_telemetry_init(crsf_telemetry_t *crsf_telemetry);
-uint32_t crsf_telemetry_update(crsf_telemetry_t *crsf_telemetry);
+uint32_t crsf_telemetry_update(crsf_telemetry_t *crsf_telemetry, uint32_t currentTimeUs);
 
 uint8_t* crsf_telemetry_get_tx_data(crsf_telemetry_t *crsf_telemetry);
 uint32_t crsf_telemetry_get_tx_data_size(crsf_telemetry_t *crsf_telemetry);

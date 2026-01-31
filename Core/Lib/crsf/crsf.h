@@ -1,6 +1,7 @@
 #ifndef CRSF_H
 #define CRSF_H
 // https://github.com/tbs-fpv/tbs-crsf-spec/blob/main/crsf.md
+// https://github.com/betaflight/betaflight/blob/8b57f7f10b8073420158b043748e8da352ba9994/src/main/telemetry/crsf.c
 #include "crsf_config.h"
 #include "stdint.h"
 #include "stddef.h"
