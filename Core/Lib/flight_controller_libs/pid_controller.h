@@ -5,6 +5,7 @@
 extern "C" {
 #endif
 
+
 typedef struct {
     float max_output;
     float min_output;
@@ -17,6 +18,8 @@ typedef struct {
     volatile float integral;
     float integral_max_error;
     volatile float delta_time;
+    volatile int stop_integral_accumulation_increase : 1;
+    volatile int stop_integral_accumulation_decrease : 1;
 } pid_controller_t;
 
 void pid_init(pid_controller_t *pid, float Kp, float Ki, float Kd, float min_output, float max_output);
@@ -37,6 +40,17 @@ float pid_get_Ki(pid_controller_t *pid);
 float pid_get_Kd(pid_controller_t *pid);
 float pid_get_integral_error(pid_controller_t *pid);
 void pid_reset(pid_controller_t *pid);
+
+
+void pid_stop_integral_accumulation_increase_error(pid_controller_t *pid);
+void pid_resume_integral_accumulation_increase_error(pid_controller_t *pid);
+
+void pid_stop_integral_accumulation_decrease_error(pid_controller_t *pid);
+void pid_resume_integral_accumulation_decrease_error(pid_controller_t *pid);
+
+int pid_get_stop_integral_accumulation_decrease_error(pid_controller_t *pid);
+int pid_get_stop_integral_accumulation_increase_error(pid_controller_t *pid);
+
 
 #ifdef __cplusplus
 }

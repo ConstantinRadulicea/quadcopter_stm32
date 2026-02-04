@@ -7,6 +7,13 @@
 
 
 /*
+ * ToDo:
+ * Add i term relaxation factor
+ * Add i term rotation based only on Gyro Data
+ *
+ * */
+
+/*
 	ROLL: roll to go left (NEGATIVE ROLL)
 	ROLL: roll to go right (POSITIVE ROLL)
 
@@ -63,9 +70,9 @@ typedef struct rate_controller_s {
 	pt1_filter_t ff_term_pid_yaw_pt1_filter;     ///< PT1 filter for yaw feed-forward term
 
     /* ---------------- PID OUTPUTS ---------------------------- */
-    float out_pid_roll;       ///< PID output torque command [-1..1] for roll axis
-    float out_pid_pitch;      ///< PID output torque command [-1..1] for pitch axis
-    float out_pid_yaw;        ///< PID output torque command [-1..1] for yaw axis
+    float out_pid_roll;       ///< PID output for roll axis
+    float out_pid_pitch;      ///< PID output for pitch axis
+    float out_pid_yaw;        ///< PID output for yaw axis
 } rate_controller_t;
 
 
@@ -137,9 +144,9 @@ void rate_controller_update(
  * @brief Retrieve the latest PID outputs for roll, pitch, and yaw axes.
  *
  * @param fc             Pointer to rate controller struct
- * @param out_pid_roll   Pointer to store roll PID output [-1..1]
- * @param out_pid_pitch  Pointer to store pitch PID output [-1..1]
- * @param out_pid_yaw    Pointer to store yaw PID output [-1..1]
+ * @param out_pid_roll   Pointer to store roll PID output
+ * @param out_pid_pitch  Pointer to store pitch PID output
+ * @param out_pid_yaw    Pointer to store yaw PID output
  */
 void rate_controller_get_pid_outputs(
     rate_controller_t* fc,

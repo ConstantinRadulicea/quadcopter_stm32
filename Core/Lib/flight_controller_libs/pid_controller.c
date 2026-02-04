@@ -2,6 +2,7 @@
 #include <math.h>
 #include <pid_controller.h>
 
+#define CLAMP(x, lo, hi) (((x) < (lo)) ? (lo) : ((x) > (hi)) ? (hi) : (x))
 #define MIN(a,b) (((a)<(b))?(a):(b))
 #define MAX(a,b) (((a)>(b))?(a):(b))
 
@@ -17,6 +18,8 @@ void pid_init(pid_controller_t *pid, float Kp, float Ki, float Kd, float min_out
     pid->integral_max_error = -1.0;
     pid->delta_time = 0.0f;
     pid->derivative_error = 0.0f;
+    pid->stop_integral_accumulation_increase = 0;
+    pid->stop_integral_accumulation_decrease = 0;
 }
 
 void pid_init_with_integral_limit(pid_controller_t *pid, float Kp, float Ki, float Kd, float min_output, float max_output, float integral_max_error) {
@@ -35,13 +38,15 @@ float pid_calculate(pid_controller_t *pid, float setpoint, float process_value, 
     pid->error = error;
 
     if (dt > FLT_EPSILON) {
-        pid->integral += error * dt;
+
+    	if(pid->stop_integral_accumulation_increase != 0 && error > 0.0f) {}
+    	else if(pid->stop_integral_accumulation_decrease != 0 && error < 0.0f) {}
+    	else{
+    		pid->integral += error * dt;
+    	}
 
         if (pid->integral_max_error > FLT_EPSILON) {
-            if (pid->integral > pid->integral_max_error)
-                pid->integral = pid->integral_max_error;
-            else if (pid->integral < -pid->integral_max_error)
-                pid->integral = -pid->integral_max_error;
+        	pid->integral = CLAMP(pid->integral, -pid->integral_max_error, pid->integral_max_error);
         }
 
         Iout = pid->Ki * pid->integral;
@@ -51,8 +56,8 @@ float pid_calculate(pid_controller_t *pid, float setpoint, float process_value, 
 
     float output = Pout + Iout + Dout;
 
-    if (output > pid->max_output) output = pid->max_output;
-    else if (output < pid->min_output) output = pid->min_output;
+    output = CLAMP(output, pid->min_output, pid->max_output);
+
     pid->derivative_error = derivative;
     pid->pre_error = error;
     return output;
@@ -73,8 +78,10 @@ void pid_set_Kd(pid_controller_t *pid, float val) { pid->Kd = val; }
 void pid_set_integral_limit(pid_controller_t *pid, float val) {
     val = fabsf(val);
     pid->integral_max_error = val;
-    if (pid->integral > val) pid->integral = val;
-    else if (pid->integral < -val) pid->integral = -val;
+
+    if (pid->integral_max_error > FLT_EPSILON) {
+    	pid->integral = CLAMP(pid->integral, -pid->integral_max_error, pid->integral_max_error);
+    }
 }
 
 float pid_get_integral_limit(pid_controller_t *pid) { return pid->integral_max_error; }
@@ -91,4 +98,29 @@ void pid_reset(pid_controller_t *pid) {
     pid->error = 0.0f;
     pid->derivative_error = 0.0f;
     pid->delta_time = 0.0f;
+}
+
+
+void pid_stop_integral_accumulation_increase_error(pid_controller_t *pid){
+	pid->stop_integral_accumulation_increase = 1;
+}
+
+void pid_stop_integral_accumulation_decrease_error(pid_controller_t *pid){
+	pid->stop_integral_accumulation_decrease = 1;
+}
+
+void pid_resume_integral_accumulation_increase_error(pid_controller_t *pid){
+	pid->stop_integral_accumulation_increase = 0;
+}
+
+void pid_resume_integral_accumulation_decrease_error(pid_controller_t *pid){
+	pid->stop_integral_accumulation_decrease = 0;
+}
+
+int pid_get_stop_integral_accumulation_decrease_error(pid_controller_t *pid){
+	return pid->stop_integral_accumulation_decrease;
+}
+
+int pid_get_stop_integral_accumulation_increase_error(pid_controller_t *pid){
+	return pid->stop_integral_accumulation_increase;
 }
