@@ -37,7 +37,7 @@ typedef struct crsf_s{
 	int8_t is_armed;
 
 	uint32_t _lastChannelsPacket;
-#if CRSF_FLIGHTMODES_ENABLED > 0
+#if CRSF_FLIGHTMODES_ENABLED != 0
 	flightMode_t _flightModes[FLIGHT_MODE_COUNT];
 #endif
 }crsf_t;
@@ -63,7 +63,7 @@ void crsf_setBaroAltitudeData(crsf_t *crsf, uint16_t altitude, int16_t vario);
 void crsf_setBatteryData(crsf_t *crsf, float voltage, float current, uint32_t capacity, uint8_t percent);
 void crsf_setGPSData(crsf_t *crsf, float latitude, float longitude, float altitude, float speed, float course, uint8_t satellites);
 
-#if CRSF_FLIGHTMODES_ENABLED > 0
+#if CRSF_FLIGHTMODES_ENABLED != 0
 void crsf_setFlightModeData(crsf_t *crsf, flightModeId_t flightMode, int8_t disarmed);
 #endif
 

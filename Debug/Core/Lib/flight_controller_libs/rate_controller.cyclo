@@ -2,6 +2,7 @@
 ../Core/Lib/flight_controller_libs/rate_controller.c:43:6:rate_controller_init_roll_pid	1
 ../Core/Lib/flight_controller_libs/rate_controller.c:56:6:rate_controller_init_pitch_pid	1
 ../Core/Lib/flight_controller_libs/rate_controller.c:69:6:rate_controller_init_yaw_pid	1
-../Core/Lib/flight_controller_libs/rate_controller.c:83:6:rate_controller_update	9
-../Core/Lib/flight_controller_libs/rate_controller.c:194:6:rate_controller_reset	1
-../Core/Lib/flight_controller_libs/rate_controller.c:217:6:rate_controller_get_pid_outputs	5
+../Core/Lib/flight_controller_libs/rate_controller.c:83:21:stop_integral_part	3
+../Core/Lib/flight_controller_libs/rate_controller.c:104:6:rate_controller_update	3
+../Core/Lib/flight_controller_libs/rate_controller.c:186:6:rate_controller_reset	1
+../Core/Lib/flight_controller_libs/rate_controller.c:209:6:rate_controller_get_pid_outputs	5

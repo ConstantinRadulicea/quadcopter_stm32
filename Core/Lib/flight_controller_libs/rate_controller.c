@@ -80,6 +80,27 @@ void rate_controller_init_yaw_pid(
 }
 
 
+static inline float stop_integral_part(float pid_output, pid_controller_t *pid, float min_pid_output, float max_pid_output){
+    // Clamp to allowed range and disable integration accumulation when the output is saturated
+    if( pid_output >= max_pid_output ){
+    	pid_stop_integral_accumulation_increase_error(pid);
+    	pid_resume_integral_accumulation_decrease_error(pid);
+    	pid_output = max_pid_output;
+    }
+    else if( pid_output <= min_pid_output ){
+    	pid_resume_integral_accumulation_increase_error(pid);
+    	pid_stop_integral_accumulation_decrease_error(pid);
+    	pid_output = min_pid_output;
+    }
+    else{
+    	pid_resume_integral_accumulation_increase_error(pid);
+    	pid_resume_integral_accumulation_decrease_error(pid);
+    }
+
+    return pid_output;
+}
+
+
 void rate_controller_update(
     rate_controller_t* fc,
 	float sensor_roll_rate,
@@ -89,13 +110,20 @@ void rate_controller_update(
     float target_pitch_rate,
     float target_yaw_rate
 ) {
-    if (!fc) {
-        return;
-    }
-
     float roll_out = 0.0f;
     float pitch_out = 0.0f;
     float yaw_out = 0.0f;
+    float roll_k_ff = 0.0f;
+    float pitch_k_ff = 0.0f;
+	float yaw_k_ff = 0.0f;
+	float roll_d = 0.0f;
+	float pitch_d = 0.0f;
+	float yaw_d = 0.0f;
+	float dt = 0.0f;
+
+    if (!fc) {
+        return;
+    }
 
     // --- Store current sensor inputs and setpoints ---
     fc->prev_target_roll_rate = fc->target_roll_rate;
@@ -110,27 +138,27 @@ void rate_controller_update(
 	fc->body_frame_pitch_rate = sensor_pitch_rate;
     fc->body_frame_yaw_rate = sensor_yaw_rate;
 
-    float dt = HzToSec(fc->sample_rate_hz);
+    dt = fabsf(HzToSec(fc->sample_rate_hz));
 
-    if(fabsf(dt) > FLT_EPSILON){
+    if(dt > FLT_EPSILON){
 
 		// --- Step 5: PID control ---
 		roll_out = pid_calculate(&fc->pid_roll, target_roll_rate, sensor_roll_rate, dt);
 		pitch_out = pid_calculate(&fc->pid_pitch, target_pitch_rate, sensor_pitch_rate, dt);
 		yaw_out = pid_calculate(&fc->pid_yaw, target_yaw_rate, sensor_yaw_rate, dt);
 
-		float roll_k_ff = fc->pid_roll_k_ff * ((fc->target_roll_rate - fc->prev_target_roll_rate) / dt);
-		float pitch_k_ff = fc->pid_pitch_k_ff * ((fc->target_pitch_rate - fc->prev_target_pitch_rate) / dt);
-		float yaw_k_ff = fc->pid_yaw_k_ff * ((fc->target_yaw_rate - fc->prev_target_yaw_rate) / dt);
+		roll_k_ff = fc->pid_roll_k_ff * ((fc->target_roll_rate - fc->prev_target_roll_rate) / dt);
+		pitch_k_ff = fc->pid_pitch_k_ff * ((fc->target_pitch_rate - fc->prev_target_pitch_rate) / dt);
+		yaw_k_ff = fc->pid_yaw_k_ff * ((fc->target_yaw_rate - fc->prev_target_yaw_rate) / dt);
 
 		roll_k_ff = pt1_filter_apply_lowpass(&fc->ff_term_pid_roll_pt1_filter, roll_k_ff);
 		pitch_k_ff = pt1_filter_apply_lowpass(&fc->ff_term_pid_pitch_pt1_filter, pitch_k_ff);
 		yaw_k_ff = pt1_filter_apply_lowpass(&fc->ff_term_pid_yaw_pt1_filter, yaw_k_ff);
 
 		// --- Step 6: D-term filtering ---
-		float roll_d = pt2_filter_apply_lowpass(&fc->d_term_pid_roll_filter, fc->pid_roll.derivative_error * fc->pid_roll_k_d);
-		float pitch_d = pt2_filter_apply_lowpass(&fc->d_term_pid_pitch_filter, fc->pid_pitch.derivative_error * fc->pid_pitch_k_d);
-		float yaw_d = pt2_filter_apply_lowpass(&fc->d_term_pid_yaw_filter, fc->pid_yaw.derivative_error * fc->pid_yaw_k_d);
+		roll_d = pt2_filter_apply_lowpass(&fc->d_term_pid_roll_filter, fc->pid_roll.derivative_error * fc->pid_roll_k_d);
+		pitch_d = pt2_filter_apply_lowpass(&fc->d_term_pid_pitch_filter, fc->pid_pitch.derivative_error * fc->pid_pitch_k_d);
+		yaw_d = pt2_filter_apply_lowpass(&fc->d_term_pid_yaw_filter, fc->pid_yaw.derivative_error * fc->pid_yaw_k_d);
 
 		// Add D-term back to PID outputs
 		roll_out += roll_d;
@@ -144,45 +172,9 @@ void rate_controller_update(
     }
 
     // Clamp to allowed range and disable integration accumulation when the output is saturated
-    if(roll_out > CONTROLLER_PID_MAX_OUTPUT){
-    	pid_stop_integral_accumulation_increase_error(&fc->pid_roll);
-    	roll_out = CONTROLLER_PID_MAX_OUTPUT;
-    }
-    else if(roll_out < CONTROLLER_PID_MIN_OUTPUT){
-    	pid_stop_integral_accumulation_decrease_error(&fc->pid_roll);
-    	roll_out = CONTROLLER_PID_MIN_OUTPUT;
-    }
-    else{
-    	pid_resume_integral_accumulation_increase_error(&fc->pid_roll);
-    	pid_resume_integral_accumulation_decrease_error(&fc->pid_roll);
-    }
-
-    if(pitch_out > CONTROLLER_PID_MAX_OUTPUT){
-    	pid_stop_integral_accumulation_increase_error(&fc->pid_pitch);
-    	pitch_out = CONTROLLER_PID_MAX_OUTPUT;
-    }
-    else if(pitch_out < CONTROLLER_PID_MIN_OUTPUT){
-    	pid_stop_integral_accumulation_decrease_error(&fc->pid_pitch);
-    	pitch_out = CONTROLLER_PID_MIN_OUTPUT;
-    }
-    else{
-    	pid_resume_integral_accumulation_increase_error(&fc->pid_pitch);
-    	pid_resume_integral_accumulation_decrease_error(&fc->pid_pitch);
-    }
-
-
-    if(yaw_out > CONTROLLER_PID_MAX_OUTPUT){
-    	pid_stop_integral_accumulation_increase_error(&fc->pid_yaw);
-    	yaw_out = CONTROLLER_PID_MAX_OUTPUT;
-    }
-    else if(yaw_out < CONTROLLER_PID_MIN_OUTPUT){
-    	pid_stop_integral_accumulation_decrease_error(&fc->pid_yaw);
-    	yaw_out = CONTROLLER_PID_MIN_OUTPUT;
-    }
-    else{
-    	pid_resume_integral_accumulation_increase_error(&fc->pid_yaw);
-    	pid_resume_integral_accumulation_decrease_error(&fc->pid_yaw);
-    }
+    roll_out = stop_integral_part(roll_out, &fc->pid_roll, CONTROLLER_PID_MIN_OUTPUT, CONTROLLER_PID_MAX_OUTPUT);
+    pitch_out = stop_integral_part(pitch_out, &fc->pid_pitch, CONTROLLER_PID_MIN_OUTPUT, CONTROLLER_PID_MAX_OUTPUT);
+    yaw_out = stop_integral_part(yaw_out, &fc->pid_yaw, CONTROLLER_PID_MIN_OUTPUT, CONTROLLER_PID_MAX_OUTPUT);
 
 
     // Store final PID outputs
