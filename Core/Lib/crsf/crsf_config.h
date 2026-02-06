@@ -1,27 +1,3 @@
-/**
- * @file CFA_Config.hpp
- * @author Cassandra "ZZ Cat" Robinson (nicad.heli.flier@gmail.com)
- * @brief This is the configuration file for CRSF for Arduino.
- *
- * @copyright Copyright (c) 2024, Cassandra "ZZ Cat" Robinson. All rights reserved.
- *
- * @section License GNU Affero General Public License v3.0
- * This source file is a part of the CRSF for Arduino library.
- * CRSF for Arduino is free software: you can redistribute it and/or modify
- * it under the terms of the GNU Affero General Public License as published by
- * the Free Software Foundation, either version 3 of the License, or
- * (at your option) any later version.
- *
- * CRSF for Arduino is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU Affero General Public License for more details.
- *
- * You should have received a copy of the GNU Affero General Public License
- * along with CRSF for Arduino.  If not, see <https://www.gnu.org/licenses/>.
- *
- */
-
 #ifndef CRSF_CONFIG_H
 #define CRSF_CONFIG_H
 
@@ -29,31 +5,6 @@
 extern "C" {
 #endif
 
-/* The following defines are used to configure CRSF for Arduino.
-You can change these values to suit your needs. */
-
-/* CRSFforArduino version
-Versioning is based on a rolling release model
-and is backwards-compatible with Semantic Versioning 2.0.0.
-See https://semver.org/ for more information. */
-#define CRSFFORARDUINO_VERSION       "2025.12.11"
-#define CRSFFORARDUINO_VERSION_DATE  "2025-12-11"
-#define CRSFFORARDUINO_VERSION_MAJOR 2025
-#define CRSFFORARDUINO_VERSION_MINOR 12
-#define CRSFFORARDUINO_VERSION_PATCH 11
-
-// This is set to 1 if the version is a pre-release version.
-#define CRSFFORARDUINO_VERSION_IS_PRERELEASE 0
-
-// These are the pre-release version details which are only used if CRSFFORARDUINO_VERSION_IS_PRERELEASE is set to 1.
-// NOTE: Pre-release versions are not recommended for production use.
-// #if CRSFFORARDUINO_VERSION_IS_PRERELEASE == 1
-// #define CRSFFORARDUINO_VERSION_PRE   "2025.8.30"
-// #define CRSFFORARDUINO_VERSION_BUILD_DATE "2025-08-30"
-// #define CRSFFORARDUINO_VERSION_BUILD_MAJOR 2025
-// #define CRSFFORARDUINO_VERSION_BUILD_MINOR 8
-// #define CRSFFORARDUINO_VERSION_BUILD_PATCH 30
-// #endif
 
 /* Failsafe Options
 - CRSF_FAILSAFE_LQI_THRESHOLD: The minimum LQI value for the receiver to be considered connected.
@@ -113,8 +64,7 @@ and assign them to a switch on your controller. */
 - TELEMETRY_BAROALTITUDE_ENABLED: Enables or disables barometric altitude telemetry output.
 - TELEMETRY_BATTERY_ENABLED: Enables or disables battery telemetry output.
 - TELEMETRY_FLIGHTMODE_ENABLED: Enables or disables flight mode telemetry output.
-- TELEMETRY_GPS_ENABLED: Enables or disables GPS telemetry output.
-- TELEMETRY_SIMULATE_ARBITRARY_VALUES: When enabled, arbitrary values are sent for telemetry. */
+- TELEMETRY_GPS_ENABLED: Enables or disables GPS telemetry output.  */
 
 
 
@@ -125,27 +75,17 @@ and assign them to a switch on your controller. */
 #define CRSF_TELEMETRY_ATTITUDE_ENABLED     0
 #define CRSF_TELEMETRY_BAROALTITUDE_ENABLED 0
 #define CRSF_TELEMETRY_BATTERY_ENABLED      0
+#define CRSF_TELEMETRY_FLIGHTMODE_ENABLED	1
+#define CRSF_TELEMETRY_GPS_ENABLED			0
 
-#ifndef CRSF_TELEMETRY_FLIGHTMODE_ENABLED
-#define CRSF_TELEMETRY_FLIGHTMODE_ENABLED 1
+#if CRSF_FLIGHTMODES_ENABLED == 0
+#define CRSF_TELEMETRY_FLIGHTMODE_ENABLED	0
 #endif
-
-#define CRSF_TELEMETRY_GPS_ENABLED 0
 
 #define CRSF_LINK_STATISTICS_ENABLED 1
 #define USE_RX_LINK_UPLINK_POWER 1
 
-/* Debug Options
-- DEBUG_ENABLED: Enables or disables debug output over the selected serial port.
-- CRSF_DEBUG_SERIAL_PORT: The serial port to use for debug output. Usually the native USB port.
-- CRSF_DEBUG_ENABLE_COMPATIBILITY_TABLE_OUTPUT: Enables or disables debug output from the compatibility table.
-- CRSF_DEBUG_ENABLE_CONFIGURATION_DUMP: When enabled, this will print the configuration of CFA to the Serial Monitor.
-- CRSF_DEBUG_ENABLE_VERSION_OUTPUT: When enabled, this will print the version of CFA to the Serial Monitor. */
-//#define CRSF_DEBUG_ENABLED                           0
-//#define CRSF_DEBUG_SERIAL_PORT                       Serial
-#define CRSF_DEBUG_ENABLE_COMPATIBILITY_TABLE_OUTPUT 0
-#define CRSF_DEBUG_ENABLE_CONFIGURATION_DUMP         0
-#define CRSF_DEBUG_ENABLE_VERSION_OUTPUT             1
+
 
 
 #define CRSFV3_MAX_CHANNEL      24

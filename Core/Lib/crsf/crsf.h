@@ -50,7 +50,8 @@ int8_t crsf_init(crsf_t *crsf,
 		);
 
 void crsf_set_output_cb_fn(crsf_t *crsf, crsf_output_cb_fn fn, void *ctx);
-int8_t crsf_update(crsf_t *crsf, uint8_t rxByte);
+
+frameType_t crsf_update(crsf_t *crsf, uint8_t* rx_buf, uint32_t rx_buf_size, uint32_t *bytes_processed);
 
 int8_t crsf_isNewRcDataAvailable(crsf_t *crsf);
 int8_t crsf_getFailSafe(crsf_t *crsf);

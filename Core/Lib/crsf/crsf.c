@@ -102,8 +102,8 @@ static void process_channels_frame(crsf_t *crsf){
 }
 
 
-// returns 1 when a frame is received valid
-static int8_t crsf_receive_frame(crsf_t *crsf, uint8_t rxByte)
+// returns CRSF_FRAMETYPE_INVALID when a frame is not received
+static frameType_t crsf_receive_frame(crsf_t *crsf, uint8_t rxByte)
 {
 	uint8_t framePosition = crsf->rx_frame_position;
 	uint32_t frameStartTime = crsf->rx_frame_start_time_us;
@@ -118,11 +118,13 @@ static int8_t crsf_receive_frame(crsf_t *crsf, uint8_t rxByte)
 
 		if (currentTime < frameStartTime) {
 			frameStartTime = currentTime;
+			crsf->rx_frame_start_time_us = frameStartTime;
 		}
 	}
 
 	if (framePosition == 0) {
 		frameStartTime = currentTime;
+		crsf->rx_frame_start_time_us = frameStartTime;
 	}
 
 	/* Assume the full frame length is 5 bytes until the frame length byte is received. */
@@ -138,7 +140,7 @@ static int8_t crsf_receive_frame(crsf_t *crsf, uint8_t rxByte)
 		/* Clear the frame buffer and reset the frame position. */
 		//memset(crsf->rxFrame.raw, 0, CRSF_FRAME_SIZE_MAX);
 		framePosition = 0;
-		return 0;
+		return CRSF_FRAMETYPE_INVALID;
 	}
 
 	fullFrameLength = CRSF_CLAMP(fullFrameLength, 0, CRSF_FRAME_SIZE_MAX);
@@ -194,17 +196,17 @@ static int8_t crsf_receive_frame(crsf_t *crsf, uint8_t rxByte)
 				/* Clear the frame buffer and reset the frame position. */
 				//memset(crsf->rxFrame.raw, 0, CRSF_FRAME_SIZE_MAX);
 				framePosition = 0;
-				return 0;
+				return CRSF_FRAMETYPE_INVALID;
 			}
 
 			/* Clear the frame buffer and reset the frame position. */
 			//memset(crsf->rxFrame.raw, 0, CRSF_FRAME_SIZE_MAX);
 			framePosition = 0;
-			return 1;
+			return (frameType_t) (crsf->rxFrame.frame.type);
 		}
 	}
 
-	return 0;
+	return CRSF_FRAMETYPE_INVALID;
 }
 
 
@@ -379,12 +381,12 @@ int8_t crsf_isArmed(crsf_t *crsf){
 
 
 
-int8_t crsf_update(crsf_t *crsf, uint8_t rxByte){
+static frameType_t crsf_update_byte(crsf_t *crsf, uint8_t rxByte){
 
 	uint8_t byteReceived = (uint8_t)rxByte;
 	uint32_t currentTime = crsf->sys_now_us();
-	int8_t frame_received =  crsf_receive_frame(crsf, byteReceived);
-	if (frame_received)
+	frameType_t frame_received =  crsf_receive_frame(crsf, byteReceived);
+	if (frame_received != CRSF_FRAMETYPE_INVALID)
 	{
 
 #if CRSF_RC_ENABLED > 0
@@ -476,7 +478,9 @@ void crsf_setGPSData(crsf_t *crsf, float latitude, float longitude, float altitu
 
 
 int8_t crsf_isNewRcDataAvailable(crsf_t *crsf){
-	return (crsf->rcFrameReceived != 0) && (crsf->_rcChannels.valid != 0);
+	return (crsf->_rcChannels.valid != 0);
+
+//	return (crsf->rcFrameReceived != 0) && (crsf->_rcChannels.valid != 0);
 }
 
 int8_t crsf_isChannelUpdated(crsf_t *crsf, rc_channels_t channel){
@@ -493,6 +497,23 @@ float crsf_getChannelNormalized(crsf_t *crsf, rc_channels_t channel){
 	}
 
 	return crsf->_rcChannels.value_norm[(int)channel];
+}
+
+
+
+frameType_t crsf_update(crsf_t *crsf, uint8_t* rx_buf, uint32_t rx_buf_size, uint32_t *bytes_processed){
+	frameType_t crsf_result = CRSF_FRAMETYPE_INVALID;
+	*bytes_processed = 0;
+	for(uint32_t i=0;i < rx_buf_size; i++){
+		crsf_result = crsf_update_byte(crsf, rx_buf[i]);
+
+		if(crsf_result != 0){ // new frame was received
+			*bytes_processed = i+1;
+			break;
+		}
+	}
+
+	return crsf_result;
 }
 
 

@@ -237,8 +237,9 @@ void rc_control_crsf(void *arg){
 	crsf_t crsf;
 	uint32_t frame_rate_hz = 250;
 	size_t rx_data_size = 0;
+	size_t rx_data_size_processed = 0;
 	size_t total_loops = 0;
-	int8_t crsf_result;
+	frameType_t crsf_result;
 	float roll;
 	float pitch;
 	float yaw;
@@ -256,17 +257,21 @@ void rc_control_crsf(void *arg){
 	throttle = 0.0f;
 	failsafe = 0;
 	is_armed = 0;
+	uint32_t bytes_processed = 0;
+
 
 	for(;;) {
 		total_loops = 0;
 		do{
 			rx_data_size = uart_recv_data(&usart3_driver, rxbuf, UDP_RX_BUF_SIZE);
-			for(size_t i=0; i < rx_data_size; i++, total_loops++){
-				crsf_result = 0;
-				if(rx_data_size > 0){
-					crsf_result = crsf_update(&crsf, rxbuf[i]);
-				}
-				if(crsf_result != 0 && crsf_isNewRcDataAvailable(&crsf)){ // new frame was received
+			rx_data_size_processed = 0;
+			for(rx_data_size_processed = 0; rx_data_size_processed < rx_data_size; total_loops += bytes_processed){
+
+				crsf_result = CRSF_FRAMETYPE_INVALID;
+				crsf_result = crsf_update(&crsf, (uint8_t*)&(rxbuf[rx_data_size_processed]), (uint32_t)(rx_data_size - bytes_processed), &bytes_processed);
+				rx_data_size_processed += bytes_processed;
+
+				if(crsf_result != CRSF_FRAMETYPE_INVALID && crsf_isNewRcDataAvailable(&crsf)){ // new frame was received
 
 					if(crsf_isChannelUpdated(&crsf, RC_CHANNEL_ROLL) != 0){
 						roll = crsf_getChannelNormalized(&crsf, RC_CHANNEL_ROLL);
@@ -291,7 +296,7 @@ void rc_control_crsf(void *arg){
 				}
 			}
 		 }
-		while(rx_data_size > 0 && total_loops < 1000);
+		while(rx_data_size > 0 && total_loops < 64*10);
 
 		isLinkUp = crsf_isLinkUp(&crsf);
 		failsafe = crsf_getFailSafe(&crsf);

@@ -99,7 +99,8 @@ typedef enum rc_channels_e
 
     typedef enum frameType_e
     {
-        CRSF_FRAMETYPE_GPS = 0x02,
+    	CRSF_FRAMETYPE_INVALID = 0x0,
+    	CRSF_FRAMETYPE_GPS = 0x02,
         CRSF_FRAMETYPE_VARIO = 0x07,
         CRSF_FRAMETYPE_BATTERY_SENSOR = 0x08,
         CRSF_FRAMETYPE_BARO_ALTITUDE = 0x09,
