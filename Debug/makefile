@@ -31,6 +31,7 @@ RM := rm -rf
 -include Core/Lib/uart_driver/subdir.mk
 -include Core/Lib/rxtxbuffer/subdir.mk
 -include Core/Lib/ringbuffer/subdir.mk
+-include Core/Lib/msp/subdir.mk
 -include Core/Lib/mpu9250/test/subdir.mk
 -include Core/Lib/mpu9250/src/subdir.mk
 -include Core/Lib/mpu9250/interface/subdir.mk

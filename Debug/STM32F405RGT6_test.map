@@ -438,6 +438,10 @@ Discarded input sections
                 0x00000000       0x66 ./Core/Lib/flight_controller_libs/crc.o
  .text.crc16_add_arr
                 0x00000000       0x48 ./Core/Lib/flight_controller_libs/crc.o
+ .text.crc8_xor_add
+                0x00000000       0x24 ./Core/Lib/flight_controller_libs/crc.o
+ .text.crc8_xor_add_arr
+                0x00000000       0x3e ./Core/Lib/flight_controller_libs/crc.o
  .debug_macro   0x00000000      0xad8 ./Core/Lib/flight_controller_libs/crc.o
  .debug_macro   0x00000000       0x22 ./Core/Lib/flight_controller_libs/crc.o
  .debug_macro   0x00000000       0x8e ./Core/Lib/flight_controller_libs/crc.o
@@ -4034,6 +4038,48 @@ Discarded input sections
  .debug_frame   0x00000000       0x38 ./Core/Lib/mpu9250/test/driver_mpu9250_register_test.o
  .ARM.attributes
                 0x00000000       0x34 ./Core/Lib/mpu9250/test/driver_mpu9250_register_test.o
+ .group         0x00000000        0xc ./Core/Lib/msp/msp.o
+ .group         0x00000000        0xc ./Core/Lib/msp/msp.o
+ .group         0x00000000        0xc ./Core/Lib/msp/msp.o
+ .group         0x00000000        0xc ./Core/Lib/msp/msp.o
+ .group         0x00000000        0xc ./Core/Lib/msp/msp.o
+ .group         0x00000000        0xc ./Core/Lib/msp/msp.o
+ .group         0x00000000        0xc ./Core/Lib/msp/msp.o
+ .group         0x00000000        0xc ./Core/Lib/msp/msp.o
+ .group         0x00000000        0xc ./Core/Lib/msp/msp.o
+ .group         0x00000000        0xc ./Core/Lib/msp/msp.o
+ .text          0x00000000        0x0 ./Core/Lib/msp/msp.o
+ .data          0x00000000        0x0 ./Core/Lib/msp/msp.o
+ .bss           0x00000000        0x0 ./Core/Lib/msp/msp.o
+ .text.le16_to_host
+                0x00000000       0x2c ./Core/Lib/msp/msp.o
+ .text.msp_receive_frame
+                0x00000000      0x3d0 ./Core/Lib/msp/msp.o
+ .text.msp_update
+                0x00000000       0x42 ./Core/Lib/msp/msp.o
+ .debug_info    0x00000000      0x599 ./Core/Lib/msp/msp.o
+ .debug_abbrev  0x00000000      0x1f1 ./Core/Lib/msp/msp.o
+ .debug_aranges
+                0x00000000       0x30 ./Core/Lib/msp/msp.o
+ .debug_rnglists
+                0x00000000       0x20 ./Core/Lib/msp/msp.o
+ .debug_macro   0x00000000       0xa2 ./Core/Lib/msp/msp.o
+ .debug_macro   0x00000000      0xad8 ./Core/Lib/msp/msp.o
+ .debug_macro   0x00000000       0x22 ./Core/Lib/msp/msp.o
+ .debug_macro   0x00000000       0x8e ./Core/Lib/msp/msp.o
+ .debug_macro   0x00000000       0x51 ./Core/Lib/msp/msp.o
+ .debug_macro   0x00000000      0x103 ./Core/Lib/msp/msp.o
+ .debug_macro   0x00000000       0x6a ./Core/Lib/msp/msp.o
+ .debug_macro   0x00000000      0x1df ./Core/Lib/msp/msp.o
+ .debug_macro   0x00000000       0x34 ./Core/Lib/msp/msp.o
+ .debug_macro   0x00000000      0x190 ./Core/Lib/msp/msp.o
+ .debug_macro   0x00000000       0x40 ./Core/Lib/msp/msp.o
+ .debug_line    0x00000000      0x6eb ./Core/Lib/msp/msp.o
+ .debug_str     0x00000000     0x4b1e ./Core/Lib/msp/msp.o
+ .comment       0x00000000       0x44 ./Core/Lib/msp/msp.o
+ .debug_frame   0x00000000       0x84 ./Core/Lib/msp/msp.o
+ .ARM.attributes
+                0x00000000       0x34 ./Core/Lib/msp/msp.o
  .group         0x00000000        0xc ./Core/Lib/ringbuffer/ringbuffer.o
  .group         0x00000000        0xc ./Core/Lib/ringbuffer/ringbuffer.o
  .group         0x00000000        0xc ./Core/Lib/ringbuffer/ringbuffer.o
@@ -29513,6 +29559,7 @@ LOAD ./Core/Lib/mpu9250/test/driver_mpu9250_dmp_tap_orient_motion_test.o
 LOAD ./Core/Lib/mpu9250/test/driver_mpu9250_fifo_test.o
 LOAD ./Core/Lib/mpu9250/test/driver_mpu9250_read_test.o
 LOAD ./Core/Lib/mpu9250/test/driver_mpu9250_register_test.o
+LOAD ./Core/Lib/msp/msp.o
 LOAD ./Core/Lib/ringbuffer/ringbuffer.o
 LOAD ./Core/Lib/rxtxbuffer/rxtxbuffer.o
 LOAD ./Core/Lib/uart_driver/uart_driver.o
@@ -34839,231 +34886,231 @@ LOAD C:/ST/STM32CubeIDE_1.18.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.ext
 LOAD C:/ST/STM32CubeIDE_1.18.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a
 LOAD C:/ST/STM32CubeIDE_1.18.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/thumb/v7e-m+fp/hard\libgcc.a
 
-.debug_info     0x00000000    0x6daaa
+.debug_info     0x00000000    0x6db36
  .debug_info    0x00000000     0x15a7 ./Core/Lib/crsf/crsf.o
  .debug_info    0x000015a7      0x13a ./Core/Lib/crsf/crsf_def.o
  .debug_info    0x000016e1      0xc65 ./Core/Lib/crsf/crsf_telemetry.o
  .debug_info    0x00002346      0x425 ./Core/Lib/flight_controller_libs/attitude_controller.o
- .debug_info    0x0000276b      0x23e ./Core/Lib/flight_controller_libs/crc.o
- .debug_info    0x000029a9      0x50a ./Core/Lib/flight_controller_libs/filters.o
- .debug_info    0x00002eb3     0x11af ./Core/Lib/flight_controller_libs/flight_control_loop.o
- .debug_info    0x00004062     0x13dc ./Core/Lib/flight_controller_libs/fp_cli.o
- .debug_info    0x0000543e      0xea2 ./Core/Lib/flight_controller_libs/fp_cli_server.o
- .debug_info    0x000062e0      0x9ee ./Core/Lib/flight_controller_libs/geometry3D.o
- .debug_info    0x00006cce      0x6c5 ./Core/Lib/flight_controller_libs/imu.o
- .debug_info    0x00007393      0x2d1 ./Core/Lib/flight_controller_libs/madgwick_filter.o
- .debug_info    0x00007664      0x23c ./Core/Lib/flight_controller_libs/motor_mixer.o
- .debug_info    0x000078a0      0x649 ./Core/Lib/flight_controller_libs/pid_controller.o
- .debug_info    0x00007ee9      0x834 ./Core/Lib/flight_controller_libs/rate_controller.o
- .debug_info    0x0000871d      0x71d ./Core/Lib/flight_controller_libs/rc_control.o
- .debug_info    0x00008e3a     0x2246 ./Core/Lib/flight_controller_libs/rc_control_recv_routine.o
- .debug_info    0x0000b080      0x474 ./Core/Lib/lwshell/lwshell/src/lwshell/lwshell.o
- .debug_info    0x0000b4f4      0xca8 ./Core/Lib/mpu6500/interface/driver_mpu6500_basic.o
- .debug_info    0x0000c19c     0x113b ./Core/Lib/mpu6500/interface/driver_mpu6500_interface.o
- .debug_info    0x0000d2d7     0x5a51 ./Core/Lib/mpu6500/src/driver_mpu6500.o
- .debug_info    0x00012d28      0x68a ./Core/Lib/ringbuffer/ringbuffer.o
- .debug_info    0x000133b2     0x1478 ./Core/Lib/uart_driver/uart_driver.o
- .debug_info    0x0001482a      0x4bb ./Core/Src/dma.o
- .debug_info    0x00014ce5      0xb0d ./Core/Src/esc_pwm.o
- .debug_info    0x000157f2      0xc4e ./Core/Src/freertos.o
- .debug_info    0x00016440      0x410 ./Core/Src/gpio.o
- .debug_info    0x00016850     0x17fb ./Core/Src/lwip_example.o
- .debug_info    0x0001804b       0xba ./Core/Src/lwip_port.o
- .debug_info    0x00018105      0xf96 ./Core/Src/main.o
- .debug_info    0x0001909b     0x2b4c ./Core/Src/rtos_flight_controller.o
- .debug_info    0x0001bbe7      0x954 ./Core/Src/spi.o
- .debug_info    0x0001c53b      0x4ac ./Core/Src/stm32f4xx_hal_msp.o
- .debug_info    0x0001c9e7      0xbdc ./Core/Src/stm32f4xx_hal_timebase_tim.o
- .debug_info    0x0001d5c3      0xefb ./Core/Src/stm32f4xx_it.o
- .debug_info    0x0001e4be      0x6a3 ./Core/Src/syscalls.o
- .debug_info    0x0001eb61      0x168 ./Core/Src/sysmem.o
- .debug_info    0x0001ecc9      0x512 ./Core/Src/system_stm32f4xx.o
- .debug_info    0x0001f1db      0xef0 ./Core/Src/tim.o
- .debug_info    0x000200cb      0xf26 ./Core/Src/usart.o
- .debug_info    0x00020ff1       0x30 ./Core/Startup/startup_stm32f405rgtx.o
- .debug_info    0x00021021      0x932 ./Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal.o
- .debug_info    0x00021953      0xd7a ./Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_cortex.o
- .debug_info    0x000226cd      0x8e7 ./Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma.o
- .debug_info    0x00022fb4      0x6c3 ./Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_gpio.o
- .debug_info    0x00023677     0x156f ./Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pcd.o
- .debug_info    0x00024be6      0x6ea ./Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pcd_ex.o
- .debug_info    0x000252d0      0x8af ./Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc.o
- .debug_info    0x00025b7f     0x1525 ./Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spi.o
- .debug_info    0x000270a4     0x299d ./Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_tim.o
- .debug_info    0x00029a41     0x14db ./Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_tim_ex.o
- .debug_info    0x0002af1c     0x2f4f ./Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_uart.o
- .debug_info    0x0002de6b     0x1993 ./Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_ll_usb.o
- .debug_info    0x0002f7fe     0x12aa ./Middlewares/ST/STM32_USB_Device_Library/Class/CDC/Src/usbd_cdc.o
- .debug_info    0x00030aa8      0xe0c ./Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_core.o
- .debug_info    0x000318b4      0xae5 ./Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_ctlreq.o
- .debug_info    0x00032399      0x75c ./Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_ioreq.o
- .debug_info    0x00032af5     0x415e ./Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2/cmsis_os2.o
- .debug_info    0x00036c53      0x2af ./Middlewares/Third_Party/FreeRTOS/Source/list.o
- .debug_info    0x00036f02     0x1b79 ./Middlewares/Third_Party/FreeRTOS/Source/queue.o
- .debug_info    0x00038a7b     0x290f ./Middlewares/Third_Party/FreeRTOS/Source/tasks.o
- .debug_info    0x0003b38a     0x1b50 ./Middlewares/Third_Party/FreeRTOS/Source/timers.o
- .debug_info    0x0003ceda      0x4de ./Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F/port.o
- .debug_info    0x0003d3b8      0x4d5 ./Middlewares/Third_Party/FreeRTOS/Source/portable/MemMang/heap_4.o
- .debug_info    0x0003d88d     0x1c1f ./Middlewares/Third_Party/lwip/src/api/api_lib.o
- .debug_info    0x0003f4ac     0x2042 ./Middlewares/Third_Party/lwip/src/api/api_msg.o
- .debug_info    0x000414ee      0x101 ./Middlewares/Third_Party/lwip/src/api/err.o
- .debug_info    0x000415ef      0x5ff ./Middlewares/Third_Party/lwip/src/api/netbuf.o
- .debug_info    0x00041bee     0x3cf5 ./Middlewares/Third_Party/lwip/src/api/sockets.o
- .debug_info    0x000458e3      0xda6 ./Middlewares/Third_Party/lwip/src/api/tcpip.o
- .debug_info    0x00046689      0x457 ./Middlewares/Third_Party/lwip/src/core/def.o
- .debug_info    0x00046ae0      0x60a ./Middlewares/Third_Party/lwip/src/core/inet_chksum.o
- .debug_info    0x000470ea       0xf2 ./Middlewares/Third_Party/lwip/src/core/init.o
- .debug_info    0x000471dc      0x542 ./Middlewares/Third_Party/lwip/src/core/ip.o
- .debug_info    0x0004771e      0xb1f ./Middlewares/Third_Party/lwip/src/core/mem.o
- .debug_info    0x0004823d      0x9c3 ./Middlewares/Third_Party/lwip/src/core/memp.o
- .debug_info    0x00048c00      0xda1 ./Middlewares/Third_Party/lwip/src/core/netif.o
- .debug_info    0x000499a1     0x1d76 ./Middlewares/Third_Party/lwip/src/core/pbuf.o
- .debug_info    0x0004b717     0x1da2 ./Middlewares/Third_Party/lwip/src/core/tcp.o
- .debug_info    0x0004d4b9     0x163f ./Middlewares/Third_Party/lwip/src/core/tcp_in.o
- .debug_info    0x0004eaf8     0x1b56 ./Middlewares/Third_Party/lwip/src/core/tcp_out.o
- .debug_info    0x0005064e      0xce0 ./Middlewares/Third_Party/lwip/src/core/timeouts.o
- .debug_info    0x0005132e     0x1094 ./Middlewares/Third_Party/lwip/src/core/udp.o
- .debug_info    0x000523c2      0x952 ./Middlewares/Third_Party/lwip/src/core/ipv4/acd.o
- .debug_info    0x00052d14     0x1c6b ./Middlewares/Third_Party/lwip/src/core/ipv4/dhcp.o
- .debug_info    0x0005497f     0x1063 ./Middlewares/Third_Party/lwip/src/core/ipv4/etharp.o
- .debug_info    0x000559e2      0x9f7 ./Middlewares/Third_Party/lwip/src/core/ipv4/icmp.o
- .debug_info    0x000563d9      0xb62 ./Middlewares/Third_Party/lwip/src/core/ipv4/ip4.o
- .debug_info    0x00056f3b      0x715 ./Middlewares/Third_Party/lwip/src/core/ipv4/ip4_addr.o
- .debug_info    0x00057650      0xe41 ./Middlewares/Third_Party/lwip/src/core/ipv4/ip4_frag.o
- .debug_info    0x00058491      0x7b9 ./Middlewares/Third_Party/lwip/src/netif/ethernet.o
- .debug_info    0x00058c4a     0x12e1 ./Middlewares/Third_Party/lwip/src/netif/ppp/auth.o
- .debug_info    0x00059f2b      0xfae ./Middlewares/Third_Party/lwip/src/netif/ppp/chap-md5.o
- .debug_info    0x0005aed9     0x13a6 ./Middlewares/Third_Party/lwip/src/netif/ppp/chap-new.o
- .debug_info    0x0005c27f     0x142c ./Middlewares/Third_Party/lwip/src/netif/ppp/fsm.o
- .debug_info    0x0005d6ab     0x1903 ./Middlewares/Third_Party/lwip/src/netif/ppp/ipcp.o
- .debug_info    0x0005efae     0x1dcb ./Middlewares/Third_Party/lwip/src/netif/ppp/lcp.o
- .debug_info    0x00060d79      0x412 ./Middlewares/Third_Party/lwip/src/netif/ppp/magic.o
- .debug_info    0x0006118b     0x1ac6 ./Middlewares/Third_Party/lwip/src/netif/ppp/ppp.o
- .debug_info    0x00062c51     0x1402 ./Middlewares/Third_Party/lwip/src/netif/ppp/pppapi.o
- .debug_info    0x00064053     0x1b65 ./Middlewares/Third_Party/lwip/src/netif/ppp/pppoe.o
- .debug_info    0x00065bb8     0x1977 ./Middlewares/Third_Party/lwip/src/netif/ppp/pppos.o
- .debug_info    0x0006752f     0x1348 ./Middlewares/Third_Party/lwip/src/netif/ppp/upap.o
- .debug_info    0x00068877      0x6ac ./Middlewares/Third_Party/lwip/src/netif/ppp/utils.o
- .debug_info    0x00068f23      0x339 ./Middlewares/Third_Party/lwip/src/netif/ppp/polarssl/md5.o
- .debug_info    0x0006925c      0xe88 ./Middlewares/Third_Party/lwip/system/OS/sys_arch.o
- .debug_info    0x0006a0e4      0x708 ./USB_DEVICE/App/usb_device.o
- .debug_info    0x0006a7ec     0x1201 ./USB_DEVICE/App/usbd_cdc_if.o
- .debug_info    0x0006b9ed      0x45f ./USB_DEVICE/App/usbd_desc.o
- .debug_info    0x0006be4c     0x1c5e ./USB_DEVICE/Target/usbd_conf.o
+ .debug_info    0x0000276b      0x2ca ./Core/Lib/flight_controller_libs/crc.o
+ .debug_info    0x00002a35      0x50a ./Core/Lib/flight_controller_libs/filters.o
+ .debug_info    0x00002f3f     0x11af ./Core/Lib/flight_controller_libs/flight_control_loop.o
+ .debug_info    0x000040ee     0x13dc ./Core/Lib/flight_controller_libs/fp_cli.o
+ .debug_info    0x000054ca      0xea2 ./Core/Lib/flight_controller_libs/fp_cli_server.o
+ .debug_info    0x0000636c      0x9ee ./Core/Lib/flight_controller_libs/geometry3D.o
+ .debug_info    0x00006d5a      0x6c5 ./Core/Lib/flight_controller_libs/imu.o
+ .debug_info    0x0000741f      0x2d1 ./Core/Lib/flight_controller_libs/madgwick_filter.o
+ .debug_info    0x000076f0      0x23c ./Core/Lib/flight_controller_libs/motor_mixer.o
+ .debug_info    0x0000792c      0x649 ./Core/Lib/flight_controller_libs/pid_controller.o
+ .debug_info    0x00007f75      0x834 ./Core/Lib/flight_controller_libs/rate_controller.o
+ .debug_info    0x000087a9      0x71d ./Core/Lib/flight_controller_libs/rc_control.o
+ .debug_info    0x00008ec6     0x2246 ./Core/Lib/flight_controller_libs/rc_control_recv_routine.o
+ .debug_info    0x0000b10c      0x474 ./Core/Lib/lwshell/lwshell/src/lwshell/lwshell.o
+ .debug_info    0x0000b580      0xca8 ./Core/Lib/mpu6500/interface/driver_mpu6500_basic.o
+ .debug_info    0x0000c228     0x113b ./Core/Lib/mpu6500/interface/driver_mpu6500_interface.o
+ .debug_info    0x0000d363     0x5a51 ./Core/Lib/mpu6500/src/driver_mpu6500.o
+ .debug_info    0x00012db4      0x68a ./Core/Lib/ringbuffer/ringbuffer.o
+ .debug_info    0x0001343e     0x1478 ./Core/Lib/uart_driver/uart_driver.o
+ .debug_info    0x000148b6      0x4bb ./Core/Src/dma.o
+ .debug_info    0x00014d71      0xb0d ./Core/Src/esc_pwm.o
+ .debug_info    0x0001587e      0xc4e ./Core/Src/freertos.o
+ .debug_info    0x000164cc      0x410 ./Core/Src/gpio.o
+ .debug_info    0x000168dc     0x17fb ./Core/Src/lwip_example.o
+ .debug_info    0x000180d7       0xba ./Core/Src/lwip_port.o
+ .debug_info    0x00018191      0xf96 ./Core/Src/main.o
+ .debug_info    0x00019127     0x2b4c ./Core/Src/rtos_flight_controller.o
+ .debug_info    0x0001bc73      0x954 ./Core/Src/spi.o
+ .debug_info    0x0001c5c7      0x4ac ./Core/Src/stm32f4xx_hal_msp.o
+ .debug_info    0x0001ca73      0xbdc ./Core/Src/stm32f4xx_hal_timebase_tim.o
+ .debug_info    0x0001d64f      0xefb ./Core/Src/stm32f4xx_it.o
+ .debug_info    0x0001e54a      0x6a3 ./Core/Src/syscalls.o
+ .debug_info    0x0001ebed      0x168 ./Core/Src/sysmem.o
+ .debug_info    0x0001ed55      0x512 ./Core/Src/system_stm32f4xx.o
+ .debug_info    0x0001f267      0xef0 ./Core/Src/tim.o
+ .debug_info    0x00020157      0xf26 ./Core/Src/usart.o
+ .debug_info    0x0002107d       0x30 ./Core/Startup/startup_stm32f405rgtx.o
+ .debug_info    0x000210ad      0x932 ./Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal.o
+ .debug_info    0x000219df      0xd7a ./Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_cortex.o
+ .debug_info    0x00022759      0x8e7 ./Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma.o
+ .debug_info    0x00023040      0x6c3 ./Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_gpio.o
+ .debug_info    0x00023703     0x156f ./Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pcd.o
+ .debug_info    0x00024c72      0x6ea ./Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pcd_ex.o
+ .debug_info    0x0002535c      0x8af ./Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc.o
+ .debug_info    0x00025c0b     0x1525 ./Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spi.o
+ .debug_info    0x00027130     0x299d ./Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_tim.o
+ .debug_info    0x00029acd     0x14db ./Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_tim_ex.o
+ .debug_info    0x0002afa8     0x2f4f ./Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_uart.o
+ .debug_info    0x0002def7     0x1993 ./Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_ll_usb.o
+ .debug_info    0x0002f88a     0x12aa ./Middlewares/ST/STM32_USB_Device_Library/Class/CDC/Src/usbd_cdc.o
+ .debug_info    0x00030b34      0xe0c ./Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_core.o
+ .debug_info    0x00031940      0xae5 ./Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_ctlreq.o
+ .debug_info    0x00032425      0x75c ./Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_ioreq.o
+ .debug_info    0x00032b81     0x415e ./Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2/cmsis_os2.o
+ .debug_info    0x00036cdf      0x2af ./Middlewares/Third_Party/FreeRTOS/Source/list.o
+ .debug_info    0x00036f8e     0x1b79 ./Middlewares/Third_Party/FreeRTOS/Source/queue.o
+ .debug_info    0x00038b07     0x290f ./Middlewares/Third_Party/FreeRTOS/Source/tasks.o
+ .debug_info    0x0003b416     0x1b50 ./Middlewares/Third_Party/FreeRTOS/Source/timers.o
+ .debug_info    0x0003cf66      0x4de ./Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F/port.o
+ .debug_info    0x0003d444      0x4d5 ./Middlewares/Third_Party/FreeRTOS/Source/portable/MemMang/heap_4.o
+ .debug_info    0x0003d919     0x1c1f ./Middlewares/Third_Party/lwip/src/api/api_lib.o
+ .debug_info    0x0003f538     0x2042 ./Middlewares/Third_Party/lwip/src/api/api_msg.o
+ .debug_info    0x0004157a      0x101 ./Middlewares/Third_Party/lwip/src/api/err.o
+ .debug_info    0x0004167b      0x5ff ./Middlewares/Third_Party/lwip/src/api/netbuf.o
+ .debug_info    0x00041c7a     0x3cf5 ./Middlewares/Third_Party/lwip/src/api/sockets.o
+ .debug_info    0x0004596f      0xda6 ./Middlewares/Third_Party/lwip/src/api/tcpip.o
+ .debug_info    0x00046715      0x457 ./Middlewares/Third_Party/lwip/src/core/def.o
+ .debug_info    0x00046b6c      0x60a ./Middlewares/Third_Party/lwip/src/core/inet_chksum.o
+ .debug_info    0x00047176       0xf2 ./Middlewares/Third_Party/lwip/src/core/init.o
+ .debug_info    0x00047268      0x542 ./Middlewares/Third_Party/lwip/src/core/ip.o
+ .debug_info    0x000477aa      0xb1f ./Middlewares/Third_Party/lwip/src/core/mem.o
+ .debug_info    0x000482c9      0x9c3 ./Middlewares/Third_Party/lwip/src/core/memp.o
+ .debug_info    0x00048c8c      0xda1 ./Middlewares/Third_Party/lwip/src/core/netif.o
+ .debug_info    0x00049a2d     0x1d76 ./Middlewares/Third_Party/lwip/src/core/pbuf.o
+ .debug_info    0x0004b7a3     0x1da2 ./Middlewares/Third_Party/lwip/src/core/tcp.o
+ .debug_info    0x0004d545     0x163f ./Middlewares/Third_Party/lwip/src/core/tcp_in.o
+ .debug_info    0x0004eb84     0x1b56 ./Middlewares/Third_Party/lwip/src/core/tcp_out.o
+ .debug_info    0x000506da      0xce0 ./Middlewares/Third_Party/lwip/src/core/timeouts.o
+ .debug_info    0x000513ba     0x1094 ./Middlewares/Third_Party/lwip/src/core/udp.o
+ .debug_info    0x0005244e      0x952 ./Middlewares/Third_Party/lwip/src/core/ipv4/acd.o
+ .debug_info    0x00052da0     0x1c6b ./Middlewares/Third_Party/lwip/src/core/ipv4/dhcp.o
+ .debug_info    0x00054a0b     0x1063 ./Middlewares/Third_Party/lwip/src/core/ipv4/etharp.o
+ .debug_info    0x00055a6e      0x9f7 ./Middlewares/Third_Party/lwip/src/core/ipv4/icmp.o
+ .debug_info    0x00056465      0xb62 ./Middlewares/Third_Party/lwip/src/core/ipv4/ip4.o
+ .debug_info    0x00056fc7      0x715 ./Middlewares/Third_Party/lwip/src/core/ipv4/ip4_addr.o
+ .debug_info    0x000576dc      0xe41 ./Middlewares/Third_Party/lwip/src/core/ipv4/ip4_frag.o
+ .debug_info    0x0005851d      0x7b9 ./Middlewares/Third_Party/lwip/src/netif/ethernet.o
+ .debug_info    0x00058cd6     0x12e1 ./Middlewares/Third_Party/lwip/src/netif/ppp/auth.o
+ .debug_info    0x00059fb7      0xfae ./Middlewares/Third_Party/lwip/src/netif/ppp/chap-md5.o
+ .debug_info    0x0005af65     0x13a6 ./Middlewares/Third_Party/lwip/src/netif/ppp/chap-new.o
+ .debug_info    0x0005c30b     0x142c ./Middlewares/Third_Party/lwip/src/netif/ppp/fsm.o
+ .debug_info    0x0005d737     0x1903 ./Middlewares/Third_Party/lwip/src/netif/ppp/ipcp.o
+ .debug_info    0x0005f03a     0x1dcb ./Middlewares/Third_Party/lwip/src/netif/ppp/lcp.o
+ .debug_info    0x00060e05      0x412 ./Middlewares/Third_Party/lwip/src/netif/ppp/magic.o
+ .debug_info    0x00061217     0x1ac6 ./Middlewares/Third_Party/lwip/src/netif/ppp/ppp.o
+ .debug_info    0x00062cdd     0x1402 ./Middlewares/Third_Party/lwip/src/netif/ppp/pppapi.o
+ .debug_info    0x000640df     0x1b65 ./Middlewares/Third_Party/lwip/src/netif/ppp/pppoe.o
+ .debug_info    0x00065c44     0x1977 ./Middlewares/Third_Party/lwip/src/netif/ppp/pppos.o
+ .debug_info    0x000675bb     0x1348 ./Middlewares/Third_Party/lwip/src/netif/ppp/upap.o
+ .debug_info    0x00068903      0x6ac ./Middlewares/Third_Party/lwip/src/netif/ppp/utils.o
+ .debug_info    0x00068faf      0x339 ./Middlewares/Third_Party/lwip/src/netif/ppp/polarssl/md5.o
+ .debug_info    0x000692e8      0xe88 ./Middlewares/Third_Party/lwip/system/OS/sys_arch.o
+ .debug_info    0x0006a170      0x708 ./USB_DEVICE/App/usb_device.o
+ .debug_info    0x0006a878     0x1201 ./USB_DEVICE/App/usbd_cdc_if.o
+ .debug_info    0x0006ba79      0x45f ./USB_DEVICE/App/usbd_desc.o
+ .debug_info    0x0006bed8     0x1c5e ./USB_DEVICE/Target/usbd_conf.o
 
-.debug_abbrev   0x00000000    0x111ef
+.debug_abbrev   0x00000000    0x111f1
  .debug_abbrev  0x00000000      0x397 ./Core/Lib/crsf/crsf.o
  .debug_abbrev  0x00000397       0xa3 ./Core/Lib/crsf/crsf_def.o
  .debug_abbrev  0x0000043a      0x270 ./Core/Lib/crsf/crsf_telemetry.o
  .debug_abbrev  0x000006aa      0x141 ./Core/Lib/flight_controller_libs/attitude_controller.o
- .debug_abbrev  0x000007eb       0xd9 ./Core/Lib/flight_controller_libs/crc.o
- .debug_abbrev  0x000008c4      0x18e ./Core/Lib/flight_controller_libs/filters.o
- .debug_abbrev  0x00000a52      0x269 ./Core/Lib/flight_controller_libs/flight_control_loop.o
- .debug_abbrev  0x00000cbb      0x35b ./Core/Lib/flight_controller_libs/fp_cli.o
- .debug_abbrev  0x00001016      0x2ed ./Core/Lib/flight_controller_libs/fp_cli_server.o
- .debug_abbrev  0x00001303      0x1e5 ./Core/Lib/flight_controller_libs/geometry3D.o
- .debug_abbrev  0x000014e8      0x1a5 ./Core/Lib/flight_controller_libs/imu.o
- .debug_abbrev  0x0000168d      0x133 ./Core/Lib/flight_controller_libs/madgwick_filter.o
- .debug_abbrev  0x000017c0       0xb1 ./Core/Lib/flight_controller_libs/motor_mixer.o
- .debug_abbrev  0x00001871      0x13b ./Core/Lib/flight_controller_libs/pid_controller.o
- .debug_abbrev  0x000019ac      0x1b6 ./Core/Lib/flight_controller_libs/rate_controller.o
- .debug_abbrev  0x00001b62      0x184 ./Core/Lib/flight_controller_libs/rc_control.o
- .debug_abbrev  0x00001ce6      0x391 ./Core/Lib/flight_controller_libs/rc_control_recv_routine.o
- .debug_abbrev  0x00002077      0x22a ./Core/Lib/lwshell/lwshell/src/lwshell/lwshell.o
- .debug_abbrev  0x000022a1      0x253 ./Core/Lib/mpu6500/interface/driver_mpu6500_basic.o
- .debug_abbrev  0x000024f4      0x2fe ./Core/Lib/mpu6500/interface/driver_mpu6500_interface.o
- .debug_abbrev  0x000027f2      0x29b ./Core/Lib/mpu6500/src/driver_mpu6500.o
- .debug_abbrev  0x00002a8d      0x18c ./Core/Lib/ringbuffer/ringbuffer.o
- .debug_abbrev  0x00002c19      0x348 ./Core/Lib/uart_driver/uart_driver.o
- .debug_abbrev  0x00002f61      0x11b ./Core/Src/dma.o
- .debug_abbrev  0x0000307c      0x215 ./Core/Src/esc_pwm.o
- .debug_abbrev  0x00003291      0x25f ./Core/Src/freertos.o
- .debug_abbrev  0x000034f0      0x152 ./Core/Src/gpio.o
- .debug_abbrev  0x00003642      0x347 ./Core/Src/lwip_example.o
- .debug_abbrev  0x00003989       0x6b ./Core/Src/lwip_port.o
- .debug_abbrev  0x000039f4      0x2cf ./Core/Src/main.o
- .debug_abbrev  0x00003cc3      0x4f2 ./Core/Src/rtos_flight_controller.o
- .debug_abbrev  0x000041b5      0x1fa ./Core/Src/spi.o
- .debug_abbrev  0x000043af      0x119 ./Core/Src/stm32f4xx_hal_msp.o
- .debug_abbrev  0x000044c8      0x1f4 ./Core/Src/stm32f4xx_hal_timebase_tim.o
- .debug_abbrev  0x000046bc      0x240 ./Core/Src/stm32f4xx_it.o
- .debug_abbrev  0x000048fc      0x1b6 ./Core/Src/syscalls.o
- .debug_abbrev  0x00004ab2       0xbc ./Core/Src/sysmem.o
- .debug_abbrev  0x00004b6e      0x11a ./Core/Src/system_stm32f4xx.o
- .debug_abbrev  0x00004c88      0x22c ./Core/Src/tim.o
- .debug_abbrev  0x00004eb4      0x27e ./Core/Src/usart.o
- .debug_abbrev  0x00005132       0x24 ./Core/Startup/startup_stm32f405rgtx.o
- .debug_abbrev  0x00005156      0x214 ./Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal.o
- .debug_abbrev  0x0000536a      0x31d ./Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_cortex.o
- .debug_abbrev  0x00005687      0x264 ./Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma.o
- .debug_abbrev  0x000058eb      0x1d4 ./Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_gpio.o
- .debug_abbrev  0x00005abf      0x2b9 ./Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pcd.o
- .debug_abbrev  0x00005d78      0x1da ./Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pcd_ex.o
- .debug_abbrev  0x00005f52      0x2b7 ./Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc.o
- .debug_abbrev  0x00006209      0x27a ./Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spi.o
- .debug_abbrev  0x00006483      0x278 ./Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_tim.o
- .debug_abbrev  0x000066fb      0x283 ./Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_tim_ex.o
- .debug_abbrev  0x0000697e      0x30e ./Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_uart.o
- .debug_abbrev  0x00006c8c      0x2b3 ./Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_ll_usb.o
- .debug_abbrev  0x00006f3f      0x2d2 ./Middlewares/ST/STM32_USB_Device_Library/Class/CDC/Src/usbd_cdc.o
- .debug_abbrev  0x00007211      0x27c ./Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_core.o
- .debug_abbrev  0x0000748d      0x26f ./Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_ctlreq.o
- .debug_abbrev  0x000076fc      0x19a ./Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_ioreq.o
- .debug_abbrev  0x00007896      0x54b ./Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2/cmsis_os2.o
- .debug_abbrev  0x00007de1       0xf5 ./Middlewares/Third_Party/FreeRTOS/Source/list.o
- .debug_abbrev  0x00007ed6      0x3b6 ./Middlewares/Third_Party/FreeRTOS/Source/queue.o
- .debug_abbrev  0x0000828c      0x3fe ./Middlewares/Third_Party/FreeRTOS/Source/tasks.o
- .debug_abbrev  0x0000868a      0x368 ./Middlewares/Third_Party/FreeRTOS/Source/timers.o
- .debug_abbrev  0x000089f2      0x25c ./Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F/port.o
- .debug_abbrev  0x00008c4e      0x21d ./Middlewares/Third_Party/FreeRTOS/Source/portable/MemMang/heap_4.o
- .debug_abbrev  0x00008e6b      0x423 ./Middlewares/Third_Party/lwip/src/api/api_lib.o
- .debug_abbrev  0x0000928e      0x479 ./Middlewares/Third_Party/lwip/src/api/api_msg.o
- .debug_abbrev  0x00009707       0x91 ./Middlewares/Third_Party/lwip/src/api/err.o
- .debug_abbrev  0x00009798      0x1f5 ./Middlewares/Third_Party/lwip/src/api/netbuf.o
- .debug_abbrev  0x0000998d      0x42b ./Middlewares/Third_Party/lwip/src/api/sockets.o
- .debug_abbrev  0x00009db8      0x35b ./Middlewares/Third_Party/lwip/src/api/tcpip.o
- .debug_abbrev  0x0000a113      0x17f ./Middlewares/Third_Party/lwip/src/core/def.o
- .debug_abbrev  0x0000a292      0x194 ./Middlewares/Third_Party/lwip/src/core/inet_chksum.o
- .debug_abbrev  0x0000a426       0xa1 ./Middlewares/Third_Party/lwip/src/core/init.o
- .debug_abbrev  0x0000a4c7      0x150 ./Middlewares/Third_Party/lwip/src/core/ip.o
- .debug_abbrev  0x0000a617      0x2e6 ./Middlewares/Third_Party/lwip/src/core/mem.o
- .debug_abbrev  0x0000a8fd      0x340 ./Middlewares/Third_Party/lwip/src/core/memp.o
- .debug_abbrev  0x0000ac3d      0x337 ./Middlewares/Third_Party/lwip/src/core/netif.o
- .debug_abbrev  0x0000af74      0x433 ./Middlewares/Third_Party/lwip/src/core/pbuf.o
- .debug_abbrev  0x0000b3a7      0x3f9 ./Middlewares/Third_Party/lwip/src/core/tcp.o
- .debug_abbrev  0x0000b7a0      0x33f ./Middlewares/Third_Party/lwip/src/core/tcp_in.o
- .debug_abbrev  0x0000badf      0x312 ./Middlewares/Third_Party/lwip/src/core/tcp_out.o
- .debug_abbrev  0x0000bdf1      0x2ec ./Middlewares/Third_Party/lwip/src/core/timeouts.o
- .debug_abbrev  0x0000c0dd      0x37c ./Middlewares/Third_Party/lwip/src/core/udp.o
- .debug_abbrev  0x0000c459      0x2b5 ./Middlewares/Third_Party/lwip/src/core/ipv4/acd.o
- .debug_abbrev  0x0000c70e      0x352 ./Middlewares/Third_Party/lwip/src/core/ipv4/dhcp.o
- .debug_abbrev  0x0000ca60      0x2e9 ./Middlewares/Third_Party/lwip/src/core/ipv4/etharp.o
- .debug_abbrev  0x0000cd49      0x288 ./Middlewares/Third_Party/lwip/src/core/ipv4/icmp.o
- .debug_abbrev  0x0000cfd1      0x289 ./Middlewares/Third_Party/lwip/src/core/ipv4/ip4.o
- .debug_abbrev  0x0000d25a      0x291 ./Middlewares/Third_Party/lwip/src/core/ipv4/ip4_addr.o
- .debug_abbrev  0x0000d4eb      0x310 ./Middlewares/Third_Party/lwip/src/core/ipv4/ip4_frag.o
- .debug_abbrev  0x0000d7fb      0x27d ./Middlewares/Third_Party/lwip/src/netif/ethernet.o
- .debug_abbrev  0x0000da78      0x282 ./Middlewares/Third_Party/lwip/src/netif/ppp/auth.o
- .debug_abbrev  0x0000dcfa      0x243 ./Middlewares/Third_Party/lwip/src/netif/ppp/chap-md5.o
- .debug_abbrev  0x0000df3d      0x31b ./Middlewares/Third_Party/lwip/src/netif/ppp/chap-new.o
- .debug_abbrev  0x0000e258      0x302 ./Middlewares/Third_Party/lwip/src/netif/ppp/fsm.o
- .debug_abbrev  0x0000e55a      0x319 ./Middlewares/Third_Party/lwip/src/netif/ppp/ipcp.o
- .debug_abbrev  0x0000e873      0x380 ./Middlewares/Third_Party/lwip/src/netif/ppp/lcp.o
- .debug_abbrev  0x0000ebf3      0x202 ./Middlewares/Third_Party/lwip/src/netif/ppp/magic.o
- .debug_abbrev  0x0000edf5      0x418 ./Middlewares/Third_Party/lwip/src/netif/ppp/ppp.o
- .debug_abbrev  0x0000f20d      0x325 ./Middlewares/Third_Party/lwip/src/netif/ppp/pppapi.o
- .debug_abbrev  0x0000f532      0x38e ./Middlewares/Third_Party/lwip/src/netif/ppp/pppoe.o
- .debug_abbrev  0x0000f8c0      0x3ce ./Middlewares/Third_Party/lwip/src/netif/ppp/pppos.o
- .debug_abbrev  0x0000fc8e      0x312 ./Middlewares/Third_Party/lwip/src/netif/ppp/upap.o
- .debug_abbrev  0x0000ffa0      0x1ec ./Middlewares/Third_Party/lwip/src/netif/ppp/utils.o
- .debug_abbrev  0x0001018c      0x1be ./Middlewares/Third_Party/lwip/src/netif/ppp/polarssl/md5.o
- .debug_abbrev  0x0001034a      0x38f ./Middlewares/Third_Party/lwip/system/OS/sys_arch.o
- .debug_abbrev  0x000106d9      0x195 ./USB_DEVICE/App/usb_device.o
- .debug_abbrev  0x0001086e      0x461 ./USB_DEVICE/App/usbd_cdc_if.o
- .debug_abbrev  0x00010ccf      0x1e1 ./USB_DEVICE/App/usbd_desc.o
- .debug_abbrev  0x00010eb0      0x33f ./USB_DEVICE/Target/usbd_conf.o
+ .debug_abbrev  0x000007eb       0xdb ./Core/Lib/flight_controller_libs/crc.o
+ .debug_abbrev  0x000008c6      0x18e ./Core/Lib/flight_controller_libs/filters.o
+ .debug_abbrev  0x00000a54      0x269 ./Core/Lib/flight_controller_libs/flight_control_loop.o
+ .debug_abbrev  0x00000cbd      0x35b ./Core/Lib/flight_controller_libs/fp_cli.o
+ .debug_abbrev  0x00001018      0x2ed ./Core/Lib/flight_controller_libs/fp_cli_server.o
+ .debug_abbrev  0x00001305      0x1e5 ./Core/Lib/flight_controller_libs/geometry3D.o
+ .debug_abbrev  0x000014ea      0x1a5 ./Core/Lib/flight_controller_libs/imu.o
+ .debug_abbrev  0x0000168f      0x133 ./Core/Lib/flight_controller_libs/madgwick_filter.o
+ .debug_abbrev  0x000017c2       0xb1 ./Core/Lib/flight_controller_libs/motor_mixer.o
+ .debug_abbrev  0x00001873      0x13b ./Core/Lib/flight_controller_libs/pid_controller.o
+ .debug_abbrev  0x000019ae      0x1b6 ./Core/Lib/flight_controller_libs/rate_controller.o
+ .debug_abbrev  0x00001b64      0x184 ./Core/Lib/flight_controller_libs/rc_control.o
+ .debug_abbrev  0x00001ce8      0x391 ./Core/Lib/flight_controller_libs/rc_control_recv_routine.o
+ .debug_abbrev  0x00002079      0x22a ./Core/Lib/lwshell/lwshell/src/lwshell/lwshell.o
+ .debug_abbrev  0x000022a3      0x253 ./Core/Lib/mpu6500/interface/driver_mpu6500_basic.o
+ .debug_abbrev  0x000024f6      0x2fe ./Core/Lib/mpu6500/interface/driver_mpu6500_interface.o
+ .debug_abbrev  0x000027f4      0x29b ./Core/Lib/mpu6500/src/driver_mpu6500.o
+ .debug_abbrev  0x00002a8f      0x18c ./Core/Lib/ringbuffer/ringbuffer.o
+ .debug_abbrev  0x00002c1b      0x348 ./Core/Lib/uart_driver/uart_driver.o
+ .debug_abbrev  0x00002f63      0x11b ./Core/Src/dma.o
+ .debug_abbrev  0x0000307e      0x215 ./Core/Src/esc_pwm.o
+ .debug_abbrev  0x00003293      0x25f ./Core/Src/freertos.o
+ .debug_abbrev  0x000034f2      0x152 ./Core/Src/gpio.o
+ .debug_abbrev  0x00003644      0x347 ./Core/Src/lwip_example.o
+ .debug_abbrev  0x0000398b       0x6b ./Core/Src/lwip_port.o
+ .debug_abbrev  0x000039f6      0x2cf ./Core/Src/main.o
+ .debug_abbrev  0x00003cc5      0x4f2 ./Core/Src/rtos_flight_controller.o
+ .debug_abbrev  0x000041b7      0x1fa ./Core/Src/spi.o
+ .debug_abbrev  0x000043b1      0x119 ./Core/Src/stm32f4xx_hal_msp.o
+ .debug_abbrev  0x000044ca      0x1f4 ./Core/Src/stm32f4xx_hal_timebase_tim.o
+ .debug_abbrev  0x000046be      0x240 ./Core/Src/stm32f4xx_it.o
+ .debug_abbrev  0x000048fe      0x1b6 ./Core/Src/syscalls.o
+ .debug_abbrev  0x00004ab4       0xbc ./Core/Src/sysmem.o
+ .debug_abbrev  0x00004b70      0x11a ./Core/Src/system_stm32f4xx.o
+ .debug_abbrev  0x00004c8a      0x22c ./Core/Src/tim.o
+ .debug_abbrev  0x00004eb6      0x27e ./Core/Src/usart.o
+ .debug_abbrev  0x00005134       0x24 ./Core/Startup/startup_stm32f405rgtx.o
+ .debug_abbrev  0x00005158      0x214 ./Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal.o
+ .debug_abbrev  0x0000536c      0x31d ./Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_cortex.o
+ .debug_abbrev  0x00005689      0x264 ./Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma.o
+ .debug_abbrev  0x000058ed      0x1d4 ./Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_gpio.o
+ .debug_abbrev  0x00005ac1      0x2b9 ./Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pcd.o
+ .debug_abbrev  0x00005d7a      0x1da ./Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pcd_ex.o
+ .debug_abbrev  0x00005f54      0x2b7 ./Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc.o
+ .debug_abbrev  0x0000620b      0x27a ./Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spi.o
+ .debug_abbrev  0x00006485      0x278 ./Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_tim.o
+ .debug_abbrev  0x000066fd      0x283 ./Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_tim_ex.o
+ .debug_abbrev  0x00006980      0x30e ./Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_uart.o
+ .debug_abbrev  0x00006c8e      0x2b3 ./Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_ll_usb.o
+ .debug_abbrev  0x00006f41      0x2d2 ./Middlewares/ST/STM32_USB_Device_Library/Class/CDC/Src/usbd_cdc.o
+ .debug_abbrev  0x00007213      0x27c ./Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_core.o
+ .debug_abbrev  0x0000748f      0x26f ./Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_ctlreq.o
+ .debug_abbrev  0x000076fe      0x19a ./Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_ioreq.o
+ .debug_abbrev  0x00007898      0x54b ./Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2/cmsis_os2.o
+ .debug_abbrev  0x00007de3       0xf5 ./Middlewares/Third_Party/FreeRTOS/Source/list.o
+ .debug_abbrev  0x00007ed8      0x3b6 ./Middlewares/Third_Party/FreeRTOS/Source/queue.o
+ .debug_abbrev  0x0000828e      0x3fe ./Middlewares/Third_Party/FreeRTOS/Source/tasks.o
+ .debug_abbrev  0x0000868c      0x368 ./Middlewares/Third_Party/FreeRTOS/Source/timers.o
+ .debug_abbrev  0x000089f4      0x25c ./Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F/port.o
+ .debug_abbrev  0x00008c50      0x21d ./Middlewares/Third_Party/FreeRTOS/Source/portable/MemMang/heap_4.o
+ .debug_abbrev  0x00008e6d      0x423 ./Middlewares/Third_Party/lwip/src/api/api_lib.o
+ .debug_abbrev  0x00009290      0x479 ./Middlewares/Third_Party/lwip/src/api/api_msg.o
+ .debug_abbrev  0x00009709       0x91 ./Middlewares/Third_Party/lwip/src/api/err.o
+ .debug_abbrev  0x0000979a      0x1f5 ./Middlewares/Third_Party/lwip/src/api/netbuf.o
+ .debug_abbrev  0x0000998f      0x42b ./Middlewares/Third_Party/lwip/src/api/sockets.o
+ .debug_abbrev  0x00009dba      0x35b ./Middlewares/Third_Party/lwip/src/api/tcpip.o
+ .debug_abbrev  0x0000a115      0x17f ./Middlewares/Third_Party/lwip/src/core/def.o
+ .debug_abbrev  0x0000a294      0x194 ./Middlewares/Third_Party/lwip/src/core/inet_chksum.o
+ .debug_abbrev  0x0000a428       0xa1 ./Middlewares/Third_Party/lwip/src/core/init.o
+ .debug_abbrev  0x0000a4c9      0x150 ./Middlewares/Third_Party/lwip/src/core/ip.o
+ .debug_abbrev  0x0000a619      0x2e6 ./Middlewares/Third_Party/lwip/src/core/mem.o
+ .debug_abbrev  0x0000a8ff      0x340 ./Middlewares/Third_Party/lwip/src/core/memp.o
+ .debug_abbrev  0x0000ac3f      0x337 ./Middlewares/Third_Party/lwip/src/core/netif.o
+ .debug_abbrev  0x0000af76      0x433 ./Middlewares/Third_Party/lwip/src/core/pbuf.o
+ .debug_abbrev  0x0000b3a9      0x3f9 ./Middlewares/Third_Party/lwip/src/core/tcp.o
+ .debug_abbrev  0x0000b7a2      0x33f ./Middlewares/Third_Party/lwip/src/core/tcp_in.o
+ .debug_abbrev  0x0000bae1      0x312 ./Middlewares/Third_Party/lwip/src/core/tcp_out.o
+ .debug_abbrev  0x0000bdf3      0x2ec ./Middlewares/Third_Party/lwip/src/core/timeouts.o
+ .debug_abbrev  0x0000c0df      0x37c ./Middlewares/Third_Party/lwip/src/core/udp.o
+ .debug_abbrev  0x0000c45b      0x2b5 ./Middlewares/Third_Party/lwip/src/core/ipv4/acd.o
+ .debug_abbrev  0x0000c710      0x352 ./Middlewares/Third_Party/lwip/src/core/ipv4/dhcp.o
+ .debug_abbrev  0x0000ca62      0x2e9 ./Middlewares/Third_Party/lwip/src/core/ipv4/etharp.o
+ .debug_abbrev  0x0000cd4b      0x288 ./Middlewares/Third_Party/lwip/src/core/ipv4/icmp.o
+ .debug_abbrev  0x0000cfd3      0x289 ./Middlewares/Third_Party/lwip/src/core/ipv4/ip4.o
+ .debug_abbrev  0x0000d25c      0x291 ./Middlewares/Third_Party/lwip/src/core/ipv4/ip4_addr.o
+ .debug_abbrev  0x0000d4ed      0x310 ./Middlewares/Third_Party/lwip/src/core/ipv4/ip4_frag.o
+ .debug_abbrev  0x0000d7fd      0x27d ./Middlewares/Third_Party/lwip/src/netif/ethernet.o
+ .debug_abbrev  0x0000da7a      0x282 ./Middlewares/Third_Party/lwip/src/netif/ppp/auth.o
+ .debug_abbrev  0x0000dcfc      0x243 ./Middlewares/Third_Party/lwip/src/netif/ppp/chap-md5.o
+ .debug_abbrev  0x0000df3f      0x31b ./Middlewares/Third_Party/lwip/src/netif/ppp/chap-new.o
+ .debug_abbrev  0x0000e25a      0x302 ./Middlewares/Third_Party/lwip/src/netif/ppp/fsm.o
+ .debug_abbrev  0x0000e55c      0x319 ./Middlewares/Third_Party/lwip/src/netif/ppp/ipcp.o
+ .debug_abbrev  0x0000e875      0x380 ./Middlewares/Third_Party/lwip/src/netif/ppp/lcp.o
+ .debug_abbrev  0x0000ebf5      0x202 ./Middlewares/Third_Party/lwip/src/netif/ppp/magic.o
+ .debug_abbrev  0x0000edf7      0x418 ./Middlewares/Third_Party/lwip/src/netif/ppp/ppp.o
+ .debug_abbrev  0x0000f20f      0x325 ./Middlewares/Third_Party/lwip/src/netif/ppp/pppapi.o
+ .debug_abbrev  0x0000f534      0x38e ./Middlewares/Third_Party/lwip/src/netif/ppp/pppoe.o
+ .debug_abbrev  0x0000f8c2      0x3ce ./Middlewares/Third_Party/lwip/src/netif/ppp/pppos.o
+ .debug_abbrev  0x0000fc90      0x312 ./Middlewares/Third_Party/lwip/src/netif/ppp/upap.o
+ .debug_abbrev  0x0000ffa2      0x1ec ./Middlewares/Third_Party/lwip/src/netif/ppp/utils.o
+ .debug_abbrev  0x0001018e      0x1be ./Middlewares/Third_Party/lwip/src/netif/ppp/polarssl/md5.o
+ .debug_abbrev  0x0001034c      0x38f ./Middlewares/Third_Party/lwip/system/OS/sys_arch.o
+ .debug_abbrev  0x000106db      0x195 ./USB_DEVICE/App/usb_device.o
+ .debug_abbrev  0x00010870      0x461 ./USB_DEVICE/App/usbd_cdc_if.o
+ .debug_abbrev  0x00010cd1      0x1e1 ./USB_DEVICE/App/usbd_desc.o
+ .debug_abbrev  0x00010eb2      0x33f ./USB_DEVICE/Target/usbd_conf.o
 
-.debug_aranges  0x00000000     0x4a48
+.debug_aranges  0x00000000     0x4a58
  .debug_aranges
                 0x00000000       0xe0 ./Core/Lib/crsf/crsf.o
  .debug_aranges
@@ -35073,220 +35120,220 @@ LOAD C:/ST/STM32CubeIDE_1.18.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.ext
  .debug_aranges
                 0x000001b0       0x38 ./Core/Lib/flight_controller_libs/attitude_controller.o
  .debug_aranges
-                0x000001e8       0x38 ./Core/Lib/flight_controller_libs/crc.o
+                0x000001e8       0x48 ./Core/Lib/flight_controller_libs/crc.o
  .debug_aranges
-                0x00000220       0x68 ./Core/Lib/flight_controller_libs/filters.o
+                0x00000230       0x68 ./Core/Lib/flight_controller_libs/filters.o
  .debug_aranges
-                0x00000288       0x90 ./Core/Lib/flight_controller_libs/flight_control_loop.o
+                0x00000298       0x90 ./Core/Lib/flight_controller_libs/flight_control_loop.o
  .debug_aranges
-                0x00000318       0xd8 ./Core/Lib/flight_controller_libs/fp_cli.o
+                0x00000328       0xd8 ./Core/Lib/flight_controller_libs/fp_cli.o
  .debug_aranges
-                0x000003f0       0x40 ./Core/Lib/flight_controller_libs/fp_cli_server.o
+                0x00000400       0x40 ./Core/Lib/flight_controller_libs/fp_cli_server.o
  .debug_aranges
-                0x00000430       0xc0 ./Core/Lib/flight_controller_libs/geometry3D.o
+                0x00000440       0xc0 ./Core/Lib/flight_controller_libs/geometry3D.o
  .debug_aranges
-                0x000004f0       0x70 ./Core/Lib/flight_controller_libs/imu.o
+                0x00000500       0x70 ./Core/Lib/flight_controller_libs/imu.o
  .debug_aranges
-                0x00000560       0x28 ./Core/Lib/flight_controller_libs/madgwick_filter.o
+                0x00000570       0x28 ./Core/Lib/flight_controller_libs/madgwick_filter.o
  .debug_aranges
-                0x00000588       0x20 ./Core/Lib/flight_controller_libs/motor_mixer.o
+                0x00000598       0x20 ./Core/Lib/flight_controller_libs/motor_mixer.o
  .debug_aranges
-                0x000005a8       0xd8 ./Core/Lib/flight_controller_libs/pid_controller.o
+                0x000005b8       0xd8 ./Core/Lib/flight_controller_libs/pid_controller.o
  .debug_aranges
-                0x00000680       0x58 ./Core/Lib/flight_controller_libs/rate_controller.o
+                0x00000690       0x58 ./Core/Lib/flight_controller_libs/rate_controller.o
  .debug_aranges
-                0x000006d8       0xa0 ./Core/Lib/flight_controller_libs/rc_control.o
+                0x000006e8       0xa0 ./Core/Lib/flight_controller_libs/rc_control.o
  .debug_aranges
-                0x00000778       0x48 ./Core/Lib/flight_controller_libs/rc_control_recv_routine.o
+                0x00000788       0x48 ./Core/Lib/flight_controller_libs/rc_control_recv_routine.o
  .debug_aranges
-                0x000007c0       0x40 ./Core/Lib/lwshell/lwshell/src/lwshell/lwshell.o
+                0x000007d0       0x40 ./Core/Lib/lwshell/lwshell/src/lwshell/lwshell.o
  .debug_aranges
-                0x00000800       0x38 ./Core/Lib/mpu6500/interface/driver_mpu6500_basic.o
+                0x00000810       0x38 ./Core/Lib/mpu6500/interface/driver_mpu6500_basic.o
  .debug_aranges
-                0x00000838       0x80 ./Core/Lib/mpu6500/interface/driver_mpu6500_interface.o
+                0x00000848       0x80 ./Core/Lib/mpu6500/interface/driver_mpu6500_interface.o
  .debug_aranges
-                0x000008b8      0x6d8 ./Core/Lib/mpu6500/src/driver_mpu6500.o
+                0x000008c8      0x6d8 ./Core/Lib/mpu6500/src/driver_mpu6500.o
  .debug_aranges
-                0x00000f90       0xb8 ./Core/Lib/ringbuffer/ringbuffer.o
+                0x00000fa0       0xb8 ./Core/Lib/ringbuffer/ringbuffer.o
  .debug_aranges
-                0x00001048       0x70 ./Core/Lib/uart_driver/uart_driver.o
+                0x00001058       0x70 ./Core/Lib/uart_driver/uart_driver.o
  .debug_aranges
-                0x000010b8       0x20 ./Core/Src/dma.o
+                0x000010c8       0x20 ./Core/Src/dma.o
  .debug_aranges
-                0x000010d8       0x48 ./Core/Src/esc_pwm.o
+                0x000010e8       0x48 ./Core/Src/esc_pwm.o
  .debug_aranges
-                0x00001120       0x30 ./Core/Src/freertos.o
+                0x00001130       0x30 ./Core/Src/freertos.o
  .debug_aranges
-                0x00001150       0x20 ./Core/Src/gpio.o
+                0x00001160       0x20 ./Core/Src/gpio.o
  .debug_aranges
-                0x00001170       0x50 ./Core/Src/lwip_example.o
+                0x00001180       0x50 ./Core/Src/lwip_example.o
  .debug_aranges
-                0x000011c0       0x18 ./Core/Src/lwip_port.o
+                0x000011d0       0x18 ./Core/Src/lwip_port.o
  .debug_aranges
-                0x000011d8       0x48 ./Core/Src/main.o
+                0x000011e8       0x48 ./Core/Src/main.o
  .debug_aranges
-                0x00001220       0x60 ./Core/Src/rtos_flight_controller.o
+                0x00001230       0x60 ./Core/Src/rtos_flight_controller.o
  .debug_aranges
-                0x00001280       0x30 ./Core/Src/spi.o
+                0x00001290       0x30 ./Core/Src/spi.o
  .debug_aranges
-                0x000012b0       0x20 ./Core/Src/stm32f4xx_hal_msp.o
+                0x000012c0       0x20 ./Core/Src/stm32f4xx_hal_msp.o
  .debug_aranges
-                0x000012d0       0x30 ./Core/Src/stm32f4xx_hal_timebase_tim.o
+                0x000012e0       0x30 ./Core/Src/stm32f4xx_hal_timebase_tim.o
  .debug_aranges
-                0x00001300       0x90 ./Core/Src/stm32f4xx_it.o
+                0x00001310       0x90 ./Core/Src/stm32f4xx_it.o
  .debug_aranges
-                0x00001390       0xa8 ./Core/Src/syscalls.o
+                0x000013a0       0xa8 ./Core/Src/syscalls.o
  .debug_aranges
-                0x00001438       0x20 ./Core/Src/sysmem.o
+                0x00001448       0x20 ./Core/Src/sysmem.o
  .debug_aranges
-                0x00001458       0x28 ./Core/Src/system_stm32f4xx.o
+                0x00001468       0x28 ./Core/Src/system_stm32f4xx.o
  .debug_aranges
-                0x00001480       0x40 ./Core/Src/tim.o
+                0x00001490       0x40 ./Core/Src/tim.o
  .debug_aranges
-                0x000014c0       0x58 ./Core/Src/usart.o
+                0x000014d0       0x58 ./Core/Src/usart.o
  .debug_aranges
-                0x00001518       0x28 ./Core/Startup/startup_stm32f405rgtx.o
+                0x00001528       0x28 ./Core/Startup/startup_stm32f405rgtx.o
  .debug_aranges
-                0x00001540       0xf0 ./Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal.o
+                0x00001550       0xf0 ./Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal.o
  .debug_aranges
-                0x00001630      0x130 ./Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_cortex.o
+                0x00001640      0x130 ./Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_cortex.o
  .debug_aranges
-                0x00001760       0x90 ./Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma.o
+                0x00001770       0x90 ./Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma.o
  .debug_aranges
-                0x000017f0       0x58 ./Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_gpio.o
+                0x00001800       0x58 ./Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_gpio.o
  .debug_aranges
-                0x00001848      0x148 ./Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pcd.o
+                0x00001858      0x148 ./Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pcd.o
  .debug_aranges
-                0x00001990       0x38 ./Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pcd_ex.o
+                0x000019a0       0x38 ./Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pcd_ex.o
  .debug_aranges
-                0x000019c8       0x88 ./Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc.o
+                0x000019d8       0x88 ./Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc.o
  .debug_aranges
-                0x00001a50      0x1d0 ./Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spi.o
+                0x00001a60      0x1d0 ./Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spi.o
  .debug_aranges
-                0x00001c20      0x3d0 ./Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_tim.o
+                0x00001c30      0x3d0 ./Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_tim.o
  .debug_aranges
-                0x00001ff0      0x168 ./Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_tim_ex.o
+                0x00002000      0x168 ./Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_tim_ex.o
  .debug_aranges
-                0x00002158      0x208 ./Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_uart.o
+                0x00002168      0x208 ./Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_uart.o
  .debug_aranges
-                0x00002360      0x1a0 ./Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_ll_usb.o
+                0x00002370      0x1a0 ./Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_ll_usb.o
  .debug_aranges
-                0x00002500       0x90 ./Middlewares/ST/STM32_USB_Device_Library/Class/CDC/Src/usbd_cdc.o
+                0x00002510       0x90 ./Middlewares/ST/STM32_USB_Device_Library/Class/CDC/Src/usbd_cdc.o
  .debug_aranges
-                0x00002590       0xd8 ./Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_core.o
+                0x000025a0       0xd8 ./Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_core.o
  .debug_aranges
-                0x00002668       0x90 ./Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_ctlreq.o
+                0x00002678       0x90 ./Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_ctlreq.o
  .debug_aranges
-                0x000026f8       0x50 ./Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_ioreq.o
+                0x00002708       0x50 ./Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_ioreq.o
  .debug_aranges
-                0x00002748      0x2b8 ./Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2/cmsis_os2.o
+                0x00002758      0x2b8 ./Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2/cmsis_os2.o
  .debug_aranges
-                0x00002a00       0x40 ./Middlewares/Third_Party/FreeRTOS/Source/list.o
+                0x00002a10       0x40 ./Middlewares/Third_Party/FreeRTOS/Source/list.o
  .debug_aranges
-                0x00002a40      0x158 ./Middlewares/Third_Party/FreeRTOS/Source/queue.o
+                0x00002a50      0x158 ./Middlewares/Third_Party/FreeRTOS/Source/queue.o
  .debug_aranges
-                0x00002b98      0x208 ./Middlewares/Third_Party/FreeRTOS/Source/tasks.o
+                0x00002ba8      0x208 ./Middlewares/Third_Party/FreeRTOS/Source/tasks.o
  .debug_aranges
-                0x00002da0       0xf0 ./Middlewares/Third_Party/FreeRTOS/Source/timers.o
+                0x00002db0       0xf0 ./Middlewares/Third_Party/FreeRTOS/Source/timers.o
  .debug_aranges
-                0x00002e90       0x80 ./Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F/port.o
+                0x00002ea0       0x80 ./Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F/port.o
  .debug_aranges
-                0x00002f10       0x58 ./Middlewares/Third_Party/FreeRTOS/Source/portable/MemMang/heap_4.o
+                0x00002f20       0x58 ./Middlewares/Third_Party/FreeRTOS/Source/portable/MemMang/heap_4.o
  .debug_aranges
-                0x00002f68       0xf8 ./Middlewares/Third_Party/lwip/src/api/api_lib.o
+                0x00002f78       0xf8 ./Middlewares/Third_Party/lwip/src/api/api_lib.o
  .debug_aranges
-                0x00003060       0xf8 ./Middlewares/Third_Party/lwip/src/api/api_msg.o
+                0x00003070       0xf8 ./Middlewares/Third_Party/lwip/src/api/api_msg.o
  .debug_aranges
-                0x00003158       0x20 ./Middlewares/Third_Party/lwip/src/api/err.o
+                0x00003168       0x20 ./Middlewares/Third_Party/lwip/src/api/err.o
  .debug_aranges
-                0x00003178       0x60 ./Middlewares/Third_Party/lwip/src/api/netbuf.o
+                0x00003188       0x60 ./Middlewares/Third_Party/lwip/src/api/netbuf.o
  .debug_aranges
-                0x000031d8      0x1c8 ./Middlewares/Third_Party/lwip/src/api/sockets.o
+                0x000031e8      0x1c8 ./Middlewares/Third_Party/lwip/src/api/sockets.o
  .debug_aranges
-                0x000033a0       0xa8 ./Middlewares/Third_Party/lwip/src/api/tcpip.o
+                0x000033b0       0xa8 ./Middlewares/Third_Party/lwip/src/api/tcpip.o
  .debug_aranges
-                0x00003448       0x58 ./Middlewares/Third_Party/lwip/src/core/def.o
+                0x00003458       0x58 ./Middlewares/Third_Party/lwip/src/core/def.o
  .debug_aranges
-                0x000034a0       0x60 ./Middlewares/Third_Party/lwip/src/core/inet_chksum.o
+                0x000034b0       0x60 ./Middlewares/Third_Party/lwip/src/core/inet_chksum.o
  .debug_aranges
-                0x00003500       0x20 ./Middlewares/Third_Party/lwip/src/core/init.o
+                0x00003510       0x20 ./Middlewares/Third_Party/lwip/src/core/init.o
  .debug_aranges
-                0x00003520       0x18 ./Middlewares/Third_Party/lwip/src/core/ip.o
+                0x00003530       0x18 ./Middlewares/Third_Party/lwip/src/core/ip.o
  .debug_aranges
-                0x00003538       0x60 ./Middlewares/Third_Party/lwip/src/core/mem.o
+                0x00003548       0x60 ./Middlewares/Third_Party/lwip/src/core/mem.o
  .debug_aranges
-                0x00003598       0x58 ./Middlewares/Third_Party/lwip/src/core/memp.o
+                0x000035a8       0x58 ./Middlewares/Third_Party/lwip/src/core/memp.o
  .debug_aranges
-                0x000035f0       0xe0 ./Middlewares/Third_Party/lwip/src/core/netif.o
+                0x00003600       0xe0 ./Middlewares/Third_Party/lwip/src/core/netif.o
  .debug_aranges
-                0x000036d0      0x148 ./Middlewares/Third_Party/lwip/src/core/pbuf.o
+                0x000036e0      0x148 ./Middlewares/Third_Party/lwip/src/core/pbuf.o
  .debug_aranges
-                0x00003818      0x1b8 ./Middlewares/Third_Party/lwip/src/core/tcp.o
+                0x00003828      0x1b8 ./Middlewares/Third_Party/lwip/src/core/tcp.o
  .debug_aranges
-                0x000039d0       0x70 ./Middlewares/Third_Party/lwip/src/core/tcp_in.o
+                0x000039e0       0x70 ./Middlewares/Third_Party/lwip/src/core/tcp_in.o
  .debug_aranges
-                0x00003a40       0xf0 ./Middlewares/Third_Party/lwip/src/core/tcp_out.o
+                0x00003a50       0xf0 ./Middlewares/Third_Party/lwip/src/core/tcp_out.o
  .debug_aranges
-                0x00003b30       0x68 ./Middlewares/Third_Party/lwip/src/core/timeouts.o
+                0x00003b40       0x68 ./Middlewares/Third_Party/lwip/src/core/timeouts.o
  .debug_aranges
-                0x00003b98       0xa0 ./Middlewares/Third_Party/lwip/src/core/udp.o
+                0x00003ba8       0xa0 ./Middlewares/Third_Party/lwip/src/core/udp.o
  .debug_aranges
-                0x00003c38       0x70 ./Middlewares/Third_Party/lwip/src/core/ipv4/acd.o
+                0x00003c48       0x70 ./Middlewares/Third_Party/lwip/src/core/ipv4/acd.o
  .debug_aranges
-                0x00003ca8      0x140 ./Middlewares/Third_Party/lwip/src/core/ipv4/dhcp.o
+                0x00003cb8      0x140 ./Middlewares/Third_Party/lwip/src/core/ipv4/dhcp.o
  .debug_aranges
-                0x00003de8       0x98 ./Middlewares/Third_Party/lwip/src/core/ipv4/etharp.o
+                0x00003df8       0x98 ./Middlewares/Third_Party/lwip/src/core/ipv4/etharp.o
  .debug_aranges
-                0x00003e80       0x38 ./Middlewares/Third_Party/lwip/src/core/ipv4/icmp.o
+                0x00003e90       0x38 ./Middlewares/Third_Party/lwip/src/core/ipv4/icmp.o
  .debug_aranges
-                0x00003eb8       0x48 ./Middlewares/Third_Party/lwip/src/core/ipv4/ip4.o
+                0x00003ec8       0x48 ./Middlewares/Third_Party/lwip/src/core/ipv4/ip4.o
  .debug_aranges
-                0x00003f00       0x48 ./Middlewares/Third_Party/lwip/src/core/ipv4/ip4_addr.o
+                0x00003f10       0x48 ./Middlewares/Third_Party/lwip/src/core/ipv4/ip4_addr.o
  .debug_aranges
-                0x00003f48       0x70 ./Middlewares/Third_Party/lwip/src/core/ipv4/ip4_frag.o
+                0x00003f58       0x70 ./Middlewares/Third_Party/lwip/src/core/ipv4/ip4_frag.o
  .debug_aranges
-                0x00003fb8       0x28 ./Middlewares/Third_Party/lwip/src/netif/ethernet.o
+                0x00003fc8       0x28 ./Middlewares/Third_Party/lwip/src/netif/ethernet.o
  .debug_aranges
-                0x00003fe0       0x88 ./Middlewares/Third_Party/lwip/src/netif/ppp/auth.o
+                0x00003ff0       0x88 ./Middlewares/Third_Party/lwip/src/netif/ppp/auth.o
  .debug_aranges
-                0x00004068       0x20 ./Middlewares/Third_Party/lwip/src/netif/ppp/chap-md5.o
+                0x00004078       0x20 ./Middlewares/Third_Party/lwip/src/netif/ppp/chap-md5.o
  .debug_aranges
-                0x00004088       0x58 ./Middlewares/Third_Party/lwip/src/netif/ppp/chap-new.o
+                0x00004098       0x58 ./Middlewares/Third_Party/lwip/src/netif/ppp/chap-new.o
  .debug_aranges
-                0x000040e0       0xa0 ./Middlewares/Third_Party/lwip/src/netif/ppp/fsm.o
+                0x000040f0       0xa0 ./Middlewares/Third_Party/lwip/src/netif/ppp/fsm.o
  .debug_aranges
-                0x00004180       0xa8 ./Middlewares/Third_Party/lwip/src/netif/ppp/ipcp.o
+                0x00004190       0xa8 ./Middlewares/Third_Party/lwip/src/netif/ppp/ipcp.o
  .debug_aranges
-                0x00004228      0x100 ./Middlewares/Third_Party/lwip/src/netif/ppp/lcp.o
+                0x00004238      0x100 ./Middlewares/Third_Party/lwip/src/netif/ppp/lcp.o
  .debug_aranges
-                0x00004328       0x48 ./Middlewares/Third_Party/lwip/src/netif/ppp/magic.o
+                0x00004338       0x48 ./Middlewares/Third_Party/lwip/src/netif/ppp/magic.o
  .debug_aranges
-                0x00004370       0xf0 ./Middlewares/Third_Party/lwip/src/netif/ppp/ppp.o
+                0x00004380       0xf0 ./Middlewares/Third_Party/lwip/src/netif/ppp/ppp.o
  .debug_aranges
-                0x00004460       0x88 ./Middlewares/Third_Party/lwip/src/netif/ppp/pppapi.o
+                0x00004470       0x88 ./Middlewares/Third_Party/lwip/src/netif/ppp/pppapi.o
  .debug_aranges
-                0x000044e8       0xa0 ./Middlewares/Third_Party/lwip/src/netif/ppp/pppoe.o
+                0x000044f8       0xa0 ./Middlewares/Third_Party/lwip/src/netif/ppp/pppoe.o
  .debug_aranges
-                0x00004588       0x90 ./Middlewares/Third_Party/lwip/src/netif/ppp/pppos.o
+                0x00004598       0x90 ./Middlewares/Third_Party/lwip/src/netif/ppp/pppos.o
  .debug_aranges
-                0x00004618       0x68 ./Middlewares/Third_Party/lwip/src/netif/ppp/upap.o
+                0x00004628       0x68 ./Middlewares/Third_Party/lwip/src/netif/ppp/upap.o
  .debug_aranges
-                0x00004680       0x80 ./Middlewares/Third_Party/lwip/src/netif/ppp/utils.o
+                0x00004690       0x80 ./Middlewares/Third_Party/lwip/src/netif/ppp/utils.o
  .debug_aranges
-                0x00004700       0x40 ./Middlewares/Third_Party/lwip/src/netif/ppp/polarssl/md5.o
+                0x00004710       0x40 ./Middlewares/Third_Party/lwip/src/netif/ppp/polarssl/md5.o
  .debug_aranges
-                0x00004740      0x118 ./Middlewares/Third_Party/lwip/system/OS/sys_arch.o
+                0x00004750      0x118 ./Middlewares/Third_Party/lwip/system/OS/sys_arch.o
  .debug_aranges
-                0x00004858       0x20 ./USB_DEVICE/App/usb_device.o
+                0x00004868       0x20 ./USB_DEVICE/App/usb_device.o
  .debug_aranges
-                0x00004878       0x60 ./USB_DEVICE/App/usbd_cdc_if.o
+                0x00004888       0x60 ./USB_DEVICE/App/usbd_cdc_if.o
  .debug_aranges
-                0x000048d8       0x60 ./USB_DEVICE/App/usbd_desc.o
+                0x000048e8       0x60 ./USB_DEVICE/App/usbd_desc.o
  .debug_aranges
-                0x00004938      0x110 ./USB_DEVICE/Target/usbd_conf.o
+                0x00004948      0x110 ./USB_DEVICE/Target/usbd_conf.o
 
 .debug_rnglists
-                0x00000000     0x3a18
+                0x00000000     0x3a24
  .debug_rnglists
                 0x00000000       0xa8 ./Core/Lib/crsf/crsf.o
  .debug_rnglists
@@ -35296,213 +35343,213 @@ LOAD C:/ST/STM32CubeIDE_1.18.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.ext
  .debug_rnglists
                 0x00000142       0x27 ./Core/Lib/flight_controller_libs/attitude_controller.o
  .debug_rnglists
-                0x00000169       0x25 ./Core/Lib/flight_controller_libs/crc.o
+                0x00000169       0x31 ./Core/Lib/flight_controller_libs/crc.o
  .debug_rnglists
-                0x0000018e       0x4d ./Core/Lib/flight_controller_libs/filters.o
+                0x0000019a       0x4d ./Core/Lib/flight_controller_libs/filters.o
  .debug_rnglists
-                0x000001db       0x6d ./Core/Lib/flight_controller_libs/flight_control_loop.o
+                0x000001e7       0x6d ./Core/Lib/flight_controller_libs/flight_control_loop.o
  .debug_rnglists
-                0x00000248       0xaa ./Core/Lib/flight_controller_libs/fp_cli.o
+                0x00000254       0xaa ./Core/Lib/flight_controller_libs/fp_cli.o
  .debug_rnglists
-                0x000002f2       0x3b ./Core/Lib/flight_controller_libs/fp_cli_server.o
+                0x000002fe       0x3b ./Core/Lib/flight_controller_libs/fp_cli_server.o
  .debug_rnglists
-                0x0000032d       0x9d ./Core/Lib/flight_controller_libs/geometry3D.o
+                0x00000339       0x9d ./Core/Lib/flight_controller_libs/geometry3D.o
  .debug_rnglists
-                0x000003ca       0x54 ./Core/Lib/flight_controller_libs/imu.o
+                0x000003d6       0x54 ./Core/Lib/flight_controller_libs/imu.o
  .debug_rnglists
-                0x0000041e       0x1a ./Core/Lib/flight_controller_libs/madgwick_filter.o
+                0x0000042a       0x1a ./Core/Lib/flight_controller_libs/madgwick_filter.o
  .debug_rnglists
-                0x00000438       0x14 ./Core/Lib/flight_controller_libs/motor_mixer.o
+                0x00000444       0x14 ./Core/Lib/flight_controller_libs/motor_mixer.o
  .debug_rnglists
-                0x0000044c       0xa0 ./Core/Lib/flight_controller_libs/pid_controller.o
+                0x00000458       0xa0 ./Core/Lib/flight_controller_libs/pid_controller.o
  .debug_rnglists
-                0x000004ec       0x40 ./Core/Lib/flight_controller_libs/rate_controller.o
+                0x000004f8       0x40 ./Core/Lib/flight_controller_libs/rate_controller.o
  .debug_rnglists
-                0x0000052c       0x74 ./Core/Lib/flight_controller_libs/rc_control.o
+                0x00000538       0x74 ./Core/Lib/flight_controller_libs/rc_control.o
  .debug_rnglists
-                0x000005a0       0x34 ./Core/Lib/flight_controller_libs/rc_control_recv_routine.o
+                0x000005ac       0x34 ./Core/Lib/flight_controller_libs/rc_control_recv_routine.o
  .debug_rnglists
-                0x000005d4       0x2e ./Core/Lib/lwshell/lwshell/src/lwshell/lwshell.o
+                0x000005e0       0x2e ./Core/Lib/lwshell/lwshell/src/lwshell/lwshell.o
  .debug_rnglists
-                0x00000602       0x26 ./Core/Lib/mpu6500/interface/driver_mpu6500_basic.o
+                0x0000060e       0x26 ./Core/Lib/mpu6500/interface/driver_mpu6500_basic.o
  .debug_rnglists
-                0x00000628       0x5d ./Core/Lib/mpu6500/interface/driver_mpu6500_interface.o
+                0x00000634       0x5d ./Core/Lib/mpu6500/interface/driver_mpu6500_interface.o
  .debug_rnglists
-                0x00000685      0x58f ./Core/Lib/mpu6500/src/driver_mpu6500.o
+                0x00000691      0x58f ./Core/Lib/mpu6500/src/driver_mpu6500.o
  .debug_rnglists
-                0x00000c14       0x89 ./Core/Lib/ringbuffer/ringbuffer.o
+                0x00000c20       0x89 ./Core/Lib/ringbuffer/ringbuffer.o
  .debug_rnglists
-                0x00000c9d       0x58 ./Core/Lib/uart_driver/uart_driver.o
+                0x00000ca9       0x58 ./Core/Lib/uart_driver/uart_driver.o
  .debug_rnglists
-                0x00000cf5       0x14 ./Core/Src/dma.o
+                0x00000d01       0x14 ./Core/Src/dma.o
  .debug_rnglists
-                0x00000d09       0x36 ./Core/Src/esc_pwm.o
+                0x00000d15       0x36 ./Core/Src/esc_pwm.o
  .debug_rnglists
-                0x00000d3f       0x1f ./Core/Src/freertos.o
+                0x00000d4b       0x1f ./Core/Src/freertos.o
  .debug_rnglists
-                0x00000d5e       0x14 ./Core/Src/gpio.o
+                0x00000d6a       0x14 ./Core/Src/gpio.o
  .debug_rnglists
-                0x00000d72       0x38 ./Core/Src/lwip_example.o
+                0x00000d7e       0x38 ./Core/Src/lwip_example.o
  .debug_rnglists
-                0x00000daa       0x32 ./Core/Src/main.o
+                0x00000db6       0x32 ./Core/Src/main.o
  .debug_rnglists
-                0x00000ddc       0x49 ./Core/Src/rtos_flight_controller.o
+                0x00000de8       0x49 ./Core/Src/rtos_flight_controller.o
  .debug_rnglists
-                0x00000e25       0x20 ./Core/Src/spi.o
+                0x00000e31       0x20 ./Core/Src/spi.o
  .debug_rnglists
-                0x00000e45       0x13 ./Core/Src/stm32f4xx_hal_msp.o
+                0x00000e51       0x13 ./Core/Src/stm32f4xx_hal_msp.o
  .debug_rnglists
-                0x00000e58       0x20 ./Core/Src/stm32f4xx_hal_timebase_tim.o
+                0x00000e64       0x20 ./Core/Src/stm32f4xx_hal_timebase_tim.o
  .debug_rnglists
-                0x00000e78       0x67 ./Core/Src/stm32f4xx_it.o
+                0x00000e84       0x67 ./Core/Src/stm32f4xx_it.o
  .debug_rnglists
-                0x00000edf       0x79 ./Core/Src/syscalls.o
+                0x00000eeb       0x79 ./Core/Src/syscalls.o
  .debug_rnglists
-                0x00000f58       0x13 ./Core/Src/sysmem.o
+                0x00000f64       0x13 ./Core/Src/sysmem.o
  .debug_rnglists
-                0x00000f6b       0x1a ./Core/Src/system_stm32f4xx.o
+                0x00000f77       0x1a ./Core/Src/system_stm32f4xx.o
  .debug_rnglists
-                0x00000f85       0x2e ./Core/Src/tim.o
+                0x00000f91       0x2e ./Core/Src/tim.o
  .debug_rnglists
-                0x00000fb3       0x40 ./Core/Src/usart.o
+                0x00000fbf       0x40 ./Core/Src/usart.o
  .debug_rnglists
-                0x00000ff3       0x19 ./Core/Startup/startup_stm32f405rgtx.o
+                0x00000fff       0x19 ./Core/Startup/startup_stm32f405rgtx.o
  .debug_rnglists
-                0x0000100c       0xaf ./Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal.o
+                0x00001018       0xaf ./Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal.o
  .debug_rnglists
-                0x000010bb       0xe0 ./Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_cortex.o
+                0x000010c7       0xe0 ./Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_cortex.o
  .debug_rnglists
-                0x0000119b       0x70 ./Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma.o
+                0x000011a7       0x70 ./Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma.o
  .debug_rnglists
-                0x0000120b       0x3f ./Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_gpio.o
+                0x00001217       0x3f ./Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_gpio.o
  .debug_rnglists
-                0x0000124a       0xfa ./Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pcd.o
+                0x00001256       0xfa ./Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pcd.o
  .debug_rnglists
-                0x00001344       0x26 ./Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pcd_ex.o
+                0x00001350       0x26 ./Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pcd_ex.o
  .debug_rnglists
-                0x0000136a       0x66 ./Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc.o
+                0x00001376       0x66 ./Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc.o
  .debug_rnglists
-                0x000013d0      0x16f ./Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spi.o
+                0x000013dc      0x16f ./Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spi.o
  .debug_rnglists
-                0x0000153f      0x31a ./Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_tim.o
+                0x0000154b      0x31a ./Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_tim.o
  .debug_rnglists
-                0x00001859      0x125 ./Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_tim_ex.o
+                0x00001865      0x125 ./Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_tim_ex.o
  .debug_rnglists
-                0x0000197e      0x1bc ./Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_uart.o
+                0x0000198a      0x1bc ./Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_uart.o
  .debug_rnglists
-                0x00001b3a      0x147 ./Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_ll_usb.o
+                0x00001b46      0x147 ./Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_ll_usb.o
  .debug_rnglists
-                0x00001c81       0x6c ./Middlewares/ST/STM32_USB_Device_Library/Class/CDC/Src/usbd_cdc.o
+                0x00001c8d       0x6c ./Middlewares/ST/STM32_USB_Device_Library/Class/CDC/Src/usbd_cdc.o
  .debug_rnglists
-                0x00001ced       0xa1 ./Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_core.o
+                0x00001cf9       0xa1 ./Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_core.o
  .debug_rnglists
-                0x00001d8e       0x6e ./Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_ctlreq.o
+                0x00001d9a       0x6e ./Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_ctlreq.o
  .debug_rnglists
-                0x00001dfc       0x37 ./Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_ioreq.o
+                0x00001e08       0x37 ./Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_ioreq.o
  .debug_rnglists
-                0x00001e33      0x218 ./Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2/cmsis_os2.o
+                0x00001e3f      0x218 ./Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2/cmsis_os2.o
  .debug_rnglists
-                0x0000204b       0x2b ./Middlewares/Third_Party/FreeRTOS/Source/list.o
+                0x00002057       0x2b ./Middlewares/Third_Party/FreeRTOS/Source/list.o
  .debug_rnglists
-                0x00002076      0x109 ./Middlewares/Third_Party/FreeRTOS/Source/queue.o
+                0x00002082      0x109 ./Middlewares/Third_Party/FreeRTOS/Source/queue.o
  .debug_rnglists
-                0x0000217f      0x1a0 ./Middlewares/Third_Party/FreeRTOS/Source/tasks.o
+                0x0000218b      0x1a0 ./Middlewares/Third_Party/FreeRTOS/Source/tasks.o
  .debug_rnglists
-                0x0000231f       0xb8 ./Middlewares/Third_Party/FreeRTOS/Source/timers.o
+                0x0000232b       0xb8 ./Middlewares/Third_Party/FreeRTOS/Source/timers.o
  .debug_rnglists
-                0x000023d7       0x5d ./Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F/port.o
+                0x000023e3       0x5d ./Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F/port.o
  .debug_rnglists
-                0x00002434       0x42 ./Middlewares/Third_Party/FreeRTOS/Source/portable/MemMang/heap_4.o
+                0x00002440       0x42 ./Middlewares/Third_Party/FreeRTOS/Source/portable/MemMang/heap_4.o
  .debug_rnglists
-                0x00002476       0xbb ./Middlewares/Third_Party/lwip/src/api/api_lib.o
+                0x00002482       0xbb ./Middlewares/Third_Party/lwip/src/api/api_lib.o
  .debug_rnglists
-                0x00002531       0xdb ./Middlewares/Third_Party/lwip/src/api/api_msg.o
+                0x0000253d       0xdb ./Middlewares/Third_Party/lwip/src/api/api_msg.o
  .debug_rnglists
-                0x0000260c       0x13 ./Middlewares/Third_Party/lwip/src/api/err.o
+                0x00002618       0x13 ./Middlewares/Third_Party/lwip/src/api/err.o
  .debug_rnglists
-                0x0000261f       0x44 ./Middlewares/Third_Party/lwip/src/api/netbuf.o
+                0x0000262b       0x44 ./Middlewares/Third_Party/lwip/src/api/netbuf.o
  .debug_rnglists
-                0x00002663      0x1a9 ./Middlewares/Third_Party/lwip/src/api/sockets.o
+                0x0000266f      0x1a9 ./Middlewares/Third_Party/lwip/src/api/sockets.o
  .debug_rnglists
-                0x0000280c       0x7d ./Middlewares/Third_Party/lwip/src/api/tcpip.o
+                0x00002818       0x7d ./Middlewares/Third_Party/lwip/src/api/tcpip.o
  .debug_rnglists
-                0x00002889       0x3e ./Middlewares/Third_Party/lwip/src/core/def.o
+                0x00002895       0x3e ./Middlewares/Third_Party/lwip/src/core/def.o
  .debug_rnglists
-                0x000028c7       0x47 ./Middlewares/Third_Party/lwip/src/core/inet_chksum.o
+                0x000028d3       0x47 ./Middlewares/Third_Party/lwip/src/core/inet_chksum.o
  .debug_rnglists
-                0x0000290e       0x13 ./Middlewares/Third_Party/lwip/src/core/init.o
+                0x0000291a       0x13 ./Middlewares/Third_Party/lwip/src/core/init.o
  .debug_rnglists
-                0x00002921       0x48 ./Middlewares/Third_Party/lwip/src/core/mem.o
+                0x0000292d       0x48 ./Middlewares/Third_Party/lwip/src/core/mem.o
  .debug_rnglists
-                0x00002969       0x3f ./Middlewares/Third_Party/lwip/src/core/memp.o
+                0x00002975       0x3f ./Middlewares/Third_Party/lwip/src/core/memp.o
  .debug_rnglists
-                0x000029a8       0xa8 ./Middlewares/Third_Party/lwip/src/core/netif.o
+                0x000029b4       0xa8 ./Middlewares/Third_Party/lwip/src/core/netif.o
  .debug_rnglists
-                0x00002a50      0x110 ./Middlewares/Third_Party/lwip/src/core/pbuf.o
+                0x00002a5c      0x110 ./Middlewares/Third_Party/lwip/src/core/pbuf.o
  .debug_rnglists
-                0x00002b60      0x157 ./Middlewares/Third_Party/lwip/src/core/tcp.o
+                0x00002b6c      0x157 ./Middlewares/Third_Party/lwip/src/core/tcp.o
  .debug_rnglists
-                0x00002cb7       0xcb ./Middlewares/Third_Party/lwip/src/core/tcp_in.o
+                0x00002cc3       0xcb ./Middlewares/Third_Party/lwip/src/core/tcp_in.o
  .debug_rnglists
-                0x00002d82      0x10b ./Middlewares/Third_Party/lwip/src/core/tcp_out.o
+                0x00002d8e      0x10b ./Middlewares/Third_Party/lwip/src/core/tcp_out.o
  .debug_rnglists
-                0x00002e8d       0x56 ./Middlewares/Third_Party/lwip/src/core/timeouts.o
+                0x00002e99       0x56 ./Middlewares/Third_Party/lwip/src/core/timeouts.o
  .debug_rnglists
-                0x00002ee3       0x79 ./Middlewares/Third_Party/lwip/src/core/udp.o
+                0x00002eef       0x79 ./Middlewares/Third_Party/lwip/src/core/udp.o
  .debug_rnglists
-                0x00002f5c       0x51 ./Middlewares/Third_Party/lwip/src/core/ipv4/acd.o
+                0x00002f68       0x51 ./Middlewares/Third_Party/lwip/src/core/ipv4/acd.o
  .debug_rnglists
-                0x00002fad       0xfe ./Middlewares/Third_Party/lwip/src/core/ipv4/dhcp.o
+                0x00002fb9       0xfe ./Middlewares/Third_Party/lwip/src/core/ipv4/dhcp.o
  .debug_rnglists
-                0x000030ab       0x77 ./Middlewares/Third_Party/lwip/src/core/ipv4/etharp.o
+                0x000030b7       0x77 ./Middlewares/Third_Party/lwip/src/core/ipv4/etharp.o
  .debug_rnglists
-                0x00003122       0x36 ./Middlewares/Third_Party/lwip/src/core/ipv4/icmp.o
+                0x0000312e       0x36 ./Middlewares/Third_Party/lwip/src/core/ipv4/icmp.o
  .debug_rnglists
-                0x00003158       0x34 ./Middlewares/Third_Party/lwip/src/core/ipv4/ip4.o
+                0x00003164       0x34 ./Middlewares/Third_Party/lwip/src/core/ipv4/ip4.o
  .debug_rnglists
-                0x0000318c       0x34 ./Middlewares/Third_Party/lwip/src/core/ipv4/ip4_addr.o
+                0x00003198       0x34 ./Middlewares/Third_Party/lwip/src/core/ipv4/ip4_addr.o
  .debug_rnglists
-                0x000031c0       0x62 ./Middlewares/Third_Party/lwip/src/core/ipv4/ip4_frag.o
+                0x000031cc       0x62 ./Middlewares/Third_Party/lwip/src/core/ipv4/ip4_frag.o
  .debug_rnglists
-                0x00003222       0x1b ./Middlewares/Third_Party/lwip/src/netif/ethernet.o
+                0x0000322e       0x1b ./Middlewares/Third_Party/lwip/src/netif/ethernet.o
  .debug_rnglists
-                0x0000323d       0x63 ./Middlewares/Third_Party/lwip/src/netif/ppp/auth.o
+                0x00003249       0x63 ./Middlewares/Third_Party/lwip/src/netif/ppp/auth.o
  .debug_rnglists
-                0x000032a0       0x13 ./Middlewares/Third_Party/lwip/src/netif/ppp/chap-md5.o
+                0x000032ac       0x13 ./Middlewares/Third_Party/lwip/src/netif/ppp/chap-md5.o
  .debug_rnglists
-                0x000032b3       0x41 ./Middlewares/Third_Party/lwip/src/netif/ppp/chap-new.o
+                0x000032bf       0x41 ./Middlewares/Third_Party/lwip/src/netif/ppp/chap-new.o
  .debug_rnglists
-                0x000032f4       0x81 ./Middlewares/Third_Party/lwip/src/netif/ppp/fsm.o
+                0x00003300       0x81 ./Middlewares/Third_Party/lwip/src/netif/ppp/fsm.o
  .debug_rnglists
-                0x00003375       0x82 ./Middlewares/Third_Party/lwip/src/netif/ppp/ipcp.o
+                0x00003381       0x82 ./Middlewares/Third_Party/lwip/src/netif/ppp/ipcp.o
  .debug_rnglists
-                0x000033f7       0xc9 ./Middlewares/Third_Party/lwip/src/netif/ppp/lcp.o
+                0x00003403       0xc9 ./Middlewares/Third_Party/lwip/src/netif/ppp/lcp.o
  .debug_rnglists
-                0x000034c0       0x33 ./Middlewares/Third_Party/lwip/src/netif/ppp/magic.o
+                0x000034cc       0x33 ./Middlewares/Third_Party/lwip/src/netif/ppp/magic.o
  .debug_rnglists
-                0x000034f3       0xbe ./Middlewares/Third_Party/lwip/src/netif/ppp/ppp.o
+                0x000034ff       0xbe ./Middlewares/Third_Party/lwip/src/netif/ppp/ppp.o
  .debug_rnglists
-                0x000035b1       0x61 ./Middlewares/Third_Party/lwip/src/netif/ppp/pppapi.o
+                0x000035bd       0x61 ./Middlewares/Third_Party/lwip/src/netif/ppp/pppapi.o
  .debug_rnglists
-                0x00003612       0x7f ./Middlewares/Third_Party/lwip/src/netif/ppp/pppoe.o
+                0x0000361e       0x7f ./Middlewares/Third_Party/lwip/src/netif/ppp/pppoe.o
  .debug_rnglists
-                0x00003691       0x7b ./Middlewares/Third_Party/lwip/src/netif/ppp/pppos.o
+                0x0000369d       0x7b ./Middlewares/Third_Party/lwip/src/netif/ppp/pppos.o
  .debug_rnglists
-                0x0000370c       0x4c ./Middlewares/Third_Party/lwip/src/netif/ppp/upap.o
+                0x00003718       0x4c ./Middlewares/Third_Party/lwip/src/netif/ppp/upap.o
  .debug_rnglists
-                0x00003758       0x5d ./Middlewares/Third_Party/lwip/src/netif/ppp/utils.o
+                0x00003764       0x5d ./Middlewares/Third_Party/lwip/src/netif/ppp/utils.o
  .debug_rnglists
-                0x000037b5       0x2e ./Middlewares/Third_Party/lwip/src/netif/ppp/polarssl/md5.o
+                0x000037c1       0x2e ./Middlewares/Third_Party/lwip/src/netif/ppp/polarssl/md5.o
  .debug_rnglists
-                0x000037e3       0xcd ./Middlewares/Third_Party/lwip/system/OS/sys_arch.o
+                0x000037ef       0xcd ./Middlewares/Third_Party/lwip/system/OS/sys_arch.o
  .debug_rnglists
-                0x000038b0       0x13 ./USB_DEVICE/App/usb_device.o
+                0x000038bc       0x13 ./USB_DEVICE/App/usb_device.o
  .debug_rnglists
-                0x000038c3       0x49 ./USB_DEVICE/App/usbd_cdc_if.o
+                0x000038cf       0x49 ./USB_DEVICE/App/usbd_cdc_if.o
  .debug_rnglists
-                0x0000390c       0x43 ./USB_DEVICE/App/usbd_desc.o
+                0x00003918       0x43 ./USB_DEVICE/App/usbd_desc.o
  .debug_rnglists
-                0x0000394f       0xc9 ./USB_DEVICE/Target/usbd_conf.o
+                0x0000395b       0xc9 ./USB_DEVICE/Target/usbd_conf.o
 
 .debug_macro    0x00000000    0x3fec1
  .debug_macro   0x00000000      0x185 ./Core/Lib/crsf/crsf.o
@@ -35883,230 +35930,230 @@ LOAD C:/ST/STM32CubeIDE_1.18.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.ext
  .debug_macro   0x0003faf7       0x1c ./USB_DEVICE/App/usbd_desc.o
  .debug_macro   0x0003fb13      0x3ae ./USB_DEVICE/Target/usbd_conf.o
 
-.debug_line     0x00000000    0x70f29
+.debug_line     0x00000000    0x70f71
  .debug_line    0x00000000      0xcac ./Core/Lib/crsf/crsf.o
  .debug_line    0x00000cac      0x463 ./Core/Lib/crsf/crsf_def.o
  .debug_line    0x0000110f      0xc1a ./Core/Lib/crsf/crsf_telemetry.o
  .debug_line    0x00001d29      0x75f ./Core/Lib/flight_controller_libs/attitude_controller.o
- .debug_line    0x00002488      0x4f5 ./Core/Lib/flight_controller_libs/crc.o
- .debug_line    0x0000297d      0x715 ./Core/Lib/flight_controller_libs/filters.o
- .debug_line    0x00003092      0xb44 ./Core/Lib/flight_controller_libs/flight_control_loop.o
- .debug_line    0x00003bd6     0x139d ./Core/Lib/flight_controller_libs/fp_cli.o
- .debug_line    0x00004f73     0x1054 ./Core/Lib/flight_controller_libs/fp_cli_server.o
- .debug_line    0x00005fc7      0xc72 ./Core/Lib/flight_controller_libs/geometry3D.o
- .debug_line    0x00006c39      0x7db ./Core/Lib/flight_controller_libs/imu.o
- .debug_line    0x00007414      0x728 ./Core/Lib/flight_controller_libs/madgwick_filter.o
- .debug_line    0x00007b3c      0x8bd ./Core/Lib/flight_controller_libs/motor_mixer.o
- .debug_line    0x000083f9      0x8f7 ./Core/Lib/flight_controller_libs/pid_controller.o
- .debug_line    0x00008cf0      0x7c6 ./Core/Lib/flight_controller_libs/rate_controller.o
- .debug_line    0x000094b6      0x87c ./Core/Lib/flight_controller_libs/rc_control.o
- .debug_line    0x00009d32     0x139c ./Core/Lib/flight_controller_libs/rc_control_recv_routine.o
- .debug_line    0x0000b0ce      0x9ca ./Core/Lib/lwshell/lwshell/src/lwshell/lwshell.o
- .debug_line    0x0000ba98      0xa05 ./Core/Lib/mpu6500/interface/driver_mpu6500_basic.o
- .debug_line    0x0000c49d      0xc3b ./Core/Lib/mpu6500/interface/driver_mpu6500_interface.o
- .debug_line    0x0000d0d8     0x6293 ./Core/Lib/mpu6500/src/driver_mpu6500.o
- .debug_line    0x0001336b      0xb6c ./Core/Lib/ringbuffer/ringbuffer.o
- .debug_line    0x00013ed7     0x1054 ./Core/Lib/uart_driver/uart_driver.o
- .debug_line    0x00014f2b      0x7b4 ./Core/Src/dma.o
- .debug_line    0x000156df      0xa28 ./Core/Src/esc_pwm.o
- .debug_line    0x00016107      0xcfb ./Core/Src/freertos.o
- .debug_line    0x00016e02      0x7c1 ./Core/Src/gpio.o
- .debug_line    0x000175c3     0x12bf ./Core/Src/lwip_example.o
- .debug_line    0x00018882      0x77b ./Core/Src/lwip_port.o
- .debug_line    0x00018ffd      0xec3 ./Core/Src/main.o
- .debug_line    0x00019ec0     0x1438 ./Core/Src/rtos_flight_controller.o
- .debug_line    0x0001b2f8      0x827 ./Core/Src/spi.o
- .debug_line    0x0001bb1f      0x7b2 ./Core/Src/stm32f4xx_hal_msp.o
- .debug_line    0x0001c2d1      0x822 ./Core/Src/stm32f4xx_hal_timebase_tim.o
- .debug_line    0x0001caf3      0x9b0 ./Core/Src/stm32f4xx_it.o
- .debug_line    0x0001d4a3      0x8ac ./Core/Src/syscalls.o
- .debug_line    0x0001dd4f      0x588 ./Core/Src/sysmem.o
- .debug_line    0x0001e2d7      0x829 ./Core/Src/system_stm32f4xx.o
- .debug_line    0x0001eb00      0x93d ./Core/Src/tim.o
- .debug_line    0x0001f43d      0xa9f ./Core/Src/usart.o
- .debug_line    0x0001fedc       0x7a ./Core/Startup/startup_stm32f405rgtx.o
- .debug_line    0x0001ff56      0xa96 ./Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal.o
- .debug_line    0x000209ec      0xd66 ./Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_cortex.o
- .debug_line    0x00021752     0x1002 ./Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma.o
- .debug_line    0x00022754      0xbee ./Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_gpio.o
- .debug_line    0x00023342     0x14db ./Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pcd.o
- .debug_line    0x0002481d      0x85f ./Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pcd_ex.o
- .debug_line    0x0002507c      0xea5 ./Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc.o
- .debug_line    0x00025f21     0x1d2b ./Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spi.o
- .debug_line    0x00027c4c     0x3813 ./Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_tim.o
- .debug_line    0x0002b45f     0x19f6 ./Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_tim_ex.o
- .debug_line    0x0002ce55     0x25a5 ./Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_uart.o
- .debug_line    0x0002f3fa     0x1dbd ./Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_ll_usb.o
- .debug_line    0x000311b7      0xf10 ./Middlewares/ST/STM32_USB_Device_Library/Class/CDC/Src/usbd_cdc.o
- .debug_line    0x000320c7      0xfb3 ./Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_core.o
- .debug_line    0x0003307a     0x1190 ./Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_ctlreq.o
- .debug_line    0x0003420a      0xac9 ./Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_ioreq.o
- .debug_line    0x00034cd3     0x25a5 ./Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2/cmsis_os2.o
- .debug_line    0x00037278      0x797 ./Middlewares/Third_Party/FreeRTOS/Source/list.o
- .debug_line    0x00037a0f     0x1708 ./Middlewares/Third_Party/FreeRTOS/Source/queue.o
- .debug_line    0x00039117     0x1cc8 ./Middlewares/Third_Party/FreeRTOS/Source/tasks.o
- .debug_line    0x0003addf      0xdd7 ./Middlewares/Third_Party/FreeRTOS/Source/timers.o
- .debug_line    0x0003bbb6      0x94b ./Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F/port.o
- .debug_line    0x0003c501      0x9ae ./Middlewares/Third_Party/FreeRTOS/Source/portable/MemMang/heap_4.o
- .debug_line    0x0003ceaf     0x158c ./Middlewares/Third_Party/lwip/src/api/api_lib.o
- .debug_line    0x0003e43b     0x1e31 ./Middlewares/Third_Party/lwip/src/api/api_msg.o
- .debug_line    0x0004026c      0xbaa ./Middlewares/Third_Party/lwip/src/api/err.o
- .debug_line    0x00040e16      0xa96 ./Middlewares/Third_Party/lwip/src/api/netbuf.o
- .debug_line    0x000418ac     0x2ed5 ./Middlewares/Third_Party/lwip/src/api/sockets.o
- .debug_line    0x00044781     0x10a5 ./Middlewares/Third_Party/lwip/src/api/tcpip.o
- .debug_line    0x00045826      0xa0c ./Middlewares/Third_Party/lwip/src/core/def.o
- .debug_line    0x00046232      0xb11 ./Middlewares/Third_Party/lwip/src/core/inet_chksum.o
- .debug_line    0x00046d43      0xedf ./Middlewares/Third_Party/lwip/src/core/init.o
- .debug_line    0x00047c22      0x8f6 ./Middlewares/Third_Party/lwip/src/core/ip.o
- .debug_line    0x00048518     0x131f ./Middlewares/Third_Party/lwip/src/core/mem.o
- .debug_line    0x00049837     0x1187 ./Middlewares/Third_Party/lwip/src/core/memp.o
- .debug_line    0x0004a9be     0x13a5 ./Middlewares/Third_Party/lwip/src/core/netif.o
- .debug_line    0x0004bd63     0x1ad5 ./Middlewares/Third_Party/lwip/src/core/pbuf.o
- .debug_line    0x0004d838     0x1ba9 ./Middlewares/Third_Party/lwip/src/core/tcp.o
- .debug_line    0x0004f3e1     0x1d89 ./Middlewares/Third_Party/lwip/src/core/tcp_in.o
- .debug_line    0x0005116a     0x1a44 ./Middlewares/Third_Party/lwip/src/core/tcp_out.o
- .debug_line    0x00052bae     0x10b7 ./Middlewares/Third_Party/lwip/src/core/timeouts.o
- .debug_line    0x00053c65     0x105a ./Middlewares/Third_Party/lwip/src/core/udp.o
- .debug_line    0x00054cbf      0xd00 ./Middlewares/Third_Party/lwip/src/core/ipv4/acd.o
- .debug_line    0x000559bf     0x1bc0 ./Middlewares/Third_Party/lwip/src/core/ipv4/dhcp.o
- .debug_line    0x0005757f     0x110c ./Middlewares/Third_Party/lwip/src/core/ipv4/etharp.o
- .debug_line    0x0005868b      0xb22 ./Middlewares/Third_Party/lwip/src/core/ipv4/icmp.o
- .debug_line    0x000591ad      0xd92 ./Middlewares/Third_Party/lwip/src/core/ipv4/ip4.o
- .debug_line    0x00059f3f      0xb84 ./Middlewares/Third_Party/lwip/src/core/ipv4/ip4_addr.o
- .debug_line    0x0005aac3     0x1030 ./Middlewares/Third_Party/lwip/src/core/ipv4/ip4_frag.o
- .debug_line    0x0005baf3      0xf6d ./Middlewares/Third_Party/lwip/src/netif/ethernet.o
- .debug_line    0x0005ca60     0x107a ./Middlewares/Third_Party/lwip/src/netif/ppp/auth.o
- .debug_line    0x0005dada      0xe2c ./Middlewares/Third_Party/lwip/src/netif/ppp/chap-md5.o
- .debug_line    0x0005e906      0xfaf ./Middlewares/Third_Party/lwip/src/netif/ppp/chap-new.o
- .debug_line    0x0005f8b5     0x15ca ./Middlewares/Third_Party/lwip/src/netif/ppp/fsm.o
- .debug_line    0x00060e7f     0x1590 ./Middlewares/Third_Party/lwip/src/netif/ppp/ipcp.o
- .debug_line    0x0006240f     0x1ddd ./Middlewares/Third_Party/lwip/src/netif/ppp/lcp.o
- .debug_line    0x000641ec      0xed8 ./Middlewares/Third_Party/lwip/src/netif/ppp/magic.o
- .debug_line    0x000650c4     0x137c ./Middlewares/Third_Party/lwip/src/netif/ppp/ppp.o
- .debug_line    0x00066440      0xfc2 ./Middlewares/Third_Party/lwip/src/netif/ppp/pppapi.o
- .debug_line    0x00067402     0x14ad ./Middlewares/Third_Party/lwip/src/netif/ppp/pppoe.o
- .debug_line    0x000688af     0x13b7 ./Middlewares/Third_Party/lwip/src/netif/ppp/pppos.o
- .debug_line    0x00069c66      0xfd2 ./Middlewares/Third_Party/lwip/src/netif/ppp/upap.o
- .debug_line    0x0006ac38     0x12f1 ./Middlewares/Third_Party/lwip/src/netif/ppp/utils.o
- .debug_line    0x0006bf29      0xa59 ./Middlewares/Third_Party/lwip/src/netif/ppp/polarssl/md5.o
- .debug_line    0x0006c982     0x123f ./Middlewares/Third_Party/lwip/system/OS/sys_arch.o
- .debug_line    0x0006dbc1      0xa95 ./USB_DEVICE/App/usb_device.o
- .debug_line    0x0006e656      0xf23 ./USB_DEVICE/App/usbd_cdc_if.o
- .debug_line    0x0006f579      0xb3e ./USB_DEVICE/App/usbd_desc.o
- .debug_line    0x000700b7      0xe72 ./USB_DEVICE/Target/usbd_conf.o
+ .debug_line    0x00002488      0x53d ./Core/Lib/flight_controller_libs/crc.o
+ .debug_line    0x000029c5      0x715 ./Core/Lib/flight_controller_libs/filters.o
+ .debug_line    0x000030da      0xb44 ./Core/Lib/flight_controller_libs/flight_control_loop.o
+ .debug_line    0x00003c1e     0x139d ./Core/Lib/flight_controller_libs/fp_cli.o
+ .debug_line    0x00004fbb     0x1054 ./Core/Lib/flight_controller_libs/fp_cli_server.o
+ .debug_line    0x0000600f      0xc72 ./Core/Lib/flight_controller_libs/geometry3D.o
+ .debug_line    0x00006c81      0x7db ./Core/Lib/flight_controller_libs/imu.o
+ .debug_line    0x0000745c      0x728 ./Core/Lib/flight_controller_libs/madgwick_filter.o
+ .debug_line    0x00007b84      0x8bd ./Core/Lib/flight_controller_libs/motor_mixer.o
+ .debug_line    0x00008441      0x8f7 ./Core/Lib/flight_controller_libs/pid_controller.o
+ .debug_line    0x00008d38      0x7c6 ./Core/Lib/flight_controller_libs/rate_controller.o
+ .debug_line    0x000094fe      0x87c ./Core/Lib/flight_controller_libs/rc_control.o
+ .debug_line    0x00009d7a     0x139c ./Core/Lib/flight_controller_libs/rc_control_recv_routine.o
+ .debug_line    0x0000b116      0x9ca ./Core/Lib/lwshell/lwshell/src/lwshell/lwshell.o
+ .debug_line    0x0000bae0      0xa05 ./Core/Lib/mpu6500/interface/driver_mpu6500_basic.o
+ .debug_line    0x0000c4e5      0xc3b ./Core/Lib/mpu6500/interface/driver_mpu6500_interface.o
+ .debug_line    0x0000d120     0x6293 ./Core/Lib/mpu6500/src/driver_mpu6500.o
+ .debug_line    0x000133b3      0xb6c ./Core/Lib/ringbuffer/ringbuffer.o
+ .debug_line    0x00013f1f     0x1054 ./Core/Lib/uart_driver/uart_driver.o
+ .debug_line    0x00014f73      0x7b4 ./Core/Src/dma.o
+ .debug_line    0x00015727      0xa28 ./Core/Src/esc_pwm.o
+ .debug_line    0x0001614f      0xcfb ./Core/Src/freertos.o
+ .debug_line    0x00016e4a      0x7c1 ./Core/Src/gpio.o
+ .debug_line    0x0001760b     0x12bf ./Core/Src/lwip_example.o
+ .debug_line    0x000188ca      0x77b ./Core/Src/lwip_port.o
+ .debug_line    0x00019045      0xec3 ./Core/Src/main.o
+ .debug_line    0x00019f08     0x1438 ./Core/Src/rtos_flight_controller.o
+ .debug_line    0x0001b340      0x827 ./Core/Src/spi.o
+ .debug_line    0x0001bb67      0x7b2 ./Core/Src/stm32f4xx_hal_msp.o
+ .debug_line    0x0001c319      0x822 ./Core/Src/stm32f4xx_hal_timebase_tim.o
+ .debug_line    0x0001cb3b      0x9b0 ./Core/Src/stm32f4xx_it.o
+ .debug_line    0x0001d4eb      0x8ac ./Core/Src/syscalls.o
+ .debug_line    0x0001dd97      0x588 ./Core/Src/sysmem.o
+ .debug_line    0x0001e31f      0x829 ./Core/Src/system_stm32f4xx.o
+ .debug_line    0x0001eb48      0x93d ./Core/Src/tim.o
+ .debug_line    0x0001f485      0xa9f ./Core/Src/usart.o
+ .debug_line    0x0001ff24       0x7a ./Core/Startup/startup_stm32f405rgtx.o
+ .debug_line    0x0001ff9e      0xa96 ./Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal.o
+ .debug_line    0x00020a34      0xd66 ./Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_cortex.o
+ .debug_line    0x0002179a     0x1002 ./Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma.o
+ .debug_line    0x0002279c      0xbee ./Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_gpio.o
+ .debug_line    0x0002338a     0x14db ./Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pcd.o
+ .debug_line    0x00024865      0x85f ./Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pcd_ex.o
+ .debug_line    0x000250c4      0xea5 ./Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc.o
+ .debug_line    0x00025f69     0x1d2b ./Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spi.o
+ .debug_line    0x00027c94     0x3813 ./Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_tim.o
+ .debug_line    0x0002b4a7     0x19f6 ./Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_tim_ex.o
+ .debug_line    0x0002ce9d     0x25a5 ./Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_uart.o
+ .debug_line    0x0002f442     0x1dbd ./Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_ll_usb.o
+ .debug_line    0x000311ff      0xf10 ./Middlewares/ST/STM32_USB_Device_Library/Class/CDC/Src/usbd_cdc.o
+ .debug_line    0x0003210f      0xfb3 ./Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_core.o
+ .debug_line    0x000330c2     0x1190 ./Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_ctlreq.o
+ .debug_line    0x00034252      0xac9 ./Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_ioreq.o
+ .debug_line    0x00034d1b     0x25a5 ./Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2/cmsis_os2.o
+ .debug_line    0x000372c0      0x797 ./Middlewares/Third_Party/FreeRTOS/Source/list.o
+ .debug_line    0x00037a57     0x1708 ./Middlewares/Third_Party/FreeRTOS/Source/queue.o
+ .debug_line    0x0003915f     0x1cc8 ./Middlewares/Third_Party/FreeRTOS/Source/tasks.o
+ .debug_line    0x0003ae27      0xdd7 ./Middlewares/Third_Party/FreeRTOS/Source/timers.o
+ .debug_line    0x0003bbfe      0x94b ./Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F/port.o
+ .debug_line    0x0003c549      0x9ae ./Middlewares/Third_Party/FreeRTOS/Source/portable/MemMang/heap_4.o
+ .debug_line    0x0003cef7     0x158c ./Middlewares/Third_Party/lwip/src/api/api_lib.o
+ .debug_line    0x0003e483     0x1e31 ./Middlewares/Third_Party/lwip/src/api/api_msg.o
+ .debug_line    0x000402b4      0xbaa ./Middlewares/Third_Party/lwip/src/api/err.o
+ .debug_line    0x00040e5e      0xa96 ./Middlewares/Third_Party/lwip/src/api/netbuf.o
+ .debug_line    0x000418f4     0x2ed5 ./Middlewares/Third_Party/lwip/src/api/sockets.o
+ .debug_line    0x000447c9     0x10a5 ./Middlewares/Third_Party/lwip/src/api/tcpip.o
+ .debug_line    0x0004586e      0xa0c ./Middlewares/Third_Party/lwip/src/core/def.o
+ .debug_line    0x0004627a      0xb11 ./Middlewares/Third_Party/lwip/src/core/inet_chksum.o
+ .debug_line    0x00046d8b      0xedf ./Middlewares/Third_Party/lwip/src/core/init.o
+ .debug_line    0x00047c6a      0x8f6 ./Middlewares/Third_Party/lwip/src/core/ip.o
+ .debug_line    0x00048560     0x131f ./Middlewares/Third_Party/lwip/src/core/mem.o
+ .debug_line    0x0004987f     0x1187 ./Middlewares/Third_Party/lwip/src/core/memp.o
+ .debug_line    0x0004aa06     0x13a5 ./Middlewares/Third_Party/lwip/src/core/netif.o
+ .debug_line    0x0004bdab     0x1ad5 ./Middlewares/Third_Party/lwip/src/core/pbuf.o
+ .debug_line    0x0004d880     0x1ba9 ./Middlewares/Third_Party/lwip/src/core/tcp.o
+ .debug_line    0x0004f429     0x1d89 ./Middlewares/Third_Party/lwip/src/core/tcp_in.o
+ .debug_line    0x000511b2     0x1a44 ./Middlewares/Third_Party/lwip/src/core/tcp_out.o
+ .debug_line    0x00052bf6     0x10b7 ./Middlewares/Third_Party/lwip/src/core/timeouts.o
+ .debug_line    0x00053cad     0x105a ./Middlewares/Third_Party/lwip/src/core/udp.o
+ .debug_line    0x00054d07      0xd00 ./Middlewares/Third_Party/lwip/src/core/ipv4/acd.o
+ .debug_line    0x00055a07     0x1bc0 ./Middlewares/Third_Party/lwip/src/core/ipv4/dhcp.o
+ .debug_line    0x000575c7     0x110c ./Middlewares/Third_Party/lwip/src/core/ipv4/etharp.o
+ .debug_line    0x000586d3      0xb22 ./Middlewares/Third_Party/lwip/src/core/ipv4/icmp.o
+ .debug_line    0x000591f5      0xd92 ./Middlewares/Third_Party/lwip/src/core/ipv4/ip4.o
+ .debug_line    0x00059f87      0xb84 ./Middlewares/Third_Party/lwip/src/core/ipv4/ip4_addr.o
+ .debug_line    0x0005ab0b     0x1030 ./Middlewares/Third_Party/lwip/src/core/ipv4/ip4_frag.o
+ .debug_line    0x0005bb3b      0xf6d ./Middlewares/Third_Party/lwip/src/netif/ethernet.o
+ .debug_line    0x0005caa8     0x107a ./Middlewares/Third_Party/lwip/src/netif/ppp/auth.o
+ .debug_line    0x0005db22      0xe2c ./Middlewares/Third_Party/lwip/src/netif/ppp/chap-md5.o
+ .debug_line    0x0005e94e      0xfaf ./Middlewares/Third_Party/lwip/src/netif/ppp/chap-new.o
+ .debug_line    0x0005f8fd     0x15ca ./Middlewares/Third_Party/lwip/src/netif/ppp/fsm.o
+ .debug_line    0x00060ec7     0x1590 ./Middlewares/Third_Party/lwip/src/netif/ppp/ipcp.o
+ .debug_line    0x00062457     0x1ddd ./Middlewares/Third_Party/lwip/src/netif/ppp/lcp.o
+ .debug_line    0x00064234      0xed8 ./Middlewares/Third_Party/lwip/src/netif/ppp/magic.o
+ .debug_line    0x0006510c     0x137c ./Middlewares/Third_Party/lwip/src/netif/ppp/ppp.o
+ .debug_line    0x00066488      0xfc2 ./Middlewares/Third_Party/lwip/src/netif/ppp/pppapi.o
+ .debug_line    0x0006744a     0x14ad ./Middlewares/Third_Party/lwip/src/netif/ppp/pppoe.o
+ .debug_line    0x000688f7     0x13b7 ./Middlewares/Third_Party/lwip/src/netif/ppp/pppos.o
+ .debug_line    0x00069cae      0xfd2 ./Middlewares/Third_Party/lwip/src/netif/ppp/upap.o
+ .debug_line    0x0006ac80     0x12f1 ./Middlewares/Third_Party/lwip/src/netif/ppp/utils.o
+ .debug_line    0x0006bf71      0xa59 ./Middlewares/Third_Party/lwip/src/netif/ppp/polarssl/md5.o
+ .debug_line    0x0006c9ca     0x123f ./Middlewares/Third_Party/lwip/system/OS/sys_arch.o
+ .debug_line    0x0006dc09      0xa95 ./USB_DEVICE/App/usb_device.o
+ .debug_line    0x0006e69e      0xf23 ./USB_DEVICE/App/usbd_cdc_if.o
+ .debug_line    0x0006f5c1      0xb3e ./USB_DEVICE/App/usbd_desc.o
+ .debug_line    0x000700ff      0xe72 ./USB_DEVICE/Target/usbd_conf.o
 
-.debug_str      0x00000000    0xfb3e6
- .debug_str     0x00000000    0xfb3e6 ./Core/Lib/crsf/crsf.o
+.debug_str      0x00000000    0xfb404
+ .debug_str     0x00000000    0xfb404 ./Core/Lib/crsf/crsf.o
                                0x9625 (size before relaxing)
- .debug_str     0x000fb3e6     0x4164 ./Core/Lib/crsf/crsf_def.o
- .debug_str     0x000fb3e6     0x8e7a ./Core/Lib/crsf/crsf_telemetry.o
- .debug_str     0x000fb3e6     0x6c36 ./Core/Lib/flight_controller_libs/attitude_controller.o
- .debug_str     0x000fb3e6     0x4388 ./Core/Lib/flight_controller_libs/crc.o
- .debug_str     0x000fb3e6     0x7809 ./Core/Lib/flight_controller_libs/filters.o
- .debug_str     0x000fb3e6     0xe940 ./Core/Lib/flight_controller_libs/flight_control_loop.o
- .debug_str     0x000fb3e6    0xc7805 ./Core/Lib/flight_controller_libs/fp_cli.o
- .debug_str     0x000fb3e6    0xcee96 ./Core/Lib/flight_controller_libs/fp_cli_server.o
- .debug_str     0x000fb3e6     0x7cb4 ./Core/Lib/flight_controller_libs/geometry3D.o
- .debug_str     0x000fb3e6     0x7a03 ./Core/Lib/flight_controller_libs/imu.o
- .debug_str     0x000fb3e6     0x6998 ./Core/Lib/flight_controller_libs/madgwick_filter.o
- .debug_str     0x000fb3e6     0xd551 ./Core/Lib/flight_controller_libs/motor_mixer.o
- .debug_str     0x000fb3e6     0x7973 ./Core/Lib/flight_controller_libs/pid_controller.o
- .debug_str     0x000fb3e6     0x81eb ./Core/Lib/flight_controller_libs/rate_controller.o
- .debug_str     0x000fb3e6     0x83d0 ./Core/Lib/flight_controller_libs/rc_control.o
- .debug_str     0x000fb3e6    0xd44e8 ./Core/Lib/flight_controller_libs/rc_control_recv_routine.o
- .debug_str     0x000fb3e6     0x7c49 ./Core/Lib/lwshell/lwshell/src/lwshell/lwshell.o
- .debug_str     0x000fb3e6     0x95bd ./Core/Lib/mpu6500/interface/driver_mpu6500_basic.o
- .debug_str     0x000fb3e6    0xc3fe9 ./Core/Lib/mpu6500/interface/driver_mpu6500_interface.o
- .debug_str     0x000fb3e6     0xc462 ./Core/Lib/mpu6500/src/driver_mpu6500.o
- .debug_str     0x000fb3e6     0x7718 ./Core/Lib/ringbuffer/ringbuffer.o
- .debug_str     0x000fb3e6    0xbf768 ./Core/Lib/uart_driver/uart_driver.o
- .debug_str     0x000fb3e6    0xbbfa8 ./Core/Src/dma.o
- .debug_str     0x000fb3e6    0xbc16f ./Core/Src/esc_pwm.o
- .debug_str     0x000fb3e6    0xc6e5c ./Core/Src/freertos.o
- .debug_str     0x000fb3e6    0xbbb77 ./Core/Src/gpio.o
- .debug_str     0x000fb3e6    0xd4821 ./Core/Src/lwip_example.o
- .debug_str     0x000fb3e6     0xd0f9 ./Core/Src/lwip_port.o
- .debug_str     0x000fb3e6    0xc7e5b ./Core/Src/main.o
- .debug_str     0x000fb3e6    0xca40d ./Core/Src/rtos_flight_controller.o
- .debug_str     0x000fb3e6    0xbc003 ./Core/Src/spi.o
- .debug_str     0x000fb3e6    0xbbf98 ./Core/Src/stm32f4xx_hal_msp.o
- .debug_str     0x000fb3e6    0xbc5f2 ./Core/Src/stm32f4xx_hal_timebase_tim.o
- .debug_str     0x000fb3e6    0xbc9bf ./Core/Src/stm32f4xx_it.o
- .debug_str     0x000fb3e6     0x99cc ./Core/Src/syscalls.o
- .debug_str     0x000fb3e6     0x776a ./Core/Src/sysmem.o
- .debug_str     0x000fb3e6    0xbbb1c ./Core/Src/system_stm32f4xx.o
- .debug_str     0x000fb3e6    0xbc7e6 ./Core/Src/tim.o
- .debug_str     0x000fb3e6    0xbcb61 ./Core/Src/usart.o
- .debug_str     0x000fb3e6       0x6c ./Core/Startup/startup_stm32f405rgtx.o
- .debug_str     0x000fb3e6    0xbc67f ./Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal.o
- .debug_str     0x000fb3e6    0xbc3fb ./Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_cortex.o
- .debug_str     0x000fb3e6    0xbbf36 ./Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma.o
- .debug_str     0x000fb3e6    0xbbc97 ./Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_gpio.o
- .debug_str     0x000fb3e6    0xbc5fa ./Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pcd.o
- .debug_str     0x000fb3e6    0xbbeea ./Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pcd_ex.o
- .debug_str     0x000fb3e6    0xbbf50 ./Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc.o
- .debug_str     0x000fb3e6    0xbc3da ./Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spi.o
- .debug_str     0x000fb3e6    0xbcea6 ./Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_tim.o
- .debug_str     0x000fb3e6    0xbc6b2 ./Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_tim_ex.o
- .debug_str     0x000fb3e6    0xbc531 ./Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_uart.o
- .debug_str     0x000fb3e6    0xbc4d5 ./Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_ll_usb.o
- .debug_str     0x000fb3e6    0xc0bd0 ./Middlewares/ST/STM32_USB_Device_Library/Class/CDC/Src/usbd_cdc.o
- .debug_str     0x000fb3e6    0xc0529 ./Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_core.o
- .debug_str     0x000fb3e6    0xc0354 ./Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_ctlreq.o
- .debug_str     0x000fb3e6    0xc0229 ./Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_ioreq.o
- .debug_str     0x000fb3e6    0xc6b2c ./Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2/cmsis_os2.o
- .debug_str     0x000fb3e6     0xac1b ./Middlewares/Third_Party/FreeRTOS/Source/list.o
- .debug_str     0x000fb3e6     0xc75b ./Middlewares/Third_Party/FreeRTOS/Source/queue.o
- .debug_str     0x000fb3e6     0xd70b ./Middlewares/Third_Party/FreeRTOS/Source/tasks.o
- .debug_str     0x000fb3e6     0xcfac ./Middlewares/Third_Party/FreeRTOS/Source/timers.o
- .debug_str     0x000fb3e6     0xb959 ./Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F/port.o
- .debug_str     0x000fb3e6     0xb55d ./Middlewares/Third_Party/FreeRTOS/Source/portable/MemMang/heap_4.o
- .debug_str     0x000fb3e6    0xccead ./Middlewares/Third_Party/lwip/src/api/api_lib.o
- .debug_str     0x000fb3e6    0xcbbf0 ./Middlewares/Third_Party/lwip/src/api/api_msg.o
- .debug_str     0x000fb3e6    0xc5af5 ./Middlewares/Third_Party/lwip/src/api/err.o
- .debug_str     0x000fb3e6    0x101ee ./Middlewares/Third_Party/lwip/src/api/netbuf.o
- .debug_str     0x000fb3e6    0xcee8e ./Middlewares/Third_Party/lwip/src/api/sockets.o
- .debug_str     0x000fb3e6    0xca90a ./Middlewares/Third_Party/lwip/src/api/tcpip.o
- .debug_str     0x000fb3e6     0xd52f ./Middlewares/Third_Party/lwip/src/core/def.o
- .debug_str     0x000fb3e6     0xf537 ./Middlewares/Third_Party/lwip/src/core/inet_chksum.o
- .debug_str     0x000fb3e6    0xd02ae ./Middlewares/Third_Party/lwip/src/core/init.o
- .debug_str     0x000fb3e6    0x11526 ./Middlewares/Third_Party/lwip/src/core/ip.o
- .debug_str     0x000fb3e6    0xc6651 ./Middlewares/Third_Party/lwip/src/core/mem.o
- .debug_str     0x000fb3e6    0xcf543 ./Middlewares/Third_Party/lwip/src/core/memp.o
- .debug_str     0x000fb3e6    0xcc5a0 ./Middlewares/Third_Party/lwip/src/core/netif.o
- .debug_str     0x000fb3e6    0xcbebe ./Middlewares/Third_Party/lwip/src/core/pbuf.o
- .debug_str     0x000fb3e6    0x13d5f ./Middlewares/Third_Party/lwip/src/core/tcp.o
- .debug_str     0x000fb3e6    0x13bc4 ./Middlewares/Third_Party/lwip/src/core/tcp_in.o
- .debug_str     0x000fb3e6    0x13b81 ./Middlewares/Third_Party/lwip/src/core/tcp_out.o
- .debug_str     0x000fb3e6    0xcc35f ./Middlewares/Third_Party/lwip/src/core/timeouts.o
- .debug_str     0x000fb3e6    0x12ba3 ./Middlewares/Third_Party/lwip/src/core/udp.o
- .debug_str     0x000fb3e6    0x1148a ./Middlewares/Third_Party/lwip/src/core/ipv4/acd.o
- .debug_str     0x000fb3e6    0x135bb ./Middlewares/Third_Party/lwip/src/core/ipv4/dhcp.o
- .debug_str     0x000fb3e6    0x12ab3 ./Middlewares/Third_Party/lwip/src/core/ipv4/etharp.o
- .debug_str     0x000fb3e6    0x119e1 ./Middlewares/Third_Party/lwip/src/core/ipv4/icmp.o
- .debug_str     0x000fb3e6    0x13a8d ./Middlewares/Third_Party/lwip/src/core/ipv4/ip4.o
- .debug_str     0x000fb3e6    0x1085a ./Middlewares/Third_Party/lwip/src/core/ipv4/ip4_addr.o
- .debug_str     0x000fb3e6    0x11de8 ./Middlewares/Third_Party/lwip/src/core/ipv4/ip4_frag.o
- .debug_str     0x000fb3e6    0xcb7fe ./Middlewares/Third_Party/lwip/src/netif/ethernet.o
- .debug_str     0x000fb3e6    0xcaee0 ./Middlewares/Third_Party/lwip/src/netif/ppp/auth.o
- .debug_str     0x000fb3e6    0xcb2aa ./Middlewares/Third_Party/lwip/src/netif/ppp/chap-md5.o
- .debug_str     0x000fb3e6    0xcb0de ./Middlewares/Third_Party/lwip/src/netif/ppp/chap-new.o
- .debug_str     0x000fb3e6    0xcaf44 ./Middlewares/Third_Party/lwip/src/netif/ppp/fsm.o
- .debug_str     0x000fb3e6    0xcb91e ./Middlewares/Third_Party/lwip/src/netif/ppp/ipcp.o
- .debug_str     0x000fb3e6    0xcc587 ./Middlewares/Third_Party/lwip/src/netif/ppp/lcp.o
- .debug_str     0x000fb3e6    0xcaba9 ./Middlewares/Third_Party/lwip/src/netif/ppp/magic.o
- .debug_str     0x000fb3e6    0xcc6af ./Middlewares/Third_Party/lwip/src/netif/ppp/ppp.o
- .debug_str     0x000fb3e6    0xcb2f8 ./Middlewares/Third_Party/lwip/src/netif/ppp/pppapi.o
- .debug_str     0x000fb3e6    0xcc4dd ./Middlewares/Third_Party/lwip/src/netif/ppp/pppoe.o
- .debug_str     0x000fb3e6    0xcc849 ./Middlewares/Third_Party/lwip/src/netif/ppp/pppos.o
- .debug_str     0x000fb3e6    0xcb054 ./Middlewares/Third_Party/lwip/src/netif/ppp/upap.o
- .debug_str     0x000fb3e6    0xca79c ./Middlewares/Third_Party/lwip/src/netif/ppp/utils.o
- .debug_str     0x000fb3e6     0xd9b7 ./Middlewares/Third_Party/lwip/src/netif/ppp/polarssl/md5.o
- .debug_str     0x000fb3e6    0xce380 ./Middlewares/Third_Party/lwip/system/OS/sys_arch.o
- .debug_str     0x000fb3e6    0xc05dc ./USB_DEVICE/App/usb_device.o
- .debug_str     0x000fb3e6    0xc0baf ./USB_DEVICE/App/usbd_cdc_if.o
- .debug_str     0x000fb3e6    0xc0129 ./USB_DEVICE/App/usbd_desc.o
- .debug_str     0x000fb3e6    0xc13fd ./USB_DEVICE/Target/usbd_conf.o
+ .debug_str     0x000fb404     0x4164 ./Core/Lib/crsf/crsf_def.o
+ .debug_str     0x000fb404     0x8e7a ./Core/Lib/crsf/crsf_telemetry.o
+ .debug_str     0x000fb404     0x6c36 ./Core/Lib/flight_controller_libs/attitude_controller.o
+ .debug_str     0x000fb404     0x43a6 ./Core/Lib/flight_controller_libs/crc.o
+ .debug_str     0x000fb404     0x7809 ./Core/Lib/flight_controller_libs/filters.o
+ .debug_str     0x000fb404     0xe940 ./Core/Lib/flight_controller_libs/flight_control_loop.o
+ .debug_str     0x000fb404    0xc7805 ./Core/Lib/flight_controller_libs/fp_cli.o
+ .debug_str     0x000fb404    0xcee96 ./Core/Lib/flight_controller_libs/fp_cli_server.o
+ .debug_str     0x000fb404     0x7cb4 ./Core/Lib/flight_controller_libs/geometry3D.o
+ .debug_str     0x000fb404     0x7a03 ./Core/Lib/flight_controller_libs/imu.o
+ .debug_str     0x000fb404     0x6998 ./Core/Lib/flight_controller_libs/madgwick_filter.o
+ .debug_str     0x000fb404     0xd551 ./Core/Lib/flight_controller_libs/motor_mixer.o
+ .debug_str     0x000fb404     0x7973 ./Core/Lib/flight_controller_libs/pid_controller.o
+ .debug_str     0x000fb404     0x81eb ./Core/Lib/flight_controller_libs/rate_controller.o
+ .debug_str     0x000fb404     0x83d0 ./Core/Lib/flight_controller_libs/rc_control.o
+ .debug_str     0x000fb404    0xd44e8 ./Core/Lib/flight_controller_libs/rc_control_recv_routine.o
+ .debug_str     0x000fb404     0x7c49 ./Core/Lib/lwshell/lwshell/src/lwshell/lwshell.o
+ .debug_str     0x000fb404     0x95bd ./Core/Lib/mpu6500/interface/driver_mpu6500_basic.o
+ .debug_str     0x000fb404    0xc3fe9 ./Core/Lib/mpu6500/interface/driver_mpu6500_interface.o
+ .debug_str     0x000fb404     0xc462 ./Core/Lib/mpu6500/src/driver_mpu6500.o
+ .debug_str     0x000fb404     0x7718 ./Core/Lib/ringbuffer/ringbuffer.o
+ .debug_str     0x000fb404    0xbf768 ./Core/Lib/uart_driver/uart_driver.o
+ .debug_str     0x000fb404    0xbbfa8 ./Core/Src/dma.o
+ .debug_str     0x000fb404    0xbc16f ./Core/Src/esc_pwm.o
+ .debug_str     0x000fb404    0xc6e5c ./Core/Src/freertos.o
+ .debug_str     0x000fb404    0xbbb77 ./Core/Src/gpio.o
+ .debug_str     0x000fb404    0xd4821 ./Core/Src/lwip_example.o
+ .debug_str     0x000fb404     0xd0f9 ./Core/Src/lwip_port.o
+ .debug_str     0x000fb404    0xc7e5b ./Core/Src/main.o
+ .debug_str     0x000fb404    0xca40d ./Core/Src/rtos_flight_controller.o
+ .debug_str     0x000fb404    0xbc003 ./Core/Src/spi.o
+ .debug_str     0x000fb404    0xbbf98 ./Core/Src/stm32f4xx_hal_msp.o
+ .debug_str     0x000fb404    0xbc5f2 ./Core/Src/stm32f4xx_hal_timebase_tim.o
+ .debug_str     0x000fb404    0xbc9bf ./Core/Src/stm32f4xx_it.o
+ .debug_str     0x000fb404     0x99cc ./Core/Src/syscalls.o
+ .debug_str     0x000fb404     0x776a ./Core/Src/sysmem.o
+ .debug_str     0x000fb404    0xbbb1c ./Core/Src/system_stm32f4xx.o
+ .debug_str     0x000fb404    0xbc7e6 ./Core/Src/tim.o
+ .debug_str     0x000fb404    0xbcb61 ./Core/Src/usart.o
+ .debug_str     0x000fb404       0x6c ./Core/Startup/startup_stm32f405rgtx.o
+ .debug_str     0x000fb404    0xbc67f ./Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal.o
+ .debug_str     0x000fb404    0xbc3fb ./Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_cortex.o
+ .debug_str     0x000fb404    0xbbf36 ./Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma.o
+ .debug_str     0x000fb404    0xbbc97 ./Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_gpio.o
+ .debug_str     0x000fb404    0xbc5fa ./Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pcd.o
+ .debug_str     0x000fb404    0xbbeea ./Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pcd_ex.o
+ .debug_str     0x000fb404    0xbbf50 ./Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc.o
+ .debug_str     0x000fb404    0xbc3da ./Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spi.o
+ .debug_str     0x000fb404    0xbcea6 ./Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_tim.o
+ .debug_str     0x000fb404    0xbc6b2 ./Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_tim_ex.o
+ .debug_str     0x000fb404    0xbc531 ./Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_uart.o
+ .debug_str     0x000fb404    0xbc4d5 ./Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_ll_usb.o
+ .debug_str     0x000fb404    0xc0bd0 ./Middlewares/ST/STM32_USB_Device_Library/Class/CDC/Src/usbd_cdc.o
+ .debug_str     0x000fb404    0xc0529 ./Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_core.o
+ .debug_str     0x000fb404    0xc0354 ./Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_ctlreq.o
+ .debug_str     0x000fb404    0xc0229 ./Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_ioreq.o
+ .debug_str     0x000fb404    0xc6b2c ./Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2/cmsis_os2.o
+ .debug_str     0x000fb404     0xac1b ./Middlewares/Third_Party/FreeRTOS/Source/list.o
+ .debug_str     0x000fb404     0xc75b ./Middlewares/Third_Party/FreeRTOS/Source/queue.o
+ .debug_str     0x000fb404     0xd70b ./Middlewares/Third_Party/FreeRTOS/Source/tasks.o
+ .debug_str     0x000fb404     0xcfac ./Middlewares/Third_Party/FreeRTOS/Source/timers.o
+ .debug_str     0x000fb404     0xb959 ./Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F/port.o
+ .debug_str     0x000fb404     0xb55d ./Middlewares/Third_Party/FreeRTOS/Source/portable/MemMang/heap_4.o
+ .debug_str     0x000fb404    0xccead ./Middlewares/Third_Party/lwip/src/api/api_lib.o
+ .debug_str     0x000fb404    0xcbbf0 ./Middlewares/Third_Party/lwip/src/api/api_msg.o
+ .debug_str     0x000fb404    0xc5af5 ./Middlewares/Third_Party/lwip/src/api/err.o
+ .debug_str     0x000fb404    0x101ee ./Middlewares/Third_Party/lwip/src/api/netbuf.o
+ .debug_str     0x000fb404    0xcee8e ./Middlewares/Third_Party/lwip/src/api/sockets.o
+ .debug_str     0x000fb404    0xca90a ./Middlewares/Third_Party/lwip/src/api/tcpip.o
+ .debug_str     0x000fb404     0xd52f ./Middlewares/Third_Party/lwip/src/core/def.o
+ .debug_str     0x000fb404     0xf537 ./Middlewares/Third_Party/lwip/src/core/inet_chksum.o
+ .debug_str     0x000fb404    0xd02ae ./Middlewares/Third_Party/lwip/src/core/init.o
+ .debug_str     0x000fb404    0x11526 ./Middlewares/Third_Party/lwip/src/core/ip.o
+ .debug_str     0x000fb404    0xc6651 ./Middlewares/Third_Party/lwip/src/core/mem.o
+ .debug_str     0x000fb404    0xcf543 ./Middlewares/Third_Party/lwip/src/core/memp.o
+ .debug_str     0x000fb404    0xcc5a0 ./Middlewares/Third_Party/lwip/src/core/netif.o
+ .debug_str     0x000fb404    0xcbebe ./Middlewares/Third_Party/lwip/src/core/pbuf.o
+ .debug_str     0x000fb404    0x13d5f ./Middlewares/Third_Party/lwip/src/core/tcp.o
+ .debug_str     0x000fb404    0x13bc4 ./Middlewares/Third_Party/lwip/src/core/tcp_in.o
+ .debug_str     0x000fb404    0x13b81 ./Middlewares/Third_Party/lwip/src/core/tcp_out.o
+ .debug_str     0x000fb404    0xcc35f ./Middlewares/Third_Party/lwip/src/core/timeouts.o
+ .debug_str     0x000fb404    0x12ba3 ./Middlewares/Third_Party/lwip/src/core/udp.o
+ .debug_str     0x000fb404    0x1148a ./Middlewares/Third_Party/lwip/src/core/ipv4/acd.o
+ .debug_str     0x000fb404    0x135bb ./Middlewares/Third_Party/lwip/src/core/ipv4/dhcp.o
+ .debug_str     0x000fb404    0x12ab3 ./Middlewares/Third_Party/lwip/src/core/ipv4/etharp.o
+ .debug_str     0x000fb404    0x119e1 ./Middlewares/Third_Party/lwip/src/core/ipv4/icmp.o
+ .debug_str     0x000fb404    0x13a8d ./Middlewares/Third_Party/lwip/src/core/ipv4/ip4.o
+ .debug_str     0x000fb404    0x1085a ./Middlewares/Third_Party/lwip/src/core/ipv4/ip4_addr.o
+ .debug_str     0x000fb404    0x11de8 ./Middlewares/Third_Party/lwip/src/core/ipv4/ip4_frag.o
+ .debug_str     0x000fb404    0xcb7fe ./Middlewares/Third_Party/lwip/src/netif/ethernet.o
+ .debug_str     0x000fb404    0xcaee0 ./Middlewares/Third_Party/lwip/src/netif/ppp/auth.o
+ .debug_str     0x000fb404    0xcb2aa ./Middlewares/Third_Party/lwip/src/netif/ppp/chap-md5.o
+ .debug_str     0x000fb404    0xcb0de ./Middlewares/Third_Party/lwip/src/netif/ppp/chap-new.o
+ .debug_str     0x000fb404    0xcaf44 ./Middlewares/Third_Party/lwip/src/netif/ppp/fsm.o
+ .debug_str     0x000fb404    0xcb91e ./Middlewares/Third_Party/lwip/src/netif/ppp/ipcp.o
+ .debug_str     0x000fb404    0xcc587 ./Middlewares/Third_Party/lwip/src/netif/ppp/lcp.o
+ .debug_str     0x000fb404    0xcaba9 ./Middlewares/Third_Party/lwip/src/netif/ppp/magic.o
+ .debug_str     0x000fb404    0xcc6af ./Middlewares/Third_Party/lwip/src/netif/ppp/ppp.o
+ .debug_str     0x000fb404    0xcb2f8 ./Middlewares/Third_Party/lwip/src/netif/ppp/pppapi.o
+ .debug_str     0x000fb404    0xcc4dd ./Middlewares/Third_Party/lwip/src/netif/ppp/pppoe.o
+ .debug_str     0x000fb404    0xcc849 ./Middlewares/Third_Party/lwip/src/netif/ppp/pppos.o
+ .debug_str     0x000fb404    0xcb054 ./Middlewares/Third_Party/lwip/src/netif/ppp/upap.o
+ .debug_str     0x000fb404    0xca79c ./Middlewares/Third_Party/lwip/src/netif/ppp/utils.o
+ .debug_str     0x000fb404     0xd9b7 ./Middlewares/Third_Party/lwip/src/netif/ppp/polarssl/md5.o
+ .debug_str     0x000fb404    0xce380 ./Middlewares/Third_Party/lwip/system/OS/sys_arch.o
+ .debug_str     0x000fb404    0xc05dc ./USB_DEVICE/App/usb_device.o
+ .debug_str     0x000fb404    0xc0baf ./USB_DEVICE/App/usbd_cdc_if.o
+ .debug_str     0x000fb404    0xc0129 ./USB_DEVICE/App/usbd_desc.o
+ .debug_str     0x000fb404    0xc13fd ./USB_DEVICE/Target/usbd_conf.o
 
 .comment        0x00000000       0x43
  .comment       0x00000000       0x43 ./Core/Lib/crsf/crsf.o
@@ -36220,214 +36267,214 @@ LOAD C:/ST/STM32CubeIDE_1.18.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.ext
  .comment       0x00000043       0x44 ./USB_DEVICE/App/usbd_desc.o
  .comment       0x00000043       0x44 ./USB_DEVICE/Target/usbd_conf.o
 
-.debug_frame    0x00000000    0x14ed0
+.debug_frame    0x00000000    0x14f20
  .debug_frame   0x00000000      0x3c0 ./Core/Lib/crsf/crsf.o
  .debug_frame   0x000003c0       0x88 ./Core/Lib/crsf/crsf_def.o
  .debug_frame   0x00000448      0x2a8 ./Core/Lib/crsf/crsf_telemetry.o
  .debug_frame   0x000006f0       0xa8 ./Core/Lib/flight_controller_libs/attitude_controller.o
- .debug_frame   0x00000798       0xa8 ./Core/Lib/flight_controller_libs/crc.o
- .debug_frame   0x00000840      0x18c ./Core/Lib/flight_controller_libs/filters.o
- .debug_frame   0x000009cc      0x248 ./Core/Lib/flight_controller_libs/flight_control_loop.o
- .debug_frame   0x00000c14      0x334 ./Core/Lib/flight_controller_libs/fp_cli.o
- .debug_frame   0x00000f48       0xe8 ./Core/Lib/flight_controller_libs/fp_cli_server.o
- .debug_frame   0x00001030      0x350 ./Core/Lib/flight_controller_libs/geometry3D.o
- .debug_frame   0x00001380      0x1c8 ./Core/Lib/flight_controller_libs/imu.o
- .debug_frame   0x00001548       0x60 ./Core/Lib/flight_controller_libs/madgwick_filter.o
- .debug_frame   0x000015a8       0x38 ./Core/Lib/flight_controller_libs/motor_mixer.o
- .debug_frame   0x000015e0      0x3cc ./Core/Lib/flight_controller_libs/pid_controller.o
- .debug_frame   0x000019ac      0x138 ./Core/Lib/flight_controller_libs/rate_controller.o
- .debug_frame   0x00001ae4      0x278 ./Core/Lib/flight_controller_libs/rc_control.o
- .debug_frame   0x00001d5c       0xf0 ./Core/Lib/flight_controller_libs/rc_control_recv_routine.o
- .debug_frame   0x00001e4c       0xd0 ./Core/Lib/lwshell/lwshell/src/lwshell/lwshell.o
- .debug_frame   0x00001f1c       0x9c ./Core/Lib/mpu6500/interface/driver_mpu6500_basic.o
- .debug_frame   0x00001fb8      0x1f4 ./Core/Lib/mpu6500/interface/driver_mpu6500_interface.o
- .debug_frame   0x000021ac     0x1f08 ./Core/Lib/mpu6500/src/driver_mpu6500.o
- .debug_frame   0x000040b4      0x318 ./Core/Lib/ringbuffer/ringbuffer.o
- .debug_frame   0x000043cc      0x19c ./Core/Lib/uart_driver/uart_driver.o
- .debug_frame   0x00004568       0x34 ./Core/Src/dma.o
- .debug_frame   0x0000459c       0xf0 ./Core/Src/esc_pwm.o
- .debug_frame   0x0000468c       0x68 ./Core/Src/freertos.o
- .debug_frame   0x000046f4       0x34 ./Core/Src/gpio.o
- .debug_frame   0x00004728      0x100 ./Core/Src/lwip_example.o
- .debug_frame   0x00004828       0xd4 ./Core/Src/main.o
- .debug_frame   0x000048fc      0x158 ./Core/Src/rtos_flight_controller.o
- .debug_frame   0x00004a54       0x74 ./Core/Src/spi.o
- .debug_frame   0x00004ac8       0x34 ./Core/Src/stm32f4xx_hal_msp.o
- .debug_frame   0x00004afc       0x74 ./Core/Src/stm32f4xx_hal_timebase_tim.o
- .debug_frame   0x00004b70      0x1ac ./Core/Src/stm32f4xx_it.o
- .debug_frame   0x00004d1c      0x2ac ./Core/Src/syscalls.o
- .debug_frame   0x00004fc8       0x34 ./Core/Src/sysmem.o
- .debug_frame   0x00004ffc       0x58 ./Core/Src/system_stm32f4xx.o
- .debug_frame   0x00005054       0xc4 ./Core/Src/tim.o
- .debug_frame   0x00005118      0x130 ./Core/Src/usart.o
- .debug_frame   0x00005248      0x374 ./Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal.o
- .debug_frame   0x000055bc      0x508 ./Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_cortex.o
- .debug_frame   0x00005ac4      0x250 ./Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma.o
- .debug_frame   0x00005d14      0x14c ./Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_gpio.o
- .debug_frame   0x00005e60      0x5b8 ./Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pcd.o
- .debug_frame   0x00006418       0xb0 ./Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pcd_ex.o
- .debug_frame   0x000064c8      0x1f4 ./Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc.o
- .debug_frame   0x000066bc      0x828 ./Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spi.o
- .debug_frame   0x00006ee4     0x11c0 ./Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_tim.o
- .debug_frame   0x000080a4      0x638 ./Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_tim_ex.o
- .debug_frame   0x000086dc      0x954 ./Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_uart.o
- .debug_frame   0x00009030      0x7c0 ./Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_ll_usb.o
- .debug_frame   0x000097f0      0x23c ./Middlewares/ST/STM32_USB_Device_Library/Class/CDC/Src/usbd_cdc.o
- .debug_frame   0x00009a2c      0x390 ./Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_core.o
- .debug_frame   0x00009dbc      0x23c ./Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_ctlreq.o
- .debug_frame   0x00009ff8      0x10c ./Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_ioreq.o
- .debug_frame   0x0000a104      0xc00 ./Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2/cmsis_os2.o
- .debug_frame   0x0000ad04       0xd8 ./Middlewares/Third_Party/FreeRTOS/Source/list.o
- .debug_frame   0x0000addc      0x5ec ./Middlewares/Third_Party/FreeRTOS/Source/queue.o
- .debug_frame   0x0000b3c8      0x8ec ./Middlewares/Third_Party/FreeRTOS/Source/tasks.o
- .debug_frame   0x0000bcb4      0x400 ./Middlewares/Third_Party/FreeRTOS/Source/timers.o
- .debug_frame   0x0000c0b4      0x1a8 ./Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F/port.o
- .debug_frame   0x0000c25c      0x12c ./Middlewares/Third_Party/FreeRTOS/Source/portable/MemMang/heap_4.o
- .debug_frame   0x0000c388      0x404 ./Middlewares/Third_Party/lwip/src/api/api_lib.o
- .debug_frame   0x0000c78c      0x410 ./Middlewares/Third_Party/lwip/src/api/api_msg.o
- .debug_frame   0x0000cb9c       0x38 ./Middlewares/Third_Party/lwip/src/api/err.o
- .debug_frame   0x0000cbd4      0x160 ./Middlewares/Third_Party/lwip/src/api/netbuf.o
- .debug_frame   0x0000cd34      0x7e8 ./Middlewares/Third_Party/lwip/src/api/sockets.o
- .debug_frame   0x0000d51c      0x294 ./Middlewares/Third_Party/lwip/src/api/tcpip.o
- .debug_frame   0x0000d7b0      0x144 ./Middlewares/Third_Party/lwip/src/core/def.o
- .debug_frame   0x0000d8f4      0x158 ./Middlewares/Third_Party/lwip/src/core/inet_chksum.o
- .debug_frame   0x0000da4c       0x34 ./Middlewares/Third_Party/lwip/src/core/init.o
- .debug_frame   0x0000da80      0x164 ./Middlewares/Third_Party/lwip/src/core/mem.o
- .debug_frame   0x0000dbe4      0x134 ./Middlewares/Third_Party/lwip/src/core/memp.o
- .debug_frame   0x0000dd18      0x3a8 ./Middlewares/Third_Party/lwip/src/core/netif.o
- .debug_frame   0x0000e0c0      0x578 ./Middlewares/Third_Party/lwip/src/core/pbuf.o
- .debug_frame   0x0000e638      0x77c ./Middlewares/Third_Party/lwip/src/core/tcp.o
- .debug_frame   0x0000edb4      0x1c0 ./Middlewares/Third_Party/lwip/src/core/tcp_in.o
- .debug_frame   0x0000ef74      0x420 ./Middlewares/Third_Party/lwip/src/core/tcp_out.o
- .debug_frame   0x0000f394      0x170 ./Middlewares/Third_Party/lwip/src/core/timeouts.o
- .debug_frame   0x0000f504      0x28c ./Middlewares/Third_Party/lwip/src/core/udp.o
- .debug_frame   0x0000f790      0x1a0 ./Middlewares/Third_Party/lwip/src/core/ipv4/acd.o
- .debug_frame   0x0000f930      0x570 ./Middlewares/Third_Party/lwip/src/core/ipv4/dhcp.o
- .debug_frame   0x0000fea0      0x270 ./Middlewares/Third_Party/lwip/src/core/ipv4/etharp.o
- .debug_frame   0x00010110       0xa8 ./Middlewares/Third_Party/lwip/src/core/ipv4/icmp.o
- .debug_frame   0x000101b8       0xf4 ./Middlewares/Third_Party/lwip/src/core/ipv4/ip4.o
- .debug_frame   0x000102ac       0xf4 ./Middlewares/Third_Party/lwip/src/core/ipv4/ip4_addr.o
- .debug_frame   0x000103a0      0x1a0 ./Middlewares/Third_Party/lwip/src/core/ipv4/ip4_frag.o
- .debug_frame   0x00010540       0x58 ./Middlewares/Third_Party/lwip/src/netif/ethernet.o
- .debug_frame   0x00010598      0x20c ./Middlewares/Third_Party/lwip/src/netif/ppp/auth.o
- .debug_frame   0x000107a4       0x34 ./Middlewares/Third_Party/lwip/src/netif/ppp/chap-md5.o
- .debug_frame   0x000107d8      0x150 ./Middlewares/Third_Party/lwip/src/netif/ppp/chap-new.o
- .debug_frame   0x00010928      0x298 ./Middlewares/Third_Party/lwip/src/netif/ppp/fsm.o
- .debug_frame   0x00010bc0      0x2a8 ./Middlewares/Third_Party/lwip/src/netif/ppp/ipcp.o
- .debug_frame   0x00010e68      0x460 ./Middlewares/Third_Party/lwip/src/netif/ppp/lcp.o
- .debug_frame   0x000112c8       0xd8 ./Middlewares/Third_Party/lwip/src/netif/ppp/magic.o
- .debug_frame   0x000113a0      0x3fc ./Middlewares/Third_Party/lwip/src/netif/ppp/ppp.o
- .debug_frame   0x0001179c      0x20c ./Middlewares/Third_Party/lwip/src/netif/ppp/pppapi.o
- .debug_frame   0x000119a8      0x27c ./Middlewares/Third_Party/lwip/src/netif/ppp/pppoe.o
- .debug_frame   0x00011c24      0x248 ./Middlewares/Third_Party/lwip/src/netif/ppp/pppos.o
- .debug_frame   0x00011e6c      0x17c ./Middlewares/Third_Party/lwip/src/netif/ppp/upap.o
- .debug_frame   0x00011fe8      0x290 ./Middlewares/Third_Party/lwip/src/netif/ppp/utils.o
- .debug_frame   0x00012278       0xcc ./Middlewares/Third_Party/lwip/src/netif/ppp/polarssl/md5.o
- .debug_frame   0x00012344      0x470 ./Middlewares/Third_Party/lwip/system/OS/sys_arch.o
- .debug_frame   0x000127b4       0x2c ./USB_DEVICE/App/usb_device.o
- .debug_frame   0x000127e0      0x174 ./USB_DEVICE/App/usbd_cdc_if.o
- .debug_frame   0x00012954      0x160 ./USB_DEVICE/App/usbd_desc.o
- .debug_frame   0x00012ab4      0x47c ./USB_DEVICE/Target/usbd_conf.o
- .debug_frame   0x00012f30       0x48 C:/ST/STM32CubeIDE_1.18.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(libm_a-wf_acos.o)
- .debug_frame   0x00012f78       0x48 C:/ST/STM32CubeIDE_1.18.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(libm_a-wf_asin.o)
- .debug_frame   0x00012fc0       0x20 C:/ST/STM32CubeIDE_1.18.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(libm_a-wf_atan2.o)
- .debug_frame   0x00012fe0       0x48 C:/ST/STM32CubeIDE_1.18.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(libm_a-wf_pow.o)
- .debug_frame   0x00013028       0x38 C:/ST/STM32CubeIDE_1.18.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(libm_a-wf_sqrt.o)
- .debug_frame   0x00013060       0x2c C:/ST/STM32CubeIDE_1.18.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(libm_a-sf_atan.o)
- .debug_frame   0x0001308c       0x38 C:/ST/STM32CubeIDE_1.18.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(libm_a-sf_cos.o)
- .debug_frame   0x000130c4       0x20 C:/ST/STM32CubeIDE_1.18.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(libm_a-sf_fabs.o)
- .debug_frame   0x000130e4       0x38 C:/ST/STM32CubeIDE_1.18.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(libm_a-sf_sin.o)
- .debug_frame   0x0001311c       0x20 C:/ST/STM32CubeIDE_1.18.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(libm_a-sf_finite.o)
- .debug_frame   0x0001313c       0x20 C:/ST/STM32CubeIDE_1.18.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(libm_a-sf_copysign.o)
- .debug_frame   0x0001315c       0x20 C:/ST/STM32CubeIDE_1.18.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(libm_a-sf_nan.o)
- .debug_frame   0x0001317c       0x20 C:/ST/STM32CubeIDE_1.18.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(libm_a-ef_sqrt.o)
- .debug_frame   0x0001319c       0x20 C:/ST/STM32CubeIDE_1.18.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(libm_a-kf_cos.o)
- .debug_frame   0x000131bc       0x20 C:/ST/STM32CubeIDE_1.18.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(libm_a-kf_sin.o)
- .debug_frame   0x000131dc       0x6c C:/ST/STM32CubeIDE_1.18.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(libm_a-ef_acos.o)
- .debug_frame   0x00013248       0x48 C:/ST/STM32CubeIDE_1.18.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(libm_a-ef_asin.o)
- .debug_frame   0x00013290       0x30 C:/ST/STM32CubeIDE_1.18.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(libm_a-ef_atan2.o)
- .debug_frame   0x000132c0       0x88 C:/ST/STM32CubeIDE_1.18.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(libm_a-ef_pow.o)
- .debug_frame   0x00013348       0x38 C:/ST/STM32CubeIDE_1.18.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(libm_a-ef_rem_pio2.o)
- .debug_frame   0x00013380       0x20 C:/ST/STM32CubeIDE_1.18.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(libm_a-sf_scalbn.o)
- .debug_frame   0x000133a0       0x88 C:/ST/STM32CubeIDE_1.18.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(libm_a-math_errf.o)
- .debug_frame   0x00013428       0x5c C:/ST/STM32CubeIDE_1.18.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(libm_a-kf_rem_pio2.o)
- .debug_frame   0x00013484       0x20 C:/ST/STM32CubeIDE_1.18.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(libm_a-sf_floor.o)
- .debug_frame   0x000134a4       0x30 C:/ST/STM32CubeIDE_1.18.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-atoi.o)
- .debug_frame   0x000134d4       0x30 C:/ST/STM32CubeIDE_1.18.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-malloc.o)
- .debug_frame   0x00013504       0x50 C:/ST/STM32CubeIDE_1.18.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-mallocr.o)
- .debug_frame   0x00013554       0x30 C:/ST/STM32CubeIDE_1.18.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-mlock.o)
- .debug_frame   0x00013584       0x44 C:/ST/STM32CubeIDE_1.18.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-rand.o)
- .debug_frame   0x000135c8       0x64 C:/ST/STM32CubeIDE_1.18.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-strtol.o)
- .debug_frame   0x0001362c       0x90 C:/ST/STM32CubeIDE_1.18.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-nano-vfprintf_float.o)
- .debug_frame   0x000136bc       0xa8 C:/ST/STM32CubeIDE_1.18.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-nano-vfprintf.o)
- .debug_frame   0x00013764       0x60 C:/ST/STM32CubeIDE_1.18.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-nano-vfprintf_i.o)
- .debug_frame   0x000137c4       0x40 C:/ST/STM32CubeIDE_1.18.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-nano-vfscanf_float.o)
- .debug_frame   0x00013804      0x144 C:/ST/STM32CubeIDE_1.18.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-findfp.o)
- .debug_frame   0x00013948       0x34 C:/ST/STM32CubeIDE_1.18.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-fwalk.o)
- .debug_frame   0x0001397c       0x6c C:/ST/STM32CubeIDE_1.18.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-printf.o)
- .debug_frame   0x000139e8       0x3c C:/ST/STM32CubeIDE_1.18.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-puts.o)
- .debug_frame   0x00013a24       0x7c C:/ST/STM32CubeIDE_1.18.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-snprintf.o)
- .debug_frame   0x00013aa0       0x74 C:/ST/STM32CubeIDE_1.18.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-sprintf.o)
- .debug_frame   0x00013b14       0x80 C:/ST/STM32CubeIDE_1.18.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-sscanf.o)
- .debug_frame   0x00013b94       0x88 C:/ST/STM32CubeIDE_1.18.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-stdio.o)
- .debug_frame   0x00013c1c       0x4c C:/ST/STM32CubeIDE_1.18.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-vsnprintf.o)
- .debug_frame   0x00013c68       0x40 C:/ST/STM32CubeIDE_1.18.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-wbuf.o)
- .debug_frame   0x00013ca8       0x2c C:/ST/STM32CubeIDE_1.18.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-wsetup.o)
- .debug_frame   0x00013cd4       0x28 C:/ST/STM32CubeIDE_1.18.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-memmove.o)
- .debug_frame   0x00013cfc       0x20 C:/ST/STM32CubeIDE_1.18.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-memset.o)
- .debug_frame   0x00013d1c       0x28 C:/ST/STM32CubeIDE_1.18.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-strncmp.o)
- .debug_frame   0x00013d44       0x28 C:/ST/STM32CubeIDE_1.18.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-strncpy.o)
- .debug_frame   0x00013d6c       0x40 C:/ST/STM32CubeIDE_1.18.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-localeconv.o)
- .debug_frame   0x00013dac       0x2c C:/ST/STM32CubeIDE_1.18.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-closer.o)
- .debug_frame   0x00013dd8       0x38 C:/ST/STM32CubeIDE_1.18.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-reent.o)
- .debug_frame   0x00013e10       0x2c C:/ST/STM32CubeIDE_1.18.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-lseekr.o)
- .debug_frame   0x00013e3c       0x2c C:/ST/STM32CubeIDE_1.18.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-readr.o)
- .debug_frame   0x00013e68       0x2c C:/ST/STM32CubeIDE_1.18.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-sbrkr.o)
- .debug_frame   0x00013e94       0x2c C:/ST/STM32CubeIDE_1.18.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-writer.o)
- .debug_frame   0x00013ec0       0x20 C:/ST/STM32CubeIDE_1.18.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-errno.o)
- .debug_frame   0x00013ee0       0x2c C:/ST/STM32CubeIDE_1.18.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-init.o)
- .debug_frame   0x00013f0c       0xb0 C:/ST/STM32CubeIDE_1.18.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-lock.o)
- .debug_frame   0x00013fbc       0x20 C:/ST/STM32CubeIDE_1.18.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-strcmp.o)
- .debug_frame   0x00013fdc       0x28 C:/ST/STM32CubeIDE_1.18.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-memcpy-stub.o)
- .debug_frame   0x00014004       0x40 C:/ST/STM32CubeIDE_1.18.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-assert.o)
- .debug_frame   0x00014044       0x70 C:/ST/STM32CubeIDE_1.18.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-dtoa.o)
- .debug_frame   0x000140b4       0x38 C:/ST/STM32CubeIDE_1.18.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-freer.o)
- .debug_frame   0x000140ec      0x260 C:/ST/STM32CubeIDE_1.18.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-mprec.o)
- .debug_frame   0x0001434c       0x3c C:/ST/STM32CubeIDE_1.18.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-reallocr.o)
- .debug_frame   0x00014388      0x11c C:/ST/STM32CubeIDE_1.18.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-strtod.o)
- .debug_frame   0x000144a4       0x90 C:/ST/STM32CubeIDE_1.18.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-nano-svfprintf.o)
- .debug_frame   0x00014534       0x78 C:/ST/STM32CubeIDE_1.18.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-nano-svfscanf.o)
- .debug_frame   0x000145ac       0x64 C:/ST/STM32CubeIDE_1.18.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-nano-vfscanf_i.o)
- .debug_frame   0x00014610       0x5c C:/ST/STM32CubeIDE_1.18.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-fflush.o)
- .debug_frame   0x0001466c       0x64 C:/ST/STM32CubeIDE_1.18.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-fprintf.o)
- .debug_frame   0x000146d0       0x58 C:/ST/STM32CubeIDE_1.18.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-makebuf.o)
- .debug_frame   0x00014728       0x2c C:/ST/STM32CubeIDE_1.18.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-sccl.o)
- .debug_frame   0x00014754       0x5c C:/ST/STM32CubeIDE_1.18.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-ungetc.o)
- .debug_frame   0x000147b0       0x48 C:/ST/STM32CubeIDE_1.18.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-locale.o)
- .debug_frame   0x000147f8       0x2c C:/ST/STM32CubeIDE_1.18.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-fstatr.o)
- .debug_frame   0x00014824       0x2c C:/ST/STM32CubeIDE_1.18.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-isattyr.o)
- .debug_frame   0x00014850       0x20 C:/ST/STM32CubeIDE_1.18.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libc_nano.a(libm_a-s_nan.o)
- .debug_frame   0x00014870       0x28 C:/ST/STM32CubeIDE_1.18.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-abort.o)
- .debug_frame   0x00014898       0x2c C:/ST/STM32CubeIDE_1.18.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-callocr.o)
- .debug_frame   0x000148c4       0x74 C:/ST/STM32CubeIDE_1.18.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-gdtoa-gethex.o)
- .debug_frame   0x00014938       0x78 C:/ST/STM32CubeIDE_1.18.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-gdtoa-hexnan.o)
- .debug_frame   0x000149b0       0x48 C:/ST/STM32CubeIDE_1.18.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-mbtowc_r.o)
- .debug_frame   0x000149f8       0x20 C:/ST/STM32CubeIDE_1.18.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-msizer.o)
- .debug_frame   0x00014a18       0x64 C:/ST/STM32CubeIDE_1.18.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-strtoul.o)
- .debug_frame   0x00014a7c       0x3c C:/ST/STM32CubeIDE_1.18.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-wctomb_r.o)
- .debug_frame   0x00014ab8       0xcc C:/ST/STM32CubeIDE_1.18.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-signal.o)
- .debug_frame   0x00014b84       0x3c C:/ST/STM32CubeIDE_1.18.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-signalr.o)
- .debug_frame   0x00014bc0       0xac C:/ST/STM32CubeIDE_1.18.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/thumb/v7e-m+fp/hard\libgcc.a(_arm_addsubdf3.o)
- .debug_frame   0x00014c6c       0x50 C:/ST/STM32CubeIDE_1.18.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/thumb/v7e-m+fp/hard\libgcc.a(_arm_muldivdf3.o)
- .debug_frame   0x00014cbc       0xc4 C:/ST/STM32CubeIDE_1.18.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/thumb/v7e-m+fp/hard\libgcc.a(_arm_cmpdf2.o)
- .debug_frame   0x00014d80       0x20 C:/ST/STM32CubeIDE_1.18.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/thumb/v7e-m+fp/hard\libgcc.a(_arm_unorddf2.o)
- .debug_frame   0x00014da0       0x24 C:/ST/STM32CubeIDE_1.18.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/thumb/v7e-m+fp/hard\libgcc.a(_arm_fixdfsi.o)
- .debug_frame   0x00014dc4       0x24 C:/ST/STM32CubeIDE_1.18.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/thumb/v7e-m+fp/hard\libgcc.a(_arm_fixunsdfsi.o)
- .debug_frame   0x00014de8       0x24 C:/ST/STM32CubeIDE_1.18.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/thumb/v7e-m+fp/hard\libgcc.a(_arm_truncdfsf2.o)
- .debug_frame   0x00014e0c       0x2c C:/ST/STM32CubeIDE_1.18.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/thumb/v7e-m+fp/hard\libgcc.a(_aeabi_uldivmod.o)
- .debug_frame   0x00014e38       0x38 C:/ST/STM32CubeIDE_1.18.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/thumb/v7e-m+fp/hard\libgcc.a(_fixdfdi.o)
- .debug_frame   0x00014e70       0x2c C:/ST/STM32CubeIDE_1.18.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/thumb/v7e-m+fp/hard\libgcc.a(_fixunsdfdi.o)
- .debug_frame   0x00014e9c       0x34 C:/ST/STM32CubeIDE_1.18.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/thumb/v7e-m+fp/hard\libgcc.a(_udivmoddi4.o)
+ .debug_frame   0x00000798       0xf8 ./Core/Lib/flight_controller_libs/crc.o
+ .debug_frame   0x00000890      0x18c ./Core/Lib/flight_controller_libs/filters.o
+ .debug_frame   0x00000a1c      0x248 ./Core/Lib/flight_controller_libs/flight_control_loop.o
+ .debug_frame   0x00000c64      0x334 ./Core/Lib/flight_controller_libs/fp_cli.o
+ .debug_frame   0x00000f98       0xe8 ./Core/Lib/flight_controller_libs/fp_cli_server.o
+ .debug_frame   0x00001080      0x350 ./Core/Lib/flight_controller_libs/geometry3D.o
+ .debug_frame   0x000013d0      0x1c8 ./Core/Lib/flight_controller_libs/imu.o
+ .debug_frame   0x00001598       0x60 ./Core/Lib/flight_controller_libs/madgwick_filter.o
+ .debug_frame   0x000015f8       0x38 ./Core/Lib/flight_controller_libs/motor_mixer.o
+ .debug_frame   0x00001630      0x3cc ./Core/Lib/flight_controller_libs/pid_controller.o
+ .debug_frame   0x000019fc      0x138 ./Core/Lib/flight_controller_libs/rate_controller.o
+ .debug_frame   0x00001b34      0x278 ./Core/Lib/flight_controller_libs/rc_control.o
+ .debug_frame   0x00001dac       0xf0 ./Core/Lib/flight_controller_libs/rc_control_recv_routine.o
+ .debug_frame   0x00001e9c       0xd0 ./Core/Lib/lwshell/lwshell/src/lwshell/lwshell.o
+ .debug_frame   0x00001f6c       0x9c ./Core/Lib/mpu6500/interface/driver_mpu6500_basic.o
+ .debug_frame   0x00002008      0x1f4 ./Core/Lib/mpu6500/interface/driver_mpu6500_interface.o
+ .debug_frame   0x000021fc     0x1f08 ./Core/Lib/mpu6500/src/driver_mpu6500.o
+ .debug_frame   0x00004104      0x318 ./Core/Lib/ringbuffer/ringbuffer.o
+ .debug_frame   0x0000441c      0x19c ./Core/Lib/uart_driver/uart_driver.o
+ .debug_frame   0x000045b8       0x34 ./Core/Src/dma.o
+ .debug_frame   0x000045ec       0xf0 ./Core/Src/esc_pwm.o
+ .debug_frame   0x000046dc       0x68 ./Core/Src/freertos.o
+ .debug_frame   0x00004744       0x34 ./Core/Src/gpio.o
+ .debug_frame   0x00004778      0x100 ./Core/Src/lwip_example.o
+ .debug_frame   0x00004878       0xd4 ./Core/Src/main.o
+ .debug_frame   0x0000494c      0x158 ./Core/Src/rtos_flight_controller.o
+ .debug_frame   0x00004aa4       0x74 ./Core/Src/spi.o
+ .debug_frame   0x00004b18       0x34 ./Core/Src/stm32f4xx_hal_msp.o
+ .debug_frame   0x00004b4c       0x74 ./Core/Src/stm32f4xx_hal_timebase_tim.o
+ .debug_frame   0x00004bc0      0x1ac ./Core/Src/stm32f4xx_it.o
+ .debug_frame   0x00004d6c      0x2ac ./Core/Src/syscalls.o
+ .debug_frame   0x00005018       0x34 ./Core/Src/sysmem.o
+ .debug_frame   0x0000504c       0x58 ./Core/Src/system_stm32f4xx.o
+ .debug_frame   0x000050a4       0xc4 ./Core/Src/tim.o
+ .debug_frame   0x00005168      0x130 ./Core/Src/usart.o
+ .debug_frame   0x00005298      0x374 ./Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal.o
+ .debug_frame   0x0000560c      0x508 ./Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_cortex.o
+ .debug_frame   0x00005b14      0x250 ./Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma.o
+ .debug_frame   0x00005d64      0x14c ./Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_gpio.o
+ .debug_frame   0x00005eb0      0x5b8 ./Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pcd.o
+ .debug_frame   0x00006468       0xb0 ./Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pcd_ex.o
+ .debug_frame   0x00006518      0x1f4 ./Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc.o
+ .debug_frame   0x0000670c      0x828 ./Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spi.o
+ .debug_frame   0x00006f34     0x11c0 ./Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_tim.o
+ .debug_frame   0x000080f4      0x638 ./Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_tim_ex.o
+ .debug_frame   0x0000872c      0x954 ./Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_uart.o
+ .debug_frame   0x00009080      0x7c0 ./Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_ll_usb.o
+ .debug_frame   0x00009840      0x23c ./Middlewares/ST/STM32_USB_Device_Library/Class/CDC/Src/usbd_cdc.o
+ .debug_frame   0x00009a7c      0x390 ./Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_core.o
+ .debug_frame   0x00009e0c      0x23c ./Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_ctlreq.o
+ .debug_frame   0x0000a048      0x10c ./Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_ioreq.o
+ .debug_frame   0x0000a154      0xc00 ./Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2/cmsis_os2.o
+ .debug_frame   0x0000ad54       0xd8 ./Middlewares/Third_Party/FreeRTOS/Source/list.o
+ .debug_frame   0x0000ae2c      0x5ec ./Middlewares/Third_Party/FreeRTOS/Source/queue.o
+ .debug_frame   0x0000b418      0x8ec ./Middlewares/Third_Party/FreeRTOS/Source/tasks.o
+ .debug_frame   0x0000bd04      0x400 ./Middlewares/Third_Party/FreeRTOS/Source/timers.o
+ .debug_frame   0x0000c104      0x1a8 ./Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F/port.o
+ .debug_frame   0x0000c2ac      0x12c ./Middlewares/Third_Party/FreeRTOS/Source/portable/MemMang/heap_4.o
+ .debug_frame   0x0000c3d8      0x404 ./Middlewares/Third_Party/lwip/src/api/api_lib.o
+ .debug_frame   0x0000c7dc      0x410 ./Middlewares/Third_Party/lwip/src/api/api_msg.o
+ .debug_frame   0x0000cbec       0x38 ./Middlewares/Third_Party/lwip/src/api/err.o
+ .debug_frame   0x0000cc24      0x160 ./Middlewares/Third_Party/lwip/src/api/netbuf.o
+ .debug_frame   0x0000cd84      0x7e8 ./Middlewares/Third_Party/lwip/src/api/sockets.o
+ .debug_frame   0x0000d56c      0x294 ./Middlewares/Third_Party/lwip/src/api/tcpip.o
+ .debug_frame   0x0000d800      0x144 ./Middlewares/Third_Party/lwip/src/core/def.o
+ .debug_frame   0x0000d944      0x158 ./Middlewares/Third_Party/lwip/src/core/inet_chksum.o
+ .debug_frame   0x0000da9c       0x34 ./Middlewares/Third_Party/lwip/src/core/init.o
+ .debug_frame   0x0000dad0      0x164 ./Middlewares/Third_Party/lwip/src/core/mem.o
+ .debug_frame   0x0000dc34      0x134 ./Middlewares/Third_Party/lwip/src/core/memp.o
+ .debug_frame   0x0000dd68      0x3a8 ./Middlewares/Third_Party/lwip/src/core/netif.o
+ .debug_frame   0x0000e110      0x578 ./Middlewares/Third_Party/lwip/src/core/pbuf.o
+ .debug_frame   0x0000e688      0x77c ./Middlewares/Third_Party/lwip/src/core/tcp.o
+ .debug_frame   0x0000ee04      0x1c0 ./Middlewares/Third_Party/lwip/src/core/tcp_in.o
+ .debug_frame   0x0000efc4      0x420 ./Middlewares/Third_Party/lwip/src/core/tcp_out.o
+ .debug_frame   0x0000f3e4      0x170 ./Middlewares/Third_Party/lwip/src/core/timeouts.o
+ .debug_frame   0x0000f554      0x28c ./Middlewares/Third_Party/lwip/src/core/udp.o
+ .debug_frame   0x0000f7e0      0x1a0 ./Middlewares/Third_Party/lwip/src/core/ipv4/acd.o
+ .debug_frame   0x0000f980      0x570 ./Middlewares/Third_Party/lwip/src/core/ipv4/dhcp.o
+ .debug_frame   0x0000fef0      0x270 ./Middlewares/Third_Party/lwip/src/core/ipv4/etharp.o
+ .debug_frame   0x00010160       0xa8 ./Middlewares/Third_Party/lwip/src/core/ipv4/icmp.o
+ .debug_frame   0x00010208       0xf4 ./Middlewares/Third_Party/lwip/src/core/ipv4/ip4.o
+ .debug_frame   0x000102fc       0xf4 ./Middlewares/Third_Party/lwip/src/core/ipv4/ip4_addr.o
+ .debug_frame   0x000103f0      0x1a0 ./Middlewares/Third_Party/lwip/src/core/ipv4/ip4_frag.o
+ .debug_frame   0x00010590       0x58 ./Middlewares/Third_Party/lwip/src/netif/ethernet.o
+ .debug_frame   0x000105e8      0x20c ./Middlewares/Third_Party/lwip/src/netif/ppp/auth.o
+ .debug_frame   0x000107f4       0x34 ./Middlewares/Third_Party/lwip/src/netif/ppp/chap-md5.o
+ .debug_frame   0x00010828      0x150 ./Middlewares/Third_Party/lwip/src/netif/ppp/chap-new.o
+ .debug_frame   0x00010978      0x298 ./Middlewares/Third_Party/lwip/src/netif/ppp/fsm.o
+ .debug_frame   0x00010c10      0x2a8 ./Middlewares/Third_Party/lwip/src/netif/ppp/ipcp.o
+ .debug_frame   0x00010eb8      0x460 ./Middlewares/Third_Party/lwip/src/netif/ppp/lcp.o
+ .debug_frame   0x00011318       0xd8 ./Middlewares/Third_Party/lwip/src/netif/ppp/magic.o
+ .debug_frame   0x000113f0      0x3fc ./Middlewares/Third_Party/lwip/src/netif/ppp/ppp.o
+ .debug_frame   0x000117ec      0x20c ./Middlewares/Third_Party/lwip/src/netif/ppp/pppapi.o
+ .debug_frame   0x000119f8      0x27c ./Middlewares/Third_Party/lwip/src/netif/ppp/pppoe.o
+ .debug_frame   0x00011c74      0x248 ./Middlewares/Third_Party/lwip/src/netif/ppp/pppos.o
+ .debug_frame   0x00011ebc      0x17c ./Middlewares/Third_Party/lwip/src/netif/ppp/upap.o
+ .debug_frame   0x00012038      0x290 ./Middlewares/Third_Party/lwip/src/netif/ppp/utils.o
+ .debug_frame   0x000122c8       0xcc ./Middlewares/Third_Party/lwip/src/netif/ppp/polarssl/md5.o
+ .debug_frame   0x00012394      0x470 ./Middlewares/Third_Party/lwip/system/OS/sys_arch.o
+ .debug_frame   0x00012804       0x2c ./USB_DEVICE/App/usb_device.o
+ .debug_frame   0x00012830      0x174 ./USB_DEVICE/App/usbd_cdc_if.o
+ .debug_frame   0x000129a4      0x160 ./USB_DEVICE/App/usbd_desc.o
+ .debug_frame   0x00012b04      0x47c ./USB_DEVICE/Target/usbd_conf.o
+ .debug_frame   0x00012f80       0x48 C:/ST/STM32CubeIDE_1.18.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(libm_a-wf_acos.o)
+ .debug_frame   0x00012fc8       0x48 C:/ST/STM32CubeIDE_1.18.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(libm_a-wf_asin.o)
+ .debug_frame   0x00013010       0x20 C:/ST/STM32CubeIDE_1.18.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(libm_a-wf_atan2.o)
+ .debug_frame   0x00013030       0x48 C:/ST/STM32CubeIDE_1.18.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(libm_a-wf_pow.o)
+ .debug_frame   0x00013078       0x38 C:/ST/STM32CubeIDE_1.18.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(libm_a-wf_sqrt.o)
+ .debug_frame   0x000130b0       0x2c C:/ST/STM32CubeIDE_1.18.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(libm_a-sf_atan.o)
+ .debug_frame   0x000130dc       0x38 C:/ST/STM32CubeIDE_1.18.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(libm_a-sf_cos.o)
+ .debug_frame   0x00013114       0x20 C:/ST/STM32CubeIDE_1.18.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(libm_a-sf_fabs.o)
+ .debug_frame   0x00013134       0x38 C:/ST/STM32CubeIDE_1.18.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(libm_a-sf_sin.o)
+ .debug_frame   0x0001316c       0x20 C:/ST/STM32CubeIDE_1.18.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(libm_a-sf_finite.o)
+ .debug_frame   0x0001318c       0x20 C:/ST/STM32CubeIDE_1.18.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(libm_a-sf_copysign.o)
+ .debug_frame   0x000131ac       0x20 C:/ST/STM32CubeIDE_1.18.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(libm_a-sf_nan.o)
+ .debug_frame   0x000131cc       0x20 C:/ST/STM32CubeIDE_1.18.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(libm_a-ef_sqrt.o)
+ .debug_frame   0x000131ec       0x20 C:/ST/STM32CubeIDE_1.18.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(libm_a-kf_cos.o)
+ .debug_frame   0x0001320c       0x20 C:/ST/STM32CubeIDE_1.18.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(libm_a-kf_sin.o)
+ .debug_frame   0x0001322c       0x6c C:/ST/STM32CubeIDE_1.18.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(libm_a-ef_acos.o)
+ .debug_frame   0x00013298       0x48 C:/ST/STM32CubeIDE_1.18.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(libm_a-ef_asin.o)
+ .debug_frame   0x000132e0       0x30 C:/ST/STM32CubeIDE_1.18.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(libm_a-ef_atan2.o)
+ .debug_frame   0x00013310       0x88 C:/ST/STM32CubeIDE_1.18.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(libm_a-ef_pow.o)
+ .debug_frame   0x00013398       0x38 C:/ST/STM32CubeIDE_1.18.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(libm_a-ef_rem_pio2.o)
+ .debug_frame   0x000133d0       0x20 C:/ST/STM32CubeIDE_1.18.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(libm_a-sf_scalbn.o)
+ .debug_frame   0x000133f0       0x88 C:/ST/STM32CubeIDE_1.18.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(libm_a-math_errf.o)
+ .debug_frame   0x00013478       0x5c C:/ST/STM32CubeIDE_1.18.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(libm_a-kf_rem_pio2.o)
+ .debug_frame   0x000134d4       0x20 C:/ST/STM32CubeIDE_1.18.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(libm_a-sf_floor.o)
+ .debug_frame   0x000134f4       0x30 C:/ST/STM32CubeIDE_1.18.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-atoi.o)
+ .debug_frame   0x00013524       0x30 C:/ST/STM32CubeIDE_1.18.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-malloc.o)
+ .debug_frame   0x00013554       0x50 C:/ST/STM32CubeIDE_1.18.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-mallocr.o)
+ .debug_frame   0x000135a4       0x30 C:/ST/STM32CubeIDE_1.18.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-mlock.o)
+ .debug_frame   0x000135d4       0x44 C:/ST/STM32CubeIDE_1.18.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-rand.o)
+ .debug_frame   0x00013618       0x64 C:/ST/STM32CubeIDE_1.18.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-strtol.o)
+ .debug_frame   0x0001367c       0x90 C:/ST/STM32CubeIDE_1.18.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-nano-vfprintf_float.o)
+ .debug_frame   0x0001370c       0xa8 C:/ST/STM32CubeIDE_1.18.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-nano-vfprintf.o)
+ .debug_frame   0x000137b4       0x60 C:/ST/STM32CubeIDE_1.18.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-nano-vfprintf_i.o)
+ .debug_frame   0x00013814       0x40 C:/ST/STM32CubeIDE_1.18.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-nano-vfscanf_float.o)
+ .debug_frame   0x00013854      0x144 C:/ST/STM32CubeIDE_1.18.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-findfp.o)
+ .debug_frame   0x00013998       0x34 C:/ST/STM32CubeIDE_1.18.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-fwalk.o)
+ .debug_frame   0x000139cc       0x6c C:/ST/STM32CubeIDE_1.18.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-printf.o)
+ .debug_frame   0x00013a38       0x3c C:/ST/STM32CubeIDE_1.18.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-puts.o)
+ .debug_frame   0x00013a74       0x7c C:/ST/STM32CubeIDE_1.18.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-snprintf.o)
+ .debug_frame   0x00013af0       0x74 C:/ST/STM32CubeIDE_1.18.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-sprintf.o)
+ .debug_frame   0x00013b64       0x80 C:/ST/STM32CubeIDE_1.18.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-sscanf.o)
+ .debug_frame   0x00013be4       0x88 C:/ST/STM32CubeIDE_1.18.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-stdio.o)
+ .debug_frame   0x00013c6c       0x4c C:/ST/STM32CubeIDE_1.18.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-vsnprintf.o)
+ .debug_frame   0x00013cb8       0x40 C:/ST/STM32CubeIDE_1.18.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-wbuf.o)
+ .debug_frame   0x00013cf8       0x2c C:/ST/STM32CubeIDE_1.18.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-wsetup.o)
+ .debug_frame   0x00013d24       0x28 C:/ST/STM32CubeIDE_1.18.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-memmove.o)
+ .debug_frame   0x00013d4c       0x20 C:/ST/STM32CubeIDE_1.18.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-memset.o)
+ .debug_frame   0x00013d6c       0x28 C:/ST/STM32CubeIDE_1.18.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-strncmp.o)
+ .debug_frame   0x00013d94       0x28 C:/ST/STM32CubeIDE_1.18.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-strncpy.o)
+ .debug_frame   0x00013dbc       0x40 C:/ST/STM32CubeIDE_1.18.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-localeconv.o)
+ .debug_frame   0x00013dfc       0x2c C:/ST/STM32CubeIDE_1.18.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-closer.o)
+ .debug_frame   0x00013e28       0x38 C:/ST/STM32CubeIDE_1.18.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-reent.o)
+ .debug_frame   0x00013e60       0x2c C:/ST/STM32CubeIDE_1.18.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-lseekr.o)
+ .debug_frame   0x00013e8c       0x2c C:/ST/STM32CubeIDE_1.18.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-readr.o)
+ .debug_frame   0x00013eb8       0x2c C:/ST/STM32CubeIDE_1.18.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-sbrkr.o)
+ .debug_frame   0x00013ee4       0x2c C:/ST/STM32CubeIDE_1.18.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-writer.o)
+ .debug_frame   0x00013f10       0x20 C:/ST/STM32CubeIDE_1.18.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-errno.o)
+ .debug_frame   0x00013f30       0x2c C:/ST/STM32CubeIDE_1.18.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-init.o)
+ .debug_frame   0x00013f5c       0xb0 C:/ST/STM32CubeIDE_1.18.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-lock.o)
+ .debug_frame   0x0001400c       0x20 C:/ST/STM32CubeIDE_1.18.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-strcmp.o)
+ .debug_frame   0x0001402c       0x28 C:/ST/STM32CubeIDE_1.18.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-memcpy-stub.o)
+ .debug_frame   0x00014054       0x40 C:/ST/STM32CubeIDE_1.18.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-assert.o)
+ .debug_frame   0x00014094       0x70 C:/ST/STM32CubeIDE_1.18.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-dtoa.o)
+ .debug_frame   0x00014104       0x38 C:/ST/STM32CubeIDE_1.18.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-freer.o)
+ .debug_frame   0x0001413c      0x260 C:/ST/STM32CubeIDE_1.18.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-mprec.o)
+ .debug_frame   0x0001439c       0x3c C:/ST/STM32CubeIDE_1.18.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-reallocr.o)
+ .debug_frame   0x000143d8      0x11c C:/ST/STM32CubeIDE_1.18.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-strtod.o)
+ .debug_frame   0x000144f4       0x90 C:/ST/STM32CubeIDE_1.18.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-nano-svfprintf.o)
+ .debug_frame   0x00014584       0x78 C:/ST/STM32CubeIDE_1.18.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-nano-svfscanf.o)
+ .debug_frame   0x000145fc       0x64 C:/ST/STM32CubeIDE_1.18.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-nano-vfscanf_i.o)
+ .debug_frame   0x00014660       0x5c C:/ST/STM32CubeIDE_1.18.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-fflush.o)
+ .debug_frame   0x000146bc       0x64 C:/ST/STM32CubeIDE_1.18.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-fprintf.o)
+ .debug_frame   0x00014720       0x58 C:/ST/STM32CubeIDE_1.18.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-makebuf.o)
+ .debug_frame   0x00014778       0x2c C:/ST/STM32CubeIDE_1.18.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-sccl.o)
+ .debug_frame   0x000147a4       0x5c C:/ST/STM32CubeIDE_1.18.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-ungetc.o)
+ .debug_frame   0x00014800       0x48 C:/ST/STM32CubeIDE_1.18.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-locale.o)
+ .debug_frame   0x00014848       0x2c C:/ST/STM32CubeIDE_1.18.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-fstatr.o)
+ .debug_frame   0x00014874       0x2c C:/ST/STM32CubeIDE_1.18.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-isattyr.o)
+ .debug_frame   0x000148a0       0x20 C:/ST/STM32CubeIDE_1.18.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libc_nano.a(libm_a-s_nan.o)
+ .debug_frame   0x000148c0       0x28 C:/ST/STM32CubeIDE_1.18.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-abort.o)
+ .debug_frame   0x000148e8       0x2c C:/ST/STM32CubeIDE_1.18.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-callocr.o)
+ .debug_frame   0x00014914       0x74 C:/ST/STM32CubeIDE_1.18.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-gdtoa-gethex.o)
+ .debug_frame   0x00014988       0x78 C:/ST/STM32CubeIDE_1.18.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-gdtoa-hexnan.o)
+ .debug_frame   0x00014a00       0x48 C:/ST/STM32CubeIDE_1.18.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-mbtowc_r.o)
+ .debug_frame   0x00014a48       0x20 C:/ST/STM32CubeIDE_1.18.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-msizer.o)
+ .debug_frame   0x00014a68       0x64 C:/ST/STM32CubeIDE_1.18.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-strtoul.o)
+ .debug_frame   0x00014acc       0x3c C:/ST/STM32CubeIDE_1.18.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-wctomb_r.o)
+ .debug_frame   0x00014b08       0xcc C:/ST/STM32CubeIDE_1.18.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-signal.o)
+ .debug_frame   0x00014bd4       0x3c C:/ST/STM32CubeIDE_1.18.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-signalr.o)
+ .debug_frame   0x00014c10       0xac C:/ST/STM32CubeIDE_1.18.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/thumb/v7e-m+fp/hard\libgcc.a(_arm_addsubdf3.o)
+ .debug_frame   0x00014cbc       0x50 C:/ST/STM32CubeIDE_1.18.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/thumb/v7e-m+fp/hard\libgcc.a(_arm_muldivdf3.o)
+ .debug_frame   0x00014d0c       0xc4 C:/ST/STM32CubeIDE_1.18.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/thumb/v7e-m+fp/hard\libgcc.a(_arm_cmpdf2.o)
+ .debug_frame   0x00014dd0       0x20 C:/ST/STM32CubeIDE_1.18.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/thumb/v7e-m+fp/hard\libgcc.a(_arm_unorddf2.o)
+ .debug_frame   0x00014df0       0x24 C:/ST/STM32CubeIDE_1.18.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/thumb/v7e-m+fp/hard\libgcc.a(_arm_fixdfsi.o)
+ .debug_frame   0x00014e14       0x24 C:/ST/STM32CubeIDE_1.18.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/thumb/v7e-m+fp/hard\libgcc.a(_arm_fixunsdfsi.o)
+ .debug_frame   0x00014e38       0x24 C:/ST/STM32CubeIDE_1.18.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/thumb/v7e-m+fp/hard\libgcc.a(_arm_truncdfsf2.o)
+ .debug_frame   0x00014e5c       0x2c C:/ST/STM32CubeIDE_1.18.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/thumb/v7e-m+fp/hard\libgcc.a(_aeabi_uldivmod.o)
+ .debug_frame   0x00014e88       0x38 C:/ST/STM32CubeIDE_1.18.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/thumb/v7e-m+fp/hard\libgcc.a(_fixdfdi.o)
+ .debug_frame   0x00014ec0       0x2c C:/ST/STM32CubeIDE_1.18.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/thumb/v7e-m+fp/hard\libgcc.a(_fixunsdfdi.o)
+ .debug_frame   0x00014eec       0x34 C:/ST/STM32CubeIDE_1.18.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/thumb/v7e-m+fp/hard\libgcc.a(_udivmoddi4.o)
 
 .debug_line_str
                 0x00000000       0x50

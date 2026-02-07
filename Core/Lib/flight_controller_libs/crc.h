@@ -14,6 +14,9 @@ uint8_t crc8_add_arr(uint8_t crc, uint8_t* data, size_t len, uint8_t poly);
 uint16_t crc16_add(uint16_t crc, uint8_t data, uint16_t poly);
 uint16_t crc16_add_arr(uint16_t crc, uint8_t* data, size_t len, uint16_t poly);
 
+uint8_t crc8_xor_add(uint8_t crc, uint8_t data);
+uint8_t crc8_xor_add_arr(uint8_t crc, uint8_t* data, size_t len);
+
 
 #define CRC8_DVB_S2_POLY ((uint8_t)0xD5)
 #define CRC8_DVB_S2_START_CRC ((uint8_t)0x0)

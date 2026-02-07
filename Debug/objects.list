@@ -29,6 +29,7 @@
 "./Core/Lib/mpu9250/test/driver_mpu9250_fifo_test.o"
 "./Core/Lib/mpu9250/test/driver_mpu9250_read_test.o"
 "./Core/Lib/mpu9250/test/driver_mpu9250_register_test.o"
+"./Core/Lib/msp/msp.o"
 "./Core/Lib/ringbuffer/ringbuffer.o"
 "./Core/Lib/rxtxbuffer/rxtxbuffer.o"
 "./Core/Lib/uart_driver/uart_driver.o"

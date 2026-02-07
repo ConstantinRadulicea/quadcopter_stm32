@@ -46,6 +46,7 @@ Core/Lib/mpu6500/src \
 Core/Lib/mpu9250/interface \
 Core/Lib/mpu9250/src \
 Core/Lib/mpu9250/test \
+Core/Lib/msp \
 Core/Lib/ringbuffer \
 Core/Lib/rxtxbuffer \
 Core/Lib/uart_driver \

@@ -29,25 +29,25 @@ Idx Name          Size      VMA       LMA       File off  Algn
                   ALLOC
  12 .ARM.attributes 00000030  00000000  00000000  0004d000  2**0
                   CONTENTS, READONLY
- 13 .debug_info   0006daaa  00000000  00000000  0004d030  2**0
+ 13 .debug_info   0006db36  00000000  00000000  0004d030  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 14 .debug_abbrev 000111ef  00000000  00000000  000baada  2**0
+ 14 .debug_abbrev 000111f1  00000000  00000000  000bab66  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 15 .debug_aranges 00004a48  00000000  00000000  000cbcd0  2**3
+ 15 .debug_aranges 00004a58  00000000  00000000  000cbd58  2**3
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 16 .debug_rnglists 00003a18  00000000  00000000  000d0718  2**0
+ 16 .debug_rnglists 00003a24  00000000  00000000  000d07b0  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 17 .debug_macro  0003fec1  00000000  00000000  000d4130  2**0
+ 17 .debug_macro  0003fec1  00000000  00000000  000d41d4  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 18 .debug_line   00070f29  00000000  00000000  00113ff1  2**0
+ 18 .debug_line   00070f71  00000000  00000000  00114095  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 19 .debug_str    000fb3e6  00000000  00000000  00184f1a  2**0
+ 19 .debug_str    000fb404  00000000  00000000  00185006  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 20 .comment      00000043  00000000  00000000  00280300  2**0
+ 20 .comment      00000043  00000000  00000000  0028040a  2**0
                   CONTENTS, READONLY
- 21 .debug_frame  00014ed0  00000000  00000000  00280344  2**2
+ 21 .debug_frame  00014f20  00000000  00000000  00280450  2**2
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 22 .debug_line_str 00000050  00000000  00000000  00295214  2**0
+ 22 .debug_line_str 00000050  00000000  00000000  00295370  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
 
 Disassembly of section .text:
@@ -1778,9 +1778,9 @@ static frameType_t crsf_receive_frame(crsf_t *crsf, uint8_t rxByte)
 			frameStartTime = currentTime;
  8001338:	6a3b      	ldr	r3, [r7, #32]
  800133a:	627b      	str	r3, [r7, #36]	@ 0x24
-			crsf->rx_frame_start_time_us = frameStartTime;
+			crsf->rx_frame_start_time_us = currentTime;
  800133c:	687b      	ldr	r3, [r7, #4]
- 800133e:	6a7a      	ldr	r2, [r7, #36]	@ 0x24
+ 800133e:	6a3a      	ldr	r2, [r7, #32]
  8001340:	615a      	str	r2, [r3, #20]
 		}
 	}
@@ -1792,9 +1792,9 @@ static frameType_t crsf_receive_frame(crsf_t *crsf, uint8_t rxByte)
 		frameStartTime = currentTime;
  800134a:	6a3b      	ldr	r3, [r7, #32]
  800134c:	627b      	str	r3, [r7, #36]	@ 0x24
-		crsf->rx_frame_start_time_us = frameStartTime;
+		crsf->rx_frame_start_time_us = currentTime;
  800134e:	687b      	ldr	r3, [r7, #4]
- 8001350:	6a7a      	ldr	r2, [r7, #36]	@ 0x24
+ 8001350:	6a3a      	ldr	r2, [r7, #32]
  8001352:	615a      	str	r2, [r3, #20]
 	}
 

@@ -42,3 +42,16 @@ uint8_t crc8_add_arr(uint8_t crc, uint8_t* data, size_t len, uint8_t poly){
     return crc;
 }
 
+
+uint8_t crc8_xor_add(uint8_t crc, uint8_t data){
+	return (crc ^ data);
+}
+
+uint8_t crc8_xor_add_arr(uint8_t crc, uint8_t* data, size_t len){
+	// XOR each byte of the payload
+	for (size_t i = 0; i < len; i++) {
+	    crc ^= data[i];
+	}
+	return crc;
+}
+

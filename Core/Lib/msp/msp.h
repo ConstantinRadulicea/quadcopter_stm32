@@ -55,50 +55,95 @@ Byte Index		Field			Size		Description
 extern "C" {
 #endif
 
-#define MSP_RX_BUF_SIZE 512
+#define MSP_RX_BUF_SIZE 1024
 #define MSP_TX_BUF_SIZE 512 // As of 2021/08/10 MSP_BOXNAMES generates a 307 byte response for page 1. There has been overflow issues with 320 byte buffer.
+
+#define MSP_PREAMBLE_1 ((uint8_t)(0x24))
+#define MSP_PREAMBLE_2_V1 ((uint8_t)(0x4D))
+#define MSP_PREAMBLE_2_V2 ((uint8_t)(0x58))
+
+#define MSP_DIRECTION_REQUEST_CHAR ((uint8_t)(0x3C))
+#define MSP_DIRECTION_RESPONSE_CHAR ((uint8_t)(0x3E))
+#define MSP_DIRECTION_ERROR_CHAR ((uint8_t)(0x21))
+
+typedef enum{
+	MSP_PREAMBLE_1_SIZE = 1,
+	MSP_PREAMBLE_2_SIZE = 1,
+	MSP_DIRECTION_SIZE = 1,
+	MSP_V1_PAYLOAD_SIZE_SIZE = 1,
+	MSP_JUMBO_PAYLOAD_SIZE_SIZE = 2,
+	MSP_V2_PAYLOAD_SIZE_SIZE = 2,
+	MSP_V2_FLAG_SIZE = 1,
+	MSP_V1_COMMAND_ID_SIZE = 1,
+	MSP_V2_COMMAND_ID_SIZE = 2,
+	MSP_CHECKSUM_SIZE = 1
+}msp_field_size_t;
+
+
+typedef enum{
+	MSP_HEADER_SIZE = MSP_PREAMBLE_1_SIZE + MSP_PREAMBLE_2_SIZE + MSP_DIRECTION_SIZE,
+
+	MSP_V1_NON_PAYLOAD_SIZE = MSP_HEADER_SIZE + MSP_V1_PAYLOAD_SIZE_SIZE + MSP_V1_COMMAND_ID_SIZE + MSP_CHECKSUM_SIZE,
+	MSP_JUMBO_NON_PAYLOAD_SIZE = MSP_HEADER_SIZE + MSP_V1_PAYLOAD_SIZE_SIZE + MSP_V1_COMMAND_ID_SIZE + MSP_JUMBO_PAYLOAD_SIZE_SIZE + MSP_CHECKSUM_SIZE,
+	MSP_V2_NON_PAYLOAD_SIZE = MSP_HEADER_SIZE + MSP_V2_FLAG_SIZE + MSP_V2_COMMAND_ID_SIZE + MSP_V2_PAYLOAD_SIZE_SIZE + MSP_CHECKSUM_SIZE,
+
+	MSP_V1_NON_PAYLOAD_CRC_SIZE = MSP_V1_PAYLOAD_SIZE_SIZE + MSP_V1_COMMAND_ID_SIZE,
+	MSP_JUMBO_NON_PAYLOAD_CRC_SIZE = MSP_V1_PAYLOAD_SIZE_SIZE + MSP_V1_COMMAND_ID_SIZE + MSP_JUMBO_PAYLOAD_SIZE_SIZE,
+	MSP_V2_NON_PAYLOAD_CRC_SIZE = MSP_V2_FLAG_SIZE + MSP_V2_COMMAND_ID_SIZE + MSP_V2_PAYLOAD_SIZE_SIZE
+}msp_frame_size_t;
+
+typedef enum{
+	MSP_PREAMBLE_1_POSITION = 0,
+	MSP_PREAMBLE_2_POSITION = MSP_PREAMBLE_1_SIZE,
+	MSP_DIRECTION_POSITION = MSP_PREAMBLE_2_POSITION + MSP_PREAMBLE_2_SIZE,
+
+	MSP_V1_PAYLOAD_SIZE_POSITION = MSP_HEADER_SIZE,
+	MSP_JUMBO_PAYLOAD_SIZE_POSITION = MSP_HEADER_SIZE + MSP_V1_PAYLOAD_SIZE_SIZE + MSP_V1_COMMAND_ID_SIZE,
+	MSP_V2_PAYLOAD_SIZE_POSITION = MSP_HEADER_SIZE + MSP_V2_FLAG_SIZE + MSP_V2_COMMAND_ID_SIZE,
+
+	MSP_V1_PAYLOAD_POSITION = MSP_HEADER_SIZE + MSP_V1_PAYLOAD_SIZE_SIZE + MSP_V1_COMMAND_ID_SIZE,
+	MSP_JUMBO_PAYLOAD_POSITION = MSP_HEADER_SIZE + MSP_V1_PAYLOAD_SIZE_SIZE + MSP_V1_COMMAND_ID_SIZE + MSP_JUMBO_PAYLOAD_SIZE_SIZE,
+	MSP_V2_PAYLOAD_POSITION = MSP_HEADER_SIZE + MSP_V2_FLAG_SIZE + MSP_V2_COMMAND_ID_SIZE + MSP_V2_PAYLOAD_SIZE_SIZE,
+
+	MSP_V1_COMMAND_ID_POSITION = MSP_HEADER_SIZE + MSP_V1_PAYLOAD_SIZE_SIZE,
+	MSP_JUMBO_COMMAND_ID_POSITION = MSP_HEADER_SIZE + MSP_V1_PAYLOAD_SIZE_SIZE,
+	MSP_V2_COMMAND_ID_POSITION = MSP_HEADER_SIZE + MSP_V2_FLAG_SIZE,
+
+	MSP_V1_CRC_START_POSITION = MSP_HEADER_SIZE,
+	MSP_JUMBO_CRC_START_POSITION = MSP_HEADER_SIZE,
+	MSP_V2_CRC_START_POSITION = MSP_HEADER_SIZE,
+
+	MSP_V2_FLAG_POSITION = MSP_HEADER_SIZE
+}msp_frame_field_position_t;
+
 
 typedef enum {
     MSP_IDLE,
     MSP_HEADER_START,
 	MSP_HEADER_END,
-
-	MSP_PAYLOAD_SIZE_START,
 	MSP_PAYLOAD_SIZE_END,
-
-	MSP_PAYLOAD_START,
-	MSP_PAYLOAD_END,
-
-    MSP_COMMAND_RECEIVED
+    MSP_PACKET_RECEIVED
 } msp_packet_state_t;
 
 typedef enum {
-    MSP_V1     		= 0,
-    MSP_JUMBO		= 1,
-    MSP_V2_NATIVE   = 2,
-    MSP_VERSION_COUNT
+	MSP_VERSION_INVALID = 0,
+    MSP_V1     		= 1,
+    MSP_JUMBO		= 2,
+    MSP_V2_NATIVE   = 3
 } msp_version_t;
 
 typedef enum msp_direction_e{
     MSP_DIRECTION_REPLY = 0,
-    MSP_DIRECTION_REQUEST = 1
+    MSP_DIRECTION_REQUEST = 1,
+	MSP_DIRECTION_ERROR = 2
 } msp_direction_t;
-
-typedef struct mspPacket_s {
-    uint8_t *payload;         // payload only w/o header or crc
-    uint16_t payload_size;
-    int16_t cmd;
-    int16_t result;
-    uint8_t flags;      // MSPv2 flags byte. It looks like unused (yet?).
-    msp_direction_t direction;  // It also looks like unused and might be deleted.
-} mspPacket_t;
-
 
 typedef struct msp_v1_packet_s {
 	msp_direction_t direction;
 	uint8_t command_id;
 	uint8_t payload_size;
     uint8_t *payload;         // payload only w/o header or crc
+    uint8_t checksum;
 } msp_v1_packet_t;
 
 typedef struct msp_jumbo_packet_s {
@@ -106,6 +151,7 @@ typedef struct msp_jumbo_packet_s {
 	uint8_t command_id;
 	uint16_t payload_size;
     uint8_t *payload;         // payload only w/o header or crc
+    uint8_t checksum;
 } msp_jumbo_packet_t;
 
 typedef struct msp_v2_packet_s {
@@ -114,6 +160,7 @@ typedef struct msp_v2_packet_s {
 	uint16_t command_id;
 	uint16_t payload_size;
     uint8_t *payload;         // payload only w/o header or crc
+    uint8_t checksum;
 } msp_v2_packet_t;
 
 
@@ -137,13 +184,14 @@ typedef struct msp_s{
 	msp_pachet_s rx_packet;
 	uint8_t rx_frame_buffer[MSP_RX_BUF_SIZE];
 	uint32_t rx_frame_position;
+	uint32_t rx_frame_full_len;
 	uint32_t rx_frame_start_time_ms;
 
-	uint8_t tx_frame_buffer[MSP_TX_BUF_SIZE];
+//	uint8_t tx_frame_buffer[MSP_TX_BUF_SIZE];
 }msp_t;
 
 
-
+void msp_update(msp_t *msp, uint8_t* rx_buf, uint32_t rx_buf_size);
 
 #ifdef __cplusplus
 }

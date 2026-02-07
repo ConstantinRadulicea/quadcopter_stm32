@@ -118,13 +118,13 @@ static frameType_t crsf_receive_frame(crsf_t *crsf, uint8_t rxByte)
 
 		if (currentTime < frameStartTime) {
 			frameStartTime = currentTime;
-			crsf->rx_frame_start_time_us = frameStartTime;
+			crsf->rx_frame_start_time_us = currentTime;
 		}
 	}
 
 	if (framePosition == 0) {
 		frameStartTime = currentTime;
-		crsf->rx_frame_start_time_us = frameStartTime;
+		crsf->rx_frame_start_time_us = currentTime;
 	}
 
 	/* Assume the full frame length is 5 bytes until the frame length byte is received. */

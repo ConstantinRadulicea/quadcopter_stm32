@@ -2,3 +2,5 @@
 ../Core/Lib/flight_controller_libs/crc.c:18:10:crc16_add_arr	2
 ../Core/Lib/flight_controller_libs/crc.c:26:9:crc8_add	3
 ../Core/Lib/flight_controller_libs/crc.c:38:9:crc8_add_arr	2
+../Core/Lib/flight_controller_libs/crc.c:46:9:crc8_xor_add	1
+../Core/Lib/flight_controller_libs/crc.c:50:9:crc8_xor_add_arr	2
