@@ -11,7 +11,7 @@
 ../Core/Lib/crsf/crsf_telemetry.c:236:6:crsf_telemetry_setGPSData	40	static
 ../Core/Lib/crsf/crsf_telemetry.c:249:17:crsf_telemetry_process_frame_to_send	24	static
 ../Core/Lib/crsf/crsf_telemetry.c:289:10:crsf_telemetry_update	24	static
-../Core/Lib/crsf/crsf_telemetry.c:302:6:crsf_telemetry_init	24	static
-../Core/Lib/crsf/crsf_telemetry.c:338:10:crsf_telemetry_get_tx_data	16	static
-../Core/Lib/crsf/crsf_telemetry.c:348:10:crsf_telemetry_get_tx_data_size	16	static
-../Core/Lib/crsf/crsf_telemetry.c:358:6:crsf_telemetry_update_tx_data_sent	16	static
+../Core/Lib/crsf/crsf_telemetry.c:305:6:crsf_telemetry_init	24	static
+../Core/Lib/crsf/crsf_telemetry.c:341:10:crsf_telemetry_get_tx_data	16	static
+../Core/Lib/crsf/crsf_telemetry.c:351:10:crsf_telemetry_get_tx_data_size	16	static
+../Core/Lib/crsf/crsf_telemetry.c:361:6:crsf_telemetry_update_tx_data_sent	16	static

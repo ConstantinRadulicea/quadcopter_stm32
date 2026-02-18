@@ -1,6 +1,6 @@
 ../Core/Lib/flight_controller_libs/rc_control_recv_routine.c:13:12:line_buffer_add_char	24	static
-../Core/Lib/flight_controller_libs/rc_control_recv_routine.c:50:6:rc_control_udp	448	static
-../Core/Lib/flight_controller_libs/rc_control_recv_routine.c:221:17:crsf_sys_now_example	16	static
-../Core/Lib/flight_controller_libs/rc_control_recv_routine.c:230:17:crsf_output_cb_fn_example	24	static
-../Core/Lib/flight_controller_libs/rc_control_recv_routine.c:236:6:rc_control_crsf	936	static
-../Core/Lib/flight_controller_libs/rc_control_recv_routine.c:325:6:rc_control_main	16	static
+../Core/Lib/flight_controller_libs/rc_control_recv_routine.c:51:6:rc_control_udp	448	static
+../Core/Lib/flight_controller_libs/rc_control_recv_routine.c:232:17:crsf_sys_now_example	72	static
+../Core/Lib/flight_controller_libs/rc_control_recv_routine.c:240:17:crsf_output_cb_fn_example	24	static
+../Core/Lib/flight_controller_libs/rc_control_recv_routine.c:246:6:rc_control_crsf	936	static
+../Core/Lib/flight_controller_libs/rc_control_recv_routine.c:341:6:rc_control_main	16	static

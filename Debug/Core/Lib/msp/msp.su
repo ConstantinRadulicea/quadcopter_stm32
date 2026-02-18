@@ -1,3 +1,7 @@
-../Core/Lib/msp/msp.c:12:24:le16_to_host	16	static
-../Core/Lib/msp/msp.c:16:27:msp_receive_frame	32	static
-../Core/Lib/msp/msp.c:193:6:msp_update	32	static
+../Core/Lib/msp/msp.c:13:24:le16_to_host	16	static
+../Core/Lib/msp/msp.c:17:6:write_u16_le	16	static
+../Core/Lib/msp/msp.c:22:27:msp_receive_frame	32	static
+../Core/Lib/msp/msp.c:197:10:get_payload_position	16	static
+../Core/Lib/msp/msp.c:213:10:msp_frame_builder	56	static
+../Core/Lib/msp/msp.c:301:6:handle_response	16	static
+../Core/Lib/msp/msp.c:318:6:msp_update	32	static

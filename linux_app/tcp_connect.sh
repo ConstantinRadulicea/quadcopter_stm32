@@ -1,9 +1,9 @@
 #!/bin/bash
 # Configuration
-ESP8266_IP="192.168.1.13:2323"
+ESP8266_IP="192.168.0.52:2323"
 IFACE_OUT="enp0s3"
-LINUX_MACHINE_IP="192.168.1.12"
-STM32_IP="192.168.1.250"
+LINUX_MACHINE_IP="192.168.0.122"
+STM32_IP="192.168.0.250"
 
 echo "Enabling IP Forwarding..."
 sudo sysctl -w net.ipv4.ip_forward=1

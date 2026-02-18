@@ -37,9 +37,9 @@ typedef struct crsf_s{
 	int8_t is_armed;
 
 	uint32_t _lastChannelsPacket;
-#if CRSF_FLIGHTMODES_ENABLED != 0
+//#if CRSF_FLIGHTMODES_ENABLED != 0
 	flightMode_t _flightModes[FLIGHT_MODE_COUNT];
-#endif
+//#endif
 }crsf_t;
 
 int8_t crsf_init(crsf_t *crsf,
@@ -64,14 +64,24 @@ void crsf_setBaroAltitudeData(crsf_t *crsf, uint16_t altitude, int16_t vario);
 void crsf_setBatteryData(crsf_t *crsf, float voltage, float current, uint32_t capacity, uint8_t percent);
 void crsf_setGPSData(crsf_t *crsf, float latitude, float longitude, float altitude, float speed, float course, uint8_t satellites);
 
-#if CRSF_FLIGHTMODES_ENABLED != 0
+//#if CRSF_FLIGHTMODES_ENABLED != 0
 void crsf_setFlightModeData(crsf_t *crsf, flightModeId_t flightMode, int8_t disarmed);
-#endif
+//#endif
 
 float crsf_getChannelNormalized(crsf_t *crsf, rc_channels_t channel);
 
 int8_t crsf_isChannelUpdated(crsf_t *crsf, rc_channels_t channel);
 
+
+/**
+ * @brief  Maps a throttle input from a bipolar range [-1.0, 1.0]
+ * to a unipolar range [0.0, 1.0].
+ * * @note   Useful for converting joystick/RC signals where -1 is full reverse,
+ * 0 is neutral, and 1 is full forward into a standard 0-100% scale.
+ * * @param  input: The raw throttle value (expected between -1.0f and 1.0f).
+ * @retval The transformed value (clamped between 0.0f and 1.0f).
+ */
+float crsf_transformThrottle(float input);
 
 
 /* //////////////////////////////////////////Examples////////////////////////////////////////////////////  */

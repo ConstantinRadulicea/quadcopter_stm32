@@ -44,7 +44,8 @@ static int line_buffer_add_char(char c, char *buf, size_t buf_size, size_t *len)
 #include <string.h>
 #include <errno.h>
 
-#define UDP_RX_BUF_SIZE    PBUF_POOL_BUFSIZE   /* enough for full Ethernet MTU */
+//#define UDP_RX_BUF_SIZE    PBUF_POOL_BUFSIZE   /* enough for full Ethernet MTU */
+#define UDP_RX_BUF_SIZE    128
 
 char rxbuf[UDP_RX_BUF_SIZE];
 void rc_control_udp(void *arg)
@@ -218,13 +219,22 @@ void rc_control_udp(void *arg)
 
 
 
-static uint32_t crsf_sys_now_example(void){
-    // Get current kernel tick count and tick frequency
-    uint32_t ticks      = osKernelGetTickCount();
-    uint32_t tick_freq  = osKernelGetTickFreq();  // ticks per second
+//static uint32_t crsf_sys_now_example(void){
+//    // Get current kernel tick count and tick frequency
+//    uint32_t ticks      = osKernelGetTickCount();
+//    uint32_t tick_freq  = osKernelGetTickFreq();  // ticks per second
+//
+//    // Convert ticks to milliseconds safely and portably
+//    return (uint32_t)((ticks * 1000U) / tick_freq) * 1000;
+//}
 
-    // Convert ticks to milliseconds safely and portably
-    return (uint32_t)((ticks * 1000U) / tick_freq) * 1000;
+
+static uint32_t crsf_sys_now_example(void) {
+    uint64_t ticks = (uint64_t)osKernelGetTickCount();
+    uint32_t freq  = osKernelGetTickFreq();
+
+    // Returns microseconds (us)
+    return (uint32_t)((ticks * 1000000ULL) / freq);
 }
 
 static uint32_t crsf_output_cb_fn_example(crsf_t *crsf, const void *data, uint32_t len, void *ctx) {
@@ -262,12 +272,15 @@ void rc_control_crsf(void *arg){
 
 	for(;;) {
 		total_loops = 0;
-		do{
+//		do{
 			rx_data_size = uart_recv_data(&usart3_driver, rxbuf, UDP_RX_BUF_SIZE);
+			uart_data_rx_flush(&usart3_driver);
 			rx_data_size_processed = 0;
+			bytes_processed = 0;
 			for(rx_data_size_processed = 0; rx_data_size_processed < rx_data_size; total_loops += bytes_processed){
 
 				crsf_result = CRSF_FRAMETYPE_INVALID;
+				bytes_processed = 0;
 				crsf_result = crsf_update(&crsf, (uint8_t*)&(rxbuf[rx_data_size_processed]), (uint32_t)(rx_data_size - bytes_processed), &bytes_processed);
 				rx_data_size_processed += bytes_processed;
 
@@ -286,6 +299,7 @@ void rc_control_crsf(void *arg){
 
 					if(crsf_isChannelUpdated(&crsf, RC_CHANNEL_THROTTLE) != 0){
 						throttle = crsf_getChannelNormalized(&crsf, RC_CHANNEL_THROTTLE);
+						throttle = crsf_transformThrottle(throttle);
 					}
 
 					is_armed = crsf_isArmed(&crsf);
@@ -293,10 +307,11 @@ void rc_control_crsf(void *arg){
 					int8_t armed_fp = (int8_t)flight_control_loop_are_esc_armed(fcl_ptr);
 
 					crsf_setFlightModeData(&crsf, FLIGHT_MODE_ANGLE, armed_fp);
+					break;
 				}
 			}
-		 }
-		while(rx_data_size > 0 && total_loops < 64*10);
+
+//		} while(rx_data_size > 0 && total_loops < 64*10);
 
 		isLinkUp = crsf_isLinkUp(&crsf);
 		failsafe = crsf_getFailSafe(&crsf);
@@ -305,7 +320,7 @@ void rc_control_crsf(void *arg){
 		target_attitude.y = pitch;
 		target_attitude.z = yaw;
 
-	    if (is_armed != 0 && failsafe != 0){
+	    if (is_armed != 0 && failsafe == 0){
 	    	flight_control_loop_arm_esc(fcl_ptr);
 	    }
 	    else {
@@ -314,7 +329,8 @@ void rc_control_crsf(void *arg){
 
 	     flight_control_loop_update_rc_control(fcl_ptr, target_attitude, throttle);
 
-	     vTaskDelay(pdMS_TO_TICKS(HzToMilliSec(1)));
+	     vTaskDelay(pdMS_TO_TICKS(HzToMilliSec(RC_INPUT_SAMPLE_RATE_HZ)));
+//	     vTaskDelay(1);
 	}
 }
 

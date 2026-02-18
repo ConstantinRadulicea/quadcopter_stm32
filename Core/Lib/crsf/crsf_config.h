@@ -12,7 +12,7 @@ extern "C" {
   - NB: It is considered good practice to set this value to the same as the RSSI Sensitivity Limit in your Lua script.
 */
 #define CRSF_FAILSAFE_LQI_THRESHOLD  80
-#define CRSF_FAILSAFE_RSSI_THRESHOLD 105
+#define CRSF_FAILSAFE_RSSI_THRESHOLD -105
 
 /* RC Options
 - RC_ENABLED: Enables or disables the RC API.
@@ -69,13 +69,13 @@ and assign them to a switch on your controller. */
 
 
 #define CRSF_TELEMETRY_ENABLED 1
-#define CRSF_CYCLETIME_US (HzToUs_int(10))
+#define CRSF_TELEMETRY_UPDATE_CYCLETIME_US (HzToUs_int(10))
 
 #define CRSF_TELEMETRY_HEARTBEAT_ENABLED	1
 #define CRSF_TELEMETRY_ATTITUDE_ENABLED     0
 #define CRSF_TELEMETRY_BAROALTITUDE_ENABLED 0
 #define CRSF_TELEMETRY_BATTERY_ENABLED      0
-#define CRSF_TELEMETRY_FLIGHTMODE_ENABLED	1
+#define CRSF_TELEMETRY_FLIGHTMODE_ENABLED	0
 #define CRSF_TELEMETRY_GPS_ENABLED			0
 
 #if CRSF_FLIGHTMODES_ENABLED == 0
@@ -135,7 +135,7 @@ and assign them to a switch on your controller. */
 
 /* Static assert if all telemetry options are disabled.
 Better to use CRSF_TELEMETRY_ENABLED instead. */
-#if CRSF_TELEMETRY_ATTITUDE_ENABLED == 0 && CRSF_TELEMETRY_BAROALTITUDE_ENABLED == 0 && CRSF_TELEMETRY_BATTERY_ENABLED == 0 && CRSF_TELEMETRY_FLIGHTMODE_ENABLED == 0 && CRSF_TELEMETRY_GPS_ENABLED == 0
+#if CRSF_TELEMETRY_ENABLED != 0 && (CRSF_TELEMETRY_ATTITUDE_ENABLED == 0 && CRSF_TELEMETRY_BAROALTITUDE_ENABLED == 0 && CRSF_TELEMETRY_BATTERY_ENABLED == 0 && CRSF_TELEMETRY_FLIGHTMODE_ENABLED == 0 && CRSF_TELEMETRY_GPS_ENABLED == 0 && CRSF_TELEMETRY_HEARTBEAT_ENABLED == 0)
     static_assert(false, "All telemetry options are disabled. Set CRSF_TELEMETRY_ENABLED to 0 to disable telemetry instead.");
 #endif
 

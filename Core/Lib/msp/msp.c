@@ -1,6 +1,7 @@
 #include "msp.h"
 #include "stdint.h"
 #include "crc.h"
+#include "string.h"
 
 #define CLAMP(x, lo, hi) (((x) < (lo)) ? (lo) : ((x) > (hi)) ? (hi) : (x))
 #define MIN(a,b) (((a)<(b))?(a):(b))
@@ -13,9 +14,14 @@ static inline uint16_t le16_to_host(const uint8_t *p) {
     return (uint16_t)p[0] | ((uint16_t)p[1] << 8);
 }
 
+void write_u16_le(uint16_t val, uint8_t *dest) {
+    dest[0] = (uint8_t)(val & 0xFF);         // Least Significant Byte
+    dest[1] = (uint8_t)((val >> 8) & 0xFF);  // Most Significant Byte
+}
+
 static msp_packet_state_t msp_receive_frame(msp_t *msp, uint8_t rxByte){
 	uint32_t currentTime = msp->sys_now_ms();
-	uint8_t crc;
+	uint8_t crc, original_crc;
 	msp_direction_t direction;
 
 	if (msp->rx_packet_state == MSP_PACKET_RECEIVED || msp->rx_frame_position >= MSP_RX_BUF_SIZE){
@@ -91,7 +97,7 @@ static msp_packet_state_t msp_receive_frame(msp_t *msp, uint8_t rxByte){
 	}
 	// check if the V1 frame is a Jumbo frame, else get the payload size of the V1 frame
 	else if(msp->rx_frame_position == MSP_V1_PAYLOAD_SIZE_POSITION + MSP_V1_PAYLOAD_SIZE_SIZE && msp->rx_packet.msp_version == MSP_V1){
-		if(msp->rx_frame_buffer[MSP_V1_PAYLOAD_SIZE_POSITION] == 255){
+		if(msp->rx_frame_buffer[MSP_V1_PAYLOAD_SIZE_POSITION] >= 255){
 			// It is a JUMBO frame
 			msp->rx_packet.msp_version = MSP_JUMBO;
 			msp->rx_packet.jumbo.direction = msp->rx_packet.v1.direction;
@@ -125,12 +131,12 @@ static msp_packet_state_t msp_receive_frame(msp_t *msp, uint8_t rxByte){
 
 			msp->rx_packet.v1.command_id = msp->rx_frame_buffer[MSP_V1_COMMAND_ID_POSITION];
 			msp->rx_packet.v1.payload = &(msp->rx_frame_buffer[MSP_V1_PAYLOAD_POSITION]);
-			msp->rx_packet.v1.checksum = msp->rx_frame_buffer[MSP_V1_PAYLOAD_POSITION + msp->rx_packet.v1.payload_size];
+			original_crc = msp->rx_frame_buffer[MSP_V1_PAYLOAD_POSITION + msp->rx_packet.v1.payload_size];
 
 			crc = MSP_V1_CRC8_START_CRC;
 			crc = crc8_xor_add_arr(crc, &(msp->rx_frame_buffer[MSP_V1_CRC_START_POSITION]), msp->rx_packet.v1.payload_size + MSP_V1_NON_PAYLOAD_CRC_SIZE);
 
-			if (msp->rx_packet.v1.checksum == crc){
+			if (original_crc == crc){
 				msp->rx_packet_state = MSP_PACKET_RECEIVED;
 			}
 			else{
@@ -140,12 +146,12 @@ static msp_packet_state_t msp_receive_frame(msp_t *msp, uint8_t rxByte){
 		else if(msp->rx_packet.msp_version == MSP_JUMBO){
 			msp->rx_packet.jumbo.command_id = msp->rx_frame_buffer[MSP_JUMBO_COMMAND_ID_POSITION];
 			msp->rx_packet.jumbo.payload = &(msp->rx_frame_buffer[MSP_JUMBO_PAYLOAD_POSITION]);
-			msp->rx_packet.jumbo.checksum = msp->rx_frame_buffer[MSP_JUMBO_PAYLOAD_POSITION + msp->rx_packet.jumbo.payload_size];
+			original_crc = msp->rx_frame_buffer[MSP_JUMBO_PAYLOAD_POSITION + msp->rx_packet.jumbo.payload_size];
 
 			crc = MSP_V1_CRC8_START_CRC;
 			crc = crc8_xor_add_arr(crc, &(msp->rx_frame_buffer[MSP_JUMBO_CRC_START_POSITION]), msp->rx_packet.jumbo.payload_size + MSP_JUMBO_NON_PAYLOAD_CRC_SIZE);
 
-			if (msp->rx_packet.jumbo.checksum == crc){
+			if (original_crc == crc){
 				msp->rx_packet_state = MSP_PACKET_RECEIVED;
 			}
 			else{
@@ -156,12 +162,12 @@ static msp_packet_state_t msp_receive_frame(msp_t *msp, uint8_t rxByte){
 			msp->rx_packet.v2.flag = msp->rx_frame_buffer[MSP_V2_FLAG_POSITION];
 			msp->rx_packet.v2.command_id = le16_to_host(&(msp->rx_frame_buffer[MSP_V2_COMMAND_ID_POSITION]));
 			msp->rx_packet.v2.payload = &(msp->rx_frame_buffer[MSP_V2_PAYLOAD_POSITION]);
-			msp->rx_packet.v2.checksum = msp->rx_frame_buffer[MSP_V2_PAYLOAD_POSITION + msp->rx_packet.v2.payload_size];
+			original_crc = msp->rx_frame_buffer[MSP_V2_PAYLOAD_POSITION + msp->rx_packet.v2.payload_size];
 
 			crc = crc8_dvb_s2_init();
 			crc = crc8_dvb_s2_add_arr(crc, &(msp->rx_frame_buffer[MSP_V2_CRC_START_POSITION]), msp->rx_packet.v2.payload_size + MSP_V2_NON_PAYLOAD_CRC_SIZE);
 
-			if (msp->rx_packet.v2.checksum == crc){
+			if (original_crc == crc){
 				msp->rx_packet_state = MSP_PACKET_RECEIVED;
 			}
 			else{
@@ -188,6 +194,125 @@ static msp_packet_state_t msp_receive_frame(msp_t *msp, uint8_t rxByte){
 	return msp->rx_packet_state;
 }
 
+uint32_t get_payload_position(msp_version_t msp_version){
+	if(msp_version == MSP_V1){
+		return MSP_V1_PAYLOAD_POSITION;
+	}
+	else if(msp_version == MSP_JUMBO){
+		return MSP_JUMBO_PAYLOAD_POSITION;
+	}
+	else if(msp_version == MSP_V2_NATIVE){
+		return MSP_V2_PAYLOAD_POSITION;
+	}
+	else{
+		return 0;
+	}
+}
+
+
+uint32_t msp_frame_builder(uint8_t *frame_buffer, uint32_t buffer_size, msp_pachet_t *packet){
+	if(packet->valid == 0){
+		return 0;
+	}
+	uint8_t *dst_payload_ptr = NULL;
+	uint8_t *src_payload_ptr = NULL;
+	uint8_t *crc_start_ptr = NULL;
+	uint16_t payload_size = 0;
+	uint8_t *buffer = frame_buffer;
+	uint32_t frame_size = 0;
+	uint32_t total_crc_size = 0;
+	msp_direction_t direction = packet->common.direction;
+	msp_version_t msp_version = packet->msp_version;
+	src_payload_ptr = packet->common.payload;
+	payload_size = packet->common.payload_size;
+
+	buffer[MSP_PREAMBLE_1_POSITION] = MSP_PREAMBLE_1;
+
+	if(msp_version == MSP_V1){
+		buffer[MSP_PREAMBLE_2_POSITION] = MSP_PREAMBLE_2_V1;
+		dst_payload_ptr = &(frame_buffer[MSP_V1_PAYLOAD_POSITION]);
+		frame_size = MSP_V1_NON_PAYLOAD_SIZE + payload_size;
+		crc_start_ptr = &(frame_buffer[MSP_V1_CRC_START_POSITION]);
+		total_crc_size = payload_size + MSP_V1_NON_PAYLOAD_CRC_SIZE;
+		if(payload_size >= 255){
+			return 0;
+		}
+	}
+	else if(msp_version == MSP_JUMBO){
+		buffer[MSP_PREAMBLE_2_POSITION] = MSP_PREAMBLE_2_V1;
+		buffer[MSP_V1_PAYLOAD_SIZE_POSITION] = 255;
+
+		write_u16_le(payload_size, &(buffer[MSP_JUMBO_PAYLOAD_SIZE_POSITION]));
+
+		dst_payload_ptr = &(frame_buffer[MSP_JUMBO_PAYLOAD_POSITION]);
+		frame_size = MSP_JUMBO_NON_PAYLOAD_SIZE + payload_size;
+		crc_start_ptr = &(frame_buffer[MSP_JUMBO_CRC_START_POSITION]);
+		total_crc_size = payload_size + MSP_JUMBO_NON_PAYLOAD_CRC_SIZE;
+	}
+	else if(msp_version == MSP_V2_NATIVE){
+		buffer[MSP_PREAMBLE_2_POSITION] = MSP_PREAMBLE_2_V2;
+		buffer[MSP_V2_FLAG_POSITION] = packet->v2.flag;
+
+		write_u16_le(payload_size, &(buffer[MSP_V2_PAYLOAD_SIZE_POSITION]));
+
+		dst_payload_ptr = &(frame_buffer[MSP_V2_PAYLOAD_POSITION]);
+		frame_size = MSP_V2_NON_PAYLOAD_SIZE + payload_size;
+		crc_start_ptr = &(frame_buffer[MSP_V2_CRC_START_POSITION]);
+		total_crc_size = payload_size + MSP_V2_NON_PAYLOAD_CRC_SIZE;
+	}
+
+	if(frame_size > buffer_size){
+		return 0;
+	}
+
+	if((src_payload_ptr == NULL || dst_payload_ptr == NULL) && payload_size > 0){
+		return 0;
+	}
+
+	if(payload_size > 0) {
+		memcpy(dst_payload_ptr, src_payload_ptr, payload_size);
+	}
+
+	// set direction
+	if(direction == MSP_DIRECTION_REPLY){
+		buffer[MSP_DIRECTION_POSITION] = MSP_DIRECTION_RESPONSE_CHAR;
+	}
+	else if(direction == MSP_DIRECTION_REQUEST){
+		buffer[MSP_DIRECTION_POSITION] = MSP_DIRECTION_REQUEST_CHAR;
+	}
+	else if(direction == MSP_DIRECTION_ERROR){
+		buffer[MSP_DIRECTION_POSITION] = MSP_DIRECTION_ERROR_CHAR;
+	}
+
+	if(crc_start_ptr == NULL){
+		return 0;
+	}
+
+	uint8_t crc = MSP_V1_CRC8_START_CRC;
+	crc = crc8_xor_add_arr(crc, crc_start_ptr, total_crc_size);
+	crc_start_ptr[total_crc_size] = crc;
+
+	return frame_size;
+}
+
+
+
+
+void handle_response(msp_t *msp){
+	if(msp->rx_packet.valid == 0){
+		return;
+	}
+
+	if(msp->rx_packet.msp_version == MSP_V1){
+
+	}
+	else if(msp->rx_packet.msp_version == MSP_JUMBO){
+
+	}
+	else if(msp->rx_packet.msp_version == MSP_V2_NATIVE){
+
+	}
+}
 
 
 void msp_update(msp_t *msp, uint8_t* rx_buf, uint32_t rx_buf_size){

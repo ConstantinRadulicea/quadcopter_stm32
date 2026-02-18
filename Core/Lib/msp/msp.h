@@ -138,12 +138,20 @@ typedef enum msp_direction_e{
 	MSP_DIRECTION_ERROR = 2
 } msp_direction_t;
 
+typedef struct msp_common_packet_s {
+	msp_direction_t direction;
+	uint8_t command_id;
+	uint16_t payload_size;
+    uint8_t *payload;         // payload only w/o header or crc
+//    uint8_t checksum;
+} msp_common_packet_t;
+
 typedef struct msp_v1_packet_s {
 	msp_direction_t direction;
 	uint8_t command_id;
-	uint8_t payload_size;
+	uint16_t payload_size;	// mult be at max 255
     uint8_t *payload;         // payload only w/o header or crc
-    uint8_t checksum;
+//    uint8_t checksum;
 } msp_v1_packet_t;
 
 typedef struct msp_jumbo_packet_s {
@@ -151,28 +159,29 @@ typedef struct msp_jumbo_packet_s {
 	uint8_t command_id;
 	uint16_t payload_size;
     uint8_t *payload;         // payload only w/o header or crc
-    uint8_t checksum;
+//    uint8_t checksum;
 } msp_jumbo_packet_t;
 
 typedef struct msp_v2_packet_s {
 	msp_direction_t direction;
-	uint8_t flag;
 	uint16_t command_id;
 	uint16_t payload_size;
     uint8_t *payload;         // payload only w/o header or crc
-    uint8_t checksum;
+//    uint8_t checksum;
+    uint8_t flag;
 } msp_v2_packet_t;
 
 
 typedef struct msp_pachet_s{
-	int valid : 1;
+	uint8_t valid;
 	msp_version_t msp_version;
     union {
+		msp_common_packet_t common;
     	msp_v1_packet_t v1;
     	msp_jumbo_packet_t jumbo;
     	msp_v2_packet_t v2;
     };
-}msp_pachet_s;
+}msp_pachet_t;
 
 
 typedef uint32_t (*msp_sys_now_ms_cb_fn)(void);
@@ -181,7 +190,7 @@ typedef struct msp_s{
 	uint32_t _timeout_ms;
 	msp_sys_now_ms_cb_fn sys_now_ms;
 	msp_packet_state_t rx_packet_state;
-	msp_pachet_s rx_packet;
+	msp_pachet_t rx_packet;
 	uint8_t rx_frame_buffer[MSP_RX_BUF_SIZE];
 	uint32_t rx_frame_position;
 	uint32_t rx_frame_full_len;

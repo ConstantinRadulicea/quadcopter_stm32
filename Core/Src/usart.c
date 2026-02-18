@@ -84,17 +84,6 @@ void MX_USART1_UART_Init(void)
 		  USART1_TX_CHUNK_SIZE
   );
 
-  uart_driver_init(
-		  &usart3_driver,
-		  &huart3,
-		  usart3_rx_buffer,
-		  usart3_tx_buffer,
-		  usart3_dma_rx,
-		  USART3_RX_BUFFER_SIZE,
-		  USART3_TX_BUFFER_SIZE,
-		  USART3_RX_DMA_BUF_SIZE,
-		  USART3_TX_CHUNK_SIZE
-  );
   /* USER CODE END USART1_Init 2 */
 
 }
@@ -123,7 +112,17 @@ void MX_USART3_UART_Init(void)
     Error_Handler();
   }
   /* USER CODE BEGIN USART3_Init 2 */
-
+  uart_driver_init(
+		  &usart3_driver,
+		  &huart3,
+		  usart3_rx_buffer,
+		  usart3_tx_buffer,
+		  usart3_dma_rx,
+		  USART3_RX_BUFFER_SIZE,
+		  USART3_TX_BUFFER_SIZE,
+		  USART3_RX_DMA_BUF_SIZE,
+		  USART3_TX_CHUNK_SIZE
+  );
   /* USER CODE END USART3_Init 2 */
 
 }

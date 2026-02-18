@@ -13,6 +13,7 @@ extern "C" {
 
 #define HzToUs_float(hz) (1000000.0f/(hz))
 #define HzToUs_int(hz) (1000000/(hz))
+#define MilliToMicro_int(val) ((val)*1000)
 
 #ifndef CRSF_LITTLE_ENDIAN
 #define CRSF_LITTLE_ENDIAN 1234
@@ -66,6 +67,7 @@ extern "C" {
 #define PP_HTONL(x)   ((uint32_t)(x))
 #define PP_NTOHL(x)   ((uint32_t)(x))
 #else /* CRSF_BYTE_ORDER != CRSF_BIG_ENDIAN */
+
 #ifndef crsf_htons
 uint16_t crsf_htons(uint16_t x);
 #endif
@@ -98,6 +100,34 @@ uint32_t crsf_htonl(uint32_t x);
 
 
 uint32_t writeU24BE(uint8_t* buffer, uint32_t value);
+
+
+#include <stdint.h>
+
+/**
+ * @brief Converts a 16-bit Little Endian value to the Host's native format.
+ * @note  On STM32 (Little Endian), this compiles to nothing (zero overhead).
+ */
+static inline uint16_t crsf_le16_to_host(uint16_t val) {
+#if __BYTE_ORDER__ == __ORDER_LITTLE_ENDIAN__
+    return val;
+#else
+    // This part only runs if you move this code to a Big Endian CPU
+    return (uint16_t)((val << 8) | (val >> 8));
+#endif
+}
+
+/**
+ * @brief Converts a 32-bit Little Endian value to the Host's native format.
+ */
+static inline uint32_t crsf_le32_to_host(uint32_t val) {
+#if __BYTE_ORDER__ == __ORDER_LITTLE_ENDIAN__
+    return val;
+#else
+    return (((val & 0xff000000U) >> 24) | ((val & 0x00ff0000U) >> 8) | \
+            ((val & 0x0000ff00U) << 8)  | ((val & 0x000000ffU) << 24));
+#endif
+}
 
 #ifdef __cplusplus
 }

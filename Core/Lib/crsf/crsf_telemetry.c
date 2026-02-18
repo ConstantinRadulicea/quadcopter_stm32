@@ -291,10 +291,13 @@ uint32_t crsf_telemetry_update(crsf_telemetry_t *crsf_telemetry, uint32_t curren
     uint32_t written_bytes_in_buf = 0;
     // Actual telemetry data only needs to be sent at a low frequency, ie 10Hz
     // Spread out scheduled frames evenly so each frame is sent at the same frequency.
-    if ((currentTimeUs - crsf_telemetry->crsfLastCycleTime_us) >= (CRSF_CYCLETIME_US / crsf_telemetry->_telemetryFrameScheduleCount)) {
-    	crsf_telemetry->crsfLastCycleTime_us = currentTimeUs;
-        written_bytes_in_buf = crsf_telemetry_process_frame_to_send(crsf_telemetry);
+    if(crsf_telemetry->_telemetryFrameScheduleCount > 0){
+        if ((currentTimeUs - crsf_telemetry->crsfLastCycleTime_us) >= (CRSF_TELEMETRY_UPDATE_CYCLETIME_US / crsf_telemetry->_telemetryFrameScheduleCount)) {
+        	crsf_telemetry->crsfLastCycleTime_us = currentTimeUs;
+            written_bytes_in_buf = crsf_telemetry_process_frame_to_send(crsf_telemetry);
+        }
     }
+
     return written_bytes_in_buf;
 }
 
@@ -327,7 +330,7 @@ void crsf_telemetry_init(crsf_telemetry_t *crsf_telemetry)
     crsf_telemetry->_telemetryFrameSchedule[index++] = (1 << CRSF_TELEMETRY_FRAME_GPS_INDEX);
 #endif
 
-#if CRSF_HEARTBEAT_ENABLED > 0
+#if CRSF_TELEMETRY_HEARTBEAT_ENABLED > 0
     crsf_telemetry->_telemetryFrameSchedule[index++] = (1 << CRSF_TELEMETRY_FRAME_HEARTBEAT_INDEX);
 #endif
 

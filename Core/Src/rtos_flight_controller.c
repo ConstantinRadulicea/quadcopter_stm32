@@ -324,11 +324,14 @@ static void print_telemetry_data(void *arg){
 
 //	OUT_PRINTF("\r\n");
 
+	//	OUT_PRINTF("%.3f;%.3f;%.3f;", target_attitude.x, target_attitude.y, target_attitude.z);
+
 	snprintf(telem_frame, TELEM_BUF_SZ,
 			"%.3f;%.3f;%.3f;"
 			"%.3f;%.3f;%.3f;"
 			"%.3f;%.3f;%.3f;"
 			"%.3f;%.3f;%.3f;%.3f;"
+			"%.3f;%.3f;%.3f;"
 			"%.3f;"
 			"%.3f;%.3f;%.3f;"
 			"\r\n",
@@ -336,6 +339,7 @@ static void print_telemetry_data(void *arg){
 			body_frame_accel.x, body_frame_accel.y, body_frame_accel.z,
 			body_frame_gyro.x, body_frame_gyro.y, body_frame_gyro.z,
 			local_motors_throttle[0], local_motors_throttle[1], local_motors_throttle[2], local_motors_throttle[3],
+			target_attitude.x, target_attitude.y, target_attitude.z,
 			target_throttle,
 			degrees(pid_roll_output), degrees(pid_pitch_output), degrees(pid_yaw_output)
 			);

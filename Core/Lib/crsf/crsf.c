@@ -48,7 +48,7 @@ static uint16_t crsf_rcToUs(uint16_t rc, crsf_subset_rc_channel_resolution resol
 	float factor, offset;
 	if(resolution == CRSF_SUBSET_RC_RES_CONF_11B){
 		factor = (float)(CRSF_US_CHANNEL_MAX - CRSF_US_CHANNEL_MIN) / (float)(CRSF_RC_CHANNEL_MAX - CRSF_RC_CHANNEL_MIN);
-		offset = (float)(CRSF_RC_CHANNEL_MIN) * factor;
+		offset = (float)(CRSF_US_CHANNEL_MIN) - ((float)(CRSF_RC_CHANNEL_MIN) * factor);
 		return (uint16_t)(((float)rc * factor) + offset);
 	//    return (uint16_t)((rc * 0.62477120195241f) + 881);
 	}
@@ -105,53 +105,48 @@ static void process_channels_frame(crsf_t *crsf){
 // returns CRSF_FRAMETYPE_INVALID when a frame is not received
 static frameType_t crsf_receive_frame(crsf_t *crsf, uint8_t rxByte)
 {
-	uint8_t framePosition = crsf->rx_frame_position;
-	uint32_t frameStartTime = crsf->rx_frame_start_time_us;
 	uint32_t currentTime = crsf->sys_now_us();
 	uint32_t timePerFrame = (uint32_t)HzToUs_int(crsf->frame_rate_hz);
 	uint32_t fullFrameLength = 0;
 	crsf->rcFrameReceived = 0;
 
 	/* Reset the frame position if the frame time has expired. */
-	if (currentTime - frameStartTime > timePerFrame) {
-		framePosition = 0;
+	if (currentTime - crsf->rx_frame_start_time_us > timePerFrame) {
+		crsf->rx_frame_position = 0;
 
-		if (currentTime < frameStartTime) {
-			frameStartTime = currentTime;
+		if (currentTime < crsf->rx_frame_start_time_us) {
 			crsf->rx_frame_start_time_us = currentTime;
 		}
 	}
 
-	if (framePosition == 0) {
-		frameStartTime = currentTime;
+	if (crsf->rx_frame_position == 0) {
 		crsf->rx_frame_start_time_us = currentTime;
 	}
 
+	/* Store the received byte in the frame buffer. */
+	crsf->rxFrame.raw[crsf->rx_frame_position] = rxByte;
+	crsf->rx_frame_position++;
+
 	/* Assume the full frame length is 5 bytes until the frame length byte is received. */
-	if(framePosition < (CRSF_FRAME_LENGTH_ADDRESS + CRSF_FRAME_LENGTH_FRAMELENGTH)){
+	if(crsf->rx_frame_position < (CRSF_FRAME_LENGTH_ADDRESS + CRSF_FRAME_LENGTH_FRAMELENGTH)){
 		fullFrameLength = (CRSF_FRAME_LENGTH_ADDRESS + CRSF_FRAME_LENGTH_FRAMELENGTH);
 	}
 	else{
 		fullFrameLength = crsf->rxFrame.frame.frameLength + CRSF_FRAME_LENGTH_ADDRESS + CRSF_FRAME_LENGTH_FRAMELENGTH;
-	}
-
-	if(crsf->rxFrame.frame.frameLength > CRSF_FRAME_LENGTH_MAX ||
-			crsf->rxFrame.frame.frameLength < CRSF_FRAME_LENGTH_MIN){
-		/* Clear the frame buffer and reset the frame position. */
-		//memset(crsf->rxFrame.raw, 0, CRSF_FRAME_SIZE_MAX);
-		framePosition = 0;
-		return CRSF_FRAMETYPE_INVALID;
+		if(crsf->rxFrame.frame.frameLength > CRSF_FRAME_LENGTH_MAX ||
+				crsf->rxFrame.frame.frameLength < CRSF_FRAME_LENGTH_MIN){
+			/* Clear the frame buffer and reset the frame position. */
+			//memset(crsf->rxFrame.raw, 0, CRSF_FRAME_SIZE_MAX);
+			crsf->rx_frame_position = 0;
+			return CRSF_FRAMETYPE_INVALID;
+		}
 	}
 
 	fullFrameLength = CRSF_CLAMP(fullFrameLength, 0, CRSF_FRAME_SIZE_MAX);
 
-	if (framePosition < fullFrameLength)
-	{
-		/* Store the received byte in the frame buffer. */
-		crsf->rxFrame.raw[framePosition] = rxByte;
-		framePosition++;
-
-		if (framePosition >= fullFrameLength)
+//	if (crsf->rx_frame_position < fullFrameLength)
+//	{
+		if (crsf->rx_frame_position >= fullFrameLength)
 		{
 			/* Frame is complete, calculate the CRC and check if it is valid. */
 			uint8_t crc = crc8_dvb_s2_init();
@@ -163,7 +158,7 @@ static frameType_t crsf_receive_frame(crsf_t *crsf, uint8_t rxByte)
 				switch (crsf->rxFrame.frame.type)
 				{
 					case CRSF_FRAMETYPE_RC_CHANNELS_PACKED:
-					case CRSF_FRAMETYPE_SUBSET_RC_CHANNELS_PACKED:
+//					case CRSF_FRAMETYPE_SUBSET_RC_CHANNELS_PACKED:
 						if (crsf->rxFrame.frame.deviceAddress == CRSF_ADDRESS_FLIGHT_CONTROLLER)
 						{
 							memcpy(&(crsf->rcChannelsFrame), &(crsf->rxFrame), sizeof(crsf->rcChannelsFrame));
@@ -174,12 +169,12 @@ static frameType_t crsf_receive_frame(crsf_t *crsf, uint8_t rxByte)
 
 #if CRSF_LINK_STATISTICS_ENABLED > 0
 					case CRSF_FRAMETYPE_LINK_STATISTICS:
-						if ((crsf->rxFrame.frame.deviceAddress == CRSF_ADDRESS_FLIGHT_CONTROLLER) && (crsf->rxFrame.frame.frameLength == CRSF_FRAME_ORIGIN_DEST_SIZE + CRSF_FRAME_LINK_STATISTICS_PAYLOAD_SIZE))
+						if ((crsf->rxFrame.frame.deviceAddress == CRSF_ADDRESS_FLIGHT_CONTROLLER) && ( crsf->rxFrame.frame.frameLength == (CRSF_FRAME_LENGTH_TYPE + CRSF_FRAME_LENGTH_CRC + CRSF_FRAME_LINK_STATISTICS_PAYLOAD_SIZE) ))
 						{
 							crsf_payload_link_statistics_t linkStatisticsPayload;
 							memcpy(&linkStatisticsPayload, crsf->rxFrame.frame.payload, sizeof(crsf_payload_link_statistics_t));
 
-							crsf->linkStatistics.rssi = (linkStatisticsPayload.active_antenna ? linkStatisticsPayload.uplink_rssi_2 : linkStatisticsPayload.uplink_rssi_1);
+							crsf->linkStatistics.rssi = (linkStatisticsPayload.active_antenna ? linkStatisticsPayload.uplink_rssi_2 : linkStatisticsPayload.uplink_rssi_1) * -1;
 							crsf->linkStatistics.lqi = linkStatisticsPayload.uplink_link_quality;
 							crsf->linkStatistics.snr = linkStatisticsPayload.uplink_snr;
 #if USE_RX_LINK_UPLINK_POWER != 0
@@ -195,16 +190,16 @@ static frameType_t crsf_receive_frame(crsf_t *crsf, uint8_t rxByte)
 				// crc is corrupted
 				/* Clear the frame buffer and reset the frame position. */
 				//memset(crsf->rxFrame.raw, 0, CRSF_FRAME_SIZE_MAX);
-				framePosition = 0;
+				crsf->rx_frame_position = 0;
 				return CRSF_FRAMETYPE_INVALID;
 			}
 
 			/* Clear the frame buffer and reset the frame position. */
 			//memset(crsf->rxFrame.raw, 0, CRSF_FRAME_SIZE_MAX);
-			framePosition = 0;
+			crsf->rx_frame_position = 0;
 			return (frameType_t) (crsf->rxFrame.frame.type);
 		}
-	}
+//	}
 
 	return CRSF_FRAMETYPE_INVALID;
 }
@@ -214,11 +209,13 @@ static frameType_t crsf_receive_frame(crsf_t *crsf, uint8_t rxByte)
 int8_t crsf_getFailSafe(crsf_t *crsf)
 {
     /* Set the failsafe flag based on the link statistics thresholds. */
-    if (crsf->linkStatistics.lqi <= CRSF_FAILSAFE_LQI_THRESHOLD || crsf->linkStatistics.rssi >= CRSF_FAILSAFE_RSSI_THRESHOLD)
-    {
-        return (int8_t)1;
-    }
-    else if (crsf_isLinkUp(crsf) == 0) {
+//    if ((crsf->linkStatistics.lqi <= CRSF_FAILSAFE_LQI_THRESHOLD ||
+//    		crsf->linkStatistics.rssi <= CRSF_FAILSAFE_RSSI_THRESHOLD) &&
+//			crsf_isLinkUp(crsf) == 0)
+//    {
+//        return (int8_t)1;
+//    }
+    if (crsf_isLinkUp(crsf) == 0) {
     	return (int8_t)1;
     }
 
@@ -239,23 +236,23 @@ static void _crsf_getRcChannels(crsf_t *crsf, rcChannels_t *rcChannels)
             memset(rcChannels->updated_channel, 1, sizeof(rcChannels->updated_channel));
 
             rcChannels->resolution = CRSF_SUBSET_RC_RES_CONF_11B;
-            rcChannels->value[RC_CHANNEL_ROLL] = rcChannelsPacked.channel0;
-            rcChannels->value[RC_CHANNEL_PITCH] = rcChannelsPacked.channel1;
-            rcChannels->value[RC_CHANNEL_THROTTLE] = rcChannelsPacked.channel2;
-            rcChannels->value[RC_CHANNEL_YAW] = rcChannelsPacked.channel3;
-            rcChannels->value[RC_CHANNEL_AUX1] = rcChannelsPacked.channel4;
-            rcChannels->value[RC_CHANNEL_AUX2] = rcChannelsPacked.channel5;
-            rcChannels->value[RC_CHANNEL_AUX3] = rcChannelsPacked.channel6;
-            rcChannels->value[RC_CHANNEL_AUX4] = rcChannelsPacked.channel7;
-            rcChannels->value[RC_CHANNEL_AUX5] = rcChannelsPacked.channel8;
-            rcChannels->value[RC_CHANNEL_AUX6] = rcChannelsPacked.channel9;
-            rcChannels->value[RC_CHANNEL_AUX7] = rcChannelsPacked.channel10;
-            rcChannels->value[RC_CHANNEL_AUX8] = rcChannelsPacked.channel11;
-            rcChannels->value[RC_CHANNEL_AUX9] = rcChannelsPacked.channel12;
-            rcChannels->value[RC_CHANNEL_AUX10] = rcChannelsPacked.channel13;
-            rcChannels->value[RC_CHANNEL_AUX11] = rcChannelsPacked.channel14;
-            rcChannels->value[RC_CHANNEL_AUX12] = rcChannelsPacked.channel15;
-
+            rcChannels->value[RC_CHANNEL_ROLL] =  crsf_le16_to_host(rcChannelsPacked.channel0);
+            rcChannels->value[RC_CHANNEL_PITCH] = crsf_le16_to_host(rcChannelsPacked.channel1);
+            rcChannels->value[RC_CHANNEL_THROTTLE] = crsf_le16_to_host(rcChannelsPacked.channel2);
+            rcChannels->value[RC_CHANNEL_YAW] = crsf_le16_to_host(rcChannelsPacked.channel3);
+            rcChannels->value[RC_CHANNEL_AUX1] = crsf_le16_to_host(rcChannelsPacked.channel4);
+            rcChannels->value[RC_CHANNEL_AUX2] = crsf_le16_to_host(rcChannelsPacked.channel5);
+            rcChannels->value[RC_CHANNEL_AUX3] = crsf_le16_to_host(rcChannelsPacked.channel6);
+            rcChannels->value[RC_CHANNEL_AUX4] = crsf_le16_to_host(rcChannelsPacked.channel7);
+            rcChannels->value[RC_CHANNEL_AUX5] = crsf_le16_to_host(rcChannelsPacked.channel8);
+            rcChannels->value[RC_CHANNEL_AUX6] = crsf_le16_to_host(rcChannelsPacked.channel9);
+            rcChannels->value[RC_CHANNEL_AUX7] = crsf_le16_to_host(rcChannelsPacked.channel10);
+            rcChannels->value[RC_CHANNEL_AUX8] = crsf_le16_to_host(rcChannelsPacked.channel11);
+            rcChannels->value[RC_CHANNEL_AUX9] = crsf_le16_to_host(rcChannelsPacked.channel12);
+            rcChannels->value[RC_CHANNEL_AUX10] = crsf_le16_to_host(rcChannelsPacked.channel13);
+            rcChannels->value[RC_CHANNEL_AUX11] = crsf_le16_to_host(rcChannelsPacked.channel14);
+            rcChannels->value[RC_CHANNEL_AUX12] = crsf_le16_to_host(rcChannelsPacked.channel15);
+            crsf->_rcChannels.valid = 1;
             process_channels_frame(crsf);
         }
         else if(crsf->rcChannelsFrame.frame.type == CRSF_FRAMETYPE_SUBSET_RC_CHANNELS_PACKED)
@@ -315,11 +312,12 @@ static void _crsf_getRcChannels(crsf_t *crsf, rcChannels_t *rcChannels)
                             readValue |= ((uint32_t) readByte) << bitsMerged;
                             bitsMerged += 8;
                         }
-                        rcChannels->value[startChannel + n] = readValue & channelMask;
+                        rcChannels->value[startChannel + n] = crsf_le16_to_host((uint16_t)(readValue & channelMask));
                         rcChannels->updated_channel[startChannel + n] = 1;
                         readValue >>= channelBits;
                         bitsMerged -= channelBits;
                     }
+                    crsf->_rcChannels.valid = 1;
                     process_channels_frame(crsf);
                 }
     }
@@ -339,7 +337,7 @@ void crsf_getRcChannels(crsf_t *crsf, rcChannels_t* rc_channels)
 
 static void crsf_checkLinkDown(crsf_t *crsf)
 {
-    if (crsf->_linkIsUp && ((crsf->sys_now_us() - crsf->_lastChannelsPacket) > CRSF_FAILSAFE_STAGE1_MS))
+    if (crsf->_linkIsUp && ((crsf->sys_now_us() - crsf->_lastChannelsPacket) > MilliToMicro_int(CRSF_FAILSAFE_STAGE1_MS) ))
     {
 		crsf->_linkIsUp = 0;
     }
@@ -408,7 +406,7 @@ static frameType_t crsf_update_byte(crsf_t *crsf, uint8_t rxByte){
 
 
 
-#if CRSF_FLIGHTMODES_ENABLED > 0
+//#if CRSF_FLIGHTMODES_ENABLED > 0
     void crsf_setFlightModeData(crsf_t *crsf, flightModeId_t flightMode, int8_t disarmed)
     {
     	char flightModeStr[CRSF_FRAME_FLIGHT_MODE_PAYLOAD_SIZE];
@@ -459,7 +457,7 @@ static frameType_t crsf_update_byte(crsf_t *crsf, uint8_t rxByte){
 
 		crsf_telemetry_setFlightModeData(&(crsf->telemetry), flightModeStr, disarmed);
     }
-#endif
+//#endif
 
 
 void crsf_setAttitudeData(crsf_t *crsf, int16_t roll_rad, int16_t pitch_rad, int16_t yaw_rad){
@@ -500,19 +498,29 @@ float crsf_getChannelNormalized(crsf_t *crsf, rc_channels_t channel){
 }
 
 
+float crsf_transformThrottle(float input) {
+    // Ensure the input is clamped to avoid out-of-bounds results
+    if (input < -1.0f) input = -1.0f;
+    if (input > 1.0f) input = 1.0f;
+
+    return (input + 1.0f) / 2.0f;
+}
+
+
 
 frameType_t crsf_update(crsf_t *crsf, uint8_t* rx_buf, uint32_t rx_buf_size, uint32_t *bytes_processed){
 	frameType_t crsf_result = CRSF_FRAMETYPE_INVALID;
 	*bytes_processed = 0;
+	uint32_t bytes_processed_local = 0;
+
 	for(uint32_t i=0;i < rx_buf_size; i++){
 		crsf_result = crsf_update_byte(crsf, rx_buf[i]);
-
+		bytes_processed_local++;
 		if(crsf_result != 0){ // new frame was received
-			*bytes_processed = i+1;
 			break;
 		}
 	}
-
+	*bytes_processed = bytes_processed_local;
 	return crsf_result;
 }
 
