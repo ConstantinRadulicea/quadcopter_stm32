@@ -47,18 +47,12 @@ static void start_tx_if_idle(uart_driver_t *uart_driver_handle, int force_state)
 
 			uart_driver_handle->last_tx_size = frame_size;
 
-			//EXIT_CRITICAL();
 			if (HAL_UART_Transmit_DMA(uart_driver_handle->uart_handle, data, frame_size) != HAL_OK) {
-				//ENTER_CRITICAL();
 				uart_driver_handle->last_tx_size = 0;
-				//EXIT_CRITICAL();
 			}
 			//HAL_UART_Transmit_IT(&huart1, data, frame_size);
 		}
-		else
-		{
-			//EXIT_CRITICAL();
-		}
+
 	}
 }
 

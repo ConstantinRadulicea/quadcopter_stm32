@@ -422,7 +422,7 @@ void app_main_start(void *argument)
 
     write_attr = (osThreadAttr_t){
         .name       = "write_motor_main",
-        .priority   = osPriorityAboveNormal,
+        .priority   = osPriorityHigh,
         .stack_mem  = write_stack,
         .stack_size = sizeof(write_stack),
 		.cb_mem = &write_h_taskControlBlock,

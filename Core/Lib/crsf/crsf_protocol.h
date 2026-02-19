@@ -130,21 +130,77 @@ typedef enum rc_channels_e
 #define CRSF_FRAME_ORIGIN_DEST_SIZE 2
 #endif
 
+
+
+//    0x00 Broadcast address
+//    0x0E Cloud
+//    0x10 USB Device
+//    0x12 Bluetooth Module/WiFi
+//    0x13 Wi-Fi receiver (mobile game/simulator)
+//    0x14 Video Receiver
+//    0x20-0x7F Dynamic address space for NAT
+//    0x80 OSD / TBS CORE PNP PRO
+//    0x90 ESC 1
+//    0x91 ESC 2
+//    0x92 ESC 3
+//    0x93 ESC 4
+//    0x94 ESC 5
+//    0x95 ESC 6
+//    0x96 ESC 7
+//    0x97 ESC 8
+//    0x8A Reserved
+//    0xB0 Crossfire reserved
+//    0xB2 Crossfire reserved
+//    0xC0 Voltage/ Current Sensor / PNP PRO digital current sensor
+//    0xC2 GPS / PNP PRO GPS
+//    0xC4 TBS Blackbox
+//    0xC8 Flight controller
+//    0xCA Reserved
+//    0xCC Race tag
+//    0xCE VTX
+//    0xEA Remote Control
+//    0xEC R/C Receiver / Crossfire Rx
+//    0xEE R/C Transmitter Module / Crossfire Tx
+//    0xF0 reserved
+//    0xF2 reserved
+
     typedef enum address_e
     {
         CRSF_ADDRESS_BROADCAST = 0x00,
-        CRSF_ADDRESS_USB = 0x10,
-        CRSF_ADDRESS_TBS_CORE_PNP_PRO = 0x80,
-        CRSF_ADDRESS_RESERVED1 = 0x8A,
+		CRSF_ADDRESS_CLOUD = 0x0E,
+		CRSF_ADDRESS_USB = 0x10,
+		CRSF_ADDRESS_BLUETOOTH_OR_WIFI_MODULE = 0x12,
+		CRSF_ADDRESS_WIFI_RECEIVER = 0x13,
+		CRSF_ADDRESS_WIFI_VIDEO_RECEIVER = 0x14,
+
+		// 0x20-0x7F Dynamic address space for NAT
+		CRSF_ADDRESS_NAT_START = 0x20,
+		CRSF_ADDRESS_NAT_END = 0x7F,
+
+        CRSF_ADDRESS_TBS_OSD_OR_CORE_PNP_PRO = 0x80,
+		CRSF_ADDRESS_ESC_1 = 0x90,
+		CRSF_ADDRESS_ESC_2 = 0x91,
+		CRSF_ADDRESS_ESC_3 = 0x92,
+		CRSF_ADDRESS_ESC_4 = 0x93,
+		CRSF_ADDRESS_ESC_5 = 0x94,
+		CRSF_ADDRESS_ESC_6 = 0x95,
+		CRSF_ADDRESS_ESC_7 = 0x96,
+		CRSF_ADDRESS_ESC_8 = 0x97,
+		CRSF_ADDRESS_RESERVED_1 = 0x8A,
+		CRSF_ADDRESS_CROSSFIRE_RESERVED_1 = 0xB0,
+		CRSF_ADDRESS_CROSSFIRE_RESERVED_2 = 0xB2,
         CRSF_ADDRESS_CURRENT_SENSOR = 0xC0,
         CRSF_ADDRESS_GPS = 0xC2,
         CRSF_ADDRESS_TBS_BLACKBOX = 0xC4,
         CRSF_ADDRESS_FLIGHT_CONTROLLER = 0xC8,
-        CRSF_ADDRESS_RESERVED2 = 0xCA,
+        CRSF_ADDRESS_RESERVED_2 = 0xCA,
         CRSF_ADDRESS_RACE_TAG = 0xCC,
+		CRSF_ADDRESS_VTX = 0xCE,
         CRSF_ADDRESS_RADIO_TRANSMITTER = 0xEA,
         CRSF_ADDRESS_CRSF_RECEIVER = 0xEC,
-        CRSF_ADDRESS_CRSF_TRANSMITTER = 0xEE
+        CRSF_ADDRESS_CRSF_TRANSMITTER = 0xEE,
+		CRSF_ADDRESS_RESERVED_3 = 0xF0,
+		CRSF_ADDRESS_RESERVED_4 = 0xF2
     } address_t;
 
     // Schedule array to send telemetry frames.

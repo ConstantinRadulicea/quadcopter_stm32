@@ -6,6 +6,50 @@
 #include "crsf_def.h"
 #include "crsf_telemetry.h"
 
+
+static int crsf_is_valid_device_address(address_t addr){
+	if(addr >= CRSF_ADDRESS_NAT_START && addr <= CRSF_ADDRESS_NAT_END){
+		return 1;
+	}
+	switch(addr){
+		case CRSF_ADDRESS_BROADCAST:
+		case CRSF_ADDRESS_CLOUD:
+		case CRSF_ADDRESS_USB:
+		case CRSF_ADDRESS_BLUETOOTH_OR_WIFI_MODULE:
+		case CRSF_ADDRESS_WIFI_RECEIVER:
+		case CRSF_ADDRESS_WIFI_VIDEO_RECEIVER:
+		case CRSF_ADDRESS_TBS_OSD_OR_CORE_PNP_PRO:
+		case CRSF_ADDRESS_ESC_1:
+		case CRSF_ADDRESS_ESC_2:
+		case CRSF_ADDRESS_ESC_3:
+		case CRSF_ADDRESS_ESC_4:
+		case CRSF_ADDRESS_ESC_5:
+		case CRSF_ADDRESS_ESC_6:
+		case CRSF_ADDRESS_ESC_7:
+		case CRSF_ADDRESS_ESC_8:
+		case CRSF_ADDRESS_RESERVED_1:
+		case CRSF_ADDRESS_CROSSFIRE_RESERVED_1:
+		case CRSF_ADDRESS_CROSSFIRE_RESERVED_2:
+		case CRSF_ADDRESS_CURRENT_SENSOR:
+		case CRSF_ADDRESS_GPS:
+		case CRSF_ADDRESS_TBS_BLACKBOX:
+		case CRSF_ADDRESS_FLIGHT_CONTROLLER:
+		case CRSF_ADDRESS_RESERVED_2:
+		case CRSF_ADDRESS_RACE_TAG:
+		case CRSF_ADDRESS_VTX:
+		case CRSF_ADDRESS_RADIO_TRANSMITTER:
+		case CRSF_ADDRESS_CRSF_RECEIVER:
+		case CRSF_ADDRESS_CRSF_TRANSMITTER:
+		case CRSF_ADDRESS_RESERVED_3:
+		case CRSF_ADDRESS_RESERVED_4:
+			return 1;
+		default:
+			break;
+	}
+	return 0;
+}
+
+
 void crsf_set_output_cb_fn(crsf_t *crsf, crsf_output_cb_fn fn, void *ctx){
 	crsf->crsf_output = fn;
 	crsf->crsf_output_cb_fn_ctx = ctx;
@@ -177,6 +221,9 @@ static int crsf_receive_frame(crsf_t *crsf, uint8_t rxByte)
 	}
 
 	if (crsf->rx_frame_position == 0) {
+		if(crsf_is_valid_device_address((address_t)rxByte) == 0){
+			return 0;
+		}
 		crsf->rx_frame_start_time_us = currentTime;
 		crsf->rx_frame_full_length = (CRSF_FRAME_LENGTH_ADDRESS + CRSF_FRAME_LENGTH_FRAMELENGTH);
 	}

@@ -45,7 +45,7 @@ static int line_buffer_add_char(char c, char *buf, size_t buf_size, size_t *len)
 #include <errno.h>
 
 //#define UDP_RX_BUF_SIZE    PBUF_POOL_BUFSIZE   /* enough for full Ethernet MTU */
-#define UDP_RX_BUF_SIZE    512
+#define UDP_RX_BUF_SIZE    (64*6)
 
 char rxbuf[UDP_RX_BUF_SIZE];
 void rc_control_udp(void *arg)
@@ -276,7 +276,7 @@ void rc_control_crsf(void *arg){
 		total_loops = 0;
 //		do{
 			rx_data_size = uart_recv_data(&usart3_driver, rxbuf, UDP_RX_BUF_SIZE);
-//			uart_data_rx_flush(&usart3_driver);
+			uart_data_rx_flush(&usart3_driver);
 			rx_data_size_processed = 0;
 			bytes_processed = 0;
 			for(rx_data_size_processed = 0; rx_data_size_processed < rx_data_size; total_loops += bytes_processed){
