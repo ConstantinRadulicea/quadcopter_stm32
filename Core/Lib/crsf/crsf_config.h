@@ -42,7 +42,7 @@ extern "C" {
 #define CRSF_SAFE_THROTTLE_VAL_RC  (CRSF_RC_CHANNEL_MIN + ((CRSF_RC_CHANNEL_MAX - CRSF_RC_CHANNEL_MIN)*0.1f))  // Throttle must be below this to ARM
 #define CRSF_ARM_CHANNEL_INDEX	(RC_CHANNEL_AUX1)
 
-#define CRSF_FAILSAFE_STAGE1_MS 300
+#define CRSF_FAILSAFE_STAGE1_MS 4
 
 /* Flight Modes
 Enables or disables the Flight Mode API.

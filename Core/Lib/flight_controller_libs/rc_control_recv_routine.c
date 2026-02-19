@@ -45,7 +45,7 @@ static int line_buffer_add_char(char c, char *buf, size_t buf_size, size_t *len)
 #include <errno.h>
 
 //#define UDP_RX_BUF_SIZE    PBUF_POOL_BUFSIZE   /* enough for full Ethernet MTU */
-#define UDP_RX_BUF_SIZE    128
+#define UDP_RX_BUF_SIZE    512
 
 char rxbuf[UDP_RX_BUF_SIZE];
 void rc_control_udp(void *arg)
@@ -219,23 +219,23 @@ void rc_control_udp(void *arg)
 
 
 
-//static uint32_t crsf_sys_now_example(void){
-//    // Get current kernel tick count and tick frequency
-//    uint32_t ticks      = osKernelGetTickCount();
-//    uint32_t tick_freq  = osKernelGetTickFreq();  // ticks per second
-//
-//    // Convert ticks to milliseconds safely and portably
-//    return (uint32_t)((ticks * 1000U) / tick_freq) * 1000;
-//}
+static uint32_t crsf_sys_now_example(void){
+    // Get current kernel tick count and tick frequency
+    uint32_t ticks      = osKernelGetTickCount();
+    uint32_t tick_freq  = osKernelGetTickFreq();  // ticks per second
 
-
-static uint32_t crsf_sys_now_example(void) {
-    uint64_t ticks = (uint64_t)osKernelGetTickCount();
-    uint32_t freq  = osKernelGetTickFreq();
-
-    // Returns microseconds (us)
-    return (uint32_t)((ticks * 1000000ULL) / freq);
+    // Convert ticks to milliseconds safely and portably
+    return (uint32_t)((ticks * 1000U) / tick_freq) * 1000;
 }
+
+
+//static uint32_t crsf_sys_now_example(void) {
+//    uint64_t ticks = (uint64_t)osKernelGetTickCount();
+//    uint32_t freq  = osKernelGetTickFreq();
+//
+//    // Returns microseconds (us)
+//    return (uint32_t)((ticks * 1000000ULL) / freq);
+//}
 
 static uint32_t crsf_output_cb_fn_example(crsf_t *crsf, const void *data, uint32_t len, void *ctx) {
 	(void) crsf;
@@ -245,7 +245,7 @@ static uint32_t crsf_output_cb_fn_example(crsf_t *crsf, const void *data, uint32
 
 void rc_control_crsf(void *arg){
 	crsf_t crsf;
-	uint32_t frame_rate_hz = 250;
+	uint32_t frame_rate_hz = 333;
 	size_t rx_data_size = 0;
 	size_t rx_data_size_processed = 0;
 	size_t total_loops = 0;
@@ -257,6 +257,7 @@ void rc_control_crsf(void *arg){
 	int8_t failsafe;
 	int8_t is_armed;
 	int8_t isLinkUp = 0;
+	int8_t armed_fp = 0;
 	coord3D target_attitude = {0};
 	flight_control_loop_t *fcl_ptr = (flight_control_loop_t*)arg;
 	crsf_init(&crsf, frame_rate_hz, crsf_sys_now_example, crsf_output_cb_fn_example, NULL);
@@ -267,6 +268,7 @@ void rc_control_crsf(void *arg){
 	throttle = 0.0f;
 	failsafe = 0;
 	is_armed = 0;
+
 	uint32_t bytes_processed = 0;
 
 
@@ -274,7 +276,7 @@ void rc_control_crsf(void *arg){
 		total_loops = 0;
 //		do{
 			rx_data_size = uart_recv_data(&usart3_driver, rxbuf, UDP_RX_BUF_SIZE);
-			uart_data_rx_flush(&usart3_driver);
+//			uart_data_rx_flush(&usart3_driver);
 			rx_data_size_processed = 0;
 			bytes_processed = 0;
 			for(rx_data_size_processed = 0; rx_data_size_processed < rx_data_size; total_loops += bytes_processed){
@@ -284,7 +286,7 @@ void rc_control_crsf(void *arg){
 				crsf_result = crsf_update(&crsf, (uint8_t*)&(rxbuf[rx_data_size_processed]), (uint32_t)(rx_data_size - bytes_processed), &bytes_processed);
 				rx_data_size_processed += bytes_processed;
 
-				if(crsf_result != CRSF_FRAMETYPE_INVALID && crsf_isNewRcDataAvailable(&crsf)){ // new frame was received
+				if(crsf_result == CRSF_FRAMETYPE_RC_CHANNELS_PACKED || crsf_result == CRSF_FRAMETYPE_SUBSET_RC_CHANNELS_PACKED){ // new frame was received
 
 					if(crsf_isChannelUpdated(&crsf, RC_CHANNEL_ROLL) != 0){
 						roll = crsf_getChannelNormalized(&crsf, RC_CHANNEL_ROLL);
@@ -304,10 +306,10 @@ void rc_control_crsf(void *arg){
 
 					is_armed = crsf_isArmed(&crsf);
 
-					int8_t armed_fp = (int8_t)flight_control_loop_are_esc_armed(fcl_ptr);
+					armed_fp = (int8_t)flight_control_loop_are_esc_armed(fcl_ptr);
 
 					crsf_setFlightModeData(&crsf, FLIGHT_MODE_ANGLE, armed_fp);
-					break;
+//					break;
 				}
 			}
 
@@ -321,10 +323,14 @@ void rc_control_crsf(void *arg){
 		target_attitude.z = yaw;
 
 	    if (is_armed != 0 && failsafe == 0){
-	    	flight_control_loop_arm_esc(fcl_ptr);
+	    	if(armed_fp == 0){
+	    		flight_control_loop_arm_esc(fcl_ptr);
+	    	}
 	    }
 	    else {
-	    	flight_control_loop_disarm_esc(fcl_ptr);
+	    	if(armed_fp != 0){
+	    		flight_control_loop_disarm_esc(fcl_ptr);
+	    	}
 	     }
 
 	     flight_control_loop_update_rc_control(fcl_ptr, target_attitude, throttle);

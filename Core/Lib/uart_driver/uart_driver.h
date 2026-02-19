@@ -47,6 +47,43 @@ void uart_data_rx_flush(uart_driver_t *uart_driver_handle);
 
 
 
+//void HAL_UART_IDLECallback(UART_HandleTypeDef *huart)
+//{
+//	if (huart->Instance == usart1_driver.uart_handle->Instance)
+//    {
+//		IDLECallback_routine(&usart1_driver, huart);
+//    }
+//	else if (huart->Instance == usart3_driver.uart_handle->Instance)
+//    {
+//		IDLECallback_routine(&usart3_driver, huart);
+//    }
+//}
+
+
+///**
+//  * @brief This function handles USART3 global interrupt.
+//  */
+//void USART3_IRQHandler(void)
+//{
+//  /* USER CODE BEGIN USART3_IRQn 0 */
+//
+//  /* USER CODE END USART3_IRQn 0 */
+//  HAL_UART_IRQHandler(&huart3);
+//  /* USER CODE BEGIN USART3_IRQn 1 */
+//  if (__HAL_UART_GET_FLAG(&huart3, UART_FLAG_IDLE))
+//  {
+//      __HAL_UART_CLEAR_IDLEFLAG(&huart3);
+//      HAL_UART_IDLECallback(&huart3);
+//  }
+//  /* USER CODE END USART3_IRQn 1 */
+//}
+
+
+
+
+
+
+
 #ifdef __cplusplus
 }
 #endif

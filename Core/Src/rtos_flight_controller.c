@@ -400,7 +400,7 @@ void app_main_start(void *argument)
 
     lwip_feed_attr = (osThreadAttr_t){
         .name       = "lwip_feed",
-        .priority   = osPriorityLow,
+        .priority   = osPriorityBelowNormal,
         .stack_mem  = lwip_feed_stack,
         .stack_size = sizeof(lwip_feed_stack),
 		.cb_mem = &lwip_feed_h_taskControlBlock,
@@ -433,7 +433,7 @@ void app_main_start(void *argument)
 
     rc_attr = (osThreadAttr_t){
         .name       = "rc_control_main",
-        .priority   = osPriorityNormal,
+        .priority   = osPriorityAboveNormal,
         .stack_mem  = rc_stack,
         .stack_size = sizeof(rc_stack),
 		.cb_mem = &rc_h_taskControlBlock,
@@ -444,7 +444,7 @@ void app_main_start(void *argument)
 
     telem_attr = (osThreadAttr_t){
         .name       = "print_telemetry_data",
-        .priority   = osPriorityNormal,
+        .priority   = osPriorityLow,
         .stack_mem  = telem_stack,
         .stack_size = sizeof(telem_stack),
 		.cb_mem = &telem_h_taskControlBlock,
@@ -456,7 +456,7 @@ void app_main_start(void *argument)
 #if ENABLE_CLI != 0
     fp_cli_attr = (osThreadAttr_t){
         .name       = "fp_cli_func",
-        .priority   = osPriorityNormal,
+        .priority   = osPriorityLow,
         .stack_mem  = fp_cli_stack,
         .stack_size = sizeof(fp_cli_stack),
 		.cb_mem = &fp_cli_h_taskControlBlock,

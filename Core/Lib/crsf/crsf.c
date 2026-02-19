@@ -92,6 +92,33 @@ static float crsf_usToNormalized(uint16_t us) {
     return val;
 }
 
+/**
+ * @brief Updates the is_armed state based on the configured switch and throttle safety.
+ * Call this function immediately after parsing a new RC frame.
+ */
+void crsf_update_arming_state(crsf_t *dev) {
+    if (!dev) return;
+
+
+    if(crsf_isChannelUpdated(dev, CRSF_ARM_CHANNEL_INDEX) == 0){
+    	return;
+    }
+    // 1. Get the current value of the configured Arm Switch
+    // Assuming _rcChannels contains a 'channels' array of floats
+    // normalized between -1.0 and 1.0
+//    uint16_t arm_switch_val = dev->_rcChannels.value[CRSF_ARM_CHANNEL_INDEX];
+
+    float arm_switch_val = crsf_getChannelNormalized(dev, CRSF_ARM_CHANNEL_INDEX);
+
+    // CASE A: Switch is LOW (Disarm Command)
+    if (arm_switch_val < CRSF_ARM_THRESHOLD_NORM) {
+        // Always disarm immediately if switch is low
+        dev->is_armed = 0;
+    }
+    else{
+    	dev->is_armed = 1;
+    }
+}
 
 static void process_channels_frame(crsf_t *crsf){
 	for(int i = 0; i < RC_CHANNEL_COUNT; i++){
@@ -99,109 +126,96 @@ static void process_channels_frame(crsf_t *crsf){
 			crsf->_rcChannels.value_norm[i] = crsf_usToNormalized(crsf_rcToUs(crsf->_rcChannels.value[i], crsf->_rcChannels.resolution));
 		}
 	}
+	crsf_update_arming_state(crsf);
+}
+
+static frameType_t process_received_frame(crsf_t *crsf){
+	switch (crsf->rxFrame.frame.type)
+	{
+		case CRSF_FRAMETYPE_RC_CHANNELS_PACKED:
+//		case CRSF_FRAMETYPE_SUBSET_RC_CHANNELS_PACKED:
+			if (crsf->rxFrame.frame.deviceAddress == CRSF_ADDRESS_FLIGHT_CONTROLLER)
+			{
+				memcpy(&(crsf->rcChannelsFrame), &(crsf->rxFrame), sizeof(crsf->rcChannelsFrame));
+				crsf_setLinkUp(crsf);
+				crsf->rcFrameReceived = 1;
+			}
+			break;
+
+#if CRSF_LINK_STATISTICS_ENABLED > 0
+		case CRSF_FRAMETYPE_LINK_STATISTICS:
+			if ((crsf->rxFrame.frame.deviceAddress == CRSF_ADDRESS_FLIGHT_CONTROLLER) && ( crsf->rxFrame.frame.frameLength == (CRSF_FRAME_LENGTH_TYPE + CRSF_FRAME_LENGTH_CRC + CRSF_FRAME_LINK_STATISTICS_PAYLOAD_SIZE) ))
+			{
+				crsf_payload_link_statistics_t linkStatisticsPayload;
+				memcpy(&linkStatisticsPayload, crsf->rxFrame.frame.payload, sizeof(crsf_payload_link_statistics_t));
+
+				crsf->linkStatistics.rssi = (linkStatisticsPayload.active_antenna ? linkStatisticsPayload.uplink_rssi_2 : linkStatisticsPayload.uplink_rssi_1) * -1;
+				crsf->linkStatistics.lqi = linkStatisticsPayload.uplink_link_quality;
+				crsf->linkStatistics.snr = linkStatisticsPayload.uplink_snr;
+#if USE_RX_LINK_UPLINK_POWER != 0
+			    int crsfUplinkPowerStatesItemIndex = (linkStatisticsPayload.uplink_tx_power < CRSF_UPLINK_POWER_LEVEL_MW_ITEMS_COUNT) ? linkStatisticsPayload.uplink_tx_power : 0;
+				crsf->linkStatistics.tx_power = crsf_tx_power_table[crsfUplinkPowerStatesItemIndex];
+#endif
+			}
+			break;
+#endif
+	}
+	return crsf->rxFrame.frame.type;
 }
 
 
 // returns CRSF_FRAMETYPE_INVALID when a frame is not received
-static frameType_t crsf_receive_frame(crsf_t *crsf, uint8_t rxByte)
+static int crsf_receive_frame(crsf_t *crsf, uint8_t rxByte)
 {
 	uint32_t currentTime = crsf->sys_now_us();
-	uint32_t timePerFrame = (uint32_t)HzToUs_int(crsf->frame_rate_hz);
-	uint32_t fullFrameLength = 0;
+	uint32_t timePerFrame = (uint32_t)HzToUs_float(crsf->frame_rate_hz);
 	crsf->rcFrameReceived = 0;
 
 	/* Reset the frame position if the frame time has expired. */
-	if (currentTime - crsf->rx_frame_start_time_us > timePerFrame) {
+	if ((currentTime - crsf->rx_frame_start_time_us) > timePerFrame) {
 		crsf->rx_frame_position = 0;
-
-		if (currentTime < crsf->rx_frame_start_time_us) {
-			crsf->rx_frame_start_time_us = currentTime;
-		}
 	}
 
 	if (crsf->rx_frame_position == 0) {
 		crsf->rx_frame_start_time_us = currentTime;
+		crsf->rx_frame_full_length = (CRSF_FRAME_LENGTH_ADDRESS + CRSF_FRAME_LENGTH_FRAMELENGTH);
 	}
 
 	/* Store the received byte in the frame buffer. */
 	crsf->rxFrame.raw[crsf->rx_frame_position] = rxByte;
 	crsf->rx_frame_position++;
 
-	/* Assume the full frame length is 5 bytes until the frame length byte is received. */
-	if(crsf->rx_frame_position < (CRSF_FRAME_LENGTH_ADDRESS + CRSF_FRAME_LENGTH_FRAMELENGTH)){
-		fullFrameLength = (CRSF_FRAME_LENGTH_ADDRESS + CRSF_FRAME_LENGTH_FRAMELENGTH);
-	}
-	else{
-		fullFrameLength = crsf->rxFrame.frame.frameLength + CRSF_FRAME_LENGTH_ADDRESS + CRSF_FRAME_LENGTH_FRAMELENGTH;
-		if(crsf->rxFrame.frame.frameLength > CRSF_FRAME_LENGTH_MAX ||
+
+	if (crsf->rx_frame_position >= crsf->rx_frame_full_length)
+	{
+		// the temporary rx_frame_full_length was reached, now set the real frame full length from the received frame length
+		if(crsf->rx_frame_full_length <= (CRSF_FRAME_LENGTH_ADDRESS + CRSF_FRAME_LENGTH_FRAMELENGTH) &&
+		   crsf->rx_frame_position >= (CRSF_FRAME_LENGTH_ADDRESS + CRSF_FRAME_LENGTH_FRAMELENGTH)
+		   ){
+			crsf->rx_frame_full_length = crsf->rxFrame.frame.frameLength + CRSF_FRAME_LENGTH_ADDRESS + CRSF_FRAME_LENGTH_FRAMELENGTH;
+			if(crsf->rxFrame.frame.frameLength > CRSF_FRAME_LENGTH_MAX ||
 				crsf->rxFrame.frame.frameLength < CRSF_FRAME_LENGTH_MIN){
-			/* Clear the frame buffer and reset the frame position. */
-			//memset(crsf->rxFrame.raw, 0, CRSF_FRAME_SIZE_MAX);
-			crsf->rx_frame_position = 0;
-			return CRSF_FRAMETYPE_INVALID;
+				crsf->rx_frame_position = 0;
+				return 0;
+			}
+			return 0;
 		}
+
+		/* Frame is complete, calculate the CRC and check if it is valid. */
+		uint8_t crc = crc8_dvb_s2_init();
+		crc = crc8_dvb_s2_add(crc, crsf->rxFrame.frame.type);
+		crc = crc8_dvb_s2_add_arr(crc, crsf->rxFrame.frame.payload, crsf->rxFrame.frame.frameLength - CRSF_FRAME_LENGTH_TYPE_CRC);
+
+		crsf->rx_frame_position = 0;
+
+		if (crc == crsf->rxFrame.raw[crsf->rx_frame_full_length - 1]) {
+			return 1;
+		}
+
+		return 0;
 	}
 
-	fullFrameLength = CRSF_CLAMP(fullFrameLength, 0, CRSF_FRAME_SIZE_MAX);
-
-//	if (crsf->rx_frame_position < fullFrameLength)
-//	{
-		if (crsf->rx_frame_position >= fullFrameLength)
-		{
-			/* Frame is complete, calculate the CRC and check if it is valid. */
-			uint8_t crc = crc8_dvb_s2_init();
-			crc = crc8_dvb_s2_add(crc, crsf->rxFrame.frame.type);
-			crc = crc8_dvb_s2_add_arr(crc, crsf->rxFrame.frame.payload, crsf->rxFrame.frame.frameLength - CRSF_FRAME_LENGTH_TYPE_CRC);
-
-			if (crc == crsf->rxFrame.raw[fullFrameLength - 1])
-			{
-				switch (crsf->rxFrame.frame.type)
-				{
-					case CRSF_FRAMETYPE_RC_CHANNELS_PACKED:
-//					case CRSF_FRAMETYPE_SUBSET_RC_CHANNELS_PACKED:
-						if (crsf->rxFrame.frame.deviceAddress == CRSF_ADDRESS_FLIGHT_CONTROLLER)
-						{
-							memcpy(&(crsf->rcChannelsFrame), &(crsf->rxFrame), sizeof(crsf->rcChannelsFrame));
-							crsf_setLinkUp(crsf);
-							crsf->rcFrameReceived = 1;
-						}
-						break;
-
-#if CRSF_LINK_STATISTICS_ENABLED > 0
-					case CRSF_FRAMETYPE_LINK_STATISTICS:
-						if ((crsf->rxFrame.frame.deviceAddress == CRSF_ADDRESS_FLIGHT_CONTROLLER) && ( crsf->rxFrame.frame.frameLength == (CRSF_FRAME_LENGTH_TYPE + CRSF_FRAME_LENGTH_CRC + CRSF_FRAME_LINK_STATISTICS_PAYLOAD_SIZE) ))
-						{
-							crsf_payload_link_statistics_t linkStatisticsPayload;
-							memcpy(&linkStatisticsPayload, crsf->rxFrame.frame.payload, sizeof(crsf_payload_link_statistics_t));
-
-							crsf->linkStatistics.rssi = (linkStatisticsPayload.active_antenna ? linkStatisticsPayload.uplink_rssi_2 : linkStatisticsPayload.uplink_rssi_1) * -1;
-							crsf->linkStatistics.lqi = linkStatisticsPayload.uplink_link_quality;
-							crsf->linkStatistics.snr = linkStatisticsPayload.uplink_snr;
-#if USE_RX_LINK_UPLINK_POWER != 0
-						    int crsfUplinkPowerStatesItemIndex = (linkStatisticsPayload.uplink_tx_power < CRSF_UPLINK_POWER_LEVEL_MW_ITEMS_COUNT) ? linkStatisticsPayload.uplink_tx_power : 0;
-							crsf->linkStatistics.tx_power = crsf_tx_power_table[crsfUplinkPowerStatesItemIndex];
-#endif
-						}
-						break;
-#endif
-				}
-			}
-			else{
-				// crc is corrupted
-				/* Clear the frame buffer and reset the frame position. */
-				//memset(crsf->rxFrame.raw, 0, CRSF_FRAME_SIZE_MAX);
-				crsf->rx_frame_position = 0;
-				return CRSF_FRAMETYPE_INVALID;
-			}
-
-			/* Clear the frame buffer and reset the frame position. */
-			//memset(crsf->rxFrame.raw, 0, CRSF_FRAME_SIZE_MAX);
-			crsf->rx_frame_position = 0;
-			return (frameType_t) (crsf->rxFrame.frame.type);
-		}
-//	}
-
-	return CRSF_FRAMETYPE_INVALID;
+	return 0;
 }
 
 
@@ -337,7 +351,8 @@ void crsf_getRcChannels(crsf_t *crsf, rcChannels_t* rc_channels)
 
 static void crsf_checkLinkDown(crsf_t *crsf)
 {
-    if (crsf->_linkIsUp && ((crsf->sys_now_us() - crsf->_lastChannelsPacket) > MilliToMicro_int(CRSF_FAILSAFE_STAGE1_MS) ))
+	uint32_t currentTime_us = crsf->sys_now_us();
+    if (crsf->_linkIsUp && ((currentTime_us - crsf->_lastChannelsPacket) >= MilliToMicro_int(CRSF_FAILSAFE_STAGE1_MS) ))
     {
 		crsf->_linkIsUp = 0;
     }
@@ -349,29 +364,7 @@ int8_t crsf_isLinkUp(crsf_t *crsf){
 
 
 
-/**
- * @brief Updates the is_armed state based on the configured switch and throttle safety.
- * Call this function immediately after parsing a new RC frame.
- */
-void crsf_update_arming_state(crsf_t *dev) {
-    if (!dev) return;
 
-    // 1. Get the current value of the configured Arm Switch
-    // Assuming _rcChannels contains a 'channels' array of floats
-    // normalized between -1.0 and 1.0
-//    uint16_t arm_switch_val = dev->_rcChannels.value[CRSF_ARM_CHANNEL_INDEX];
-
-    float arm_switch_val = crsf_getChannelNormalized(dev, CRSF_ARM_CHANNEL_INDEX);
-
-    // CASE A: Switch is LOW (Disarm Command)
-    if (arm_switch_val < CRSF_ARM_THRESHOLD_NORM) {
-        // Always disarm immediately if switch is low
-        dev->is_armed = 0;
-    }
-    else{
-    	dev->is_armed = 1;
-    }
-}
 
 int8_t crsf_isArmed(crsf_t *crsf){
 	return crsf->is_armed;
@@ -383,25 +376,29 @@ static frameType_t crsf_update_byte(crsf_t *crsf, uint8_t rxByte){
 
 	uint8_t byteReceived = (uint8_t)rxByte;
 	uint32_t currentTime = crsf->sys_now_us();
-	frameType_t frame_received =  crsf_receive_frame(crsf, byteReceived);
-	if (frame_received != CRSF_FRAMETYPE_INVALID)
-	{
+	frameType_t frame_type = CRSF_FRAMETYPE_INVALID;
+	int frame_received =  crsf_receive_frame(crsf, byteReceived);
+
+	if(frame_received != 0){
+		frame_type = process_received_frame(crsf);
 
 #if CRSF_RC_ENABLED > 0
 		_crsf_getRcChannels(crsf, &(crsf->_rcChannels));
-		crsf_update_arming_state(crsf);
+//		crsf_update_arming_state(crsf);
 #endif
 	}
 #if CRSF_TELEMETRY_ENABLED > 0
-	crsf_telemetry_update(&(crsf->telemetry), currentTime);
-	uint8_t* data_to_send = crsf_telemetry_get_tx_data(&(crsf->telemetry));
-	uint32_t data_size_to_send = crsf_telemetry_get_tx_data_size(&(crsf->telemetry));
-	uint32_t data_size_sent = crsf->crsf_output(crsf, data_to_send, data_size_to_send, crsf->crsf_output_cb_fn_ctx);
-	crsf_telemetry_update_tx_data_sent(&(crsf->telemetry), data_size_sent);
+
+	if(crsf_telemetry_update(&(crsf->telemetry), currentTime) > 0){
+		uint32_t data_size_to_send = crsf_telemetry_get_tx_data_size(&(crsf->telemetry));
+		uint8_t* data_to_send = crsf_telemetry_get_tx_data(&(crsf->telemetry));
+		uint32_t data_size_sent = crsf->crsf_output(crsf, data_to_send, data_size_to_send, crsf->crsf_output_cb_fn_ctx);
+		crsf_telemetry_update_tx_data_sent(&(crsf->telemetry), data_size_sent);
+	}
 #endif
 
 	crsf_checkLinkDown(crsf);
-	return frame_received;
+	return frame_type;
 }
 
 

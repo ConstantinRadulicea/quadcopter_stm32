@@ -12,7 +12,7 @@ extern "C" {
 #endif
 
 #define HzToUs_float(hz) (1000000.0f/(hz))
-#define HzToUs_int(hz) (1000000/(hz))
+#define HzToUs_int(hz) ((int)(1000000/(hz)))
 #define MilliToMicro_int(val) ((val)*1000)
 
 #ifndef CRSF_LITTLE_ENDIAN

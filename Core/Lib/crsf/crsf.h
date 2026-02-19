@@ -24,6 +24,7 @@ typedef struct crsf_s{
 	crsf_output_cb_fn crsf_output;
 	void* crsf_output_cb_fn_ctx;
 	uint8_t rx_frame_position;
+	uint8_t rx_frame_full_length;
 	uint32_t rx_frame_start_time_us;
 	crsf_frame_t rxFrame;
 	crsf_frame_t rcChannelsFrame;
