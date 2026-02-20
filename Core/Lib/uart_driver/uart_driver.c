@@ -23,7 +23,7 @@ static void read_rx_dma_buffer(uart_driver_t *uart_driver_handle)
 			// wrapped: tail then head
 			size_t tail_len = uart_driver_handle->dma_rx_buffer_size - uart_driver_handle->dma_last_pos;
 			ring_buffer_enqueue_arr(&(uart_driver_handle->rx_ring_buffer), &(uart_driver_handle->dma_rx_buffer[uart_driver_handle->dma_last_pos]), tail_len);
-			if (dma_pos) {
+			if (dma_pos > 0) {
 				ring_buffer_enqueue_arr(&(uart_driver_handle->rx_ring_buffer), &(uart_driver_handle->dma_rx_buffer[0]), dma_pos);
 			}
 		}

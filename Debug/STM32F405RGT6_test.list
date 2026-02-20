@@ -13739,8 +13739,8 @@ void rc_control_crsf(void *arg){
  80072a8:	f5a3 7365 	sub.w	r3, r3, #916	@ 0x394
  80072ac:	6018      	str	r0, [r3, #0]
 	crsf_t crsf;
-	uint32_t frame_rate_hz = 333;
- 80072ae:	f240 134d 	movw	r3, #333	@ 0x14d
+	uint32_t frame_rate_hz = 1000;
+ 80072ae:	f44f 737a 	mov.w	r3, #1000	@ 0x3e8
  80072b2:	f8c7 337c 	str.w	r3, [r7, #892]	@ 0x37c
 	size_t rx_data_size = 0;
  80072b6:	2300      	movs	r3, #0
@@ -24145,10 +24145,10 @@ __attribute__((always_inline)) static inline crit_state_t __iBegin_custom(crit_s
  800b354:	6afa      	ldr	r2, [r7, #44]	@ 0x2c
  800b356:	4619      	mov	r1, r3
  800b358:	f7ff fe8f 	bl	800b07a <ring_buffer_enqueue_arr>
-			if (dma_pos) {
+			if (dma_pos > 0) {
  800b35c:	6b3b      	ldr	r3, [r7, #48]	@ 0x30
  800b35e:	2b00      	cmp	r3, #0
- 800b360:	d008      	beq.n	800b374 <read_rx_dma_buffer+0xde>
+ 800b360:	dd08      	ble.n	800b374 <read_rx_dma_buffer+0xde>
 				ring_buffer_enqueue_arr(&(uart_driver_handle->rx_ring_buffer), &(uart_driver_handle->dma_rx_buffer[0]), dma_pos);
  800b362:	687b      	ldr	r3, [r7, #4]
  800b364:	f103 0014 	add.w	r0, r3, #20

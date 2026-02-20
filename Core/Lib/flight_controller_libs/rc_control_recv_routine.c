@@ -245,7 +245,7 @@ static uint32_t crsf_output_cb_fn_example(crsf_t *crsf, const void *data, uint32
 
 void rc_control_crsf(void *arg){
 	crsf_t crsf;
-	uint32_t frame_rate_hz = 333;
+	uint32_t frame_rate_hz = 1000;
 	size_t rx_data_size = 0;
 	size_t rx_data_size_processed = 0;
 	size_t total_loops = 0;
