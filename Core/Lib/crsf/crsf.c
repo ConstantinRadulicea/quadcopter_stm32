@@ -7,10 +7,8 @@
 #include "crsf_telemetry.h"
 
 
-static int crsf_is_valid_device_address(address_t addr){
-	if(addr >= CRSF_ADDRESS_NAT_START && addr <= CRSF_ADDRESS_NAT_END){
-		return 1;
-	}
+static inline int crsf_is_valid_device_address(address_t addr){
+
 	switch(addr){
 		case CRSF_ADDRESS_BROADCAST:
 		case CRSF_ADDRESS_CLOUD:
@@ -45,6 +43,10 @@ static int crsf_is_valid_device_address(address_t addr){
 			return 1;
 		default:
 			break;
+	}
+
+	if(addr >= CRSF_ADDRESS_NAT_START && addr <= CRSF_ADDRESS_NAT_END){
+		return 1;
 	}
 	return 0;
 }
@@ -209,22 +211,17 @@ static frameType_t process_received_frame(crsf_t *crsf){
 
 
 // returns CRSF_FRAMETYPE_INVALID when a frame is not received
-static int crsf_receive_frame(crsf_t *crsf, uint8_t rxByte)
+static int crsf_receive_frame(crsf_t *crsf, uint8_t rxByte, uint32_t currentTime_us, uint32_t timePerFrame_us)
 {
-	uint32_t currentTime = crsf->sys_now_us();
-	uint32_t timePerFrame = (uint32_t)HzToUs_float(crsf->frame_rate_hz);
-	crsf->rcFrameReceived = 0;
+	uint8_t crc;
 
-	/* Reset the frame position if the frame time has expired. */
-	if ((currentTime - crsf->rx_frame_start_time_us) > timePerFrame) {
-		crsf->rx_frame_position = 0;
-	}
+	crsf->rcFrameReceived = 0;
 
 	if (crsf->rx_frame_position == 0) {
 		if(crsf_is_valid_device_address((address_t)rxByte) == 0){
 			return 0;
 		}
-		crsf->rx_frame_start_time_us = currentTime;
+		crsf->rx_frame_start_time_us = currentTime_us;
 		crsf->rx_frame_full_length = (CRSF_FRAME_LENGTH_ADDRESS + CRSF_FRAME_LENGTH_FRAMELENGTH);
 	}
 
@@ -232,24 +229,23 @@ static int crsf_receive_frame(crsf_t *crsf, uint8_t rxByte)
 	crsf->rxFrame.raw[crsf->rx_frame_position] = rxByte;
 	crsf->rx_frame_position++;
 
-
 	if (crsf->rx_frame_position >= crsf->rx_frame_full_length)
 	{
 		// the temporary rx_frame_full_length was reached, now set the real frame full length from the received frame length
 		if(crsf->rx_frame_full_length <= (CRSF_FRAME_LENGTH_ADDRESS + CRSF_FRAME_LENGTH_FRAMELENGTH) &&
 		   crsf->rx_frame_position >= (CRSF_FRAME_LENGTH_ADDRESS + CRSF_FRAME_LENGTH_FRAMELENGTH)
 		   ){
-			crsf->rx_frame_full_length = crsf->rxFrame.frame.frameLength + CRSF_FRAME_LENGTH_ADDRESS + CRSF_FRAME_LENGTH_FRAMELENGTH;
 			if(crsf->rxFrame.frame.frameLength > CRSF_FRAME_LENGTH_MAX ||
 				crsf->rxFrame.frame.frameLength < CRSF_FRAME_LENGTH_MIN){
 				crsf->rx_frame_position = 0;
 				return 0;
 			}
+			crsf->rx_frame_full_length = crsf->rxFrame.frame.frameLength + CRSF_FRAME_LENGTH_ADDRESS + CRSF_FRAME_LENGTH_FRAMELENGTH;
 			return 0;
 		}
 
 		/* Frame is complete, calculate the CRC and check if it is valid. */
-		uint8_t crc = crc8_dvb_s2_init();
+		crc = crc8_dvb_s2_init();
 		crc = crc8_dvb_s2_add(crc, crsf->rxFrame.frame.type);
 		crc = crc8_dvb_s2_add_arr(crc, crsf->rxFrame.frame.payload, crsf->rxFrame.frame.frameLength - CRSF_FRAME_LENGTH_TYPE_CRC);
 
@@ -258,10 +254,8 @@ static int crsf_receive_frame(crsf_t *crsf, uint8_t rxByte)
 		if (crc == crsf->rxFrame.raw[crsf->rx_frame_full_length - 1]) {
 			return 1;
 		}
-
 		return 0;
 	}
-
 	return 0;
 }
 
@@ -419,37 +413,6 @@ int8_t crsf_isArmed(crsf_t *crsf){
 
 
 
-static frameType_t crsf_update_byte(crsf_t *crsf, uint8_t rxByte){
-
-	uint8_t byteReceived = (uint8_t)rxByte;
-	uint32_t currentTime = crsf->sys_now_us();
-	frameType_t frame_type = CRSF_FRAMETYPE_INVALID;
-	int frame_received =  crsf_receive_frame(crsf, byteReceived);
-
-	if(frame_received != 0){
-		frame_type = process_received_frame(crsf);
-
-#if CRSF_RC_ENABLED > 0
-		_crsf_getRcChannels(crsf, &(crsf->_rcChannels));
-//		crsf_update_arming_state(crsf);
-#endif
-	}
-#if CRSF_TELEMETRY_ENABLED > 0
-
-	if(crsf_telemetry_update(&(crsf->telemetry), currentTime) > 0){
-		uint32_t data_size_to_send = crsf_telemetry_get_tx_data_size(&(crsf->telemetry));
-		uint8_t* data_to_send = crsf_telemetry_get_tx_data(&(crsf->telemetry));
-		uint32_t data_size_sent = crsf->crsf_output(crsf, data_to_send, data_size_to_send, crsf->crsf_output_cb_fn_ctx);
-		crsf_telemetry_update_tx_data_sent(&(crsf->telemetry), data_size_sent);
-	}
-#endif
-
-	crsf_checkLinkDown(crsf);
-	return frame_type;
-}
-
-
-
 //#if CRSF_FLIGHTMODES_ENABLED > 0
     void crsf_setFlightModeData(crsf_t *crsf, flightModeId_t flightMode, int8_t disarmed)
     {
@@ -555,15 +518,42 @@ float crsf_transformThrottle(float input) {
 frameType_t crsf_update(crsf_t *crsf, uint8_t* rx_buf, uint32_t rx_buf_size, uint32_t *bytes_processed){
 	frameType_t crsf_result = CRSF_FRAMETYPE_INVALID;
 	*bytes_processed = 0;
+	int frame_received = 0;
 	uint32_t bytes_processed_local = 0;
 
+	uint32_t currentTime_us = crsf->sys_now_us();
+	uint32_t timePerFrame_us = (uint32_t)HzToUs_float(crsf->frame_rate_hz);
+
+	/* Reset the frame position if the frame time has expired. */
+	if ((currentTime_us - crsf->rx_frame_start_time_us) > timePerFrame_us) {
+		crsf->rx_frame_position = 0;
+	}
+
 	for(uint32_t i=0;i < rx_buf_size; i++){
-		crsf_result = crsf_update_byte(crsf, rx_buf[i]);
+		frame_received = crsf_receive_frame(crsf, rx_buf[i], currentTime_us, timePerFrame_us);
 		bytes_processed_local++;
-		if(crsf_result != 0){ // new frame was received
+
+		if(frame_received != 0){ // new frame was received
+			crsf_result = process_received_frame(crsf);
+
+	#if CRSF_RC_ENABLED > 0
+			_crsf_getRcChannels(crsf, &(crsf->_rcChannels));
+	#endif
 			break;
 		}
 	}
+#if CRSF_TELEMETRY_ENABLED > 0
+
+	if(crsf_telemetry_update(&(crsf->telemetry), currentTime_us) > 0){
+		uint32_t data_size_to_send = crsf_telemetry_get_tx_data_size(&(crsf->telemetry));
+		uint8_t* data_to_send = crsf_telemetry_get_tx_data(&(crsf->telemetry));
+		uint32_t data_size_sent = crsf->crsf_output(crsf, data_to_send, data_size_to_send, crsf->crsf_output_cb_fn_ctx);
+		crsf_telemetry_update_tx_data_sent(&(crsf->telemetry), data_size_sent);
+	}
+#endif
+
+	crsf_checkLinkDown(crsf);
+
 	*bytes_processed = bytes_processed_local;
 	return crsf_result;
 }

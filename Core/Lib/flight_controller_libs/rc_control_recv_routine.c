@@ -271,16 +271,16 @@ void rc_control_crsf(void *arg){
 
 	uint32_t bytes_processed = 0;
 
-
+	uart_data_rx_flush(&usart3_driver);
 	for(;;) {
 		total_loops = 0;
 //		do{
 			rx_data_size = uart_recv_data(&usart3_driver, rxbuf, UDP_RX_BUF_SIZE);
-			uart_data_rx_flush(&usart3_driver);
+//			uart_data_rx_flush(&usart3_driver);
 			rx_data_size_processed = 0;
 			bytes_processed = 0;
-			for(rx_data_size_processed = 0; rx_data_size_processed < rx_data_size; total_loops += bytes_processed){
 
+			do{
 				crsf_result = CRSF_FRAMETYPE_INVALID;
 				bytes_processed = 0;
 				crsf_result = crsf_update(&crsf, (uint8_t*)&(rxbuf[rx_data_size_processed]), (uint32_t)(rx_data_size - bytes_processed), &bytes_processed);
@@ -311,7 +311,7 @@ void rc_control_crsf(void *arg){
 					crsf_setFlightModeData(&crsf, FLIGHT_MODE_ANGLE, armed_fp);
 //					break;
 				}
-			}
+			}while(rx_data_size_processed < rx_data_size);
 
 //		} while(rx_data_size > 0 && total_loops < 64*10);
 
