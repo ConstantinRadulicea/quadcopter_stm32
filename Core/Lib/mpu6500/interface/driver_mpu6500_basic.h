@@ -55,7 +55,7 @@ extern "C"{
  */
 #define MPU6500_BASIC_DEFAULT_CLOCK_SOURCE                   MPU6500_CLOCK_SOURCE_PLL                  /**< pll */
 #define MPU6500_BASIC_DEFAULT_RATE                           1000                                        /**< 50Hz */
-#define MPU6500_BASIC_DEFAULT_LOW_PASS_FILTER                MPU6500_LOW_PASS_FILTER_2                 /**< low pass filter 3 */
+#define MPU6500_BASIC_DEFAULT_LOW_PASS_FILTER                MPU6500_LOW_PASS_FILTER_7                 /**< low pass filter 3 */
 #define MPU6500_BASIC_DEFAULT_CYCLE_WAKE_UP                  MPU6500_BOOL_FALSE                        /**< disable cycle wake up */
 #define MPU6500_BASIC_DEFAULT_INTERRUPT_PIN_LEVEL            MPU6500_PIN_LEVEL_LOW                     /**< low level */
 #define MPU6500_BASIC_DEFAULT_INTERRUPT_PIN_TYPE             MPU6500_PIN_TYPE_PUSH_PULL                /**< push pull */
@@ -75,9 +75,9 @@ extern "C"{
 #define MPU6500_BASIC_DEFAULT_IIC_BYPASS                     MPU6500_BOOL_FALSE                        /**< disable iic bypass */
 #define MPU6500_BASIC_DEFAULT_GYROSCOPE_STANDBY              MPU6500_BOOL_FALSE                        /**< disable gyro standby */
 #define MPU6500_BASIC_DEFAULT_FIFO_MODE                      MPU6500_FIFO_MODE_NORMAL                  /**< normal mode */
-#define MPU6500_BASIC_DEFAULT_GYROSCOPE_CHOICE               0                                         /**< 0 */
-#define MPU6500_BASIC_DEFAULT_ACCELEROMETER_CHOICE           0                                         /**< 0 */
-#define MPU6500_BASIC_DEFAULT_ACCELEROMETER_LOW_PASS_FILTER  MPU6500_ACCELEROMETER_LOW_PASS_FILTER_4   /**< low pass filter 3 */
+#define MPU6500_BASIC_DEFAULT_GYROSCOPE_CHOICE               1                                         /**< 0 */
+#define MPU6500_BASIC_DEFAULT_ACCELEROMETER_CHOICE           1                                         /**< 0 */
+#define MPU6500_BASIC_DEFAULT_ACCELEROMETER_LOW_PASS_FILTER  MPU6500_ACCELEROMETER_LOW_PASS_FILTER_0   /**< low pass filter 3 */
 #define MPU6500_BASIC_DEFAULT_LOW_POWER_ACCEL_OUTPUT_RATE    MPU6500_LOW_POWER_ACCEL_OUTPUT_RATE_62P50 /**< 62.5Hz */
 #define MPU6500_BASIC_DEFAULT_WAKE_ON_MOTION                 MPU6500_BOOL_FALSE                        /**< disable wake on motion */
 #define MPU6500_BASIC_DEFAULT_ACCELEROMETER_COMPARE          MPU6500_BOOL_TRUE                         /**< enable compare */

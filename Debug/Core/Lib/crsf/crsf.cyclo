@@ -1,5 +1,5 @@
 ../Core/Lib/crsf/crsf_def.h:111:24:crsf_le16_to_host	1
-../Core/Lib/crsf/crsf.c:10:19:crsf_is_valid_device_address	15
+../Core/Lib/crsf/crsf.c:10:19:crsf_is_valid_device_address	2
 ../Core/Lib/crsf/crsf.c:55:6:crsf_set_output_cb_fn	1
 ../Core/Lib/crsf/crsf.c:60:8:crsf_init	5
 ../Core/Lib/crsf/crsf.c:80:13:crsf_setLinkUp	1
@@ -7,7 +7,7 @@
 ../Core/Lib/crsf/crsf.c:125:14:crsf_usToNormalized	3
 ../Core/Lib/crsf/crsf.c:145:6:crsf_update_arming_state	4
 ../Core/Lib/crsf/crsf.c:169:13:process_channels_frame	3
-../Core/Lib/crsf/crsf.c:178:20:process_received_frame	8
+../Core/Lib/crsf/crsf.c:178:20:process_received_frame	9
 ../Core/Lib/crsf/crsf.c:214:12:crsf_receive_frame	9
 ../Core/Lib/crsf/crsf.c:264:8:crsf_getFailSafe	2
 ../Core/Lib/crsf/crsf.c:280:13:_crsf_getRcChannels	10

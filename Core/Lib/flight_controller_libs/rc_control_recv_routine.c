@@ -245,7 +245,7 @@ static uint32_t crsf_output_cb_fn_example(crsf_t *crsf, const void *data, uint32
 
 void rc_control_crsf(void *arg){
 	crsf_t crsf;
-	uint32_t frame_rate_hz = 1000;
+	uint32_t frame_rate_hz = 250;
 	size_t rx_data_size = 0;
 	size_t rx_data_size_processed = 0;
 	size_t total_loops = 0;
@@ -273,47 +273,42 @@ void rc_control_crsf(void *arg){
 
 	uart_data_rx_flush(&usart3_driver);
 	for(;;) {
-		total_loops = 0;
-//		do{
-			rx_data_size = uart_recv_data(&usart3_driver, rxbuf, UDP_RX_BUF_SIZE);
-//			uart_data_rx_flush(&usart3_driver);
-			rx_data_size_processed = 0;
+
+		rx_data_size = uart_recv_data(&usart3_driver, rxbuf, UDP_RX_BUF_SIZE);
+//		uart_data_rx_flush(&usart3_driver);
+		rx_data_size_processed = 0;
+		bytes_processed = 0;
+		armed_fp = (int8_t)flight_control_loop_are_esc_armed(fcl_ptr);
+
+		do{
+			crsf_result = CRSF_FRAMETYPE_INVALID;
 			bytes_processed = 0;
+			crsf_result = crsf_update(&crsf, (uint8_t*)&(rxbuf[rx_data_size_processed]), (uint32_t)(rx_data_size - bytes_processed), &bytes_processed);
+			rx_data_size_processed += bytes_processed;
 
-			do{
-				crsf_result = CRSF_FRAMETYPE_INVALID;
-				bytes_processed = 0;
-				crsf_result = crsf_update(&crsf, (uint8_t*)&(rxbuf[rx_data_size_processed]), (uint32_t)(rx_data_size - bytes_processed), &bytes_processed);
-				rx_data_size_processed += bytes_processed;
+			if(crsf_result == CRSF_FRAMETYPE_RC_CHANNELS_PACKED || crsf_result == CRSF_FRAMETYPE_SUBSET_RC_CHANNELS_PACKED){ // new frame was received
 
-				if(crsf_result == CRSF_FRAMETYPE_RC_CHANNELS_PACKED || crsf_result == CRSF_FRAMETYPE_SUBSET_RC_CHANNELS_PACKED){ // new frame was received
-
-					if(crsf_isChannelUpdated(&crsf, RC_CHANNEL_ROLL) != 0){
-						roll = crsf_getChannelNormalized(&crsf, RC_CHANNEL_ROLL);
-					}
-
-					if(crsf_isChannelUpdated(&crsf, RC_CHANNEL_PITCH) != 0){
-						pitch = crsf_getChannelNormalized(&crsf, RC_CHANNEL_PITCH);
-					}
-					if(crsf_isChannelUpdated(&crsf, RC_CHANNEL_YAW) != 0){
-						yaw = crsf_getChannelNormalized(&crsf, RC_CHANNEL_YAW);
-					}
-
-					if(crsf_isChannelUpdated(&crsf, RC_CHANNEL_THROTTLE) != 0){
-						throttle = crsf_getChannelNormalized(&crsf, RC_CHANNEL_THROTTLE);
-						throttle = crsf_transformThrottle(throttle);
-					}
-
-					is_armed = crsf_isArmed(&crsf);
-
-					armed_fp = (int8_t)flight_control_loop_are_esc_armed(fcl_ptr);
-
-					crsf_setFlightModeData(&crsf, FLIGHT_MODE_ANGLE, armed_fp);
-//					break;
+				if(crsf_isChannelUpdated(&crsf, RC_CHANNEL_ROLL) != 0){
+					roll = crsf_getChannelNormalized(&crsf, RC_CHANNEL_ROLL);
 				}
-			}while(rx_data_size_processed < rx_data_size);
 
-//		} while(rx_data_size > 0 && total_loops < 64*10);
+				if(crsf_isChannelUpdated(&crsf, RC_CHANNEL_PITCH) != 0){
+					pitch = crsf_getChannelNormalized(&crsf, RC_CHANNEL_PITCH);
+				}
+				if(crsf_isChannelUpdated(&crsf, RC_CHANNEL_YAW) != 0){
+					yaw = crsf_getChannelNormalized(&crsf, RC_CHANNEL_YAW);
+				}
+
+				if(crsf_isChannelUpdated(&crsf, RC_CHANNEL_THROTTLE) != 0){
+					throttle = crsf_getChannelNormalized(&crsf, RC_CHANNEL_THROTTLE);
+					throttle = crsf_transformThrottle(throttle);
+				}
+
+				is_armed = crsf_isArmed(&crsf);
+
+//				crsf_setFlightModeData(&crsf, FLIGHT_MODE_ANGLE, armed_fp);
+			}
+		} while(rx_data_size_processed < rx_data_size);
 
 		isLinkUp = crsf_isLinkUp(&crsf);
 		failsafe = crsf_getFailSafe(&crsf);
@@ -321,6 +316,8 @@ void rc_control_crsf(void *arg){
 		target_attitude.x = roll;
 		target_attitude.y = pitch;
 		target_attitude.z = yaw;
+
+		flight_control_loop_update_rc_control(fcl_ptr, target_attitude, throttle);
 
 	    if (is_armed != 0 && failsafe == 0){
 	    	if(armed_fp == 0){
@@ -332,8 +329,6 @@ void rc_control_crsf(void *arg){
 	    		flight_control_loop_disarm_esc(fcl_ptr);
 	    	}
 	     }
-
-	     flight_control_loop_update_rc_control(fcl_ptr, target_attitude, throttle);
 
 	     vTaskDelay(pdMS_TO_TICKS(HzToMilliSec(RC_INPUT_SAMPLE_RATE_HZ)));
 //	     vTaskDelay(1);

@@ -87,7 +87,9 @@ void TxCpltCallback_routine(uart_driver_t *uart_driver_handle, UART_HandleTypeDe
 void IDLECallback_routine(uart_driver_t *uart_driver_handle, UART_HandleTypeDef *huart)
 {
 	if(uart_driver_handle->uart_handle->Instance == huart->Instance){
+//		LL_DMA_ClearFlag_TC2(DMA1);             /* Clear transfer complete flag */
 		read_rx_dma_buffer(uart_driver_handle);
+//		__HAL_UART_CLEAR_IT(huart, UART_CLEAR_IDLEF);
 	}
 }
 
@@ -252,14 +254,17 @@ void uart_driver_init(
 	uart_driver_handle->dma_rx_buffer_size = dma_rx_ring_buffer_size;
 	uart_driver_handle->dma_last_pos = 0;
 
-	  uint16_t rx_buffer_remaining_free = (uint16_t)ring_buffer_linear_free_space(&(uart_driver_handle->rx_ring_buffer));
-	  uint8_t *write_ptr = ring_buffer_write_ptr(&(uart_driver_handle->rx_ring_buffer));
+//	  uint16_t rx_buffer_remaining_free = (uint16_t)ring_buffer_linear_free_space(&(uart_driver_handle->rx_ring_buffer));
+//	  uint8_t *write_ptr = ring_buffer_write_ptr(&(uart_driver_handle->rx_ring_buffer));
 	//   usart1_last_rx_len = rx_buffer_remaining_free;
 	//   HAL_UART_Receive_DMA(&huart1, write_ptr, rx_buffer_remaining_free);
 
-	  HAL_UART_Receive_DMA(uart_driver_handle->uart_handle, uart_driver_handle->dma_rx_buffer, uart_driver_handle->dma_rx_buffer_size);
 	  uart_driver_handle->last_rx_len = uart_driver_handle->dma_rx_buffer_size;
 	  uart_driver_handle->dma_last_pos = 0;
+
+	  //	  HAL_UARTEx_ReceiveToIdle_DMA(uart_driver_handle->uart_handle, uart_driver_handle->dma_rx_buffer, uart_driver_handle->dma_rx_buffer_size);
+
+	  HAL_UART_Receive_DMA(uart_driver_handle->uart_handle, uart_driver_handle->dma_rx_buffer, uart_driver_handle->dma_rx_buffer_size);
 
 	  __HAL_UART_ENABLE_IT(uart_driver_handle->uart_handle, UART_IT_IDLE);
 }

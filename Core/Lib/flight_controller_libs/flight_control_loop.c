@@ -308,6 +308,13 @@ void flight_control_loop_tick(flight_control_loop_t* fcl) {
 		);
 	}
 	else {
+#if MUTEX_ESP_ENABLE != 0
+	xSemaphoreTake(fcl->rate_controller_mutex, portMAX_DELAY);
+#endif
+		rate_controller_reset(&fcl->rate_controller); // reset the PID errors when the drone is disarmed
+#if MUTEX_ESP_ENABLE != 0
+	xSemaphoreGive(fcl->rate_controller_mutex);
+#endif
 		for (int i = 0; i < NUM_MOTORS; i++) {
 			fcl->motor_throttle[i] = 0.0f;
 		}

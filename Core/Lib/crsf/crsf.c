@@ -10,44 +10,44 @@
 static inline int crsf_is_valid_device_address(address_t addr){
 
 	switch(addr){
-		case CRSF_ADDRESS_BROADCAST:
-		case CRSF_ADDRESS_CLOUD:
-		case CRSF_ADDRESS_USB:
-		case CRSF_ADDRESS_BLUETOOTH_OR_WIFI_MODULE:
-		case CRSF_ADDRESS_WIFI_RECEIVER:
-		case CRSF_ADDRESS_WIFI_VIDEO_RECEIVER:
-		case CRSF_ADDRESS_TBS_OSD_OR_CORE_PNP_PRO:
-		case CRSF_ADDRESS_ESC_1:
-		case CRSF_ADDRESS_ESC_2:
-		case CRSF_ADDRESS_ESC_3:
-		case CRSF_ADDRESS_ESC_4:
-		case CRSF_ADDRESS_ESC_5:
-		case CRSF_ADDRESS_ESC_6:
-		case CRSF_ADDRESS_ESC_7:
-		case CRSF_ADDRESS_ESC_8:
-		case CRSF_ADDRESS_RESERVED_1:
-		case CRSF_ADDRESS_CROSSFIRE_RESERVED_1:
-		case CRSF_ADDRESS_CROSSFIRE_RESERVED_2:
-		case CRSF_ADDRESS_CURRENT_SENSOR:
-		case CRSF_ADDRESS_GPS:
-		case CRSF_ADDRESS_TBS_BLACKBOX:
+//		case CRSF_ADDRESS_BROADCAST:
+//		case CRSF_ADDRESS_CLOUD:
+//		case CRSF_ADDRESS_USB:
+//		case CRSF_ADDRESS_BLUETOOTH_OR_WIFI_MODULE:
+//		case CRSF_ADDRESS_WIFI_RECEIVER:
+//		case CRSF_ADDRESS_WIFI_VIDEO_RECEIVER:
+//		case CRSF_ADDRESS_TBS_OSD_OR_CORE_PNP_PRO:
+//		case CRSF_ADDRESS_ESC_1:
+//		case CRSF_ADDRESS_ESC_2:
+//		case CRSF_ADDRESS_ESC_3:
+//		case CRSF_ADDRESS_ESC_4:
+//		case CRSF_ADDRESS_ESC_5:
+//		case CRSF_ADDRESS_ESC_6:
+//		case CRSF_ADDRESS_ESC_7:
+//		case CRSF_ADDRESS_ESC_8:
+//		case CRSF_ADDRESS_RESERVED_1:
+//		case CRSF_ADDRESS_CROSSFIRE_RESERVED_1:
+//		case CRSF_ADDRESS_CROSSFIRE_RESERVED_2:
+//		case CRSF_ADDRESS_CURRENT_SENSOR:
+//		case CRSF_ADDRESS_GPS:
+//		case CRSF_ADDRESS_TBS_BLACKBOX:
 		case CRSF_ADDRESS_FLIGHT_CONTROLLER:
-		case CRSF_ADDRESS_RESERVED_2:
-		case CRSF_ADDRESS_RACE_TAG:
-		case CRSF_ADDRESS_VTX:
-		case CRSF_ADDRESS_RADIO_TRANSMITTER:
-		case CRSF_ADDRESS_CRSF_RECEIVER:
-		case CRSF_ADDRESS_CRSF_TRANSMITTER:
-		case CRSF_ADDRESS_RESERVED_3:
-		case CRSF_ADDRESS_RESERVED_4:
+//		case CRSF_ADDRESS_RESERVED_2:
+//		case CRSF_ADDRESS_RACE_TAG:
+//		case CRSF_ADDRESS_VTX:
+//		case CRSF_ADDRESS_RADIO_TRANSMITTER:
+//		case CRSF_ADDRESS_CRSF_RECEIVER:
+//		case CRSF_ADDRESS_CRSF_TRANSMITTER:
+//		case CRSF_ADDRESS_RESERVED_3:
+//		case CRSF_ADDRESS_RESERVED_4:
 			return 1;
 		default:
 			break;
 	}
 
-	if(addr >= CRSF_ADDRESS_NAT_START && addr <= CRSF_ADDRESS_NAT_END){
-		return 1;
-	}
+//	if(addr >= CRSF_ADDRESS_NAT_START && addr <= CRSF_ADDRESS_NAT_END){
+//		return 1;
+//	}
 	return 0;
 }
 
@@ -179,7 +179,7 @@ static frameType_t process_received_frame(crsf_t *crsf){
 	switch (crsf->rxFrame.frame.type)
 	{
 		case CRSF_FRAMETYPE_RC_CHANNELS_PACKED:
-//		case CRSF_FRAMETYPE_SUBSET_RC_CHANNELS_PACKED:
+		case CRSF_FRAMETYPE_SUBSET_RC_CHANNELS_PACKED:
 			if (crsf->rxFrame.frame.deviceAddress == CRSF_ADDRESS_FLIGHT_CONTROLLER)
 			{
 				memcpy(&(crsf->rcChannelsFrame), &(crsf->rxFrame), sizeof(crsf->rcChannelsFrame));
@@ -211,7 +211,7 @@ static frameType_t process_received_frame(crsf_t *crsf){
 
 
 // returns CRSF_FRAMETYPE_INVALID when a frame is not received
-static int crsf_receive_frame(crsf_t *crsf, uint8_t rxByte, uint32_t currentTime_us, uint32_t timePerFrame_us)
+static int crsf_receive_frame(crsf_t *crsf, uint8_t rxByte, uint32_t currentTime_us)
 {
 	uint8_t crc;
 
@@ -525,12 +525,12 @@ frameType_t crsf_update(crsf_t *crsf, uint8_t* rx_buf, uint32_t rx_buf_size, uin
 	uint32_t timePerFrame_us = (uint32_t)HzToUs_float(crsf->frame_rate_hz);
 
 	/* Reset the frame position if the frame time has expired. */
-	if ((currentTime_us - crsf->rx_frame_start_time_us) > timePerFrame_us) {
+	if ((currentTime_us - crsf->rx_frame_start_time_us) > (timePerFrame_us * 2)) {
 		crsf->rx_frame_position = 0;
 	}
 
 	for(uint32_t i=0;i < rx_buf_size; i++){
-		frame_received = crsf_receive_frame(crsf, rx_buf[i], currentTime_us, timePerFrame_us);
+		frame_received = crsf_receive_frame(crsf, rx_buf[i], currentTime_us);
 		bytes_processed_local++;
 
 		if(frame_received != 0){ // new frame was received

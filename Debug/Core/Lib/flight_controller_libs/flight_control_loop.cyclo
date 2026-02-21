@@ -8,8 +8,8 @@
 ../Core/Lib/flight_controller_libs/flight_control_loop.c:88:6:flight_control_loop_set_write_throttle_hook	1
 ../Core/Lib/flight_controller_libs/flight_control_loop.c:94:6:flight_control_loop_init	1
 ../Core/Lib/flight_controller_libs/flight_control_loop.c:203:6:flight_control_loop_tick	5
-../Core/Lib/flight_controller_libs/flight_control_loop.c:324:6:flight_control_loop_update_rc_control	9
-../Core/Lib/flight_controller_libs/flight_control_loop.c:347:6:rc_control_tick	3
-../Core/Lib/flight_controller_libs/flight_control_loop.c:376:6:flight_control_loop_update_imu	1
-../Core/Lib/flight_controller_libs/flight_control_loop.c:386:6:imu_tick	3
-../Core/Lib/flight_controller_libs/flight_control_loop.c:405:6:flight_control_loop_get_motors_throttle	2
+../Core/Lib/flight_controller_libs/flight_control_loop.c:331:6:flight_control_loop_update_rc_control	9
+../Core/Lib/flight_controller_libs/flight_control_loop.c:354:6:rc_control_tick	3
+../Core/Lib/flight_controller_libs/flight_control_loop.c:383:6:flight_control_loop_update_imu	1
+../Core/Lib/flight_controller_libs/flight_control_loop.c:393:6:imu_tick	3
+../Core/Lib/flight_controller_libs/flight_control_loop.c:412:6:flight_control_loop_get_motors_throttle	2

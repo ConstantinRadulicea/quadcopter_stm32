@@ -2,10 +2,10 @@
 ../Core/Lib/uart_driver/uart_driver.c:37:13:start_tx_if_idle	7
 ../Core/Lib/uart_driver/uart_driver.c:60:6:TxCpltCallback_routine	5
 ../Core/Lib/uart_driver/uart_driver.c:87:6:IDLECallback_routine	2
-../Core/Lib/uart_driver/uart_driver.c:162:8:uart_send_data	5
-../Core/Lib/uart_driver/uart_driver.c:179:8:uart_recv_data	5
-../Core/Lib/uart_driver/uart_driver.c:194:8:uart_data_available_for_read	3
-../Core/Lib/uart_driver/uart_driver.c:207:8:uart_data_available_for_write	3
-../Core/Lib/uart_driver/uart_driver.c:219:6:uart_data_rx_flush	3
-../Core/Lib/uart_driver/uart_driver.c:230:6:uart_driver_init	1
-../Core/Lib/uart_driver/uart_driver.c:267:6:uart_driver_deinit	1
+../Core/Lib/uart_driver/uart_driver.c:164:8:uart_send_data	5
+../Core/Lib/uart_driver/uart_driver.c:181:8:uart_recv_data	5
+../Core/Lib/uart_driver/uart_driver.c:196:8:uart_data_available_for_read	3
+../Core/Lib/uart_driver/uart_driver.c:209:8:uart_data_available_for_write	3
+../Core/Lib/uart_driver/uart_driver.c:221:6:uart_data_rx_flush	3
+../Core/Lib/uart_driver/uart_driver.c:232:6:uart_driver_init	1
+../Core/Lib/uart_driver/uart_driver.c:272:6:uart_driver_deinit	1

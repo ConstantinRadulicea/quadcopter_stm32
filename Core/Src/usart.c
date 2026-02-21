@@ -330,11 +330,13 @@ void HAL_UART_TxCpltCallback(UART_HandleTypeDef *huart)
 
 void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart)
 {
-    if (huart->Instance == USART1)
+	if (huart->Instance == usart1_driver.uart_handle->Instance)
     {
+		IDLECallback_routine(&usart1_driver, huart);
     }
-    else if (huart->Instance == USART3)
+	else if (huart->Instance == usart3_driver.uart_handle->Instance)
     {
+		IDLECallback_routine(&usart3_driver, huart);
     }
 }
 
