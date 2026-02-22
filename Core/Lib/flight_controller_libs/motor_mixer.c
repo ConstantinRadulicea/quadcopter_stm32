@@ -18,6 +18,7 @@
 
 #define MAX_THROTTLE_MIX MAX_THROTTLE
 #define AXIS_TO_MOTOR_GAIN ((0.25f * MAX_THROTTLE_MIX) / PID_LIMIT)  // ±500 → ±0.5 motor range
+//#define AXIS_TO_MOTOR_GAIN ((0.5f * MAX_THROTTLE_MIX) / PID_LIMIT)  // ±500 → ±1.0 motor range
 
 
 /*

@@ -24,13 +24,7 @@ Core/Lib/flight_controller_libs/rc_control_recv_routine.o: \
  ../Middlewares/Third_Party/FreeRTOS/Source/include/queue.h \
  ../Middlewares/Third_Party/FreeRTOS/Source/include/task.h \
  ../Middlewares/Third_Party/FreeRTOS/Source/include/list.h \
- ../Core/Lib/flight_controller_libs/flight_control_loop.h \
- ../Core/Lib/flight_controller_libs/crc.h \
- C:/Programming/STM32F405RGT6_test/Core/Lib/crsf/crsf.h \
- C:/Programming/STM32F405RGT6_test/Core/Lib/crsf/crsf_config.h \
- C:/Programming/STM32F405RGT6_test/Core/Lib/crsf/crsf_protocol.h \
- C:/Programming/STM32F405RGT6_test/Core/Lib/crsf/crsf_telemetry.h \
- ../Core/Inc/usart.h ../Core/Inc/main.h \
+ ../Core/Inc/esc_pwm.h \
  ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h \
  ../Core/Inc/stm32f4xx_hal_conf.h \
  ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rcc.h \
@@ -63,7 +57,13 @@ Core/Lib/flight_controller_libs/rc_control_recv_routine.o: \
  ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pcd.h \
  ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_ll_usb.h \
  ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pcd_ex.h \
- ../Core/Inc/esc_pwm.h \
+ ../Core/Lib/flight_controller_libs/flight_control_loop.h \
+ ../Core/Lib/flight_controller_libs/crc.h \
+ C:/Programming/STM32F405RGT6_test/Core/Lib/crsf/crsf.h \
+ C:/Programming/STM32F405RGT6_test/Core/Lib/crsf/crsf_config.h \
+ C:/Programming/STM32F405RGT6_test/Core/Lib/crsf/crsf_protocol.h \
+ C:/Programming/STM32F405RGT6_test/Core/Lib/crsf/crsf_telemetry.h \
+ ../Core/Inc/usart.h ../Core/Inc/main.h \
  C:/Programming/STM32F405RGT6_test/Core/Lib/uart_driver/uart_driver.h \
  ../Core/Inc/atomic_custom.h \
  C:/Programming/STM32F405RGT6_test/Core/Lib/ringbuffer/ringbuffer.h \
@@ -119,14 +119,7 @@ C:/Programming/STM32F405RGT6_test/Core/Lib/flight_controller_libs/rc_control.h:
 ../Middlewares/Third_Party/FreeRTOS/Source/include/queue.h:
 ../Middlewares/Third_Party/FreeRTOS/Source/include/task.h:
 ../Middlewares/Third_Party/FreeRTOS/Source/include/list.h:
-../Core/Lib/flight_controller_libs/flight_control_loop.h:
-../Core/Lib/flight_controller_libs/crc.h:
-C:/Programming/STM32F405RGT6_test/Core/Lib/crsf/crsf.h:
-C:/Programming/STM32F405RGT6_test/Core/Lib/crsf/crsf_config.h:
-C:/Programming/STM32F405RGT6_test/Core/Lib/crsf/crsf_protocol.h:
-C:/Programming/STM32F405RGT6_test/Core/Lib/crsf/crsf_telemetry.h:
-../Core/Inc/usart.h:
-../Core/Inc/main.h:
+../Core/Inc/esc_pwm.h:
 ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h:
 ../Core/Inc/stm32f4xx_hal_conf.h:
 ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rcc.h:
@@ -159,7 +152,14 @@ C:/Programming/STM32F405RGT6_test/Core/Lib/crsf/crsf_telemetry.h:
 ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pcd.h:
 ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_ll_usb.h:
 ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pcd_ex.h:
-../Core/Inc/esc_pwm.h:
+../Core/Lib/flight_controller_libs/flight_control_loop.h:
+../Core/Lib/flight_controller_libs/crc.h:
+C:/Programming/STM32F405RGT6_test/Core/Lib/crsf/crsf.h:
+C:/Programming/STM32F405RGT6_test/Core/Lib/crsf/crsf_config.h:
+C:/Programming/STM32F405RGT6_test/Core/Lib/crsf/crsf_protocol.h:
+C:/Programming/STM32F405RGT6_test/Core/Lib/crsf/crsf_telemetry.h:
+../Core/Inc/usart.h:
+../Core/Inc/main.h:
 C:/Programming/STM32F405RGT6_test/Core/Lib/uart_driver/uart_driver.h:
 ../Core/Inc/atomic_custom.h:
 C:/Programming/STM32F405RGT6_test/Core/Lib/ringbuffer/ringbuffer.h:

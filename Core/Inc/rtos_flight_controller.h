@@ -2,6 +2,7 @@
 #define RTOS_FLIGHT_CONTROLLER_H
 
 #include "flight_control_loop.h"
+#include "esc_pwm.h"
 
 #ifdef __cplusplus
 extern "C" {
@@ -31,6 +32,8 @@ extern "C" {
 #define RC_CONTROLLER_HZ RC_INPUT_SAMPLE_RATE_HZ
 #define TELEMETRY_TASK_HZ 10
 #define WRITE_MOTOR_TASK_HZ ESC_PWM_HZ
+
+extern pwm_t esc_motors[4];
 
 extern flight_control_loop_t fcl;
 

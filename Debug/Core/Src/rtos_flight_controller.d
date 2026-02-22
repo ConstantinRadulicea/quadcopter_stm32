@@ -22,13 +22,6 @@ Core/Src/rtos_flight_controller.o: ../Core/Src/rtos_flight_controller.c \
  ../Middlewares/Third_Party/FreeRTOS/Source/include/queue.h \
  ../Middlewares/Third_Party/FreeRTOS/Source/include/task.h \
  ../Middlewares/Third_Party/FreeRTOS/Source/include/list.h \
- C:/Programming/STM32F405RGT6_test/Core/Lib/mpu6500/interface/driver_mpu6500_basic.h \
- C:/Programming/STM32F405RGT6_test/Core/Lib/mpu6500/interface/driver_mpu6500_interface.h \
- C:/Programming/STM32F405RGT6_test/Core/Lib/mpu6500/src/driver_mpu6500.h \
- ../Middlewares/Third_Party/FreeRTOS/Source/include/task.h \
- ../Middlewares/Third_Party/FreeRTOS/Source/include/timers.h \
- C:/Programming/STM32F405RGT6_test/Core/Lib/flight_controller_libs/imu.h \
- ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2/cmsis_os2.h \
  ../Core/Inc/esc_pwm.h \
  ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h \
  ../Core/Inc/stm32f4xx_hal_conf.h \
@@ -62,8 +55,15 @@ Core/Src/rtos_flight_controller.o: ../Core/Src/rtos_flight_controller.c \
  ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pcd.h \
  ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_ll_usb.h \
  ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pcd_ex.h \
- ../Core/Inc/tim.h ../Core/Inc/main.h ../Core/Inc/esc_pwm.h \
- ../Core/Inc/atomic_custom.h ../Core/Inc/usart.h \
+ C:/Programming/STM32F405RGT6_test/Core/Lib/mpu6500/interface/driver_mpu6500_basic.h \
+ C:/Programming/STM32F405RGT6_test/Core/Lib/mpu6500/interface/driver_mpu6500_interface.h \
+ C:/Programming/STM32F405RGT6_test/Core/Lib/mpu6500/src/driver_mpu6500.h \
+ ../Middlewares/Third_Party/FreeRTOS/Source/include/task.h \
+ ../Middlewares/Third_Party/FreeRTOS/Source/include/timers.h \
+ C:/Programming/STM32F405RGT6_test/Core/Lib/flight_controller_libs/imu.h \
+ ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2/cmsis_os2.h \
+ ../Core/Inc/tim.h ../Core/Inc/main.h ../Core/Inc/atomic_custom.h \
+ ../Core/Inc/usart.h \
  C:/Programming/STM32F405RGT6_test/Core/Lib/uart_driver/uart_driver.h \
  C:/Programming/STM32F405RGT6_test/Core/Lib/ringbuffer/ringbuffer.h \
  C:/Programming/STM32F405RGT6_test/Core/Lib/flight_controller_libs/crc.h \
@@ -107,13 +107,6 @@ C:/Programming/STM32F405RGT6_test/Core/Lib/flight_controller_libs/rc_control.h:
 ../Middlewares/Third_Party/FreeRTOS/Source/include/queue.h:
 ../Middlewares/Third_Party/FreeRTOS/Source/include/task.h:
 ../Middlewares/Third_Party/FreeRTOS/Source/include/list.h:
-C:/Programming/STM32F405RGT6_test/Core/Lib/mpu6500/interface/driver_mpu6500_basic.h:
-C:/Programming/STM32F405RGT6_test/Core/Lib/mpu6500/interface/driver_mpu6500_interface.h:
-C:/Programming/STM32F405RGT6_test/Core/Lib/mpu6500/src/driver_mpu6500.h:
-../Middlewares/Third_Party/FreeRTOS/Source/include/task.h:
-../Middlewares/Third_Party/FreeRTOS/Source/include/timers.h:
-C:/Programming/STM32F405RGT6_test/Core/Lib/flight_controller_libs/imu.h:
-../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2/cmsis_os2.h:
 ../Core/Inc/esc_pwm.h:
 ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h:
 ../Core/Inc/stm32f4xx_hal_conf.h:
@@ -147,9 +140,15 @@ C:/Programming/STM32F405RGT6_test/Core/Lib/flight_controller_libs/imu.h:
 ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pcd.h:
 ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_ll_usb.h:
 ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pcd_ex.h:
+C:/Programming/STM32F405RGT6_test/Core/Lib/mpu6500/interface/driver_mpu6500_basic.h:
+C:/Programming/STM32F405RGT6_test/Core/Lib/mpu6500/interface/driver_mpu6500_interface.h:
+C:/Programming/STM32F405RGT6_test/Core/Lib/mpu6500/src/driver_mpu6500.h:
+../Middlewares/Third_Party/FreeRTOS/Source/include/task.h:
+../Middlewares/Third_Party/FreeRTOS/Source/include/timers.h:
+C:/Programming/STM32F405RGT6_test/Core/Lib/flight_controller_libs/imu.h:
+../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2/cmsis_os2.h:
 ../Core/Inc/tim.h:
 ../Core/Inc/main.h:
-../Core/Inc/esc_pwm.h:
 ../Core/Inc/atomic_custom.h:
 ../Core/Inc/usart.h:
 C:/Programming/STM32F405RGT6_test/Core/Lib/uart_driver/uart_driver.h:

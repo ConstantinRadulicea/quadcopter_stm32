@@ -36,6 +36,7 @@
 "./Core/Src/atomic_custom.o"
 "./Core/Src/cpu_load.o"
 "./Core/Src/dma.o"
+"./Core/Src/emergency_handlers.o"
 "./Core/Src/esc_pwm.o"
 "./Core/Src/freertos.o"
 "./Core/Src/gpio.o"

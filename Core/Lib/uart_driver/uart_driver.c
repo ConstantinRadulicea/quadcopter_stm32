@@ -59,6 +59,8 @@ static void start_tx_if_idle(uart_driver_t *uart_driver_handle, int force_state)
 
 void TxCpltCallback_routine(uart_driver_t *uart_driver_handle, UART_HandleTypeDef *huart)
 {
+	ATOMIC_BLOCK_CUSTOM(ATOMIC_RESTORESTATE_CUSTOM)
+	{
 	if(uart_driver_handle->uart_handle->Instance == huart->Instance){
 
     	if(uart_driver_handle->uart_handle->gState == HAL_UART_STATE_READY)
@@ -80,6 +82,7 @@ void TxCpltCallback_routine(uart_driver_t *uart_driver_handle, UART_HandleTypeDe
 				// Do NOT advance tail here. Advance it next time, after TX completes.
 			}
     	}
+	}
 	}
 }
 

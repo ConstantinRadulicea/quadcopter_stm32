@@ -18,7 +18,7 @@ typedef struct uart_driver_s{
 	uint16_t tx_chunk_size;
 
 	uint16_t dma_rx_buffer_size;
-	uint8_t  *dma_rx_buffer;
+	volatile uint8_t  *dma_rx_buffer;
 	volatile uint16_t dma_last_pos;
 }uart_driver_t;
 

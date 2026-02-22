@@ -1,4 +1,28 @@
-Core/Src/stm32f4xx_it.o: ../Core/Src/stm32f4xx_it.c ../Core/Inc/main.h \
+Core/Src/emergency_handlers.o: ../Core/Src/emergency_handlers.c \
+ ../Core/Inc/rtos_flight_controller.h \
+ C:/Programming/STM32F405RGT6_test/Core/Lib/flight_controller_libs/flight_control_loop.h \
+ C:/Programming/STM32F405RGT6_test/Core/Lib/flight_controller_libs/imu.h \
+ C:/Programming/STM32F405RGT6_test/Core/Lib/flight_controller_libs/geometry3D.h \
+ C:/Programming/STM32F405RGT6_test/Core/Lib/flight_controller_libs/geometry2D.h \
+ C:/Programming/STM32F405RGT6_test/Core/Lib/flight_controller_libs/filters.h \
+ C:/Programming/STM32F405RGT6_test/Core/Lib/flight_controller_libs/madgwick_filter.h \
+ C:/Programming/STM32F405RGT6_test/Core/Lib/flight_controller_libs/attitude_controller.h \
+ C:/Programming/STM32F405RGT6_test/Core/Lib/flight_controller_libs/rate_controller.h \
+ C:/Programming/STM32F405RGT6_test/Core/Lib/flight_controller_libs/pid_controller.h \
+ C:/Programming/STM32F405RGT6_test/Core/Lib/flight_controller_libs/motor_mixer.h \
+ C:/Programming/STM32F405RGT6_test/Core/Lib/flight_controller_libs/rc_control.h \
+ ../Middlewares/Third_Party/FreeRTOS/Source/include/FreeRTOS.h \
+ ../Core/Inc/FreeRTOSConfig.h \
+ ../Middlewares/Third_Party/FreeRTOS/Source/include/projdefs.h \
+ ../Middlewares/Third_Party/FreeRTOS/Source/include/portable.h \
+ ../Middlewares/Third_Party/FreeRTOS/Source/include/deprecated_definitions.h \
+ ../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F/portmacro.h \
+ ../Middlewares/Third_Party/FreeRTOS/Source/include/mpu_wrappers.h \
+ ../Middlewares/Third_Party/FreeRTOS/Source/include/semphr.h \
+ ../Middlewares/Third_Party/FreeRTOS/Source/include/queue.h \
+ ../Middlewares/Third_Party/FreeRTOS/Source/include/task.h \
+ ../Middlewares/Third_Party/FreeRTOS/Source/include/list.h \
+ ../Core/Inc/esc_pwm.h \
  ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h \
  ../Core/Inc/stm32f4xx_hal_conf.h \
  ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rcc.h \
@@ -31,13 +55,31 @@ Core/Src/stm32f4xx_it.o: ../Core/Src/stm32f4xx_it.c ../Core/Inc/main.h \
  ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pcd.h \
  ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_ll_usb.h \
  ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pcd_ex.h \
- ../Core/Inc/esc_pwm.h ../Core/Inc/stm32f4xx_it.h ../Core/Inc/usart.h \
- ../Core/Inc/main.h \
- C:/Programming/STM32F405RGT6_test/Core/Lib/uart_driver/uart_driver.h \
- ../Core/Inc/atomic_custom.h \
- C:/Programming/STM32F405RGT6_test/Core/Lib/ringbuffer/ringbuffer.h \
- ../Core/Inc/emergency_handlers.h
-../Core/Inc/main.h:
+ ../Core/Inc/atomic_custom.h ../Core/Inc/emergency_handlers.h
+../Core/Inc/rtos_flight_controller.h:
+C:/Programming/STM32F405RGT6_test/Core/Lib/flight_controller_libs/flight_control_loop.h:
+C:/Programming/STM32F405RGT6_test/Core/Lib/flight_controller_libs/imu.h:
+C:/Programming/STM32F405RGT6_test/Core/Lib/flight_controller_libs/geometry3D.h:
+C:/Programming/STM32F405RGT6_test/Core/Lib/flight_controller_libs/geometry2D.h:
+C:/Programming/STM32F405RGT6_test/Core/Lib/flight_controller_libs/filters.h:
+C:/Programming/STM32F405RGT6_test/Core/Lib/flight_controller_libs/madgwick_filter.h:
+C:/Programming/STM32F405RGT6_test/Core/Lib/flight_controller_libs/attitude_controller.h:
+C:/Programming/STM32F405RGT6_test/Core/Lib/flight_controller_libs/rate_controller.h:
+C:/Programming/STM32F405RGT6_test/Core/Lib/flight_controller_libs/pid_controller.h:
+C:/Programming/STM32F405RGT6_test/Core/Lib/flight_controller_libs/motor_mixer.h:
+C:/Programming/STM32F405RGT6_test/Core/Lib/flight_controller_libs/rc_control.h:
+../Middlewares/Third_Party/FreeRTOS/Source/include/FreeRTOS.h:
+../Core/Inc/FreeRTOSConfig.h:
+../Middlewares/Third_Party/FreeRTOS/Source/include/projdefs.h:
+../Middlewares/Third_Party/FreeRTOS/Source/include/portable.h:
+../Middlewares/Third_Party/FreeRTOS/Source/include/deprecated_definitions.h:
+../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F/portmacro.h:
+../Middlewares/Third_Party/FreeRTOS/Source/include/mpu_wrappers.h:
+../Middlewares/Third_Party/FreeRTOS/Source/include/semphr.h:
+../Middlewares/Third_Party/FreeRTOS/Source/include/queue.h:
+../Middlewares/Third_Party/FreeRTOS/Source/include/task.h:
+../Middlewares/Third_Party/FreeRTOS/Source/include/list.h:
+../Core/Inc/esc_pwm.h:
 ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h:
 ../Core/Inc/stm32f4xx_hal_conf.h:
 ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rcc.h:
@@ -70,11 +112,5 @@ Core/Src/stm32f4xx_it.o: ../Core/Src/stm32f4xx_it.c ../Core/Inc/main.h \
 ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pcd.h:
 ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_ll_usb.h:
 ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pcd_ex.h:
-../Core/Inc/esc_pwm.h:
-../Core/Inc/stm32f4xx_it.h:
-../Core/Inc/usart.h:
-../Core/Inc/main.h:
-C:/Programming/STM32F405RGT6_test/Core/Lib/uart_driver/uart_driver.h:
 ../Core/Inc/atomic_custom.h:
-C:/Programming/STM32F405RGT6_test/Core/Lib/ringbuffer/ringbuffer.h:
 ../Core/Inc/emergency_handlers.h:

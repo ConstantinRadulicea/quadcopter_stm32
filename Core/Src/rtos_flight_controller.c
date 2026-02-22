@@ -8,7 +8,6 @@
 #include "timers.h"
 #include "imu.h"
 #include "cmsis_os2.h"
-#include "esc_pwm.h"
 #include "tim.h"
 #include "atomic_custom.h"
 #include "usart.h"
@@ -337,9 +336,9 @@ static void print_telemetry_data(void *arg){
 			"\r\n",
 			degrees(angles.x), degrees(angles.y), degrees(angles.z),
 			body_frame_accel.x, body_frame_accel.y, body_frame_accel.z,
-			body_frame_gyro.x, body_frame_gyro.y, body_frame_gyro.z,
+			degrees(body_frame_gyro.x), degrees(body_frame_gyro.y), degrees(body_frame_gyro.z),
 			local_motors_throttle[0], local_motors_throttle[1], local_motors_throttle[2], local_motors_throttle[3],
-			target_attitude.x, target_attitude.y, target_attitude.z,
+			degrees(target_attitude.x), degrees(target_attitude.y), degrees(target_attitude.z),
 			target_throttle,
 			degrees(pid_roll_output), degrees(pid_pitch_output), degrees(pid_yaw_output)
 			);
