@@ -25,7 +25,8 @@ extern "C" {
 #define G2MS2(g) ((g) * G_CONSTANT)
 
 #define IMU_DEFAULT_LEVELD_ATTITUDE_Q ((quaternion){ 1.0f, 0.0f, 0.0f, 0.0f }) ///< Identity quaternion (scalar-first)
-#define IMU_GYRO_MEAN_ERROR_RAD (radians(5.0f))                               ///< Gyro mean error used by Madgwick (rad/s)
+//#define IMU_GYRO_MEAN_ERROR_RAD (radians(5.0f))                               ///< Gyro mean error used by Madgwick (rad/s)
+#define IMU_GYRO_MEAN_ERROR_RAD (radians(0.02f))                               ///< Gyro mean error used by Madgwick (rad/s)
 
 /**
  * @file imu.h
