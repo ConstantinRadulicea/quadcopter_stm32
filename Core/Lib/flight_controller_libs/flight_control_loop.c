@@ -18,14 +18,19 @@
 //};
 //static float gyro_bias[3] = { -0.067540f, 0.034873f, -0.004956f };
 
+// bias = avg(sensor data)
+
 //mpu6500
+// in radians
 static float accelerometer_bias[3] = { 28.275280f, -16.046399f, 45.211378f };
 static float accelerometer_A_1[3][3] = {
 		{0.998455f, 0.000180f, -0.002872f},
 		{0.000180f, 0.997138f, 0.000472f},
 		{-0.002872f, 0.000472f, 0.983752f}
 };
-static float gyro_bias[3] = { -0.010603f - 0.002f, -0.026431f - 0.0134614f, 0.020599f - 0.002f };
+
+// in radians
+static float gyro_bias[3] = { -0.010603f - 0.002f, - 0.026431f - 0.0134614f + radians(0.137f), 0.020599f -0.002f - radians(0.0416f)};
 
 
 // https://articulatedrobotics.xyz/tools/rotation-calculator/

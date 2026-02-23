@@ -41,13 +41,13 @@ Idx Name          Size      VMA       LMA       File off  Algn
                   CONTENTS, READONLY, DEBUGGING, OCTETS
  18 .debug_line   00071e62  00000000  00000000  00115406  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 19 .debug_str    000fb685  00000000  00000000  00187268  2**0
+ 19 .debug_str    000fb6a3  00000000  00000000  00187268  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 20 .comment      00000043  00000000  00000000  002828ed  2**0
+ 20 .comment      00000043  00000000  00000000  0028290b  2**0
                   CONTENTS, READONLY
- 21 .debug_frame  00014fc0  00000000  00000000  00282930  2**2
+ 21 .debug_frame  00014fc0  00000000  00000000  00282950  2**2
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 22 .debug_line_str 00000050  00000000  00000000  002978f0  2**0
+ 22 .debug_line_str 00000050  00000000  00000000  00297910  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
 
 Disassembly of section .text:
@@ -5434,7 +5434,7 @@ void flight_control_loop_init(flight_control_loop_t* fcl) {
  8002d18:	687b      	ldr	r3, [r7, #4]
  8002d1a:	f503 73a2 	add.w	r3, r3, #324	@ 0x144
  8002d1e:	ed9f 1a68 	vldr	s2, [pc, #416]	@ 8002ec0 <flight_control_loop_init+0x280>
- 8002d22:	eef3 0a04 	vmov.f32	s1, #52	@ 0x41a00000  20.0
+ 8002d22:	eddf 0a67 	vldr	s1, [pc, #412]	@ 8002ec0 <flight_control_loop_init+0x280>
  8002d26:	ed9f 0a5e 	vldr	s0, [pc, #376]	@ 8002ea0 <flight_control_loop_init+0x260>
  8002d2a:	4618      	mov	r0, r3
  8002d2c:	f003 fb8c 	bl	8006448 <rate_controller_init>
@@ -15951,7 +15951,7 @@ uint8_t mpu6500_basic_init(mpu6500_interface_t interface, mpu6500_address_t addr
     
     /* set the default gyroscope choice */
     res = mpu6500_set_gyroscope_choice(&gs_handle_mpu6500, MPU6500_BASIC_DEFAULT_GYROSCOPE_CHOICE);
- 80080a6:	2101      	movs	r1, #1
+ 80080a6:	2100      	movs	r1, #0
  80080a8:	483d      	ldr	r0, [pc, #244]	@ (80081a0 <mpu6500_basic_init+0x824>)
  80080aa:	f001 fed7 	bl	8009e5c <mpu6500_set_gyroscope_choice>
  80080ae:	4603      	mov	r3, r0
@@ -15975,7 +15975,7 @@ uint8_t mpu6500_basic_init(mpu6500_interface_t interface, mpu6500_address_t addr
     
     /* set the default low pass filter */
     res = mpu6500_set_low_pass_filter(&gs_handle_mpu6500, MPU6500_BASIC_DEFAULT_LOW_PASS_FILTER);
- 80080c8:	2107      	movs	r1, #7
+ 80080c8:	2100      	movs	r1, #0
  80080ca:	4835      	ldr	r0, [pc, #212]	@ (80081a0 <mpu6500_basic_init+0x824>)
  80080cc:	f001 fd86 	bl	8009bdc <mpu6500_set_low_pass_filter>
  80080d0:	4603      	mov	r3, r0
