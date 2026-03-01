@@ -6,13 +6,20 @@
 //
 
 #include "madgwick_filter.h"
-//#include <math.h>
+#include <math.h>
 
 
-#ifndef BETA
-    //#define BETA(gyro_mean_error) (sqrt(3.0f/4.0f) * gyro_mean_error)    //*from paper*
-	#define BETA(gyro_mean_error) ((0.866025403784439f) * (gyro_mean_error))    //*from paper*
-#endif
+/**
+ * @brief Calculates the Madgwick filter gain (beta) analytically.
+ * * This macro defines the algorithm's gradient descent step size based on
+ * the gyroscope's measurement error. It balances the trust between the
+ * gyroscope's short-term precision and the accelerometer's long-term stability.
+ * * @param gyro_mean_error The estimated mean zero gyroscope measurement
+ * error, formatted strictly in radians per second (rad/s).
+ * * @return The computed beta multiplier (filter gain).
+ */
+//#define BETA(gyro_mean_error) (sqrt(3.0f/4.0f) * gyro_mean_error)    //*from paper*
+#define BETA(gyro_mean_error) ((0.866025403784439f) * (gyro_mean_error))    //*from paper*
 
 
 void madgwick_filter_init(madgwick_filter_t* filter, float sampling_freq, float gyro_mean_error) {
@@ -26,10 +33,20 @@ void madgwick_filter_init(madgwick_filter_t* filter, float sampling_freq, float 
 }
 
 
+float compute_beta(float acc_norm, float beta_base)
+{
+    float delta = fabsf(acc_norm - 1.0f); // cât se abate accel de gravitație
+    float factor = 1.0f - delta;          // reduce beta când accel e perturbat
+    if (factor < 0.1f) factor = 0.1f;     // nu-l face 0
+    float beta = beta_base * factor;
+    return beta;
+}
+
+
 // The resulting quaternion is a global variable (q_est), so it is not returned or passed by reference/pointer
 // Gyroscope Angular Velocity components are in Radians per Second
 // Accelerometer componets will be normalized
-void madgwick_filter_apply(madgwick_filter_t *filter, float ax, float ay, float az, float gx, float gy, float gz){
+void madgwick_filter_apply_6dof(madgwick_filter_t *filter, float ax, float ay, float az, float gx, float gy, float gz){
 
     //Variables and constants
 	quaternion q_est = filter->q_est;
@@ -71,36 +88,43 @@ void madgwick_filter_apply(madgwick_filter_t *filter, float ax, float ay, float 
      Note: it is possible to compute the objective function with quaternion multiplcation functions, but it does not take into account the many zeros that cancel terms out and is not optimized like the paper shows
      */
 
-    q_a = quatnormalize(&q_a);              // normalize the acceleration quaternion to be a unit quaternion
-    //Compute the objective function for gravity, equation(15), simplified to equation (25) due to the 0's in the acceleration reference quaternion
-    F_g[0] = 2*(q_est_prev.x * q_est_prev.z - q_est_prev.w * q_est_prev.y) - q_a.x;
-    F_g[1] = 2*(q_est_prev.w * q_est_prev.x + q_est_prev.y* q_est_prev.z) - q_a.y;
-    F_g[2] = 2*(0.5f - q_est_prev.x * q_est_prev.x - q_est_prev.y * q_est_prev.y) - q_a.z;
+    /* 2. ONLY proceed with Accelerometer fusion if we have gravity */
+    float acc_norm = MS2TOG(sqrtf(ax*ax + ay*ay + az*az));
 
-    //Compute the Jacobian matrix, equation (26), for gravity
-    J_g[0][0] = -2.0f * q_est_prev.y;
-    J_g[0][1] =  2.0f * q_est_prev.z;
-    J_g[0][2] = -2.0f * q_est_prev.w;
-    J_g[0][3] =  2.0f * q_est_prev.x;
+    if (fabsf(acc_norm - 1.0f) < 0.2f)
+    {
+		q_a = quatnormalize(&q_a);              // normalize the acceleration quaternion to be a unit quaternion
+		//Compute the objective function for gravity, equation(15), simplified to equation (25) due to the 0's in the acceleration reference quaternion
+		F_g[0] = 2*(q_est_prev.x * q_est_prev.z - q_est_prev.w * q_est_prev.y) - q_a.x;
+		F_g[1] = 2*(q_est_prev.w * q_est_prev.x + q_est_prev.y* q_est_prev.z) - q_a.y;
+		F_g[2] = 2*(0.5f - q_est_prev.x * q_est_prev.x - q_est_prev.y * q_est_prev.y) - q_a.z;
 
-    J_g[1][0] = 2.0f * q_est_prev.x;
-    J_g[1][1] = 2.0f * q_est_prev.w;
-    J_g[1][2] = 2.0f * q_est_prev.z;
-    J_g[1][3] = 2.0f * q_est_prev.y;
+		//Compute the Jacobian matrix, equation (26), for gravity
+		J_g[0][0] = -2.0f * q_est_prev.y;
+		J_g[0][1] =  2.0f * q_est_prev.z;
+		J_g[0][2] = -2.0f * q_est_prev.w;
+		J_g[0][3] =  2.0f * q_est_prev.x;
 
-    J_g[2][0] = 0.0f;
-    J_g[2][1] = -4.0f * q_est_prev.x;
-    J_g[2][2] = -4.0f * q_est_prev.y;
-    J_g[2][3] = 0.0f;
+		J_g[1][0] = 2.0f * q_est_prev.x;
+		J_g[1][1] = 2.0f * q_est_prev.w;
+		J_g[1][2] = 2.0f * q_est_prev.z;
+		J_g[1][3] = 2.0f * q_est_prev.y;
 
-    // now computer the gradient, equation (20), gradient = J_g'*F_g
-    gradient.w = J_g[0][0] * F_g[0] + J_g[1][0] * F_g[1] + J_g[2][0] * F_g[2];
-    gradient.x = J_g[0][1] * F_g[0] + J_g[1][1] * F_g[1] + J_g[2][1] * F_g[2];
-    gradient.y = J_g[0][2] * F_g[0] + J_g[1][2] * F_g[1] + J_g[2][2] * F_g[2];
-    gradient.z = J_g[0][3] * F_g[0] + J_g[1][3] * F_g[1] + J_g[2][3] * F_g[2];
+		J_g[2][0] = 0.0f;
+		J_g[2][1] = -4.0f * q_est_prev.x;
+		J_g[2][2] = -4.0f * q_est_prev.y;
+		J_g[2][3] = 0.0f;
 
-    // Normalize the gradient, equation (44)
-    gradient = quatnormalize(&gradient);
+		// now compute the gradient, equation (20), gradient = J_g'*F_g
+		gradient.w = J_g[0][0] * F_g[0] + J_g[1][0] * F_g[1] + J_g[2][0] * F_g[2];
+		gradient.x = J_g[0][1] * F_g[0] + J_g[1][1] * F_g[1] + J_g[2][1] * F_g[2];
+		gradient.y = J_g[0][2] * F_g[0] + J_g[1][2] * F_g[1] + J_g[2][2] * F_g[2];
+		gradient.z = J_g[0][3] * F_g[0] + J_g[1][3] * F_g[1] + J_g[2][3] * F_g[2];
+
+		// Normalize the gradient, equation (44)
+	    gradient = quatnormalize(&gradient);
+    }
+
 
     /* This is the sensor fusion part of the algorithm.
      Combining Gyroscope position angles calculated in the beginning, with the quaternion orienting the accelerometer to gravity created above.
@@ -114,7 +138,10 @@ void madgwick_filter_apply(madgwick_filter_t *filter, float ax, float ay, float 
      Combining the simplification of the gradient descent equation with the simplification of the fusion equation gets you eq.
      41 which can be subdivided into eqs 42-44.
     */
-    gradient = quatmultiply_scalar(&gradient, BETA(filter->gyro_mean_error));             // multiply normalized gradient by beta
+
+    float beta = compute_beta(acc_norm, BETA(filter->gyro_mean_error));
+
+    gradient = quatmultiply_scalar(&gradient, beta);             // multiply normalized gradient by beta
     q_est_dot = quatsub(&q_w, &gradient);        // subtract above from q_w, the integrated gyro quaternion
     q_est_dot = quatmultiply_scalar(&q_est_dot, (1.0f / filter->sampling_freq));
     q_est = quatadd(&q_est_prev, &q_est_dot);     // Integrate orientation rate to find position
@@ -124,4 +151,139 @@ void madgwick_filter_apply(madgwick_filter_t *filter, float ax, float ay, float 
 }
 
 
+// The resulting quaternion is a global variable (q_est), so it is not returned or passed by reference/pointer
+// Accelerometer data is in m/s^2
+// Gyroscope Angular Velocity components are in Radians per Second
+// magnetometer data is in micro Tesla (uT)
+// Accelerometer and Magnetometer components will be normalized
+void madgwick_filter_apply_9dof(madgwick_filter_t *filter, float ax, float ay, float az, float gx, float gy, float gz, float mx, float my, float mz){
 
+    //Variables and constants
+    quaternion q_est = filter->q_est;
+    struct quaternion q_est_prev = q_est;
+    struct quaternion q_est_dot = {0.0f};            // used as a place holder in equations 42 and 43
+    struct quaternion q_a = {0.0f, ax, ay, az};    // equation (24) raw acceleration values, needs to be normalized
+    struct quaternion q_m = {0.0f, mx, my, mz};    // raw magnetometer values, needs to be normalized
+
+    float F_g [3] = {0};                      // equation(15/21/25) objective function for gravity
+    float J_g [3][4] = {0};                   // jacobian matrix for gravity
+
+    float F_b [3] = {0};                      // objective function for magnetic field
+    float J_b [3][4] = {0};                   // jacobian matrix for magnetic field
+
+    float h_x, h_y, h_z;                      // Earth's magnetic field reference
+    float b_x, b_z;                           // Normalized Earth's magnetic field reference
+
+    struct quaternion gradient = {0.0f};
+
+    /* Integrate angluar velocity to obtain position in angles. */
+    struct quaternion q_w;                   // equation (10), places gyroscope readings in a quaternion
+    q_w.w = 0.0f;                              // the real component is zero, which the Madgwick uses to simplfy quat. mult.
+    q_w.x = gx;
+    q_w.y = gy;
+    q_w.z = gz;
+
+    q_w = quatmultiply_scalar(&q_w, 0.5f);                  // equation (12) dq/dt = (1/2)q*w
+    q_w = quatmultiply(&q_est_prev, &q_w);        // equation (12)
+
+    /* NOTE
+    * Page 10 states equation (40) substitutes equation (13) into it. This seems false, as he actually
+    * substitutes equation (12), q_se_dot_w, not equation (13), q_se_w.
+    */
+
+    /* 2. ONLY proceed with Accelerometer fusion if we have gravity */
+    float acc_norm = MS2TOG(sqrtf(ax*ax + ay*ay + az*az));
+
+    if (fabsf(acc_norm - 1.0f) < 0.2f)
+    {
+
+		/* Normalize the acceleration and magnetometer quaternions to be unit quaternions */
+		q_a = quatnormalize(&q_a);
+
+		/* 3. ONLY proceed with Magnetometer fusion if we ALSO have magnetic data */
+		// 1. Calculate the Magnitude (Norm) in microTeslas (uT)
+		float mag_norm = sqrtf(mx*mx + my*my + mz*mz);
+
+		// 2. Define your expected Earth Field (e.g., 50 uT is a good global average)
+		const float EXPECTED_MAG = 50.0f;
+
+		// 3. Check if the reading is within a 20% tolerance (0.2 * 50 = 10 uT)
+		// This filters out interference from magnets or large metal objects
+		if (fabsf((mag_norm / EXPECTED_MAG) - 1.0f) < 0.2f)
+		{
+			q_m = quatnormalize(&q_m);
+			/* Compute reference direction of Earth's magnetic field, equation (45) and (46)
+				This rotates the magnetometer readings into the earth frame to calculate b_x and b_z */
+			h_x = 2.0f * q_m.x * (0.5f - q_est_prev.y * q_est_prev.y - q_est_prev.z * q_est_prev.z) + 2.0f * q_m.y * (q_est_prev.x * q_est_prev.y - q_est_prev.w * q_est_prev.z) + 2.0f * q_m.z * (q_est_prev.x * q_est_prev.z + q_est_prev.w * q_est_prev.y);
+			h_y = 2.0f * q_m.x * (q_est_prev.x * q_est_prev.y + q_est_prev.w * q_est_prev.z) + 2.0f * q_m.y * (0.5f - q_est_prev.x * q_est_prev.x - q_est_prev.z * q_est_prev.z) + 2.0f * q_m.z * (q_est_prev.y * q_est_prev.z - q_est_prev.w * q_est_prev.x);
+			h_z = 2.0f * q_m.x * (q_est_prev.x * q_est_prev.z - q_est_prev.w * q_est_prev.y) + 2.0f * q_m.y * (q_est_prev.y * q_est_prev.z + q_est_prev.w * q_est_prev.x) + 2.0f * q_m.z * (0.5f - q_est_prev.x * q_est_prev.x - q_est_prev.y * q_est_prev.y);
+
+			b_x = sqrtf((h_x * h_x) + (h_y * h_y));
+			b_z = h_z;
+
+			/* Compute the objective function for magnetic field, equation (29) */
+			F_b[0] = 2.0f * b_x * (0.5f - q_est_prev.y * q_est_prev.y - q_est_prev.z * q_est_prev.z) + 2.0f * b_z * (q_est_prev.x * q_est_prev.z - q_est_prev.w * q_est_prev.y) - q_m.x;
+			F_b[1] = 2.0f * b_x * (q_est_prev.x * q_est_prev.y - q_est_prev.w * q_est_prev.z) + 2.0f * b_z * (q_est_prev.w * q_est_prev.x + q_est_prev.y * q_est_prev.z) - q_m.y;
+			F_b[2] = 2.0f * b_x * (q_est_prev.w * q_est_prev.y + q_est_prev.x * q_est_prev.z) + 2.0f * b_z * (0.5f - q_est_prev.x * q_est_prev.x - q_est_prev.y * q_est_prev.y) - q_m.z;
+		}
+
+
+		/* Compute the objective function for gravity, equation (25) */
+		F_g[0] = 2.0f *(q_est_prev.x * q_est_prev.z - q_est_prev.w * q_est_prev.y) - q_a.x;
+		F_g[1] = 2.0f *(q_est_prev.w * q_est_prev.x + q_est_prev.y* q_est_prev.z) - q_a.y;
+		F_g[2] = 2.0f *(0.5f - q_est_prev.x * q_est_prev.x - q_est_prev.y * q_est_prev.y) - q_a.z;
+
+
+		/* Compute the Jacobian matrix, equation (26), for gravity */
+		J_g[0][0] = -2.0f * q_est_prev.y;
+		J_g[0][1] =  2.0f * q_est_prev.z;
+		J_g[0][2] = -2.0f * q_est_prev.w;
+		J_g[0][3] =  2.0f * q_est_prev.x;
+
+		J_g[1][0] =  2.0f * q_est_prev.x;
+		J_g[1][1] =  2.0f * q_est_prev.w;
+		J_g[1][2] =  2.0f * q_est_prev.z;
+		J_g[1][3] =  2.0f * q_est_prev.y;
+
+		J_g[2][0] =  0.0f;
+		J_g[2][1] = -4.0f * q_est_prev.x;
+		J_g[2][2] = -4.0f * q_est_prev.y;
+		J_g[2][3] =  0.0f;
+
+		/* Compute the Jacobian matrix, equation (30), for magnetic field */
+		J_b[0][0] = -2.0f * b_z * q_est_prev.y;
+		J_b[0][1] =  2.0f * b_z * q_est_prev.z;
+		J_b[0][2] = -4.0f * b_x * q_est_prev.y - 2.0f * b_z * q_est_prev.w;
+		J_b[0][3] = -4.0f * b_x * q_est_prev.z + 2.0f * b_z * q_est_prev.x;
+
+		J_b[1][0] = -2.0f * b_x * q_est_prev.z + 2.0f * b_z * q_est_prev.x;
+		J_b[1][1] =  2.0f * b_x * q_est_prev.y + 2.0f * b_z * q_est_prev.w;
+		J_b[1][2] =  2.0f * b_x * q_est_prev.x + 2.0f * b_z * q_est_prev.z;
+		J_b[1][3] = -2.0f * b_x * q_est_prev.w + 2.0f * b_z * q_est_prev.y;
+
+		J_b[2][0] =  2.0f * b_x * q_est_prev.y;
+		J_b[2][1] =  2.0f * b_x * q_est_prev.z - 4.0f * b_z * q_est_prev.x;
+		J_b[2][2] =  2.0f * b_x * q_est_prev.w - 4.0f * b_z * q_est_prev.y;
+		J_b[2][3] =  2.0f * b_x * q_est_prev.x;
+
+		// Compute the combined gradient, equation (34), gradient = J_g'*F_g + J_b'*F_b
+		gradient.w = J_g[0][0] * F_g[0] + J_g[1][0] * F_g[1] + J_g[2][0] * F_g[2] + J_b[0][0] * F_b[0] + J_b[1][0] * F_b[1] + J_b[2][0] * F_b[2];
+		gradient.x = J_g[0][1] * F_g[0] + J_g[1][1] * F_g[1] + J_g[2][1] * F_g[2] + J_b[0][1] * F_b[0] + J_b[1][1] * F_b[1] + J_b[2][1] * F_b[2];
+		gradient.y = J_g[0][2] * F_g[0] + J_g[1][2] * F_g[1] + J_g[2][2] * F_g[2] + J_b[0][2] * F_b[0] + J_b[1][2] * F_b[1] + J_b[2][2] * F_b[2];
+		gradient.z = J_g[0][3] * F_g[0] + J_g[1][3] * F_g[1] + J_g[2][3] * F_g[2] + J_b[0][3] * F_b[0] + J_b[1][3] * F_b[1] + J_b[2][3] * F_b[2];
+	    // Normalize the combined gradient, equation (44)
+	    gradient = quatnormalize(&gradient);
+    }
+
+
+    float beta = compute_beta(acc_norm, BETA(filter->gyro_mean_error));
+
+    /* Sensor fusion part of the algorithm */
+    gradient = quatmultiply_scalar(&gradient, beta);    // multiply normalized gradient by beta
+    q_est_dot = quatsub(&q_w, &gradient);                                        // subtract above from q_w
+    q_est_dot = quatmultiply_scalar(&q_est_dot, (1.0f / filter->sampling_freq)); // integrate over time step
+    q_est = quatadd(&q_est_prev, &q_est_dot);                                    // Integrate orientation rate to find position
+    q_est = quatnormalize(&q_est);                                               // normalize the orientation of the estimate
+
+    filter->q_est = q_est;
+}

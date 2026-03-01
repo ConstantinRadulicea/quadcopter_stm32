@@ -19,6 +19,7 @@
 #include <float.h>
 #include <memory.h>
 #include <string.h>
+#include "stdint.h"
 
 
 
@@ -28,6 +29,12 @@
 //#define LOCAL_FLT_EPSILON 0.0001
 
 #define LOCAL_FLT_EPSILON FLT_EPSILON
+
+int is_little_endian() {
+    uint16_t number = 0x1;
+    char *num_ptr = (char*)&number;
+    return (num_ptr[0] == 1);
+}
 
 LineABC xAxisABC() {
 	LineABC line;
@@ -79,14 +86,114 @@ Point2D polyval(float* polynomial_coefficients, int polynomial_degree, float x) 
 	return result;
 }
 
-int floatCmp(float num1, float num2) {
-	if (fabsf(fabsf(num1) - fabsf(num2)) < LOCAL_FLT_EPSILON) {
-		return 0;
-	}
-	else if (num1 > num2) {
-		return 1;
-	}
-	return -1;
+int are_equal_robust(float a, float b, float epsilon) {
+    if (a == b) return 1; // Handles infinities
+
+    float diff = fabsf(a - b);
+    float abs_a = fabsf(a);
+    float abs_b = fabsf(b);
+    float max_val = (abs_a > abs_b) ? abs_a : abs_b;
+
+    // Scale epsilon by the larger of the two numbers
+    return diff < (epsilon * max_val);
+}
+
+
+#include <stdint.h>
+#include <string.h>
+#include <math.h>
+#include <limits.h>
+
+static inline uint32_t float_to_ordered_uint(float f)
+{
+    uint32_t u;
+    memcpy(&u, &f, sizeof(u));
+
+    // Map IEEE754 to lexicographically ordered space
+    // Negative numbers are flipped so ordering becomes monotonic
+    if (u & 0x80000000u)
+        return ~u + 1u;   // two's complement style mapping
+    else
+        return u | 0x80000000u;
+}
+
+static int32_t get_ulp_diff(float a, float b)
+{
+    // 1️⃣ Handle NaN explicitly
+    if (isnan(a) || isnan(b))
+        return INT32_MAX;
+
+    // 2️⃣ Handle exact equality (+0 vs -0 included)
+    if (a == b)
+        return 0;
+
+    uint32_t ua = float_to_ordered_uint(a);
+    uint32_t ub = float_to_ordered_uint(b);
+
+    // 3️⃣ Safe unsigned difference (no overflow UB)
+    uint32_t diff = (ua > ub) ? (ua - ub) : (ub - ua);
+
+    // Clamp to int32 range (theoretical safety)
+    if (diff > INT32_MAX)
+        return INT32_MAX;
+
+    return (int32_t)diff;
+}
+
+static int float_equal(float a, float b)
+{
+    const float abs_epsilon = 1e-6f;
+    const float rel_epsilon = 1e-5f;
+
+    if (isnan(a) || isnan(b))
+        return 0;
+
+    if (a == b)
+        return 1;
+
+    float diff = fabsf(a - b);
+
+    if (diff <= abs_epsilon)
+        return 1;
+
+    float max_ab = fmaxf(fabsf(a), fabsf(b));
+    return diff <= max_ab * rel_epsilon;
+}
+
+
+int floatCmp(float a, float b)
+{
+    const float abs_epsilon = 1e-6f;
+    const float rel_epsilon = 1e-5f;
+
+    // NaN handling
+    if (isnan(a) || isnan(b))
+        return 0;   // sau poți decide alt comportament
+
+    // Handle infinities explicitly
+    if (isinf(a) || isinf(b))
+    {
+        if (a == b) return 0;
+        return (a < b) ? -1 : 1;
+    }
+
+    // Handle exact equality (+0 vs -0 included)
+    if (a == b)
+        return 0;
+
+    float diff = a - b;
+    float abs_diff = fabsf(diff);
+
+    // Absolute tolerance
+    if (abs_diff <= abs_epsilon)
+        return 0;
+
+    // Relative tolerance
+    float max_ab = fmaxf(fabsf(a), fabsf(b));
+    if (abs_diff <= max_ab * rel_epsilon)
+        return 0;
+
+    return (diff < 0.0f) ? -1 : 1;
 }
 
 int arePoints2DEqual(Point2D point1, Point2D point2) {

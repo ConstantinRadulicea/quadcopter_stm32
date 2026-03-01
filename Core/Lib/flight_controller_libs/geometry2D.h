@@ -306,6 +306,8 @@ extern "C" {
 
 	LineSegment getLineSegmentFromStartPointAToLine(LineSegment segment, LineABC line);
 
+	int is_little_endian();
+
 #ifdef __cplusplus
 }
 #endif

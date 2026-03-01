@@ -21,12 +21,20 @@ extern "C" {
 	YAW: rotate right (CW) (POSITIVE YAW)
  */
 
-#define G_CONSTANT 9.80665f
-#define G2MS2(g) ((g) * G_CONSTANT)
+#ifndef G_CONSTANT
+	#define G_CONSTANT 9.80665f
+#endif
+
+#ifndef G2MS2
+	#define G2MS2(g) ((g) * G_CONSTANT)
+#endif
+
+#ifndef MS2TOG
+	#define MS2TOG(ms2) ((ms2) / G_CONSTANT)
+#endif
 
 #define IMU_DEFAULT_LEVELD_ATTITUDE_Q ((quaternion){ 1.0f, 0.0f, 0.0f, 0.0f }) ///< Identity quaternion (scalar-first)
-//#define IMU_GYRO_MEAN_ERROR_RAD (radians(5.0f))                               ///< Gyro mean error used by Madgwick (rad/s)
-#define IMU_GYRO_MEAN_ERROR_RAD (radians(0.02f))                               ///< Gyro mean error used by Madgwick (rad/s)
+#define IMU_GYRO_MEAN_ERROR_RAD (radians(5.0f))                               ///< gyro Zero-Rate Output used by Madgwick (rad/s)
 
 /**
  * @file imu.h

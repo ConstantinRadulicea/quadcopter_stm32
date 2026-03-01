@@ -147,6 +147,13 @@ static void flight_controller_main(void *arg)
             //return; // implement some form of recovery if the mpu read fails
         }
         else{
+//        	accel[0] = degrees(fcl.imu.accel_bias[0];
+//        	accel[1] = -degrees(fcl.imu.accel_bias[1];
+//        	accel[2] = -degrees(fcl.imu.accel_bias[2];
+//        	gyro[0] = degrees(fcl.imu.gyro_bias[0]);
+//        	gyro[1] = -degrees(fcl.imu.gyro_bias[1]);
+//        	gyro[2] = -degrees(fcl.imu.gyro_bias[2]);
+
             accel_data.x = G2MS2(accel[0]);
             accel_data.y = -G2MS2(accel[1]);
             accel_data.z = -G2MS2(accel[2]);

@@ -64,7 +64,7 @@ void imu_update_accel(imu_t* im, coord3D imu_raw_accel_m_s2) {
 }
 
 void imu_update_madgwick(imu_t* im) {
-	madgwick_filter_apply(
+	madgwick_filter_apply_6dof(
 		&(im->madgwick_filter),
 		-im->body_frame_accel.x,
 		-im->body_frame_accel.y,
@@ -74,18 +74,6 @@ void imu_update_madgwick(imu_t* im) {
 		im->body_frame_gyro.z
 	);
 
-//	madgwick_filter_apply(
-//		&(im->madgwick_filter),
-//		im->body_frame_accel.x,
-//		-im->body_frame_accel.y,
-//		-im->body_frame_accel.z,
-//		im->body_frame_gyro.x,
-//		-im->body_frame_gyro.y,
-//		-im->body_frame_gyro.z
-//	);
-
-	//im->estimated_q = quatmultiply(&(im->q_offset), &(im->madgwick_filter.q_est));
-	//im->estimated_q = quatnormalize(&(im->madgwick_filter.q_est));
 	im->estimated_q = im->madgwick_filter.q_est;
 }
 

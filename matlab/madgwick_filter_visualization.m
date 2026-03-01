@@ -23,7 +23,7 @@ flush(s);
 % Main Loop
 % -------------------------
 handles = create3DPlane();
-target_dt = 1 / 60;  % 60 Hz → ~16.67 ms
+target_dt = 1 / 30;  % 60 Hz → ~16.67 ms
 t_start = tic;  % Start timer
 while true
     try
