@@ -39,7 +39,12 @@ static float gyro_bias[3] = { -0.010603f - 0.002f, - 0.026431f - 0.0134614f + ra
 //α x: 1.110000 deg
 //β y: -3.000000 deg
 //γ z: 0.000000 deg
-static quaternion ground_default_position_q = { .w = 0.999610f, .x = 0.009683f, .y = -0.026176f, .z = -0.000254f };
+//static quaternion ground_default_position_q = { .w = 0.999610f, .x = 0.009683f, .y = -0.026176f, .z = -0.000254f };
+
+//α x: 1.545 deg
+//β y: -1.236 deg
+//γ z: 0.000000 deg
+static quaternion ground_default_position_q = { .w = 0.999851f, .x = 0.013481f, .y = -0.010785f, .z = -0.000145f };
 
 
 void flight_control_loop_arm_esc(flight_control_loop_t* fcl) {

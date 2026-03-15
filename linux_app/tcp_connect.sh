@@ -1,16 +1,15 @@
 #!/bin/bash
-# Configuration
-# ESP8266_IP="192.168.0.52"
-# ESP8266_PORT="2323"         # port for the esp8266
-# STM32_IP="192.168.0.250"
-# IFACE_OUT="enp0s3"
 
+# Configuration
+# STM32_IP="192.168.0.250"
+# ESP8266_IP="192.168.0.52"
+
+STM32_IP="10.72.62.250"     # ipv4 that you want to assign to the stm32. Must be on the same network as the esp8266
 ESP8266_IP="10.72.62.157"   # ipv4 for the esp8266 
 ESP8266_PORT="2323"         # port for the esp8266
-STM32_IP="10.72.62.250"     # ipv4 that you want to assign to the stm32. Must be on the same network as the esp8266
+
 IFACE_OUT="enp0s3"
 VIRTUAL_PORT_BAUDRATE=460800
-
 
 LINUX_MACHINE_IP=$(ip -4 addr show "$IFACE_OUT" | grep -oP '(?<=inet\s)\d+(\.\d+){3}')
 # LINUX_MACHINE_IP=$(ip -4 -o addr show dev "$IFACE_OUT" | awk '{split($4,a,"/"); print a[1]}')

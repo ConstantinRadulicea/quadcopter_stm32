@@ -1,0 +1,5 @@
+# export GZ_IP=127.0.0.1
+# gz topic -l | grep imu -> command to get the path for IMU
+/world/x3_world/model/x3/link/base_link/sensor/imu_sensor/imu
+
+gz topic -e -t /world/x3_world/model/x3/link/base_link/sensor/imu_sensor/imu

@@ -1,0 +1,12 @@
+set rate_controller_roll_pid (float)kp (float)ki (float)kd (float)max_integral_error (float)Kff
+set rate_controller_pitch_pid (float)kp (float)ki (float)kd (float)max_integral_error (float)Kff
+set rate_controller_yaw_pid (float)kp (float)ki (float)kd (float)max_integral_error (float)Kff
+
+
+set rate_controller_roll_pid 2.0 0.5 0.0 0.747998 0.0
+set rate_controller_pitch_pid 2.0 0.5 0.0 0.747998 0.0
+set rate_controller_yaw_pid 2.0 1.0 0.0 0.747998 0.0
+
+get rate_controller_roll_pid
+get rate_controller_pitch_pid
+get rate_controller_yaw_pid

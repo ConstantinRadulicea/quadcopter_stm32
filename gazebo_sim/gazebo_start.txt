@@ -1,0 +1,23 @@
+xhost +local:
+
+distrobox enter gazebo_env
+
+su
+
+export DEBIAN_FRONTEND=noninteractive
+sudo ln -fs /usr/share/zoneinfo/Europe/Bucharest /etc/localtime
+
+sudo apt update
+sudo apt install python3-gz-transport13 python3-gz-msgs10
+sudo apt install python3-gz-sim9
+
+
+export LIBGL_ALWAYS_SOFTWARE=1
+export GZ_SIM_RENDER_ENGINE_GUI=ogre
+export PYTHONPATH=/usr/lib/python3/dist-packages:$PYTHONPATH
+
+cd /home/debian/gazebo_sim
+export GZ_SIM_RESOURCE_PATH=/home/debian/gazebo_sim
+gz sim x3_hitl.sdf
+
+python3 print_imu.py
