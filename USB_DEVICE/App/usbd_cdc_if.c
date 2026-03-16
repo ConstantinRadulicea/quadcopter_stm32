@@ -365,6 +365,14 @@ size_t CDC_data_available_for_read()
 
     return used;
 }
+
+void CDC_data_rx_flush(){
+    ATOMIC_BLOCK_CUSTOM(ATOMIC_RESTORESTATE_CUSTOM)
+    {
+        ring_buffer_clear(&rx_ringbuffer);
+    }
+}
+
 #include "stdarg.h"
 void usb_printf(const char *fmt, ...)
 {

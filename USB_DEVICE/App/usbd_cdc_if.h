@@ -114,6 +114,8 @@ size_t CDC_recv_data(char* out_buf, size_t max_len);
 
 size_t CDC_data_available_for_read();
 
+void CDC_data_rx_flush();
+
 void usb_printf(const char *fmt, ...);
 
 /* USER CODE END EXPORTED_FUNCTIONS */

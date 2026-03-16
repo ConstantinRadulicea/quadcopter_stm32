@@ -38,6 +38,8 @@ CPP_DEPS :=
 
 # Every subdirectory with source files must be described here
 SUBDIRS := \
+Core/Lib/base64 \
+Core/Lib/byte_stuffing \
 Core/Lib/crsf \
 Core/Lib/flight_controller_libs \
 Core/Lib/lwshell/lwshell/src/lwshell \

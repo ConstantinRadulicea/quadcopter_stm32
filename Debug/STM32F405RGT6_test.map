@@ -147,7 +147,7 @@ C:/ST/STM32CubeIDE_1.18.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.external
 C:/ST/STM32CubeIDE_1.18.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-strcpy.o)
                               ./Middlewares/Third_Party/lwip/src/netif/ppp/utils.o (strcpy)
 C:/ST/STM32CubeIDE_1.18.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-memchr.o)
-                              C:/ST/STM32CubeIDE_1.18.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-nano-vfprintf.o) (memchr)
+                              ./Core/Lib/flight_controller_libs/gazebo_link.o (memchr)
 C:/ST/STM32CubeIDE_1.18.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-memcpy-stub.o)
                               ./Core/Lib/crsf/crsf.o (memcpy)
 C:/ST/STM32CubeIDE_1.18.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-strlen.o)
@@ -253,6 +253,80 @@ Discarded input sections
  .ARM.exidx     0x00000000       0x10 C:/ST/STM32CubeIDE_1.18.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/crt0.o
  .ARM.attributes
                 0x00000000       0x20 C:/ST/STM32CubeIDE_1.18.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/crt0.o
+ .group         0x00000000        0xc ./Core/Lib/base64/base64.o
+ .group         0x00000000        0xc ./Core/Lib/base64/base64.o
+ .text          0x00000000        0x0 ./Core/Lib/base64/base64.o
+ .data          0x00000000        0x0 ./Core/Lib/base64/base64.o
+ .bss           0x00000000        0x0 ./Core/Lib/base64/base64.o
+ .rodata.base64_table
+                0x00000000       0x41 ./Core/Lib/base64/base64.o
+ .rodata.B64index
+                0x00000000      0x100 ./Core/Lib/base64/base64.o
+ .text.Base64encode_len
+                0x00000000       0x28 ./Core/Lib/base64/base64.o
+ .text.Base64Decode_nprbytes
+                0x00000000       0x3c ./Core/Lib/base64/base64.o
+ .text.Base64decode_len
+                0x00000000       0x22 ./Core/Lib/base64/base64.o
+ .text.Base64encode
+                0x00000000      0x104 ./Core/Lib/base64/base64.o
+ .text.Base64decode
+                0x00000000      0x168 ./Core/Lib/base64/base64.o
+ .debug_info    0x00000000      0x26a ./Core/Lib/base64/base64.o
+ .debug_abbrev  0x00000000       0xe4 ./Core/Lib/base64/base64.o
+ .debug_aranges
+                0x00000000       0x40 ./Core/Lib/base64/base64.o
+ .debug_rnglists
+                0x00000000       0x2d ./Core/Lib/base64/base64.o
+ .debug_macro   0x00000000       0x24 ./Core/Lib/base64/base64.o
+ .debug_macro   0x00000000      0xad8 ./Core/Lib/base64/base64.o
+ .debug_macro   0x00000000      0x190 ./Core/Lib/base64/base64.o
+ .debug_line    0x00000000      0x38e ./Core/Lib/base64/base64.o
+ .debug_str     0x00000000     0x32f2 ./Core/Lib/base64/base64.o
+ .comment       0x00000000       0x44 ./Core/Lib/base64/base64.o
+ .debug_frame   0x00000000       0xec ./Core/Lib/base64/base64.o
+ .ARM.attributes
+                0x00000000       0x34 ./Core/Lib/base64/base64.o
+ .group         0x00000000        0xc ./Core/Lib/byte_stuffing/byte_stuffing.o
+ .group         0x00000000        0xc ./Core/Lib/byte_stuffing/byte_stuffing.o
+ .group         0x00000000        0xc ./Core/Lib/byte_stuffing/byte_stuffing.o
+ .group         0x00000000        0xc ./Core/Lib/byte_stuffing/byte_stuffing.o
+ .group         0x00000000        0xc ./Core/Lib/byte_stuffing/byte_stuffing.o
+ .group         0x00000000        0xc ./Core/Lib/byte_stuffing/byte_stuffing.o
+ .group         0x00000000        0xc ./Core/Lib/byte_stuffing/byte_stuffing.o
+ .group         0x00000000        0xc ./Core/Lib/byte_stuffing/byte_stuffing.o
+ .group         0x00000000        0xc ./Core/Lib/byte_stuffing/byte_stuffing.o
+ .text          0x00000000        0x0 ./Core/Lib/byte_stuffing/byte_stuffing.o
+ .data          0x00000000        0x0 ./Core/Lib/byte_stuffing/byte_stuffing.o
+ .bss           0x00000000        0x0 ./Core/Lib/byte_stuffing/byte_stuffing.o
+ .text.escape_byte_
+                0x00000000       0x64 ./Core/Lib/byte_stuffing/byte_stuffing.o
+ .text.escape_buffer_
+                0x00000000       0x98 ./Core/Lib/byte_stuffing/byte_stuffing.o
+ .text.unescape_buffer_
+                0x00000000       0x94 ./Core/Lib/byte_stuffing/byte_stuffing.o
+ .debug_info    0x00000000      0x2b2 ./Core/Lib/byte_stuffing/byte_stuffing.o
+ .debug_abbrev  0x00000000       0xe0 ./Core/Lib/byte_stuffing/byte_stuffing.o
+ .debug_aranges
+                0x00000000       0x30 ./Core/Lib/byte_stuffing/byte_stuffing.o
+ .debug_rnglists
+                0x00000000       0x21 ./Core/Lib/byte_stuffing/byte_stuffing.o
+ .debug_macro   0x00000000       0x7b ./Core/Lib/byte_stuffing/byte_stuffing.o
+ .debug_macro   0x00000000      0xad8 ./Core/Lib/byte_stuffing/byte_stuffing.o
+ .debug_macro   0x00000000       0x22 ./Core/Lib/byte_stuffing/byte_stuffing.o
+ .debug_macro   0x00000000       0x8e ./Core/Lib/byte_stuffing/byte_stuffing.o
+ .debug_macro   0x00000000       0x51 ./Core/Lib/byte_stuffing/byte_stuffing.o
+ .debug_macro   0x00000000      0x103 ./Core/Lib/byte_stuffing/byte_stuffing.o
+ .debug_macro   0x00000000       0x6a ./Core/Lib/byte_stuffing/byte_stuffing.o
+ .debug_macro   0x00000000      0x1df ./Core/Lib/byte_stuffing/byte_stuffing.o
+ .debug_macro   0x00000000      0x190 ./Core/Lib/byte_stuffing/byte_stuffing.o
+ .debug_macro   0x00000000       0x16 ./Core/Lib/byte_stuffing/byte_stuffing.o
+ .debug_line    0x00000000      0x528 ./Core/Lib/byte_stuffing/byte_stuffing.o
+ .debug_str     0x00000000     0x425b ./Core/Lib/byte_stuffing/byte_stuffing.o
+ .comment       0x00000000       0x44 ./Core/Lib/byte_stuffing/byte_stuffing.o
+ .debug_frame   0x00000000       0x88 ./Core/Lib/byte_stuffing/byte_stuffing.o
+ .ARM.attributes
+                0x00000000       0x34 ./Core/Lib/byte_stuffing/byte_stuffing.o
  .group         0x00000000        0xc ./Core/Lib/crsf/crsf.o
  .group         0x00000000        0xc ./Core/Lib/crsf/crsf.o
  .group         0x00000000        0xc ./Core/Lib/crsf/crsf.o
@@ -302,6 +376,14 @@ Discarded input sections
                 0x00000000       0x4a ./Core/Lib/crsf/crsf.o
  .text.crsf_isNewRcDataAvailable
                 0x00000000       0x26 ./Core/Lib/crsf/crsf.o
+ .debug_macro   0x00000000      0xad8 ./Core/Lib/crsf/crsf.o
+ .debug_macro   0x00000000       0x22 ./Core/Lib/crsf/crsf.o
+ .debug_macro   0x00000000       0x8e ./Core/Lib/crsf/crsf.o
+ .debug_macro   0x00000000       0x51 ./Core/Lib/crsf/crsf.o
+ .debug_macro   0x00000000      0x103 ./Core/Lib/crsf/crsf.o
+ .debug_macro   0x00000000       0x6a ./Core/Lib/crsf/crsf.o
+ .debug_macro   0x00000000      0x1df ./Core/Lib/crsf/crsf.o
+ .debug_macro   0x00000000      0x190 ./Core/Lib/crsf/crsf.o
  .group         0x00000000        0xc ./Core/Lib/crsf/crsf_def.o
  .group         0x00000000        0xc ./Core/Lib/crsf/crsf_def.o
  .group         0x00000000        0xc ./Core/Lib/crsf/crsf_def.o
@@ -980,6 +1062,86 @@ Discarded input sections
  .debug_macro   0x00000000      0x4b8 ./Core/Lib/flight_controller_libs/fp_cli_server.o
  .debug_macro   0x00000000       0x56 ./Core/Lib/flight_controller_libs/fp_cli_server.o
  .debug_macro   0x00000000       0x49 ./Core/Lib/flight_controller_libs/fp_cli_server.o
+ .group         0x00000000        0xc ./Core/Lib/flight_controller_libs/gazebo_link.o
+ .group         0x00000000        0xc ./Core/Lib/flight_controller_libs/gazebo_link.o
+ .group         0x00000000        0xc ./Core/Lib/flight_controller_libs/gazebo_link.o
+ .group         0x00000000        0xc ./Core/Lib/flight_controller_libs/gazebo_link.o
+ .group         0x00000000        0xc ./Core/Lib/flight_controller_libs/gazebo_link.o
+ .group         0x00000000        0xc ./Core/Lib/flight_controller_libs/gazebo_link.o
+ .group         0x00000000        0xc ./Core/Lib/flight_controller_libs/gazebo_link.o
+ .group         0x00000000        0xc ./Core/Lib/flight_controller_libs/gazebo_link.o
+ .group         0x00000000        0xc ./Core/Lib/flight_controller_libs/gazebo_link.o
+ .group         0x00000000        0xc ./Core/Lib/flight_controller_libs/gazebo_link.o
+ .group         0x00000000        0xc ./Core/Lib/flight_controller_libs/gazebo_link.o
+ .group         0x00000000        0xc ./Core/Lib/flight_controller_libs/gazebo_link.o
+ .group         0x00000000        0xc ./Core/Lib/flight_controller_libs/gazebo_link.o
+ .group         0x00000000        0xc ./Core/Lib/flight_controller_libs/gazebo_link.o
+ .group         0x00000000        0xc ./Core/Lib/flight_controller_libs/gazebo_link.o
+ .group         0x00000000        0xc ./Core/Lib/flight_controller_libs/gazebo_link.o
+ .group         0x00000000        0xc ./Core/Lib/flight_controller_libs/gazebo_link.o
+ .group         0x00000000        0xc ./Core/Lib/flight_controller_libs/gazebo_link.o
+ .group         0x00000000        0xc ./Core/Lib/flight_controller_libs/gazebo_link.o
+ .group         0x00000000        0xc ./Core/Lib/flight_controller_libs/gazebo_link.o
+ .group         0x00000000        0xc ./Core/Lib/flight_controller_libs/gazebo_link.o
+ .group         0x00000000        0xc ./Core/Lib/flight_controller_libs/gazebo_link.o
+ .group         0x00000000        0xc ./Core/Lib/flight_controller_libs/gazebo_link.o
+ .group         0x00000000        0xc ./Core/Lib/flight_controller_libs/gazebo_link.o
+ .group         0x00000000        0xc ./Core/Lib/flight_controller_libs/gazebo_link.o
+ .group         0x00000000        0xc ./Core/Lib/flight_controller_libs/gazebo_link.o
+ .text          0x00000000        0x0 ./Core/Lib/flight_controller_libs/gazebo_link.o
+ .data          0x00000000        0x0 ./Core/Lib/flight_controller_libs/gazebo_link.o
+ .bss           0x00000000        0x0 ./Core/Lib/flight_controller_libs/gazebo_link.o
+ .bss.hil_link_data_recv
+                0x00000000       0x18 ./Core/Lib/flight_controller_libs/gazebo_link.o
+ .bss.hil_link_data_send
+                0x00000000       0x10 ./Core/Lib/flight_controller_libs/gazebo_link.o
+ .text.gazebo_link_recv_loop
+                0x00000000      0x174 ./Core/Lib/flight_controller_libs/gazebo_link.o
+ .bss.new_line_found.2
+                0x00000000        0x4 ./Core/Lib/flight_controller_libs/gazebo_link.o
+ .bss.in_buffer_len.1
+                0x00000000        0x4 ./Core/Lib/flight_controller_libs/gazebo_link.o
+ .bss.in_buffer.0
+                0x00000000      0x100 ./Core/Lib/flight_controller_libs/gazebo_link.o
+ .debug_info    0x00000000      0x3cf ./Core/Lib/flight_controller_libs/gazebo_link.o
+ .debug_abbrev  0x00000000      0x13b ./Core/Lib/flight_controller_libs/gazebo_link.o
+ .debug_aranges
+                0x00000000       0x20 ./Core/Lib/flight_controller_libs/gazebo_link.o
+ .debug_rnglists
+                0x00000000       0x14 ./Core/Lib/flight_controller_libs/gazebo_link.o
+ .debug_macro   0x00000000      0x176 ./Core/Lib/flight_controller_libs/gazebo_link.o
+ .debug_macro   0x00000000      0xad8 ./Core/Lib/flight_controller_libs/gazebo_link.o
+ .debug_macro   0x00000000      0x190 ./Core/Lib/flight_controller_libs/gazebo_link.o
+ .debug_macro   0x00000000       0x22 ./Core/Lib/flight_controller_libs/gazebo_link.o
+ .debug_macro   0x00000000       0x8e ./Core/Lib/flight_controller_libs/gazebo_link.o
+ .debug_macro   0x00000000       0x51 ./Core/Lib/flight_controller_libs/gazebo_link.o
+ .debug_macro   0x00000000      0x103 ./Core/Lib/flight_controller_libs/gazebo_link.o
+ .debug_macro   0x00000000       0x6a ./Core/Lib/flight_controller_libs/gazebo_link.o
+ .debug_macro   0x00000000      0x1df ./Core/Lib/flight_controller_libs/gazebo_link.o
+ .debug_macro   0x00000000       0x40 ./Core/Lib/flight_controller_libs/gazebo_link.o
+ .debug_macro   0x00000000       0x70 ./Core/Lib/flight_controller_libs/gazebo_link.o
+ .debug_macro   0x00000000       0x61 ./Core/Lib/flight_controller_libs/gazebo_link.o
+ .debug_macro   0x00000000       0x2a ./Core/Lib/flight_controller_libs/gazebo_link.o
+ .debug_macro   0x00000000       0x43 ./Core/Lib/flight_controller_libs/gazebo_link.o
+ .debug_macro   0x00000000       0x34 ./Core/Lib/flight_controller_libs/gazebo_link.o
+ .debug_macro   0x00000000      0x370 ./Core/Lib/flight_controller_libs/gazebo_link.o
+ .debug_macro   0x00000000       0x16 ./Core/Lib/flight_controller_libs/gazebo_link.o
+ .debug_macro   0x00000000       0x4a ./Core/Lib/flight_controller_libs/gazebo_link.o
+ .debug_macro   0x00000000       0x34 ./Core/Lib/flight_controller_libs/gazebo_link.o
+ .debug_macro   0x00000000       0x10 ./Core/Lib/flight_controller_libs/gazebo_link.o
+ .debug_macro   0x00000000       0x58 ./Core/Lib/flight_controller_libs/gazebo_link.o
+ .debug_macro   0x00000000       0x8e ./Core/Lib/flight_controller_libs/gazebo_link.o
+ .debug_macro   0x00000000       0x1c ./Core/Lib/flight_controller_libs/gazebo_link.o
+ .debug_macro   0x00000000      0x185 ./Core/Lib/flight_controller_libs/gazebo_link.o
+ .debug_macro   0x00000000       0x10 ./Core/Lib/flight_controller_libs/gazebo_link.o
+ .debug_macro   0x00000000       0x3c ./Core/Lib/flight_controller_libs/gazebo_link.o
+ .debug_macro   0x00000000       0x20 ./Core/Lib/flight_controller_libs/gazebo_link.o
+ .debug_line    0x00000000      0x6e8 ./Core/Lib/flight_controller_libs/gazebo_link.o
+ .debug_str     0x00000000     0x7b5c ./Core/Lib/flight_controller_libs/gazebo_link.o
+ .comment       0x00000000       0x44 ./Core/Lib/flight_controller_libs/gazebo_link.o
+ .debug_frame   0x00000000       0x38 ./Core/Lib/flight_controller_libs/gazebo_link.o
+ .ARM.attributes
+                0x00000000       0x34 ./Core/Lib/flight_controller_libs/gazebo_link.o
  .group         0x00000000        0xc ./Core/Lib/flight_controller_libs/geometry2D.o
  .group         0x00000000        0xc ./Core/Lib/flight_controller_libs/geometry2D.o
  .group         0x00000000        0xc ./Core/Lib/flight_controller_libs/geometry2D.o
@@ -28887,6 +29049,8 @@ Discarded input sections
                 0x00000000       0xa4 ./USB_DEVICE/App/usbd_cdc_if.o
  .text.CDC_data_available_for_read
                 0x00000000       0x88 ./USB_DEVICE/App/usbd_cdc_if.o
+ .text.CDC_data_rx_flush
+                0x00000000       0x84 ./USB_DEVICE/App/usbd_cdc_if.o
  .text.usb_printf
                 0x00000000       0x66 ./USB_DEVICE/App/usbd_cdc_if.o
  .debug_macro   0x00000000      0xad8 ./USB_DEVICE/App/usbd_cdc_if.o
@@ -29805,6 +29969,8 @@ Linker script and memory map
 LOAD C:/ST/STM32CubeIDE_1.18.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/thumb/v7e-m+fp/hard/crti.o
 LOAD C:/ST/STM32CubeIDE_1.18.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/thumb/v7e-m+fp/hard/crtbegin.o
 LOAD C:/ST/STM32CubeIDE_1.18.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/crt0.o
+LOAD ./Core/Lib/base64/base64.o
+LOAD ./Core/Lib/byte_stuffing/byte_stuffing.o
 LOAD ./Core/Lib/crsf/crsf.o
 LOAD ./Core/Lib/crsf/crsf_def.o
 LOAD ./Core/Lib/crsf/crsf_telemetry.o
@@ -29814,6 +29980,7 @@ LOAD ./Core/Lib/flight_controller_libs/filters.o
 LOAD ./Core/Lib/flight_controller_libs/flight_control_loop.o
 LOAD ./Core/Lib/flight_controller_libs/fp_cli.o
 LOAD ./Core/Lib/flight_controller_libs/fp_cli_server.o
+LOAD ./Core/Lib/flight_controller_libs/gazebo_link.o
 LOAD ./Core/Lib/flight_controller_libs/geometry2D.o
 LOAD ./Core/Lib/flight_controller_libs/geometry3D.o
 LOAD ./Core/Lib/flight_controller_libs/imu.o
@@ -35162,7 +35329,7 @@ LOAD C:/ST/STM32CubeIDE_1.18.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.ext
 LOAD C:/ST/STM32CubeIDE_1.18.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a
 LOAD C:/ST/STM32CubeIDE_1.18.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/thumb/v7e-m+fp/hard\libgcc.a
 
-.debug_info     0x00000000    0x6e9d6
+.debug_info     0x00000000    0x6eb14
  .debug_info    0x00000000     0x168a ./Core/Lib/crsf/crsf.o
  .debug_info    0x0000168a      0x13a ./Core/Lib/crsf/crsf_def.o
  .debug_info    0x000017c4      0xcc9 ./Core/Lib/crsf/crsf_telemetry.o
@@ -35271,11 +35438,11 @@ LOAD C:/ST/STM32CubeIDE_1.18.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.ext
  .debug_info    0x00069e4f      0x339 ./Middlewares/Third_Party/lwip/src/netif/ppp/polarssl/md5.o
  .debug_info    0x0006a188      0xe88 ./Middlewares/Third_Party/lwip/system/OS/sys_arch.o
  .debug_info    0x0006b010      0x708 ./USB_DEVICE/App/usb_device.o
- .debug_info    0x0006b718     0x1201 ./USB_DEVICE/App/usbd_cdc_if.o
- .debug_info    0x0006c919      0x45f ./USB_DEVICE/App/usbd_desc.o
- .debug_info    0x0006cd78     0x1c5e ./USB_DEVICE/Target/usbd_conf.o
+ .debug_info    0x0006b718     0x133f ./USB_DEVICE/App/usbd_cdc_if.o
+ .debug_info    0x0006ca57      0x45f ./USB_DEVICE/App/usbd_desc.o
+ .debug_info    0x0006ceb6     0x1c5e ./USB_DEVICE/Target/usbd_conf.o
 
-.debug_abbrev   0x00000000    0x114db
+.debug_abbrev   0x00000000    0x114f4
  .debug_abbrev  0x00000000      0x391 ./Core/Lib/crsf/crsf.o
  .debug_abbrev  0x00000391       0xa3 ./Core/Lib/crsf/crsf_def.o
  .debug_abbrev  0x00000434      0x261 ./Core/Lib/crsf/crsf_telemetry.o
@@ -35384,11 +35551,11 @@ LOAD C:/ST/STM32CubeIDE_1.18.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.ext
  .debug_abbrev  0x00010478      0x1be ./Middlewares/Third_Party/lwip/src/netif/ppp/polarssl/md5.o
  .debug_abbrev  0x00010636      0x38f ./Middlewares/Third_Party/lwip/system/OS/sys_arch.o
  .debug_abbrev  0x000109c5      0x195 ./USB_DEVICE/App/usb_device.o
- .debug_abbrev  0x00010b5a      0x461 ./USB_DEVICE/App/usbd_cdc_if.o
- .debug_abbrev  0x00010fbb      0x1e1 ./USB_DEVICE/App/usbd_desc.o
- .debug_abbrev  0x0001119c      0x33f ./USB_DEVICE/Target/usbd_conf.o
+ .debug_abbrev  0x00010b5a      0x47a ./USB_DEVICE/App/usbd_cdc_if.o
+ .debug_abbrev  0x00010fd4      0x1e1 ./USB_DEVICE/App/usbd_desc.o
+ .debug_abbrev  0x000111b5      0x33f ./USB_DEVICE/Target/usbd_conf.o
 
-.debug_aranges  0x00000000     0x4aa0
+.debug_aranges  0x00000000     0x4aa8
  .debug_aranges
                 0x00000000       0xf8 ./Core/Lib/crsf/crsf.o
  .debug_aranges
@@ -35606,14 +35773,14 @@ LOAD C:/ST/STM32CubeIDE_1.18.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.ext
  .debug_aranges
                 0x000048b0       0x20 ./USB_DEVICE/App/usb_device.o
  .debug_aranges
-                0x000048d0       0x60 ./USB_DEVICE/App/usbd_cdc_if.o
+                0x000048d0       0x68 ./USB_DEVICE/App/usbd_cdc_if.o
  .debug_aranges
-                0x00004930       0x60 ./USB_DEVICE/App/usbd_desc.o
+                0x00004938       0x60 ./USB_DEVICE/App/usbd_desc.o
  .debug_aranges
-                0x00004990      0x110 ./USB_DEVICE/Target/usbd_conf.o
+                0x00004998      0x110 ./USB_DEVICE/Target/usbd_conf.o
 
 .debug_rnglists
-                0x00000000     0x3a59
+                0x00000000     0x3a60
  .debug_rnglists
                 0x00000000       0xbb ./Core/Lib/crsf/crsf.o
  .debug_rnglists
@@ -35827,396 +35994,388 @@ LOAD C:/ST/STM32CubeIDE_1.18.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.ext
  .debug_rnglists
                 0x000038f1       0x13 ./USB_DEVICE/App/usb_device.o
  .debug_rnglists
-                0x00003904       0x49 ./USB_DEVICE/App/usbd_cdc_if.o
+                0x00003904       0x50 ./USB_DEVICE/App/usbd_cdc_if.o
  .debug_rnglists
-                0x0000394d       0x43 ./USB_DEVICE/App/usbd_desc.o
+                0x00003954       0x43 ./USB_DEVICE/App/usbd_desc.o
  .debug_rnglists
-                0x00003990       0xc9 ./USB_DEVICE/Target/usbd_conf.o
+                0x00003997       0xc9 ./USB_DEVICE/Target/usbd_conf.o
 
-.debug_macro    0x00000000    0x4033b
+.debug_macro    0x00000000    0x3f286
  .debug_macro   0x00000000      0x185 ./Core/Lib/crsf/crsf.o
- .debug_macro   0x00000185      0xad8 ./Core/Lib/crsf/crsf.o
- .debug_macro   0x00000c5d      0x142 ./Core/Lib/crsf/crsf.o
- .debug_macro   0x00000d9f       0x22 ./Core/Lib/crsf/crsf.o
- .debug_macro   0x00000dc1       0x8e ./Core/Lib/crsf/crsf.o
- .debug_macro   0x00000e4f       0x51 ./Core/Lib/crsf/crsf.o
- .debug_macro   0x00000ea0      0x103 ./Core/Lib/crsf/crsf.o
- .debug_macro   0x00000fa3       0x6a ./Core/Lib/crsf/crsf.o
- .debug_macro   0x0000100d      0x1df ./Core/Lib/crsf/crsf.o
- .debug_macro   0x000011ec      0x190 ./Core/Lib/crsf/crsf.o
- .debug_macro   0x0000137c       0x18 ./Core/Lib/crsf/crsf.o
- .debug_macro   0x00001394       0x10 ./Core/Lib/crsf/crsf.o
- .debug_macro   0x000013a4       0x61 ./Core/Lib/crsf/crsf.o
- .debug_macro   0x00001405       0x2a ./Core/Lib/crsf/crsf.o
- .debug_macro   0x0000142f       0x43 ./Core/Lib/crsf/crsf.o
- .debug_macro   0x00001472       0x34 ./Core/Lib/crsf/crsf.o
- .debug_macro   0x000014a6      0x370 ./Core/Lib/crsf/crsf.o
- .debug_macro   0x00001816       0x16 ./Core/Lib/crsf/crsf.o
- .debug_macro   0x0000182c       0x4a ./Core/Lib/crsf/crsf.o
- .debug_macro   0x00001876       0x34 ./Core/Lib/crsf/crsf.o
- .debug_macro   0x000018aa       0x10 ./Core/Lib/crsf/crsf.o
- .debug_macro   0x000018ba       0x58 ./Core/Lib/crsf/crsf.o
- .debug_macro   0x00001912       0x8e ./Core/Lib/crsf/crsf.o
- .debug_macro   0x000019a0       0x1c ./Core/Lib/crsf/crsf.o
- .debug_macro   0x000019bc      0x185 ./Core/Lib/crsf/crsf.o
- .debug_macro   0x00001b41       0x10 ./Core/Lib/crsf/crsf.o
- .debug_macro   0x00001b51       0x3c ./Core/Lib/crsf/crsf.o
- .debug_macro   0x00001b8d       0x20 ./Core/Lib/crsf/crsf.o
- .debug_macro   0x00001bad       0x40 ./Core/Lib/crsf/crsf.o
- .debug_macro   0x00001bed       0x70 ./Core/Lib/crsf/crsf.o
- .debug_macro   0x00001c5d       0x72 ./Core/Lib/crsf/crsf_def.o
- .debug_macro   0x00001ccf       0x70 ./Core/Lib/crsf/crsf_def.o
- .debug_macro   0x00001d3f      0x17a ./Core/Lib/crsf/crsf_telemetry.o
- .debug_macro   0x00001eb9       0x12 ./Core/Lib/crsf/crsf_telemetry.o
- .debug_macro   0x00001ecb       0x76 ./Core/Lib/crsf/crsf_telemetry.o
- .debug_macro   0x00001f41      0x15f ./Core/Lib/flight_controller_libs/attitude_controller.o
- .debug_macro   0x000020a0       0x5b ./Core/Lib/flight_controller_libs/attitude_controller.o
- .debug_macro   0x000020fb       0x94 ./Core/Lib/flight_controller_libs/attitude_controller.o
- .debug_macro   0x0000218f       0x16 ./Core/Lib/flight_controller_libs/attitude_controller.o
- .debug_macro   0x000021a5      0x11c ./Core/Lib/flight_controller_libs/attitude_controller.o
- .debug_macro   0x000022c1       0x9b ./Core/Lib/flight_controller_libs/attitude_controller.o
- .debug_macro   0x0000235c       0x57 ./Core/Lib/flight_controller_libs/attitude_controller.o
- .debug_macro   0x000023b3       0x16 ./Core/Lib/flight_controller_libs/attitude_controller.o
- .debug_macro   0x000023c9       0x29 ./Core/Lib/flight_controller_libs/attitude_controller.o
- .debug_macro   0x000023f2       0x16 ./Core/Lib/flight_controller_libs/attitude_controller.o
- .debug_macro   0x00002408       0x7b ./Core/Lib/flight_controller_libs/crc.o
- .debug_macro   0x00002483      0x100 ./Core/Lib/flight_controller_libs/filters.o
- .debug_macro   0x00002583      0x19b ./Core/Lib/flight_controller_libs/filters.o
- .debug_macro   0x0000271e       0x10 ./Core/Lib/flight_controller_libs/filters.o
- .debug_macro   0x0000272e      0x201 ./Core/Lib/flight_controller_libs/filters.o
- .debug_macro   0x0000292f      0x2d1 ./Core/Lib/flight_controller_libs/flight_control_loop.o
- .debug_macro   0x00002c00       0xff ./Core/Lib/flight_controller_libs/flight_control_loop.o
- .debug_macro   0x00002cff       0x10 ./Core/Lib/flight_controller_libs/flight_control_loop.o
- .debug_macro   0x00002d0f       0x10 ./Core/Lib/flight_controller_libs/flight_control_loop.o
- .debug_macro   0x00002d1f       0x10 ./Core/Lib/flight_controller_libs/flight_control_loop.o
- .debug_macro   0x00002d2f       0x10 ./Core/Lib/flight_controller_libs/flight_control_loop.o
- .debug_macro   0x00002d3f       0x10 ./Core/Lib/flight_controller_libs/flight_control_loop.o
- .debug_macro   0x00002d4f      0x176 ./Core/Lib/flight_controller_libs/flight_control_loop.o
- .debug_macro   0x00002ec5      0x15a ./Core/Lib/flight_controller_libs/flight_control_loop.o
- .debug_macro   0x0000301f       0xc9 ./Core/Lib/flight_controller_libs/flight_control_loop.o
- .debug_macro   0x000030e8       0x1c ./Core/Lib/flight_controller_libs/flight_control_loop.o
- .debug_macro   0x00003104       0x26 ./Core/Lib/flight_controller_libs/flight_control_loop.o
- .debug_macro   0x0000312a       0x16 ./Core/Lib/flight_controller_libs/flight_control_loop.o
- .debug_macro   0x00003140      0x4b8 ./Core/Lib/flight_controller_libs/flight_control_loop.o
- .debug_macro   0x000035f8       0xb5 ./Core/Lib/flight_controller_libs/flight_control_loop.o
- .debug_macro   0x000036ad       0xaa ./Core/Lib/flight_controller_libs/flight_control_loop.o
- .debug_macro   0x00003757       0x87 ./Core/Lib/flight_controller_libs/flight_control_loop.o
- .debug_macro   0x000037de       0x9a ./Core/Lib/flight_controller_libs/flight_control_loop.o
- .debug_macro   0x00003878       0x9a ./Core/Lib/flight_controller_libs/flight_control_loop.o
- .debug_macro   0x00003912       0x1c ./Core/Lib/flight_controller_libs/flight_control_loop.o
- .debug_macro   0x0000392e       0x10 ./Core/Lib/flight_controller_libs/flight_control_loop.o
- .debug_macro   0x0000393e       0x1c ./Core/Lib/flight_controller_libs/flight_control_loop.o
- .debug_macro   0x0000395a       0x16 ./Core/Lib/flight_controller_libs/flight_control_loop.o
- .debug_macro   0x00003970      0x146 ./Core/Lib/flight_controller_libs/flight_control_loop.o
- .debug_macro   0x00003ab6      0x53c ./Core/Lib/flight_controller_libs/fp_cli.o
- .debug_macro   0x00003ff2       0x56 ./Core/Lib/flight_controller_libs/fp_cli.o
- .debug_macro   0x00004048       0x49 ./Core/Lib/flight_controller_libs/fp_cli.o
- .debug_macro   0x00004091       0x58 ./Core/Lib/flight_controller_libs/fp_cli.o
- .debug_macro   0x000040e9       0x10 ./Core/Lib/flight_controller_libs/fp_cli.o
- .debug_macro   0x000040f9       0x1c ./Core/Lib/flight_controller_libs/fp_cli.o
- .debug_macro   0x00004115      0x2a7 ./Core/Lib/flight_controller_libs/fp_cli.o
- .debug_macro   0x000043bc       0x2e ./Core/Lib/flight_controller_libs/fp_cli.o
- .debug_macro   0x000043ea       0x2f ./Core/Lib/flight_controller_libs/fp_cli.o
- .debug_macro   0x00004419       0x1c ./Core/Lib/flight_controller_libs/fp_cli.o
- .debug_macro   0x00004435       0x22 ./Core/Lib/flight_controller_libs/fp_cli.o
- .debug_macro   0x00004457       0xfb ./Core/Lib/flight_controller_libs/fp_cli.o
- .debug_macro   0x00004552     0x1011 ./Core/Lib/flight_controller_libs/fp_cli.o
- .debug_macro   0x00005563      0x11f ./Core/Lib/flight_controller_libs/fp_cli.o
- .debug_macro   0x00005682    0x1426d ./Core/Lib/flight_controller_libs/fp_cli.o
- .debug_macro   0x000198ef       0x6d ./Core/Lib/flight_controller_libs/fp_cli.o
- .debug_macro   0x0001995c     0x369a ./Core/Lib/flight_controller_libs/fp_cli.o
- .debug_macro   0x0001cff6       0x56 ./Core/Lib/flight_controller_libs/fp_cli.o
- .debug_macro   0x0001d04c      0x8bc ./Core/Lib/flight_controller_libs/fp_cli.o
- .debug_macro   0x0001d908      0x9e9 ./Core/Lib/flight_controller_libs/fp_cli.o
- .debug_macro   0x0001e2f1      0x115 ./Core/Lib/flight_controller_libs/fp_cli.o
- .debug_macro   0x0001e406      0x130 ./Core/Lib/flight_controller_libs/fp_cli.o
- .debug_macro   0x0001e536       0xa5 ./Core/Lib/flight_controller_libs/fp_cli.o
- .debug_macro   0x0001e5db      0x174 ./Core/Lib/flight_controller_libs/fp_cli.o
- .debug_macro   0x0001e74f      0x287 ./Core/Lib/flight_controller_libs/fp_cli.o
- .debug_macro   0x0001e9d6       0x5f ./Core/Lib/flight_controller_libs/fp_cli.o
- .debug_macro   0x0001ea35      0x236 ./Core/Lib/flight_controller_libs/fp_cli.o
- .debug_macro   0x0001ec6b      0x12c ./Core/Lib/flight_controller_libs/fp_cli.o
- .debug_macro   0x0001ed97      0x21e ./Core/Lib/flight_controller_libs/fp_cli.o
- .debug_macro   0x0001efb5       0x2e ./Core/Lib/flight_controller_libs/fp_cli.o
- .debug_macro   0x0001efe3      0x127 ./Core/Lib/flight_controller_libs/fp_cli.o
- .debug_macro   0x0001f10a       0x7e ./Core/Lib/flight_controller_libs/fp_cli.o
- .debug_macro   0x0001f188       0x89 ./Core/Lib/flight_controller_libs/fp_cli.o
- .debug_macro   0x0001f211      0x225 ./Core/Lib/flight_controller_libs/fp_cli.o
- .debug_macro   0x0001f436      0x8ed ./Core/Lib/flight_controller_libs/fp_cli.o
- .debug_macro   0x0001fd23       0x4d ./Core/Lib/flight_controller_libs/fp_cli.o
- .debug_macro   0x0001fd70      0x2aa ./Core/Lib/flight_controller_libs/fp_cli.o
- .debug_macro   0x0002001a      0x293 ./Core/Lib/flight_controller_libs/fp_cli.o
- .debug_macro   0x000202ad       0xba ./Core/Lib/flight_controller_libs/fp_cli.o
- .debug_macro   0x00020367      0x12d ./Core/Lib/flight_controller_libs/fp_cli.o
- .debug_macro   0x00020494       0x10 ./Core/Lib/flight_controller_libs/fp_cli.o
- .debug_macro   0x000204a4       0x65 ./Core/Lib/flight_controller_libs/fp_cli.o
- .debug_macro   0x00020509      0x20f ./Core/Lib/flight_controller_libs/fp_cli.o
- .debug_macro   0x00020718       0x95 ./Core/Lib/flight_controller_libs/fp_cli.o
- .debug_macro   0x000207ad       0x10 ./Core/Lib/flight_controller_libs/fp_cli.o
- .debug_macro   0x000207bd       0xf3 ./Core/Lib/flight_controller_libs/fp_cli.o
- .debug_macro   0x000208b0       0x10 ./Core/Lib/flight_controller_libs/fp_cli.o
- .debug_macro   0x000208c0      0x176 ./Core/Lib/flight_controller_libs/fp_cli.o
- .debug_macro   0x00020a36       0x64 ./Core/Lib/flight_controller_libs/fp_cli.o
- .debug_macro   0x00020a9a       0x16 ./Core/Lib/flight_controller_libs/fp_cli.o
- .debug_macro   0x00020ab0      0x69d ./Core/Lib/flight_controller_libs/fp_cli_server.o
- .debug_macro   0x0002114d       0x1c ./Core/Lib/flight_controller_libs/fp_cli_server.o
- .debug_macro   0x00021169      0x13c ./Core/Lib/flight_controller_libs/fp_cli_server.o
- .debug_macro   0x000212a5       0x16 ./Core/Lib/flight_controller_libs/fp_cli_server.o
- .debug_macro   0x000212bb       0x9e ./Core/Lib/flight_controller_libs/fp_cli_server.o
- .debug_macro   0x00021359      0x112 ./Core/Lib/flight_controller_libs/fp_cli_server.o
- .debug_macro   0x0002146b       0x16 ./Core/Lib/flight_controller_libs/fp_cli_server.o
- .debug_macro   0x00021481       0x16 ./Core/Lib/flight_controller_libs/fp_cli_server.o
- .debug_macro   0x00021497       0x10 ./Core/Lib/flight_controller_libs/fp_cli_server.o
- .debug_macro   0x000214a7       0x10 ./Core/Lib/flight_controller_libs/fp_cli_server.o
- .debug_macro   0x000214b7       0x22 ./Core/Lib/flight_controller_libs/fp_cli_server.o
- .debug_macro   0x000214d9       0x10 ./Core/Lib/flight_controller_libs/fp_cli_server.o
- .debug_macro   0x000214e9       0x1c ./Core/Lib/flight_controller_libs/fp_cli_server.o
- .debug_macro   0x00021505       0x52 ./Core/Lib/flight_controller_libs/fp_cli_server.o
- .debug_macro   0x00021557       0x10 ./Core/Lib/flight_controller_libs/fp_cli_server.o
- .debug_macro   0x00021567       0x52 ./Core/Lib/flight_controller_libs/fp_cli_server.o
- .debug_macro   0x000215b9       0xc1 ./Core/Lib/flight_controller_libs/fp_cli_server.o
- .debug_macro   0x0002167a       0x1c ./Core/Lib/flight_controller_libs/fp_cli_server.o
- .debug_macro   0x00021696       0x3d ./Core/Lib/flight_controller_libs/fp_cli_server.o
- .debug_macro   0x000216d3       0xc8 ./Core/Lib/flight_controller_libs/fp_cli_server.o
- .debug_macro   0x0002179b       0x16 ./Core/Lib/flight_controller_libs/fp_cli_server.o
- .debug_macro   0x000217b1       0x10 ./Core/Lib/flight_controller_libs/fp_cli_server.o
- .debug_macro   0x000217c1       0x10 ./Core/Lib/flight_controller_libs/fp_cli_server.o
- .debug_macro   0x000217d1       0x35 ./Core/Lib/flight_controller_libs/fp_cli_server.o
- .debug_macro   0x00021806       0x28 ./Core/Lib/flight_controller_libs/fp_cli_server.o
- .debug_macro   0x0002182e       0x10 ./Core/Lib/flight_controller_libs/fp_cli_server.o
- .debug_macro   0x0002183e       0x17 ./Core/Lib/flight_controller_libs/fp_cli_server.o
- .debug_macro   0x00021855       0x10 ./Core/Lib/flight_controller_libs/fp_cli_server.o
- .debug_macro   0x00021865      0x460 ./Core/Lib/flight_controller_libs/fp_cli_server.o
- .debug_macro   0x00021cc5       0x43 ./Core/Lib/flight_controller_libs/fp_cli_server.o
- .debug_macro   0x00021d08       0x7c ./Core/Lib/flight_controller_libs/fp_cli_server.o
- .debug_macro   0x00021d84       0x17 ./Core/Lib/flight_controller_libs/fp_cli_server.o
- .debug_macro   0x00021d9b      0x118 ./Core/Lib/flight_controller_libs/fp_cli_server.o
- .debug_macro   0x00021eb3       0x19 ./Core/Lib/flight_controller_libs/fp_cli_server.o
- .debug_macro   0x00021ecc      0x11f ./Core/Lib/flight_controller_libs/fp_cli_server.o
- .debug_macro   0x00021feb       0x82 ./Core/Lib/flight_controller_libs/fp_cli_server.o
- .debug_macro   0x0002206d       0x6d ./Core/Lib/flight_controller_libs/fp_cli_server.o
- .debug_macro   0x000220da      0x73a ./Core/Lib/flight_controller_libs/fp_cli_server.o
- .debug_macro   0x00022814       0x16 ./Core/Lib/flight_controller_libs/fp_cli_server.o
- .debug_macro   0x0002282a       0x10 ./Core/Lib/flight_controller_libs/fp_cli_server.o
- .debug_macro   0x0002283a       0x28 ./Core/Lib/flight_controller_libs/fp_cli_server.o
- .debug_macro   0x00022862       0x74 ./Core/Lib/flight_controller_libs/fp_cli_server.o
- .debug_macro   0x000228d6       0x22 ./Core/Lib/flight_controller_libs/fp_cli_server.o
- .debug_macro   0x000228f8       0x65 ./Core/Lib/flight_controller_libs/fp_cli_server.o
- .debug_macro   0x0002295d       0xb3 ./Core/Lib/flight_controller_libs/fp_cli_server.o
- .debug_macro   0x00022a10       0x6a ./Core/Lib/flight_controller_libs/fp_cli_server.o
- .debug_macro   0x00022a7a      0x1d1 ./Core/Lib/flight_controller_libs/fp_cli_server.o
- .debug_macro   0x00022c4b      0x177 ./Core/Lib/flight_controller_libs/fp_cli_server.o
- .debug_macro   0x00022dc2       0x3a ./Core/Lib/flight_controller_libs/fp_cli_server.o
- .debug_macro   0x00022dfc       0xe8 ./Core/Lib/flight_controller_libs/fp_cli_server.o
- .debug_macro   0x00022ee4       0x10 ./Core/Lib/flight_controller_libs/fp_cli_server.o
- .debug_macro   0x00022ef4       0x10 ./Core/Lib/flight_controller_libs/fp_cli_server.o
- .debug_macro   0x00022f04       0x10 ./Core/Lib/flight_controller_libs/fp_cli_server.o
- .debug_macro   0x00022f14       0x3f ./Core/Lib/flight_controller_libs/fp_cli_server.o
- .debug_macro   0x00022f53       0x25 ./Core/Lib/flight_controller_libs/fp_cli_server.o
- .debug_macro   0x00022f78       0x22 ./Core/Lib/flight_controller_libs/fp_cli_server.o
- .debug_macro   0x00022f9a      0x15b ./Core/Lib/flight_controller_libs/fp_cli_server.o
- .debug_macro   0x000230f5      0x14b ./Core/Lib/flight_controller_libs/fp_cli_server.o
- .debug_macro   0x00023240      0x149 ./Core/Lib/flight_controller_libs/fp_cli_server.o
- .debug_macro   0x00023389      0x320 ./Core/Lib/flight_controller_libs/fp_cli_server.o
- .debug_macro   0x000236a9      0x407 ./Core/Lib/flight_controller_libs/fp_cli_server.o
- .debug_macro   0x00023ab0      0x13c ./Core/Lib/flight_controller_libs/geometry3D.o
- .debug_macro   0x00023bec      0x18a ./Core/Lib/flight_controller_libs/imu.o
- .debug_macro   0x00023d76      0x135 ./Core/Lib/flight_controller_libs/madgwick_filter.o
- .debug_macro   0x00023eab       0x16 ./Core/Lib/flight_controller_libs/madgwick_filter.o
- .debug_macro   0x00023ec1      0x27f ./Core/Lib/flight_controller_libs/motor_mixer.o
- .debug_macro   0x00024140      0x107 ./Core/Lib/flight_controller_libs/pid_controller.o
- .debug_macro   0x00024247      0x186 ./Core/Lib/flight_controller_libs/pid_controller.o
- .debug_macro   0x000243cd      0x168 ./Core/Lib/flight_controller_libs/rate_controller.o
- .debug_macro   0x00024535      0x16f ./Core/Lib/flight_controller_libs/rc_control.o
- .debug_macro   0x000246a4      0x7de ./Core/Lib/flight_controller_libs/rc_control_recv_routine.o
- .debug_macro   0x00024e82       0x10 ./Core/Lib/flight_controller_libs/rc_control_recv_routine.o
- .debug_macro   0x00024e92       0x16 ./Core/Lib/flight_controller_libs/rc_control_recv_routine.o
- .debug_macro   0x00024ea8       0x2e ./Core/Lib/flight_controller_libs/rc_control_recv_routine.o
- .debug_macro   0x00024ed6       0x28 ./Core/Lib/flight_controller_libs/rc_control_recv_routine.o
- .debug_macro   0x00024efe       0x34 ./Core/Lib/flight_controller_libs/rc_control_recv_routine.o
- .debug_macro   0x00024f32      0x154 ./Core/Lib/flight_controller_libs/rc_control_recv_routine.o
- .debug_macro   0x00025086       0x41 ./Core/Lib/flight_controller_libs/rc_control_recv_routine.o
- .debug_macro   0x000250c7       0xad ./Core/Lib/flight_controller_libs/rc_control_recv_routine.o
- .debug_macro   0x00025174       0x10 ./Core/Lib/flight_controller_libs/rc_control_recv_routine.o
- .debug_macro   0x00025184      0x242 ./Core/Lib/flight_controller_libs/rc_control_recv_routine.o
- .debug_macro   0x000253c6      0x1b8 ./Core/Lib/lwshell/lwshell/src/lwshell/lwshell.o
- .debug_macro   0x0002557e      0x192 ./Core/Lib/mpu6500/interface/driver_mpu6500_basic.o
- .debug_macro   0x00025710       0x58 ./Core/Lib/mpu6500/interface/driver_mpu6500_basic.o
- .debug_macro   0x00025768       0xb8 ./Core/Lib/mpu6500/interface/driver_mpu6500_basic.o
- .debug_macro   0x00025820      0x3c1 ./Core/Lib/mpu6500/interface/driver_mpu6500_interface.o
- .debug_macro   0x00025be1       0x4c ./Core/Lib/mpu6500/interface/driver_mpu6500_interface.o
- .debug_macro   0x00025c2d      0x520 ./Core/Lib/mpu6500/src/driver_mpu6500.o
- .debug_macro   0x0002614d       0x10 ./Core/Lib/mpu6500/src/driver_mpu6500.o
- .debug_macro   0x0002615d      0x15f ./Core/Lib/ringbuffer/ringbuffer.o
- .debug_macro   0x000262bc      0x302 ./Core/Lib/uart_driver/uart_driver.o
- .debug_macro   0x000265be       0x5c ./Core/Lib/uart_driver/uart_driver.o
- .debug_macro   0x0002661a      0x21f ./Core/Src/dma.o
- .debug_macro   0x00026839      0x42d ./Core/Src/emergency_handlers.o
- .debug_macro   0x00026c66      0x206 ./Core/Src/esc_pwm.o
- .debug_macro   0x00026e6c      0x503 ./Core/Src/freertos.o
- .debug_macro   0x0002736f       0x10 ./Core/Src/freertos.o
- .debug_macro   0x0002737f       0x6c ./Core/Src/freertos.o
- .debug_macro   0x000273eb       0xdd ./Core/Src/freertos.o
- .debug_macro   0x000274c8      0x21f ./Core/Src/gpio.o
- .debug_macro   0x000276e7      0x906 ./Core/Src/lwip_example.o
- .debug_macro   0x00027fed       0x58 ./Core/Src/lwip_example.o
- .debug_macro   0x00028045       0x2e ./Core/Src/lwip_example.o
- .debug_macro   0x00028073       0xa0 ./Core/Src/lwip_example.o
- .debug_macro   0x00028113       0x28 ./Core/Src/lwip_example.o
- .debug_macro   0x0002813b       0x2e ./Core/Src/lwip_example.o
- .debug_macro   0x00028169       0xf0 ./Core/Src/lwip_example.o
- .debug_macro   0x00028259       0x70 ./Core/Src/lwip_example.o
- .debug_macro   0x000282c9       0xf9 ./Core/Src/lwip_example.o
- .debug_macro   0x000283c2      0x181 ./Core/Src/lwip_example.o
- .debug_macro   0x00028543       0x16 ./Core/Src/lwip_example.o
- .debug_macro   0x00028559       0x16 ./Core/Src/lwip_example.o
- .debug_macro   0x0002856f       0x4c ./Core/Src/lwip_example.o
- .debug_macro   0x000285bb      0x10f ./Core/Src/lwip_example.o
- .debug_macro   0x000286ca       0x8f ./Core/Src/lwip_example.o
- .debug_macro   0x00028759       0xbe ./Core/Src/lwip_example.o
- .debug_macro   0x00028817       0x16 ./Core/Src/lwip_example.o
- .debug_macro   0x0002882d       0x64 ./Core/Src/lwip_example.o
- .debug_macro   0x00028891       0x64 ./Core/Src/lwip_example.o
- .debug_macro   0x000288f5       0xac ./Core/Src/lwip_example.o
- .debug_macro   0x000289a1       0x66 ./Core/Src/lwip_example.o
- .debug_macro   0x00028a07       0x4c ./Core/Src/lwip_example.o
- .debug_macro   0x00028a53       0x22 ./Core/Src/lwip_example.o
- .debug_macro   0x00028a75       0x16 ./Core/Src/lwip_example.o
- .debug_macro   0x00028a8b       0x10 ./Core/Src/lwip_example.o
- .debug_macro   0x00028a9b       0x4d ./Core/Src/lwip_example.o
- .debug_macro   0x00028ae8       0x46 ./Core/Src/lwip_example.o
- .debug_macro   0x00028b2e       0x35 ./Core/Src/lwip_example.o
- .debug_macro   0x00028b63      0x321 ./Core/Src/lwip_port.o
- .debug_macro   0x00028e84      0x591 ./Core/Src/main.o
- .debug_macro   0x00029415      0x609 ./Core/Src/rtos_flight_controller.o
- .debug_macro   0x00029a1e       0x97 ./Core/Src/rtos_flight_controller.o
- .debug_macro   0x00029ab5      0x201 ./Core/Src/rtos_flight_controller.o
- .debug_macro   0x00029cb6      0x21f ./Core/Src/spi.o
- .debug_macro   0x00029ed5      0x215 ./Core/Src/stm32f4xx_hal_msp.o
- .debug_macro   0x0002a0ea      0x1fc ./Core/Src/stm32f4xx_hal_timebase_tim.o
- .debug_macro   0x0002a2e6      0x262 ./Core/Src/stm32f4xx_it.o
- .debug_macro   0x0002a548      0x274 ./Core/Src/syscalls.o
- .debug_macro   0x0002a7bc       0x10 ./Core/Src/syscalls.o
- .debug_macro   0x0002a7cc       0xcf ./Core/Src/syscalls.o
- .debug_macro   0x0002a89b      0x12c ./Core/Src/syscalls.o
- .debug_macro   0x0002a9c7       0x10 ./Core/Src/syscalls.o
- .debug_macro   0x0002a9d7      0x18a ./Core/Src/syscalls.o
- .debug_macro   0x0002ab61       0x16 ./Core/Src/syscalls.o
- .debug_macro   0x0002ab77       0xce ./Core/Src/syscalls.o
- .debug_macro   0x0002ac45      0x112 ./Core/Src/sysmem.o
- .debug_macro   0x0002ad57      0x23c ./Core/Src/sysmem.o
- .debug_macro   0x0002af93      0x1fc ./Core/Src/system_stm32f4xx.o
- .debug_macro   0x0002b18f      0x21f ./Core/Src/tim.o
- .debug_macro   0x0002b3ae      0x256 ./Core/Src/usart.o
- .debug_macro   0x0002b604      0x25c ./Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal.o
- .debug_macro   0x0002b860      0x1fc ./Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_cortex.o
- .debug_macro   0x0002ba5c      0x202 ./Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma.o
- .debug_macro   0x0002bc5e      0x202 ./Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_gpio.o
- .debug_macro   0x0002be60      0x208 ./Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pcd.o
- .debug_macro   0x0002c068      0x1fc ./Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pcd_ex.o
- .debug_macro   0x0002c264      0x220 ./Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc.o
- .debug_macro   0x0002c484      0x20b ./Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spi.o
- .debug_macro   0x0002c68f      0x1fd ./Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_tim.o
- .debug_macro   0x0002c88c      0x1fc ./Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_tim_ex.o
- .debug_macro   0x0002ca88      0x1fd ./Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_uart.o
- .debug_macro   0x0002cc85      0x1fc ./Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_ll_usb.o
- .debug_macro   0x0002ce81      0x3a4 ./Middlewares/ST/STM32_USB_Device_Library/Class/CDC/Src/usbd_cdc.o
- .debug_macro   0x0002d225      0x38b ./Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_core.o
- .debug_macro   0x0002d5b0      0x215 ./Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_core.o
- .debug_macro   0x0002d7c5      0x395 ./Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_ctlreq.o
- .debug_macro   0x0002db5a      0x391 ./Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_ioreq.o
- .debug_macro   0x0002deeb      0x405 ./Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2/cmsis_os2.o
- .debug_macro   0x0002e2f0       0x10 ./Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2/cmsis_os2.o
- .debug_macro   0x0002e300       0xf5 ./Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2/cmsis_os2.o
- .debug_macro   0x0002e3f5       0x91 ./Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2/cmsis_os2.o
- .debug_macro   0x0002e486       0x8d ./Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2/cmsis_os2.o
- .debug_macro   0x0002e513       0x22 ./Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2/cmsis_os2.o
- .debug_macro   0x0002e535      0x199 ./Middlewares/Third_Party/FreeRTOS/Source/list.o
- .debug_macro   0x0002e6ce      0x228 ./Middlewares/Third_Party/FreeRTOS/Source/queue.o
- .debug_macro   0x0002e8f6      0x291 ./Middlewares/Third_Party/FreeRTOS/Source/tasks.o
- .debug_macro   0x0002eb87       0x10 ./Middlewares/Third_Party/FreeRTOS/Source/tasks.o
- .debug_macro   0x0002eb97      0x1ee ./Middlewares/Third_Party/FreeRTOS/Source/timers.o
- .debug_macro   0x0002ed85      0x246 ./Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F/port.o
- .debug_macro   0x0002efcb      0x1c0 ./Middlewares/Third_Party/FreeRTOS/Source/portable/MemMang/heap_4.o
- .debug_macro   0x0002f18b      0x6fa ./Middlewares/Third_Party/lwip/src/api/api_lib.o
- .debug_macro   0x0002f885       0x2a ./Middlewares/Third_Party/lwip/src/api/api_lib.o
- .debug_macro   0x0002f8af       0x7c ./Middlewares/Third_Party/lwip/src/api/api_lib.o
- .debug_macro   0x0002f92b      0x1d6 ./Middlewares/Third_Party/lwip/src/api/api_lib.o
- .debug_macro   0x0002fb01      0x6d7 ./Middlewares/Third_Party/lwip/src/api/api_msg.o
- .debug_macro   0x000301d8       0x40 ./Middlewares/Third_Party/lwip/src/api/api_msg.o
- .debug_macro   0x00030218      0x506 ./Middlewares/Third_Party/lwip/src/api/err.o
- .debug_macro   0x0003071e      0x3e8 ./Middlewares/Third_Party/lwip/src/api/netbuf.o
- .debug_macro   0x00030b06      0x7d7 ./Middlewares/Third_Party/lwip/src/api/sockets.o
- .debug_macro   0x000312dd      0x650 ./Middlewares/Third_Party/lwip/src/api/tcpip.o
- .debug_macro   0x0003192d       0x10 ./Middlewares/Third_Party/lwip/src/api/tcpip.o
- .debug_macro   0x0003193d       0x5e ./Middlewares/Third_Party/lwip/src/api/tcpip.o
- .debug_macro   0x0003199b       0x10 ./Middlewares/Third_Party/lwip/src/api/tcpip.o
- .debug_macro   0x000319ab      0x340 ./Middlewares/Third_Party/lwip/src/core/def.o
- .debug_macro   0x00031ceb      0x399 ./Middlewares/Third_Party/lwip/src/core/inet_chksum.o
- .debug_macro   0x00032084       0x16 ./Middlewares/Third_Party/lwip/src/core/inet_chksum.o
- .debug_macro   0x0003209a      0x7b7 ./Middlewares/Third_Party/lwip/src/core/init.o
- .debug_macro   0x00032851       0x6a ./Middlewares/Third_Party/lwip/src/core/init.o
- .debug_macro   0x000328bb      0x170 ./Middlewares/Third_Party/lwip/src/core/init.o
- .debug_macro   0x00032a2b      0x3fb ./Middlewares/Third_Party/lwip/src/core/ip.o
- .debug_macro   0x00032e26      0x5fd ./Middlewares/Third_Party/lwip/src/core/mem.o
- .debug_macro   0x00033423      0x786 ./Middlewares/Third_Party/lwip/src/core/memp.o
- .debug_macro   0x00033ba9      0x11b ./Middlewares/Third_Party/lwip/src/core/memp.o
- .debug_macro   0x00033cc4       0x16 ./Middlewares/Third_Party/lwip/src/core/memp.o
- .debug_macro   0x00033cda       0xee ./Middlewares/Third_Party/lwip/src/core/memp.o
- .debug_macro   0x00033dc8      0x6ee ./Middlewares/Third_Party/lwip/src/core/netif.o
- .debug_macro   0x000344b6       0xc0 ./Middlewares/Third_Party/lwip/src/core/netif.o
- .debug_macro   0x00034576      0x66d ./Middlewares/Third_Party/lwip/src/core/pbuf.o
- .debug_macro   0x00034be3      0x496 ./Middlewares/Third_Party/lwip/src/core/tcp.o
- .debug_macro   0x00035079      0x483 ./Middlewares/Third_Party/lwip/src/core/tcp_in.o
- .debug_macro   0x000354fc       0x1c ./Middlewares/Third_Party/lwip/src/core/tcp_in.o
- .debug_macro   0x00035518      0x491 ./Middlewares/Third_Party/lwip/src/core/tcp_out.o
- .debug_macro   0x000359a9      0x705 ./Middlewares/Third_Party/lwip/src/core/timeouts.o
- .debug_macro   0x000360ae       0x1c ./Middlewares/Third_Party/lwip/src/core/timeouts.o
- .debug_macro   0x000360ca      0x4e2 ./Middlewares/Third_Party/lwip/src/core/udp.o
- .debug_macro   0x000365ac       0x11 ./Middlewares/Third_Party/lwip/src/core/udp.o
- .debug_macro   0x000365bd      0x461 ./Middlewares/Third_Party/lwip/src/core/ipv4/acd.o
- .debug_macro   0x00036a1e      0x54e ./Middlewares/Third_Party/lwip/src/core/ipv4/dhcp.o
- .debug_macro   0x00036f6c      0x155 ./Middlewares/Third_Party/lwip/src/core/ipv4/dhcp.o
- .debug_macro   0x000370c1      0x4e9 ./Middlewares/Third_Party/lwip/src/core/ipv4/etharp.o
- .debug_macro   0x000375aa      0x44f ./Middlewares/Third_Party/lwip/src/core/ipv4/icmp.o
- .debug_macro   0x000379f9      0x4d4 ./Middlewares/Third_Party/lwip/src/core/ipv4/ip4.o
- .debug_macro   0x00037ecd      0x3bb ./Middlewares/Third_Party/lwip/src/core/ipv4/ip4_addr.o
- .debug_macro   0x00038288      0x476 ./Middlewares/Third_Party/lwip/src/core/ipv4/ip4_frag.o
- .debug_macro   0x000386fe       0x10 ./Middlewares/Third_Party/lwip/src/core/ipv4/ip4_frag.o
- .debug_macro   0x0003870e      0x6cd ./Middlewares/Third_Party/lwip/src/netif/ethernet.o
- .debug_macro   0x00038ddb      0x109 ./Middlewares/Third_Party/lwip/src/netif/ethernet.o
- .debug_macro   0x00038ee4       0x9f ./Middlewares/Third_Party/lwip/src/netif/ethernet.o
- .debug_macro   0x00038f83      0x66f ./Middlewares/Third_Party/lwip/src/netif/ppp/auth.o
- .debug_macro   0x000395f2      0x17b ./Middlewares/Third_Party/lwip/src/netif/ppp/auth.o
- .debug_macro   0x0003976d      0x6c2 ./Middlewares/Third_Party/lwip/src/netif/ppp/chap-md5.o
- .debug_macro   0x00039e2f       0x28 ./Middlewares/Third_Party/lwip/src/netif/ppp/chap-md5.o
- .debug_macro   0x00039e57       0x28 ./Middlewares/Third_Party/lwip/src/netif/ppp/chap-md5.o
- .debug_macro   0x00039e7f       0x28 ./Middlewares/Third_Party/lwip/src/netif/ppp/chap-md5.o
- .debug_macro   0x00039ea7       0x22 ./Middlewares/Third_Party/lwip/src/netif/ppp/chap-md5.o
- .debug_macro   0x00039ec9       0x22 ./Middlewares/Third_Party/lwip/src/netif/ppp/chap-md5.o
- .debug_macro   0x00039eeb      0x691 ./Middlewares/Third_Party/lwip/src/netif/ppp/chap-new.o
- .debug_macro   0x0003a57c      0x665 ./Middlewares/Third_Party/lwip/src/netif/ppp/fsm.o
- .debug_macro   0x0003abe1      0x6d3 ./Middlewares/Third_Party/lwip/src/netif/ppp/ipcp.o
- .debug_macro   0x0003b2b4      0x773 ./Middlewares/Third_Party/lwip/src/netif/ppp/lcp.o
- .debug_macro   0x0003ba27      0x6a8 ./Middlewares/Third_Party/lwip/src/netif/ppp/magic.o
- .debug_macro   0x0003c0cf      0x6de ./Middlewares/Third_Party/lwip/src/netif/ppp/ppp.o
- .debug_macro   0x0003c7ad      0x6ca ./Middlewares/Third_Party/lwip/src/netif/ppp/pppapi.o
- .debug_macro   0x0003ce77      0x703 ./Middlewares/Third_Party/lwip/src/netif/ppp/pppoe.o
- .debug_macro   0x0003d57a       0xba ./Middlewares/Third_Party/lwip/src/netif/ppp/pppoe.o
- .debug_macro   0x0003d634      0x6f2 ./Middlewares/Third_Party/lwip/src/netif/ppp/pppos.o
- .debug_macro   0x0003dd26      0x65f ./Middlewares/Third_Party/lwip/src/netif/ppp/upap.o
- .debug_macro   0x0003e385      0x66a ./Middlewares/Third_Party/lwip/src/netif/ppp/utils.o
- .debug_macro   0x0003e9ef      0x397 ./Middlewares/Third_Party/lwip/src/netif/ppp/polarssl/md5.o
- .debug_macro   0x0003ed86      0x640 ./Middlewares/Third_Party/lwip/system/OS/sys_arch.o
- .debug_macro   0x0003f3c6      0x3ca ./USB_DEVICE/App/usb_device.o
- .debug_macro   0x0003f790       0x22 ./USB_DEVICE/App/usb_device.o
- .debug_macro   0x0003f7b2       0x16 ./USB_DEVICE/App/usb_device.o
- .debug_macro   0x0003f7c8      0x3db ./USB_DEVICE/App/usbd_cdc_if.o
- .debug_macro   0x0003fba3      0x3ce ./USB_DEVICE/App/usbd_desc.o
- .debug_macro   0x0003ff71       0x1c ./USB_DEVICE/App/usbd_desc.o
- .debug_macro   0x0003ff8d      0x3ae ./USB_DEVICE/Target/usbd_conf.o
+ .debug_macro   0x00000185      0x142 ./Core/Lib/crsf/crsf.o
+ .debug_macro   0x000002c7       0x18 ./Core/Lib/crsf/crsf.o
+ .debug_macro   0x000002df       0x10 ./Core/Lib/crsf/crsf.o
+ .debug_macro   0x000002ef       0x61 ./Core/Lib/crsf/crsf.o
+ .debug_macro   0x00000350       0x2a ./Core/Lib/crsf/crsf.o
+ .debug_macro   0x0000037a       0x43 ./Core/Lib/crsf/crsf.o
+ .debug_macro   0x000003bd       0x34 ./Core/Lib/crsf/crsf.o
+ .debug_macro   0x000003f1      0x370 ./Core/Lib/crsf/crsf.o
+ .debug_macro   0x00000761       0x16 ./Core/Lib/crsf/crsf.o
+ .debug_macro   0x00000777       0x4a ./Core/Lib/crsf/crsf.o
+ .debug_macro   0x000007c1       0x34 ./Core/Lib/crsf/crsf.o
+ .debug_macro   0x000007f5       0x10 ./Core/Lib/crsf/crsf.o
+ .debug_macro   0x00000805       0x58 ./Core/Lib/crsf/crsf.o
+ .debug_macro   0x0000085d       0x8e ./Core/Lib/crsf/crsf.o
+ .debug_macro   0x000008eb       0x1c ./Core/Lib/crsf/crsf.o
+ .debug_macro   0x00000907      0x185 ./Core/Lib/crsf/crsf.o
+ .debug_macro   0x00000a8c       0x10 ./Core/Lib/crsf/crsf.o
+ .debug_macro   0x00000a9c       0x3c ./Core/Lib/crsf/crsf.o
+ .debug_macro   0x00000ad8       0x20 ./Core/Lib/crsf/crsf.o
+ .debug_macro   0x00000af8       0x40 ./Core/Lib/crsf/crsf.o
+ .debug_macro   0x00000b38       0x70 ./Core/Lib/crsf/crsf.o
+ .debug_macro   0x00000ba8       0x72 ./Core/Lib/crsf/crsf_def.o
+ .debug_macro   0x00000c1a       0x70 ./Core/Lib/crsf/crsf_def.o
+ .debug_macro   0x00000c8a      0x17a ./Core/Lib/crsf/crsf_telemetry.o
+ .debug_macro   0x00000e04       0x12 ./Core/Lib/crsf/crsf_telemetry.o
+ .debug_macro   0x00000e16       0x76 ./Core/Lib/crsf/crsf_telemetry.o
+ .debug_macro   0x00000e8c      0x15f ./Core/Lib/flight_controller_libs/attitude_controller.o
+ .debug_macro   0x00000feb       0x5b ./Core/Lib/flight_controller_libs/attitude_controller.o
+ .debug_macro   0x00001046       0x94 ./Core/Lib/flight_controller_libs/attitude_controller.o
+ .debug_macro   0x000010da       0x16 ./Core/Lib/flight_controller_libs/attitude_controller.o
+ .debug_macro   0x000010f0      0x11c ./Core/Lib/flight_controller_libs/attitude_controller.o
+ .debug_macro   0x0000120c       0x9b ./Core/Lib/flight_controller_libs/attitude_controller.o
+ .debug_macro   0x000012a7       0x57 ./Core/Lib/flight_controller_libs/attitude_controller.o
+ .debug_macro   0x000012fe       0x16 ./Core/Lib/flight_controller_libs/attitude_controller.o
+ .debug_macro   0x00001314       0x29 ./Core/Lib/flight_controller_libs/attitude_controller.o
+ .debug_macro   0x0000133d       0x16 ./Core/Lib/flight_controller_libs/attitude_controller.o
+ .debug_macro   0x00001353       0x7b ./Core/Lib/flight_controller_libs/crc.o
+ .debug_macro   0x000013ce      0x100 ./Core/Lib/flight_controller_libs/filters.o
+ .debug_macro   0x000014ce      0x19b ./Core/Lib/flight_controller_libs/filters.o
+ .debug_macro   0x00001669       0x10 ./Core/Lib/flight_controller_libs/filters.o
+ .debug_macro   0x00001679      0x201 ./Core/Lib/flight_controller_libs/filters.o
+ .debug_macro   0x0000187a      0x2d1 ./Core/Lib/flight_controller_libs/flight_control_loop.o
+ .debug_macro   0x00001b4b       0xff ./Core/Lib/flight_controller_libs/flight_control_loop.o
+ .debug_macro   0x00001c4a       0x10 ./Core/Lib/flight_controller_libs/flight_control_loop.o
+ .debug_macro   0x00001c5a       0x10 ./Core/Lib/flight_controller_libs/flight_control_loop.o
+ .debug_macro   0x00001c6a       0x10 ./Core/Lib/flight_controller_libs/flight_control_loop.o
+ .debug_macro   0x00001c7a       0x10 ./Core/Lib/flight_controller_libs/flight_control_loop.o
+ .debug_macro   0x00001c8a       0x10 ./Core/Lib/flight_controller_libs/flight_control_loop.o
+ .debug_macro   0x00001c9a      0x176 ./Core/Lib/flight_controller_libs/flight_control_loop.o
+ .debug_macro   0x00001e10      0x15a ./Core/Lib/flight_controller_libs/flight_control_loop.o
+ .debug_macro   0x00001f6a       0xc9 ./Core/Lib/flight_controller_libs/flight_control_loop.o
+ .debug_macro   0x00002033       0x1c ./Core/Lib/flight_controller_libs/flight_control_loop.o
+ .debug_macro   0x0000204f       0x26 ./Core/Lib/flight_controller_libs/flight_control_loop.o
+ .debug_macro   0x00002075       0x16 ./Core/Lib/flight_controller_libs/flight_control_loop.o
+ .debug_macro   0x0000208b      0x4b8 ./Core/Lib/flight_controller_libs/flight_control_loop.o
+ .debug_macro   0x00002543       0xb5 ./Core/Lib/flight_controller_libs/flight_control_loop.o
+ .debug_macro   0x000025f8       0xaa ./Core/Lib/flight_controller_libs/flight_control_loop.o
+ .debug_macro   0x000026a2       0x87 ./Core/Lib/flight_controller_libs/flight_control_loop.o
+ .debug_macro   0x00002729       0x9a ./Core/Lib/flight_controller_libs/flight_control_loop.o
+ .debug_macro   0x000027c3       0x9a ./Core/Lib/flight_controller_libs/flight_control_loop.o
+ .debug_macro   0x0000285d       0x1c ./Core/Lib/flight_controller_libs/flight_control_loop.o
+ .debug_macro   0x00002879       0x10 ./Core/Lib/flight_controller_libs/flight_control_loop.o
+ .debug_macro   0x00002889       0x1c ./Core/Lib/flight_controller_libs/flight_control_loop.o
+ .debug_macro   0x000028a5       0x16 ./Core/Lib/flight_controller_libs/flight_control_loop.o
+ .debug_macro   0x000028bb      0x146 ./Core/Lib/flight_controller_libs/flight_control_loop.o
+ .debug_macro   0x00002a01      0x53c ./Core/Lib/flight_controller_libs/fp_cli.o
+ .debug_macro   0x00002f3d       0x56 ./Core/Lib/flight_controller_libs/fp_cli.o
+ .debug_macro   0x00002f93       0x49 ./Core/Lib/flight_controller_libs/fp_cli.o
+ .debug_macro   0x00002fdc       0x58 ./Core/Lib/flight_controller_libs/fp_cli.o
+ .debug_macro   0x00003034       0x10 ./Core/Lib/flight_controller_libs/fp_cli.o
+ .debug_macro   0x00003044       0x1c ./Core/Lib/flight_controller_libs/fp_cli.o
+ .debug_macro   0x00003060      0x2a7 ./Core/Lib/flight_controller_libs/fp_cli.o
+ .debug_macro   0x00003307       0x2e ./Core/Lib/flight_controller_libs/fp_cli.o
+ .debug_macro   0x00003335       0x2f ./Core/Lib/flight_controller_libs/fp_cli.o
+ .debug_macro   0x00003364       0x1c ./Core/Lib/flight_controller_libs/fp_cli.o
+ .debug_macro   0x00003380       0x22 ./Core/Lib/flight_controller_libs/fp_cli.o
+ .debug_macro   0x000033a2       0xfb ./Core/Lib/flight_controller_libs/fp_cli.o
+ .debug_macro   0x0000349d     0x1011 ./Core/Lib/flight_controller_libs/fp_cli.o
+ .debug_macro   0x000044ae      0x11f ./Core/Lib/flight_controller_libs/fp_cli.o
+ .debug_macro   0x000045cd    0x1426d ./Core/Lib/flight_controller_libs/fp_cli.o
+ .debug_macro   0x0001883a       0x6d ./Core/Lib/flight_controller_libs/fp_cli.o
+ .debug_macro   0x000188a7     0x369a ./Core/Lib/flight_controller_libs/fp_cli.o
+ .debug_macro   0x0001bf41       0x56 ./Core/Lib/flight_controller_libs/fp_cli.o
+ .debug_macro   0x0001bf97      0x8bc ./Core/Lib/flight_controller_libs/fp_cli.o
+ .debug_macro   0x0001c853      0x9e9 ./Core/Lib/flight_controller_libs/fp_cli.o
+ .debug_macro   0x0001d23c      0x115 ./Core/Lib/flight_controller_libs/fp_cli.o
+ .debug_macro   0x0001d351      0x130 ./Core/Lib/flight_controller_libs/fp_cli.o
+ .debug_macro   0x0001d481       0xa5 ./Core/Lib/flight_controller_libs/fp_cli.o
+ .debug_macro   0x0001d526      0x174 ./Core/Lib/flight_controller_libs/fp_cli.o
+ .debug_macro   0x0001d69a      0x287 ./Core/Lib/flight_controller_libs/fp_cli.o
+ .debug_macro   0x0001d921       0x5f ./Core/Lib/flight_controller_libs/fp_cli.o
+ .debug_macro   0x0001d980      0x236 ./Core/Lib/flight_controller_libs/fp_cli.o
+ .debug_macro   0x0001dbb6      0x12c ./Core/Lib/flight_controller_libs/fp_cli.o
+ .debug_macro   0x0001dce2      0x21e ./Core/Lib/flight_controller_libs/fp_cli.o
+ .debug_macro   0x0001df00       0x2e ./Core/Lib/flight_controller_libs/fp_cli.o
+ .debug_macro   0x0001df2e      0x127 ./Core/Lib/flight_controller_libs/fp_cli.o
+ .debug_macro   0x0001e055       0x7e ./Core/Lib/flight_controller_libs/fp_cli.o
+ .debug_macro   0x0001e0d3       0x89 ./Core/Lib/flight_controller_libs/fp_cli.o
+ .debug_macro   0x0001e15c      0x225 ./Core/Lib/flight_controller_libs/fp_cli.o
+ .debug_macro   0x0001e381      0x8ed ./Core/Lib/flight_controller_libs/fp_cli.o
+ .debug_macro   0x0001ec6e       0x4d ./Core/Lib/flight_controller_libs/fp_cli.o
+ .debug_macro   0x0001ecbb      0x2aa ./Core/Lib/flight_controller_libs/fp_cli.o
+ .debug_macro   0x0001ef65      0x293 ./Core/Lib/flight_controller_libs/fp_cli.o
+ .debug_macro   0x0001f1f8       0xba ./Core/Lib/flight_controller_libs/fp_cli.o
+ .debug_macro   0x0001f2b2      0x12d ./Core/Lib/flight_controller_libs/fp_cli.o
+ .debug_macro   0x0001f3df       0x10 ./Core/Lib/flight_controller_libs/fp_cli.o
+ .debug_macro   0x0001f3ef       0x65 ./Core/Lib/flight_controller_libs/fp_cli.o
+ .debug_macro   0x0001f454      0x20f ./Core/Lib/flight_controller_libs/fp_cli.o
+ .debug_macro   0x0001f663       0x95 ./Core/Lib/flight_controller_libs/fp_cli.o
+ .debug_macro   0x0001f6f8       0x10 ./Core/Lib/flight_controller_libs/fp_cli.o
+ .debug_macro   0x0001f708       0xf3 ./Core/Lib/flight_controller_libs/fp_cli.o
+ .debug_macro   0x0001f7fb       0x10 ./Core/Lib/flight_controller_libs/fp_cli.o
+ .debug_macro   0x0001f80b      0x176 ./Core/Lib/flight_controller_libs/fp_cli.o
+ .debug_macro   0x0001f981       0x64 ./Core/Lib/flight_controller_libs/fp_cli.o
+ .debug_macro   0x0001f9e5       0x16 ./Core/Lib/flight_controller_libs/fp_cli.o
+ .debug_macro   0x0001f9fb      0x69d ./Core/Lib/flight_controller_libs/fp_cli_server.o
+ .debug_macro   0x00020098       0x1c ./Core/Lib/flight_controller_libs/fp_cli_server.o
+ .debug_macro   0x000200b4      0x13c ./Core/Lib/flight_controller_libs/fp_cli_server.o
+ .debug_macro   0x000201f0       0x16 ./Core/Lib/flight_controller_libs/fp_cli_server.o
+ .debug_macro   0x00020206       0x9e ./Core/Lib/flight_controller_libs/fp_cli_server.o
+ .debug_macro   0x000202a4      0x112 ./Core/Lib/flight_controller_libs/fp_cli_server.o
+ .debug_macro   0x000203b6       0x16 ./Core/Lib/flight_controller_libs/fp_cli_server.o
+ .debug_macro   0x000203cc       0x16 ./Core/Lib/flight_controller_libs/fp_cli_server.o
+ .debug_macro   0x000203e2       0x10 ./Core/Lib/flight_controller_libs/fp_cli_server.o
+ .debug_macro   0x000203f2       0x10 ./Core/Lib/flight_controller_libs/fp_cli_server.o
+ .debug_macro   0x00020402       0x22 ./Core/Lib/flight_controller_libs/fp_cli_server.o
+ .debug_macro   0x00020424       0x10 ./Core/Lib/flight_controller_libs/fp_cli_server.o
+ .debug_macro   0x00020434       0x1c ./Core/Lib/flight_controller_libs/fp_cli_server.o
+ .debug_macro   0x00020450       0x52 ./Core/Lib/flight_controller_libs/fp_cli_server.o
+ .debug_macro   0x000204a2       0x10 ./Core/Lib/flight_controller_libs/fp_cli_server.o
+ .debug_macro   0x000204b2       0x52 ./Core/Lib/flight_controller_libs/fp_cli_server.o
+ .debug_macro   0x00020504       0xc1 ./Core/Lib/flight_controller_libs/fp_cli_server.o
+ .debug_macro   0x000205c5       0x1c ./Core/Lib/flight_controller_libs/fp_cli_server.o
+ .debug_macro   0x000205e1       0x3d ./Core/Lib/flight_controller_libs/fp_cli_server.o
+ .debug_macro   0x0002061e       0xc8 ./Core/Lib/flight_controller_libs/fp_cli_server.o
+ .debug_macro   0x000206e6       0x16 ./Core/Lib/flight_controller_libs/fp_cli_server.o
+ .debug_macro   0x000206fc       0x10 ./Core/Lib/flight_controller_libs/fp_cli_server.o
+ .debug_macro   0x0002070c       0x10 ./Core/Lib/flight_controller_libs/fp_cli_server.o
+ .debug_macro   0x0002071c       0x35 ./Core/Lib/flight_controller_libs/fp_cli_server.o
+ .debug_macro   0x00020751       0x28 ./Core/Lib/flight_controller_libs/fp_cli_server.o
+ .debug_macro   0x00020779       0x10 ./Core/Lib/flight_controller_libs/fp_cli_server.o
+ .debug_macro   0x00020789       0x17 ./Core/Lib/flight_controller_libs/fp_cli_server.o
+ .debug_macro   0x000207a0       0x10 ./Core/Lib/flight_controller_libs/fp_cli_server.o
+ .debug_macro   0x000207b0      0x460 ./Core/Lib/flight_controller_libs/fp_cli_server.o
+ .debug_macro   0x00020c10       0x43 ./Core/Lib/flight_controller_libs/fp_cli_server.o
+ .debug_macro   0x00020c53       0x7c ./Core/Lib/flight_controller_libs/fp_cli_server.o
+ .debug_macro   0x00020ccf       0x17 ./Core/Lib/flight_controller_libs/fp_cli_server.o
+ .debug_macro   0x00020ce6      0x118 ./Core/Lib/flight_controller_libs/fp_cli_server.o
+ .debug_macro   0x00020dfe       0x19 ./Core/Lib/flight_controller_libs/fp_cli_server.o
+ .debug_macro   0x00020e17      0x11f ./Core/Lib/flight_controller_libs/fp_cli_server.o
+ .debug_macro   0x00020f36       0x82 ./Core/Lib/flight_controller_libs/fp_cli_server.o
+ .debug_macro   0x00020fb8       0x6d ./Core/Lib/flight_controller_libs/fp_cli_server.o
+ .debug_macro   0x00021025      0x73a ./Core/Lib/flight_controller_libs/fp_cli_server.o
+ .debug_macro   0x0002175f       0x16 ./Core/Lib/flight_controller_libs/fp_cli_server.o
+ .debug_macro   0x00021775       0x10 ./Core/Lib/flight_controller_libs/fp_cli_server.o
+ .debug_macro   0x00021785       0x28 ./Core/Lib/flight_controller_libs/fp_cli_server.o
+ .debug_macro   0x000217ad       0x74 ./Core/Lib/flight_controller_libs/fp_cli_server.o
+ .debug_macro   0x00021821       0x22 ./Core/Lib/flight_controller_libs/fp_cli_server.o
+ .debug_macro   0x00021843       0x65 ./Core/Lib/flight_controller_libs/fp_cli_server.o
+ .debug_macro   0x000218a8       0xb3 ./Core/Lib/flight_controller_libs/fp_cli_server.o
+ .debug_macro   0x0002195b       0x6a ./Core/Lib/flight_controller_libs/fp_cli_server.o
+ .debug_macro   0x000219c5      0x1d1 ./Core/Lib/flight_controller_libs/fp_cli_server.o
+ .debug_macro   0x00021b96      0x177 ./Core/Lib/flight_controller_libs/fp_cli_server.o
+ .debug_macro   0x00021d0d       0x3a ./Core/Lib/flight_controller_libs/fp_cli_server.o
+ .debug_macro   0x00021d47       0xe8 ./Core/Lib/flight_controller_libs/fp_cli_server.o
+ .debug_macro   0x00021e2f       0x10 ./Core/Lib/flight_controller_libs/fp_cli_server.o
+ .debug_macro   0x00021e3f       0x10 ./Core/Lib/flight_controller_libs/fp_cli_server.o
+ .debug_macro   0x00021e4f       0x10 ./Core/Lib/flight_controller_libs/fp_cli_server.o
+ .debug_macro   0x00021e5f       0x3f ./Core/Lib/flight_controller_libs/fp_cli_server.o
+ .debug_macro   0x00021e9e       0x25 ./Core/Lib/flight_controller_libs/fp_cli_server.o
+ .debug_macro   0x00021ec3       0x22 ./Core/Lib/flight_controller_libs/fp_cli_server.o
+ .debug_macro   0x00021ee5      0x15b ./Core/Lib/flight_controller_libs/fp_cli_server.o
+ .debug_macro   0x00022040      0x14b ./Core/Lib/flight_controller_libs/fp_cli_server.o
+ .debug_macro   0x0002218b      0x149 ./Core/Lib/flight_controller_libs/fp_cli_server.o
+ .debug_macro   0x000222d4      0x320 ./Core/Lib/flight_controller_libs/fp_cli_server.o
+ .debug_macro   0x000225f4      0x407 ./Core/Lib/flight_controller_libs/fp_cli_server.o
+ .debug_macro   0x000229fb      0x13c ./Core/Lib/flight_controller_libs/geometry3D.o
+ .debug_macro   0x00022b37      0x18a ./Core/Lib/flight_controller_libs/imu.o
+ .debug_macro   0x00022cc1      0x135 ./Core/Lib/flight_controller_libs/madgwick_filter.o
+ .debug_macro   0x00022df6       0x16 ./Core/Lib/flight_controller_libs/madgwick_filter.o
+ .debug_macro   0x00022e0c      0x27f ./Core/Lib/flight_controller_libs/motor_mixer.o
+ .debug_macro   0x0002308b      0x107 ./Core/Lib/flight_controller_libs/pid_controller.o
+ .debug_macro   0x00023192      0x186 ./Core/Lib/flight_controller_libs/pid_controller.o
+ .debug_macro   0x00023318      0x168 ./Core/Lib/flight_controller_libs/rate_controller.o
+ .debug_macro   0x00023480      0x16f ./Core/Lib/flight_controller_libs/rc_control.o
+ .debug_macro   0x000235ef      0x7de ./Core/Lib/flight_controller_libs/rc_control_recv_routine.o
+ .debug_macro   0x00023dcd       0x10 ./Core/Lib/flight_controller_libs/rc_control_recv_routine.o
+ .debug_macro   0x00023ddd       0x16 ./Core/Lib/flight_controller_libs/rc_control_recv_routine.o
+ .debug_macro   0x00023df3       0x2e ./Core/Lib/flight_controller_libs/rc_control_recv_routine.o
+ .debug_macro   0x00023e21       0x28 ./Core/Lib/flight_controller_libs/rc_control_recv_routine.o
+ .debug_macro   0x00023e49       0x34 ./Core/Lib/flight_controller_libs/rc_control_recv_routine.o
+ .debug_macro   0x00023e7d      0x154 ./Core/Lib/flight_controller_libs/rc_control_recv_routine.o
+ .debug_macro   0x00023fd1       0x41 ./Core/Lib/flight_controller_libs/rc_control_recv_routine.o
+ .debug_macro   0x00024012       0xad ./Core/Lib/flight_controller_libs/rc_control_recv_routine.o
+ .debug_macro   0x000240bf       0x10 ./Core/Lib/flight_controller_libs/rc_control_recv_routine.o
+ .debug_macro   0x000240cf      0x242 ./Core/Lib/flight_controller_libs/rc_control_recv_routine.o
+ .debug_macro   0x00024311      0x1b8 ./Core/Lib/lwshell/lwshell/src/lwshell/lwshell.o
+ .debug_macro   0x000244c9      0x192 ./Core/Lib/mpu6500/interface/driver_mpu6500_basic.o
+ .debug_macro   0x0002465b       0x58 ./Core/Lib/mpu6500/interface/driver_mpu6500_basic.o
+ .debug_macro   0x000246b3       0xb8 ./Core/Lib/mpu6500/interface/driver_mpu6500_basic.o
+ .debug_macro   0x0002476b      0x3c1 ./Core/Lib/mpu6500/interface/driver_mpu6500_interface.o
+ .debug_macro   0x00024b2c       0x4c ./Core/Lib/mpu6500/interface/driver_mpu6500_interface.o
+ .debug_macro   0x00024b78      0x520 ./Core/Lib/mpu6500/src/driver_mpu6500.o
+ .debug_macro   0x00025098       0x10 ./Core/Lib/mpu6500/src/driver_mpu6500.o
+ .debug_macro   0x000250a8      0x15f ./Core/Lib/ringbuffer/ringbuffer.o
+ .debug_macro   0x00025207      0x302 ./Core/Lib/uart_driver/uart_driver.o
+ .debug_macro   0x00025509       0x5c ./Core/Lib/uart_driver/uart_driver.o
+ .debug_macro   0x00025565      0x21f ./Core/Src/dma.o
+ .debug_macro   0x00025784      0x42d ./Core/Src/emergency_handlers.o
+ .debug_macro   0x00025bb1      0x206 ./Core/Src/esc_pwm.o
+ .debug_macro   0x00025db7      0x503 ./Core/Src/freertos.o
+ .debug_macro   0x000262ba       0x10 ./Core/Src/freertos.o
+ .debug_macro   0x000262ca       0x6c ./Core/Src/freertos.o
+ .debug_macro   0x00026336       0xdd ./Core/Src/freertos.o
+ .debug_macro   0x00026413      0x21f ./Core/Src/gpio.o
+ .debug_macro   0x00026632      0x906 ./Core/Src/lwip_example.o
+ .debug_macro   0x00026f38       0x58 ./Core/Src/lwip_example.o
+ .debug_macro   0x00026f90       0x2e ./Core/Src/lwip_example.o
+ .debug_macro   0x00026fbe       0xa0 ./Core/Src/lwip_example.o
+ .debug_macro   0x0002705e       0x28 ./Core/Src/lwip_example.o
+ .debug_macro   0x00027086       0x2e ./Core/Src/lwip_example.o
+ .debug_macro   0x000270b4       0xf0 ./Core/Src/lwip_example.o
+ .debug_macro   0x000271a4       0x70 ./Core/Src/lwip_example.o
+ .debug_macro   0x00027214       0xf9 ./Core/Src/lwip_example.o
+ .debug_macro   0x0002730d      0x181 ./Core/Src/lwip_example.o
+ .debug_macro   0x0002748e       0x16 ./Core/Src/lwip_example.o
+ .debug_macro   0x000274a4       0x16 ./Core/Src/lwip_example.o
+ .debug_macro   0x000274ba       0x4c ./Core/Src/lwip_example.o
+ .debug_macro   0x00027506      0x10f ./Core/Src/lwip_example.o
+ .debug_macro   0x00027615       0x8f ./Core/Src/lwip_example.o
+ .debug_macro   0x000276a4       0xbe ./Core/Src/lwip_example.o
+ .debug_macro   0x00027762       0x16 ./Core/Src/lwip_example.o
+ .debug_macro   0x00027778       0x64 ./Core/Src/lwip_example.o
+ .debug_macro   0x000277dc       0x64 ./Core/Src/lwip_example.o
+ .debug_macro   0x00027840       0xac ./Core/Src/lwip_example.o
+ .debug_macro   0x000278ec       0x66 ./Core/Src/lwip_example.o
+ .debug_macro   0x00027952       0x4c ./Core/Src/lwip_example.o
+ .debug_macro   0x0002799e       0x22 ./Core/Src/lwip_example.o
+ .debug_macro   0x000279c0       0x16 ./Core/Src/lwip_example.o
+ .debug_macro   0x000279d6       0x10 ./Core/Src/lwip_example.o
+ .debug_macro   0x000279e6       0x4d ./Core/Src/lwip_example.o
+ .debug_macro   0x00027a33       0x46 ./Core/Src/lwip_example.o
+ .debug_macro   0x00027a79       0x35 ./Core/Src/lwip_example.o
+ .debug_macro   0x00027aae      0x321 ./Core/Src/lwip_port.o
+ .debug_macro   0x00027dcf      0x591 ./Core/Src/main.o
+ .debug_macro   0x00028360      0x609 ./Core/Src/rtos_flight_controller.o
+ .debug_macro   0x00028969       0x97 ./Core/Src/rtos_flight_controller.o
+ .debug_macro   0x00028a00      0x201 ./Core/Src/rtos_flight_controller.o
+ .debug_macro   0x00028c01      0x21f ./Core/Src/spi.o
+ .debug_macro   0x00028e20      0x215 ./Core/Src/stm32f4xx_hal_msp.o
+ .debug_macro   0x00029035      0x1fc ./Core/Src/stm32f4xx_hal_timebase_tim.o
+ .debug_macro   0x00029231      0x262 ./Core/Src/stm32f4xx_it.o
+ .debug_macro   0x00029493      0x274 ./Core/Src/syscalls.o
+ .debug_macro   0x00029707       0x10 ./Core/Src/syscalls.o
+ .debug_macro   0x00029717       0xcf ./Core/Src/syscalls.o
+ .debug_macro   0x000297e6      0x12c ./Core/Src/syscalls.o
+ .debug_macro   0x00029912       0x10 ./Core/Src/syscalls.o
+ .debug_macro   0x00029922      0x18a ./Core/Src/syscalls.o
+ .debug_macro   0x00029aac       0x16 ./Core/Src/syscalls.o
+ .debug_macro   0x00029ac2       0xce ./Core/Src/syscalls.o
+ .debug_macro   0x00029b90      0x112 ./Core/Src/sysmem.o
+ .debug_macro   0x00029ca2      0x23c ./Core/Src/sysmem.o
+ .debug_macro   0x00029ede      0x1fc ./Core/Src/system_stm32f4xx.o
+ .debug_macro   0x0002a0da      0x21f ./Core/Src/tim.o
+ .debug_macro   0x0002a2f9      0x256 ./Core/Src/usart.o
+ .debug_macro   0x0002a54f      0x25c ./Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal.o
+ .debug_macro   0x0002a7ab      0x1fc ./Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_cortex.o
+ .debug_macro   0x0002a9a7      0x202 ./Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma.o
+ .debug_macro   0x0002aba9      0x202 ./Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_gpio.o
+ .debug_macro   0x0002adab      0x208 ./Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pcd.o
+ .debug_macro   0x0002afb3      0x1fc ./Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pcd_ex.o
+ .debug_macro   0x0002b1af      0x220 ./Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc.o
+ .debug_macro   0x0002b3cf      0x20b ./Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spi.o
+ .debug_macro   0x0002b5da      0x1fd ./Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_tim.o
+ .debug_macro   0x0002b7d7      0x1fc ./Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_tim_ex.o
+ .debug_macro   0x0002b9d3      0x1fd ./Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_uart.o
+ .debug_macro   0x0002bbd0      0x1fc ./Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_ll_usb.o
+ .debug_macro   0x0002bdcc      0x3a4 ./Middlewares/ST/STM32_USB_Device_Library/Class/CDC/Src/usbd_cdc.o
+ .debug_macro   0x0002c170      0x38b ./Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_core.o
+ .debug_macro   0x0002c4fb      0x215 ./Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_core.o
+ .debug_macro   0x0002c710      0x395 ./Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_ctlreq.o
+ .debug_macro   0x0002caa5      0x391 ./Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_ioreq.o
+ .debug_macro   0x0002ce36      0x405 ./Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2/cmsis_os2.o
+ .debug_macro   0x0002d23b       0x10 ./Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2/cmsis_os2.o
+ .debug_macro   0x0002d24b       0xf5 ./Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2/cmsis_os2.o
+ .debug_macro   0x0002d340       0x91 ./Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2/cmsis_os2.o
+ .debug_macro   0x0002d3d1       0x8d ./Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2/cmsis_os2.o
+ .debug_macro   0x0002d45e       0x22 ./Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2/cmsis_os2.o
+ .debug_macro   0x0002d480      0x199 ./Middlewares/Third_Party/FreeRTOS/Source/list.o
+ .debug_macro   0x0002d619      0x228 ./Middlewares/Third_Party/FreeRTOS/Source/queue.o
+ .debug_macro   0x0002d841      0x291 ./Middlewares/Third_Party/FreeRTOS/Source/tasks.o
+ .debug_macro   0x0002dad2       0x10 ./Middlewares/Third_Party/FreeRTOS/Source/tasks.o
+ .debug_macro   0x0002dae2      0x1ee ./Middlewares/Third_Party/FreeRTOS/Source/timers.o
+ .debug_macro   0x0002dcd0      0x246 ./Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F/port.o
+ .debug_macro   0x0002df16      0x1c0 ./Middlewares/Third_Party/FreeRTOS/Source/portable/MemMang/heap_4.o
+ .debug_macro   0x0002e0d6      0x6fa ./Middlewares/Third_Party/lwip/src/api/api_lib.o
+ .debug_macro   0x0002e7d0       0x2a ./Middlewares/Third_Party/lwip/src/api/api_lib.o
+ .debug_macro   0x0002e7fa       0x7c ./Middlewares/Third_Party/lwip/src/api/api_lib.o
+ .debug_macro   0x0002e876      0x1d6 ./Middlewares/Third_Party/lwip/src/api/api_lib.o
+ .debug_macro   0x0002ea4c      0x6d7 ./Middlewares/Third_Party/lwip/src/api/api_msg.o
+ .debug_macro   0x0002f123       0x40 ./Middlewares/Third_Party/lwip/src/api/api_msg.o
+ .debug_macro   0x0002f163      0x506 ./Middlewares/Third_Party/lwip/src/api/err.o
+ .debug_macro   0x0002f669      0x3e8 ./Middlewares/Third_Party/lwip/src/api/netbuf.o
+ .debug_macro   0x0002fa51      0x7d7 ./Middlewares/Third_Party/lwip/src/api/sockets.o
+ .debug_macro   0x00030228      0x650 ./Middlewares/Third_Party/lwip/src/api/tcpip.o
+ .debug_macro   0x00030878       0x10 ./Middlewares/Third_Party/lwip/src/api/tcpip.o
+ .debug_macro   0x00030888       0x5e ./Middlewares/Third_Party/lwip/src/api/tcpip.o
+ .debug_macro   0x000308e6       0x10 ./Middlewares/Third_Party/lwip/src/api/tcpip.o
+ .debug_macro   0x000308f6      0x340 ./Middlewares/Third_Party/lwip/src/core/def.o
+ .debug_macro   0x00030c36      0x399 ./Middlewares/Third_Party/lwip/src/core/inet_chksum.o
+ .debug_macro   0x00030fcf       0x16 ./Middlewares/Third_Party/lwip/src/core/inet_chksum.o
+ .debug_macro   0x00030fe5      0x7b7 ./Middlewares/Third_Party/lwip/src/core/init.o
+ .debug_macro   0x0003179c       0x6a ./Middlewares/Third_Party/lwip/src/core/init.o
+ .debug_macro   0x00031806      0x170 ./Middlewares/Third_Party/lwip/src/core/init.o
+ .debug_macro   0x00031976      0x3fb ./Middlewares/Third_Party/lwip/src/core/ip.o
+ .debug_macro   0x00031d71      0x5fd ./Middlewares/Third_Party/lwip/src/core/mem.o
+ .debug_macro   0x0003236e      0x786 ./Middlewares/Third_Party/lwip/src/core/memp.o
+ .debug_macro   0x00032af4      0x11b ./Middlewares/Third_Party/lwip/src/core/memp.o
+ .debug_macro   0x00032c0f       0x16 ./Middlewares/Third_Party/lwip/src/core/memp.o
+ .debug_macro   0x00032c25       0xee ./Middlewares/Third_Party/lwip/src/core/memp.o
+ .debug_macro   0x00032d13      0x6ee ./Middlewares/Third_Party/lwip/src/core/netif.o
+ .debug_macro   0x00033401       0xc0 ./Middlewares/Third_Party/lwip/src/core/netif.o
+ .debug_macro   0x000334c1      0x66d ./Middlewares/Third_Party/lwip/src/core/pbuf.o
+ .debug_macro   0x00033b2e      0x496 ./Middlewares/Third_Party/lwip/src/core/tcp.o
+ .debug_macro   0x00033fc4      0x483 ./Middlewares/Third_Party/lwip/src/core/tcp_in.o
+ .debug_macro   0x00034447       0x1c ./Middlewares/Third_Party/lwip/src/core/tcp_in.o
+ .debug_macro   0x00034463      0x491 ./Middlewares/Third_Party/lwip/src/core/tcp_out.o
+ .debug_macro   0x000348f4      0x705 ./Middlewares/Third_Party/lwip/src/core/timeouts.o
+ .debug_macro   0x00034ff9       0x1c ./Middlewares/Third_Party/lwip/src/core/timeouts.o
+ .debug_macro   0x00035015      0x4e2 ./Middlewares/Third_Party/lwip/src/core/udp.o
+ .debug_macro   0x000354f7       0x11 ./Middlewares/Third_Party/lwip/src/core/udp.o
+ .debug_macro   0x00035508      0x461 ./Middlewares/Third_Party/lwip/src/core/ipv4/acd.o
+ .debug_macro   0x00035969      0x54e ./Middlewares/Third_Party/lwip/src/core/ipv4/dhcp.o
+ .debug_macro   0x00035eb7      0x155 ./Middlewares/Third_Party/lwip/src/core/ipv4/dhcp.o
+ .debug_macro   0x0003600c      0x4e9 ./Middlewares/Third_Party/lwip/src/core/ipv4/etharp.o
+ .debug_macro   0x000364f5      0x44f ./Middlewares/Third_Party/lwip/src/core/ipv4/icmp.o
+ .debug_macro   0x00036944      0x4d4 ./Middlewares/Third_Party/lwip/src/core/ipv4/ip4.o
+ .debug_macro   0x00036e18      0x3bb ./Middlewares/Third_Party/lwip/src/core/ipv4/ip4_addr.o
+ .debug_macro   0x000371d3      0x476 ./Middlewares/Third_Party/lwip/src/core/ipv4/ip4_frag.o
+ .debug_macro   0x00037649       0x10 ./Middlewares/Third_Party/lwip/src/core/ipv4/ip4_frag.o
+ .debug_macro   0x00037659      0x6cd ./Middlewares/Third_Party/lwip/src/netif/ethernet.o
+ .debug_macro   0x00037d26      0x109 ./Middlewares/Third_Party/lwip/src/netif/ethernet.o
+ .debug_macro   0x00037e2f       0x9f ./Middlewares/Third_Party/lwip/src/netif/ethernet.o
+ .debug_macro   0x00037ece      0x66f ./Middlewares/Third_Party/lwip/src/netif/ppp/auth.o
+ .debug_macro   0x0003853d      0x17b ./Middlewares/Third_Party/lwip/src/netif/ppp/auth.o
+ .debug_macro   0x000386b8      0x6c2 ./Middlewares/Third_Party/lwip/src/netif/ppp/chap-md5.o
+ .debug_macro   0x00038d7a       0x28 ./Middlewares/Third_Party/lwip/src/netif/ppp/chap-md5.o
+ .debug_macro   0x00038da2       0x28 ./Middlewares/Third_Party/lwip/src/netif/ppp/chap-md5.o
+ .debug_macro   0x00038dca       0x28 ./Middlewares/Third_Party/lwip/src/netif/ppp/chap-md5.o
+ .debug_macro   0x00038df2       0x22 ./Middlewares/Third_Party/lwip/src/netif/ppp/chap-md5.o
+ .debug_macro   0x00038e14       0x22 ./Middlewares/Third_Party/lwip/src/netif/ppp/chap-md5.o
+ .debug_macro   0x00038e36      0x691 ./Middlewares/Third_Party/lwip/src/netif/ppp/chap-new.o
+ .debug_macro   0x000394c7      0x665 ./Middlewares/Third_Party/lwip/src/netif/ppp/fsm.o
+ .debug_macro   0x00039b2c      0x6d3 ./Middlewares/Third_Party/lwip/src/netif/ppp/ipcp.o
+ .debug_macro   0x0003a1ff      0x773 ./Middlewares/Third_Party/lwip/src/netif/ppp/lcp.o
+ .debug_macro   0x0003a972      0x6a8 ./Middlewares/Third_Party/lwip/src/netif/ppp/magic.o
+ .debug_macro   0x0003b01a      0x6de ./Middlewares/Third_Party/lwip/src/netif/ppp/ppp.o
+ .debug_macro   0x0003b6f8      0x6ca ./Middlewares/Third_Party/lwip/src/netif/ppp/pppapi.o
+ .debug_macro   0x0003bdc2      0x703 ./Middlewares/Third_Party/lwip/src/netif/ppp/pppoe.o
+ .debug_macro   0x0003c4c5       0xba ./Middlewares/Third_Party/lwip/src/netif/ppp/pppoe.o
+ .debug_macro   0x0003c57f      0x6f2 ./Middlewares/Third_Party/lwip/src/netif/ppp/pppos.o
+ .debug_macro   0x0003cc71      0x65f ./Middlewares/Third_Party/lwip/src/netif/ppp/upap.o
+ .debug_macro   0x0003d2d0      0x66a ./Middlewares/Third_Party/lwip/src/netif/ppp/utils.o
+ .debug_macro   0x0003d93a      0x397 ./Middlewares/Third_Party/lwip/src/netif/ppp/polarssl/md5.o
+ .debug_macro   0x0003dcd1      0x640 ./Middlewares/Third_Party/lwip/system/OS/sys_arch.o
+ .debug_macro   0x0003e311      0x3ca ./USB_DEVICE/App/usb_device.o
+ .debug_macro   0x0003e6db       0x22 ./USB_DEVICE/App/usb_device.o
+ .debug_macro   0x0003e6fd       0x16 ./USB_DEVICE/App/usb_device.o
+ .debug_macro   0x0003e713      0x3db ./USB_DEVICE/App/usbd_cdc_if.o
+ .debug_macro   0x0003eaee      0x3ce ./USB_DEVICE/App/usbd_desc.o
+ .debug_macro   0x0003eebc       0x1c ./USB_DEVICE/App/usbd_desc.o
+ .debug_macro   0x0003eed8      0x3ae ./USB_DEVICE/Target/usbd_conf.o
 
-.debug_line     0x00000000    0x7246c
+.debug_line     0x00000000    0x7252e
  .debug_line    0x00000000      0xe11 ./Core/Lib/crsf/crsf.o
  .debug_line    0x00000e11      0x463 ./Core/Lib/crsf/crsf_def.o
  .debug_line    0x00001274      0xc1e ./Core/Lib/crsf/crsf_telemetry.o
@@ -36325,123 +36484,123 @@ LOAD C:/ST/STM32CubeIDE_1.18.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.ext
  .debug_line    0x0006d46c      0xa59 ./Middlewares/Third_Party/lwip/src/netif/ppp/polarssl/md5.o
  .debug_line    0x0006dec5     0x123f ./Middlewares/Third_Party/lwip/system/OS/sys_arch.o
  .debug_line    0x0006f104      0xa95 ./USB_DEVICE/App/usb_device.o
- .debug_line    0x0006fb99      0xf23 ./USB_DEVICE/App/usbd_cdc_if.o
- .debug_line    0x00070abc      0xb3e ./USB_DEVICE/App/usbd_desc.o
- .debug_line    0x000715fa      0xe72 ./USB_DEVICE/Target/usbd_conf.o
+ .debug_line    0x0006fb99      0xfe5 ./USB_DEVICE/App/usbd_cdc_if.o
+ .debug_line    0x00070b7e      0xb3e ./USB_DEVICE/App/usbd_desc.o
+ .debug_line    0x000716bc      0xe72 ./USB_DEVICE/Target/usbd_conf.o
 
-.debug_str      0x00000000    0xfb71f
- .debug_str     0x00000000    0xfb71f ./Core/Lib/crsf/crsf.o
+.debug_str      0x00000000    0xfb731
+ .debug_str     0x00000000    0xfb731 ./Core/Lib/crsf/crsf.o
                                0x9880 (size before relaxing)
- .debug_str     0x000fb71f     0x418e ./Core/Lib/crsf/crsf_def.o
- .debug_str     0x000fb71f     0x907d ./Core/Lib/crsf/crsf_telemetry.o
- .debug_str     0x000fb71f     0x6c36 ./Core/Lib/flight_controller_libs/attitude_controller.o
- .debug_str     0x000fb71f     0x43a6 ./Core/Lib/flight_controller_libs/crc.o
- .debug_str     0x000fb71f     0x7809 ./Core/Lib/flight_controller_libs/filters.o
- .debug_str     0x000fb71f     0xe97f ./Core/Lib/flight_controller_libs/flight_control_loop.o
- .debug_str     0x000fb71f    0xc7844 ./Core/Lib/flight_controller_libs/fp_cli.o
- .debug_str     0x000fb71f    0xcee9e ./Core/Lib/flight_controller_libs/fp_cli_server.o
- .debug_str     0x000fb71f     0x7cb4 ./Core/Lib/flight_controller_libs/geometry3D.o
- .debug_str     0x000fb71f     0x7a29 ./Core/Lib/flight_controller_libs/imu.o
- .debug_str     0x000fb71f     0x726c ./Core/Lib/flight_controller_libs/madgwick_filter.o
- .debug_str     0x000fb71f     0xd590 ./Core/Lib/flight_controller_libs/motor_mixer.o
- .debug_str     0x000fb71f     0x7973 ./Core/Lib/flight_controller_libs/pid_controller.o
- .debug_str     0x000fb71f     0x81eb ./Core/Lib/flight_controller_libs/rate_controller.o
- .debug_str     0x000fb71f     0x83d0 ./Core/Lib/flight_controller_libs/rc_control.o
- .debug_str     0x000fb71f    0xd4535 ./Core/Lib/flight_controller_libs/rc_control_recv_routine.o
- .debug_str     0x000fb71f     0x7c49 ./Core/Lib/lwshell/lwshell/src/lwshell/lwshell.o
- .debug_str     0x000fb71f     0x95bd ./Core/Lib/mpu6500/interface/driver_mpu6500_basic.o
- .debug_str     0x000fb71f    0xc3fe9 ./Core/Lib/mpu6500/interface/driver_mpu6500_interface.o
- .debug_str     0x000fb71f     0xc462 ./Core/Lib/mpu6500/src/driver_mpu6500.o
- .debug_str     0x000fb71f     0x7718 ./Core/Lib/ringbuffer/ringbuffer.o
- .debug_str     0x000fb71f    0xbf711 ./Core/Lib/uart_driver/uart_driver.o
- .debug_str     0x000fb71f    0xbbfa8 ./Core/Src/dma.o
- .debug_str     0x000fb71f    0xc56b4 ./Core/Src/emergency_handlers.o
- .debug_str     0x000fb71f    0xbc16f ./Core/Src/esc_pwm.o
- .debug_str     0x000fb71f    0xc6e9b ./Core/Src/freertos.o
- .debug_str     0x000fb71f    0xbbb77 ./Core/Src/gpio.o
- .debug_str     0x000fb71f    0xd4829 ./Core/Src/lwip_example.o
- .debug_str     0x000fb71f     0xd101 ./Core/Src/lwip_port.o
- .debug_str     0x000fb71f    0xc7e9a ./Core/Src/main.o
- .debug_str     0x000fb71f    0xca44c ./Core/Src/rtos_flight_controller.o
- .debug_str     0x000fb71f    0xbc003 ./Core/Src/spi.o
- .debug_str     0x000fb71f    0xbbf98 ./Core/Src/stm32f4xx_hal_msp.o
- .debug_str     0x000fb71f    0xbc5f2 ./Core/Src/stm32f4xx_hal_timebase_tim.o
- .debug_str     0x000fb71f    0xbc9e8 ./Core/Src/stm32f4xx_it.o
- .debug_str     0x000fb71f     0x99cc ./Core/Src/syscalls.o
- .debug_str     0x000fb71f     0x776a ./Core/Src/sysmem.o
- .debug_str     0x000fb71f    0xbbb1c ./Core/Src/system_stm32f4xx.o
- .debug_str     0x000fb71f    0xbc7e6 ./Core/Src/tim.o
- .debug_str     0x000fb71f    0xbcb61 ./Core/Src/usart.o
- .debug_str     0x000fb71f       0x6c ./Core/Startup/startup_stm32f405rgtx.o
- .debug_str     0x000fb71f    0xbc67f ./Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal.o
- .debug_str     0x000fb71f    0xbc3fb ./Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_cortex.o
- .debug_str     0x000fb71f    0xbbf36 ./Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma.o
- .debug_str     0x000fb71f    0xbbc97 ./Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_gpio.o
- .debug_str     0x000fb71f    0xbc5fa ./Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pcd.o
- .debug_str     0x000fb71f    0xbbeea ./Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pcd_ex.o
- .debug_str     0x000fb71f    0xbbf50 ./Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc.o
- .debug_str     0x000fb71f    0xbc3da ./Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spi.o
- .debug_str     0x000fb71f    0xbcea6 ./Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_tim.o
- .debug_str     0x000fb71f    0xbc6b2 ./Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_tim_ex.o
- .debug_str     0x000fb71f    0xbc531 ./Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_uart.o
- .debug_str     0x000fb71f    0xbc4d5 ./Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_ll_usb.o
- .debug_str     0x000fb71f    0xc0bd0 ./Middlewares/ST/STM32_USB_Device_Library/Class/CDC/Src/usbd_cdc.o
- .debug_str     0x000fb71f    0xc0529 ./Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_core.o
- .debug_str     0x000fb71f    0xc0354 ./Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_ctlreq.o
- .debug_str     0x000fb71f    0xc0229 ./Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_ioreq.o
- .debug_str     0x000fb71f    0xc6b2c ./Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2/cmsis_os2.o
- .debug_str     0x000fb71f     0xac1b ./Middlewares/Third_Party/FreeRTOS/Source/list.o
- .debug_str     0x000fb71f     0xc75b ./Middlewares/Third_Party/FreeRTOS/Source/queue.o
- .debug_str     0x000fb71f     0xd70b ./Middlewares/Third_Party/FreeRTOS/Source/tasks.o
- .debug_str     0x000fb71f     0xcfac ./Middlewares/Third_Party/FreeRTOS/Source/timers.o
- .debug_str     0x000fb71f     0xb959 ./Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F/port.o
- .debug_str     0x000fb71f     0xb55d ./Middlewares/Third_Party/FreeRTOS/Source/portable/MemMang/heap_4.o
- .debug_str     0x000fb71f    0xcceb5 ./Middlewares/Third_Party/lwip/src/api/api_lib.o
- .debug_str     0x000fb71f    0xcbbf8 ./Middlewares/Third_Party/lwip/src/api/api_msg.o
- .debug_str     0x000fb71f    0xc5afd ./Middlewares/Third_Party/lwip/src/api/err.o
- .debug_str     0x000fb71f    0x101f6 ./Middlewares/Third_Party/lwip/src/api/netbuf.o
- .debug_str     0x000fb71f    0xcee96 ./Middlewares/Third_Party/lwip/src/api/sockets.o
- .debug_str     0x000fb71f    0xca912 ./Middlewares/Third_Party/lwip/src/api/tcpip.o
- .debug_str     0x000fb71f     0xd537 ./Middlewares/Third_Party/lwip/src/core/def.o
- .debug_str     0x000fb71f     0xf53f ./Middlewares/Third_Party/lwip/src/core/inet_chksum.o
- .debug_str     0x000fb71f    0xd02b6 ./Middlewares/Third_Party/lwip/src/core/init.o
- .debug_str     0x000fb71f    0x1152e ./Middlewares/Third_Party/lwip/src/core/ip.o
- .debug_str     0x000fb71f    0xc6659 ./Middlewares/Third_Party/lwip/src/core/mem.o
- .debug_str     0x000fb71f    0xcf54b ./Middlewares/Third_Party/lwip/src/core/memp.o
- .debug_str     0x000fb71f    0xcc5a8 ./Middlewares/Third_Party/lwip/src/core/netif.o
- .debug_str     0x000fb71f    0xcbec6 ./Middlewares/Third_Party/lwip/src/core/pbuf.o
- .debug_str     0x000fb71f    0x13d67 ./Middlewares/Third_Party/lwip/src/core/tcp.o
- .debug_str     0x000fb71f    0x13bcc ./Middlewares/Third_Party/lwip/src/core/tcp_in.o
- .debug_str     0x000fb71f    0x13b89 ./Middlewares/Third_Party/lwip/src/core/tcp_out.o
- .debug_str     0x000fb71f    0xcc367 ./Middlewares/Third_Party/lwip/src/core/timeouts.o
- .debug_str     0x000fb71f    0x12bab ./Middlewares/Third_Party/lwip/src/core/udp.o
- .debug_str     0x000fb71f    0x11492 ./Middlewares/Third_Party/lwip/src/core/ipv4/acd.o
- .debug_str     0x000fb71f    0x135c3 ./Middlewares/Third_Party/lwip/src/core/ipv4/dhcp.o
- .debug_str     0x000fb71f    0x12abb ./Middlewares/Third_Party/lwip/src/core/ipv4/etharp.o
- .debug_str     0x000fb71f    0x119e9 ./Middlewares/Third_Party/lwip/src/core/ipv4/icmp.o
- .debug_str     0x000fb71f    0x13a95 ./Middlewares/Third_Party/lwip/src/core/ipv4/ip4.o
- .debug_str     0x000fb71f    0x10862 ./Middlewares/Third_Party/lwip/src/core/ipv4/ip4_addr.o
- .debug_str     0x000fb71f    0x11df0 ./Middlewares/Third_Party/lwip/src/core/ipv4/ip4_frag.o
- .debug_str     0x000fb71f    0xcb806 ./Middlewares/Third_Party/lwip/src/netif/ethernet.o
- .debug_str     0x000fb71f    0xcaee8 ./Middlewares/Third_Party/lwip/src/netif/ppp/auth.o
- .debug_str     0x000fb71f    0xcb2b2 ./Middlewares/Third_Party/lwip/src/netif/ppp/chap-md5.o
- .debug_str     0x000fb71f    0xcb0e6 ./Middlewares/Third_Party/lwip/src/netif/ppp/chap-new.o
- .debug_str     0x000fb71f    0xcaf4c ./Middlewares/Third_Party/lwip/src/netif/ppp/fsm.o
- .debug_str     0x000fb71f    0xcb926 ./Middlewares/Third_Party/lwip/src/netif/ppp/ipcp.o
- .debug_str     0x000fb71f    0xcc58f ./Middlewares/Third_Party/lwip/src/netif/ppp/lcp.o
- .debug_str     0x000fb71f    0xcabb1 ./Middlewares/Third_Party/lwip/src/netif/ppp/magic.o
- .debug_str     0x000fb71f    0xcc6b7 ./Middlewares/Third_Party/lwip/src/netif/ppp/ppp.o
- .debug_str     0x000fb71f    0xcb300 ./Middlewares/Third_Party/lwip/src/netif/ppp/pppapi.o
- .debug_str     0x000fb71f    0xcc4e5 ./Middlewares/Third_Party/lwip/src/netif/ppp/pppoe.o
- .debug_str     0x000fb71f    0xcc851 ./Middlewares/Third_Party/lwip/src/netif/ppp/pppos.o
- .debug_str     0x000fb71f    0xcb05c ./Middlewares/Third_Party/lwip/src/netif/ppp/upap.o
- .debug_str     0x000fb71f    0xca7a4 ./Middlewares/Third_Party/lwip/src/netif/ppp/utils.o
- .debug_str     0x000fb71f     0xd9bf ./Middlewares/Third_Party/lwip/src/netif/ppp/polarssl/md5.o
- .debug_str     0x000fb71f    0xce388 ./Middlewares/Third_Party/lwip/system/OS/sys_arch.o
- .debug_str     0x000fb71f    0xc05dc ./USB_DEVICE/App/usb_device.o
- .debug_str     0x000fb71f    0xc0baf ./USB_DEVICE/App/usbd_cdc_if.o
- .debug_str     0x000fb71f    0xc0129 ./USB_DEVICE/App/usbd_desc.o
- .debug_str     0x000fb71f    0xc13fd ./USB_DEVICE/Target/usbd_conf.o
+ .debug_str     0x000fb731     0x418e ./Core/Lib/crsf/crsf_def.o
+ .debug_str     0x000fb731     0x907d ./Core/Lib/crsf/crsf_telemetry.o
+ .debug_str     0x000fb731     0x6c36 ./Core/Lib/flight_controller_libs/attitude_controller.o
+ .debug_str     0x000fb731     0x43a6 ./Core/Lib/flight_controller_libs/crc.o
+ .debug_str     0x000fb731     0x7809 ./Core/Lib/flight_controller_libs/filters.o
+ .debug_str     0x000fb731     0xe97f ./Core/Lib/flight_controller_libs/flight_control_loop.o
+ .debug_str     0x000fb731    0xc7844 ./Core/Lib/flight_controller_libs/fp_cli.o
+ .debug_str     0x000fb731    0xcee9e ./Core/Lib/flight_controller_libs/fp_cli_server.o
+ .debug_str     0x000fb731     0x7cb4 ./Core/Lib/flight_controller_libs/geometry3D.o
+ .debug_str     0x000fb731     0x7a29 ./Core/Lib/flight_controller_libs/imu.o
+ .debug_str     0x000fb731     0x726c ./Core/Lib/flight_controller_libs/madgwick_filter.o
+ .debug_str     0x000fb731     0xd590 ./Core/Lib/flight_controller_libs/motor_mixer.o
+ .debug_str     0x000fb731     0x7973 ./Core/Lib/flight_controller_libs/pid_controller.o
+ .debug_str     0x000fb731     0x81eb ./Core/Lib/flight_controller_libs/rate_controller.o
+ .debug_str     0x000fb731     0x83d0 ./Core/Lib/flight_controller_libs/rc_control.o
+ .debug_str     0x000fb731    0xd4535 ./Core/Lib/flight_controller_libs/rc_control_recv_routine.o
+ .debug_str     0x000fb731     0x7c49 ./Core/Lib/lwshell/lwshell/src/lwshell/lwshell.o
+ .debug_str     0x000fb731     0x95bd ./Core/Lib/mpu6500/interface/driver_mpu6500_basic.o
+ .debug_str     0x000fb731    0xc3fe9 ./Core/Lib/mpu6500/interface/driver_mpu6500_interface.o
+ .debug_str     0x000fb731     0xc462 ./Core/Lib/mpu6500/src/driver_mpu6500.o
+ .debug_str     0x000fb731     0x7718 ./Core/Lib/ringbuffer/ringbuffer.o
+ .debug_str     0x000fb731    0xbf711 ./Core/Lib/uart_driver/uart_driver.o
+ .debug_str     0x000fb731    0xbbfa8 ./Core/Src/dma.o
+ .debug_str     0x000fb731    0xc56b4 ./Core/Src/emergency_handlers.o
+ .debug_str     0x000fb731    0xbc16f ./Core/Src/esc_pwm.o
+ .debug_str     0x000fb731    0xc6e9b ./Core/Src/freertos.o
+ .debug_str     0x000fb731    0xbbb77 ./Core/Src/gpio.o
+ .debug_str     0x000fb731    0xd4829 ./Core/Src/lwip_example.o
+ .debug_str     0x000fb731     0xd101 ./Core/Src/lwip_port.o
+ .debug_str     0x000fb731    0xc7e9a ./Core/Src/main.o
+ .debug_str     0x000fb731    0xca44c ./Core/Src/rtos_flight_controller.o
+ .debug_str     0x000fb731    0xbc003 ./Core/Src/spi.o
+ .debug_str     0x000fb731    0xbbf98 ./Core/Src/stm32f4xx_hal_msp.o
+ .debug_str     0x000fb731    0xbc5f2 ./Core/Src/stm32f4xx_hal_timebase_tim.o
+ .debug_str     0x000fb731    0xbc9e8 ./Core/Src/stm32f4xx_it.o
+ .debug_str     0x000fb731     0x99cc ./Core/Src/syscalls.o
+ .debug_str     0x000fb731     0x776a ./Core/Src/sysmem.o
+ .debug_str     0x000fb731    0xbbb1c ./Core/Src/system_stm32f4xx.o
+ .debug_str     0x000fb731    0xbc7e6 ./Core/Src/tim.o
+ .debug_str     0x000fb731    0xbcb61 ./Core/Src/usart.o
+ .debug_str     0x000fb731       0x6c ./Core/Startup/startup_stm32f405rgtx.o
+ .debug_str     0x000fb731    0xbc67f ./Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal.o
+ .debug_str     0x000fb731    0xbc3fb ./Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_cortex.o
+ .debug_str     0x000fb731    0xbbf36 ./Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma.o
+ .debug_str     0x000fb731    0xbbc97 ./Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_gpio.o
+ .debug_str     0x000fb731    0xbc5fa ./Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pcd.o
+ .debug_str     0x000fb731    0xbbeea ./Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pcd_ex.o
+ .debug_str     0x000fb731    0xbbf50 ./Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc.o
+ .debug_str     0x000fb731    0xbc3da ./Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spi.o
+ .debug_str     0x000fb731    0xbcea6 ./Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_tim.o
+ .debug_str     0x000fb731    0xbc6b2 ./Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_tim_ex.o
+ .debug_str     0x000fb731    0xbc531 ./Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_uart.o
+ .debug_str     0x000fb731    0xbc4d5 ./Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_ll_usb.o
+ .debug_str     0x000fb731    0xc0bd0 ./Middlewares/ST/STM32_USB_Device_Library/Class/CDC/Src/usbd_cdc.o
+ .debug_str     0x000fb731    0xc0529 ./Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_core.o
+ .debug_str     0x000fb731    0xc0354 ./Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_ctlreq.o
+ .debug_str     0x000fb731    0xc0229 ./Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_ioreq.o
+ .debug_str     0x000fb731    0xc6b2c ./Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2/cmsis_os2.o
+ .debug_str     0x000fb731     0xac1b ./Middlewares/Third_Party/FreeRTOS/Source/list.o
+ .debug_str     0x000fb731     0xc75b ./Middlewares/Third_Party/FreeRTOS/Source/queue.o
+ .debug_str     0x000fb731     0xd70b ./Middlewares/Third_Party/FreeRTOS/Source/tasks.o
+ .debug_str     0x000fb731     0xcfac ./Middlewares/Third_Party/FreeRTOS/Source/timers.o
+ .debug_str     0x000fb731     0xb959 ./Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F/port.o
+ .debug_str     0x000fb731     0xb55d ./Middlewares/Third_Party/FreeRTOS/Source/portable/MemMang/heap_4.o
+ .debug_str     0x000fb731    0xcceb5 ./Middlewares/Third_Party/lwip/src/api/api_lib.o
+ .debug_str     0x000fb731    0xcbbf8 ./Middlewares/Third_Party/lwip/src/api/api_msg.o
+ .debug_str     0x000fb731    0xc5afd ./Middlewares/Third_Party/lwip/src/api/err.o
+ .debug_str     0x000fb731    0x101f6 ./Middlewares/Third_Party/lwip/src/api/netbuf.o
+ .debug_str     0x000fb731    0xcee96 ./Middlewares/Third_Party/lwip/src/api/sockets.o
+ .debug_str     0x000fb731    0xca912 ./Middlewares/Third_Party/lwip/src/api/tcpip.o
+ .debug_str     0x000fb731     0xd537 ./Middlewares/Third_Party/lwip/src/core/def.o
+ .debug_str     0x000fb731     0xf53f ./Middlewares/Third_Party/lwip/src/core/inet_chksum.o
+ .debug_str     0x000fb731    0xd02b6 ./Middlewares/Third_Party/lwip/src/core/init.o
+ .debug_str     0x000fb731    0x1152e ./Middlewares/Third_Party/lwip/src/core/ip.o
+ .debug_str     0x000fb731    0xc6659 ./Middlewares/Third_Party/lwip/src/core/mem.o
+ .debug_str     0x000fb731    0xcf54b ./Middlewares/Third_Party/lwip/src/core/memp.o
+ .debug_str     0x000fb731    0xcc5a8 ./Middlewares/Third_Party/lwip/src/core/netif.o
+ .debug_str     0x000fb731    0xcbec6 ./Middlewares/Third_Party/lwip/src/core/pbuf.o
+ .debug_str     0x000fb731    0x13d67 ./Middlewares/Third_Party/lwip/src/core/tcp.o
+ .debug_str     0x000fb731    0x13bcc ./Middlewares/Third_Party/lwip/src/core/tcp_in.o
+ .debug_str     0x000fb731    0x13b89 ./Middlewares/Third_Party/lwip/src/core/tcp_out.o
+ .debug_str     0x000fb731    0xcc367 ./Middlewares/Third_Party/lwip/src/core/timeouts.o
+ .debug_str     0x000fb731    0x12bab ./Middlewares/Third_Party/lwip/src/core/udp.o
+ .debug_str     0x000fb731    0x11492 ./Middlewares/Third_Party/lwip/src/core/ipv4/acd.o
+ .debug_str     0x000fb731    0x135c3 ./Middlewares/Third_Party/lwip/src/core/ipv4/dhcp.o
+ .debug_str     0x000fb731    0x12abb ./Middlewares/Third_Party/lwip/src/core/ipv4/etharp.o
+ .debug_str     0x000fb731    0x119e9 ./Middlewares/Third_Party/lwip/src/core/ipv4/icmp.o
+ .debug_str     0x000fb731    0x13a95 ./Middlewares/Third_Party/lwip/src/core/ipv4/ip4.o
+ .debug_str     0x000fb731    0x10862 ./Middlewares/Third_Party/lwip/src/core/ipv4/ip4_addr.o
+ .debug_str     0x000fb731    0x11df0 ./Middlewares/Third_Party/lwip/src/core/ipv4/ip4_frag.o
+ .debug_str     0x000fb731    0xcb806 ./Middlewares/Third_Party/lwip/src/netif/ethernet.o
+ .debug_str     0x000fb731    0xcaee8 ./Middlewares/Third_Party/lwip/src/netif/ppp/auth.o
+ .debug_str     0x000fb731    0xcb2b2 ./Middlewares/Third_Party/lwip/src/netif/ppp/chap-md5.o
+ .debug_str     0x000fb731    0xcb0e6 ./Middlewares/Third_Party/lwip/src/netif/ppp/chap-new.o
+ .debug_str     0x000fb731    0xcaf4c ./Middlewares/Third_Party/lwip/src/netif/ppp/fsm.o
+ .debug_str     0x000fb731    0xcb926 ./Middlewares/Third_Party/lwip/src/netif/ppp/ipcp.o
+ .debug_str     0x000fb731    0xcc58f ./Middlewares/Third_Party/lwip/src/netif/ppp/lcp.o
+ .debug_str     0x000fb731    0xcabb1 ./Middlewares/Third_Party/lwip/src/netif/ppp/magic.o
+ .debug_str     0x000fb731    0xcc6b7 ./Middlewares/Third_Party/lwip/src/netif/ppp/ppp.o
+ .debug_str     0x000fb731    0xcb300 ./Middlewares/Third_Party/lwip/src/netif/ppp/pppapi.o
+ .debug_str     0x000fb731    0xcc4e5 ./Middlewares/Third_Party/lwip/src/netif/ppp/pppoe.o
+ .debug_str     0x000fb731    0xcc851 ./Middlewares/Third_Party/lwip/src/netif/ppp/pppos.o
+ .debug_str     0x000fb731    0xcb05c ./Middlewares/Third_Party/lwip/src/netif/ppp/upap.o
+ .debug_str     0x000fb731    0xca7a4 ./Middlewares/Third_Party/lwip/src/netif/ppp/utils.o
+ .debug_str     0x000fb731     0xd9bf ./Middlewares/Third_Party/lwip/src/netif/ppp/polarssl/md5.o
+ .debug_str     0x000fb731    0xce388 ./Middlewares/Third_Party/lwip/system/OS/sys_arch.o
+ .debug_str     0x000fb731    0xc05dc ./USB_DEVICE/App/usb_device.o
+ .debug_str     0x000fb731    0xc0bc1 ./USB_DEVICE/App/usbd_cdc_if.o
+ .debug_str     0x000fb731    0xc0129 ./USB_DEVICE/App/usbd_desc.o
+ .debug_str     0x000fb731    0xc13fd ./USB_DEVICE/Target/usbd_conf.o
 
 .comment        0x00000000       0x43
  .comment       0x00000000       0x43 ./Core/Lib/crsf/crsf.o
@@ -36556,7 +36715,7 @@ LOAD C:/ST/STM32CubeIDE_1.18.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.ext
  .comment       0x00000043       0x44 ./USB_DEVICE/App/usbd_desc.o
  .comment       0x00000043       0x44 ./USB_DEVICE/Target/usbd_conf.o
 
-.debug_frame    0x00000000    0x15010
+.debug_frame    0x00000000    0x15034
  .debug_frame   0x00000000      0x438 ./Core/Lib/crsf/crsf.o
  .debug_frame   0x00000438       0x88 ./Core/Lib/crsf/crsf_def.o
  .debug_frame   0x000004c0      0x2a8 ./Core/Lib/crsf/crsf_telemetry.o
@@ -36662,108 +36821,108 @@ LOAD C:/ST/STM32CubeIDE_1.18.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.ext
  .debug_frame   0x000123e0       0xcc ./Middlewares/Third_Party/lwip/src/netif/ppp/polarssl/md5.o
  .debug_frame   0x000124ac      0x470 ./Middlewares/Third_Party/lwip/system/OS/sys_arch.o
  .debug_frame   0x0001291c       0x2c ./USB_DEVICE/App/usb_device.o
- .debug_frame   0x00012948      0x174 ./USB_DEVICE/App/usbd_cdc_if.o
- .debug_frame   0x00012abc      0x160 ./USB_DEVICE/App/usbd_desc.o
- .debug_frame   0x00012c1c      0x47c ./USB_DEVICE/Target/usbd_conf.o
- .debug_frame   0x00013098       0x48 C:/ST/STM32CubeIDE_1.18.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(libm_a-wf_acos.o)
- .debug_frame   0x000130e0       0x48 C:/ST/STM32CubeIDE_1.18.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(libm_a-wf_asin.o)
- .debug_frame   0x00013128       0x20 C:/ST/STM32CubeIDE_1.18.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(libm_a-wf_atan2.o)
- .debug_frame   0x00013148       0x48 C:/ST/STM32CubeIDE_1.18.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(libm_a-wf_pow.o)
- .debug_frame   0x00013190       0x38 C:/ST/STM32CubeIDE_1.18.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(libm_a-wf_sqrt.o)
- .debug_frame   0x000131c8       0x2c C:/ST/STM32CubeIDE_1.18.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(libm_a-sf_atan.o)
- .debug_frame   0x000131f4       0x38 C:/ST/STM32CubeIDE_1.18.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(libm_a-sf_cos.o)
- .debug_frame   0x0001322c       0x20 C:/ST/STM32CubeIDE_1.18.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(libm_a-sf_fabs.o)
- .debug_frame   0x0001324c       0x38 C:/ST/STM32CubeIDE_1.18.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(libm_a-sf_sin.o)
- .debug_frame   0x00013284       0x20 C:/ST/STM32CubeIDE_1.18.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(libm_a-sf_finite.o)
- .debug_frame   0x000132a4       0x20 C:/ST/STM32CubeIDE_1.18.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(libm_a-sf_copysign.o)
- .debug_frame   0x000132c4       0x20 C:/ST/STM32CubeIDE_1.18.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(libm_a-sf_nan.o)
- .debug_frame   0x000132e4       0x20 C:/ST/STM32CubeIDE_1.18.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(libm_a-ef_sqrt.o)
- .debug_frame   0x00013304       0x20 C:/ST/STM32CubeIDE_1.18.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(libm_a-kf_cos.o)
- .debug_frame   0x00013324       0x20 C:/ST/STM32CubeIDE_1.18.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(libm_a-kf_sin.o)
- .debug_frame   0x00013344       0x6c C:/ST/STM32CubeIDE_1.18.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(libm_a-ef_acos.o)
- .debug_frame   0x000133b0       0x48 C:/ST/STM32CubeIDE_1.18.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(libm_a-ef_asin.o)
- .debug_frame   0x000133f8       0x30 C:/ST/STM32CubeIDE_1.18.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(libm_a-ef_atan2.o)
- .debug_frame   0x00013428       0x88 C:/ST/STM32CubeIDE_1.18.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(libm_a-ef_pow.o)
- .debug_frame   0x000134b0       0x38 C:/ST/STM32CubeIDE_1.18.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(libm_a-ef_rem_pio2.o)
- .debug_frame   0x000134e8       0x20 C:/ST/STM32CubeIDE_1.18.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(libm_a-sf_scalbn.o)
- .debug_frame   0x00013508       0x88 C:/ST/STM32CubeIDE_1.18.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(libm_a-math_errf.o)
- .debug_frame   0x00013590       0x5c C:/ST/STM32CubeIDE_1.18.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(libm_a-kf_rem_pio2.o)
- .debug_frame   0x000135ec       0x20 C:/ST/STM32CubeIDE_1.18.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(libm_a-sf_floor.o)
- .debug_frame   0x0001360c       0x30 C:/ST/STM32CubeIDE_1.18.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-atoi.o)
- .debug_frame   0x0001363c       0x30 C:/ST/STM32CubeIDE_1.18.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-malloc.o)
- .debug_frame   0x0001366c       0x50 C:/ST/STM32CubeIDE_1.18.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-mallocr.o)
- .debug_frame   0x000136bc       0x30 C:/ST/STM32CubeIDE_1.18.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-mlock.o)
- .debug_frame   0x000136ec       0x44 C:/ST/STM32CubeIDE_1.18.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-rand.o)
- .debug_frame   0x00013730       0x64 C:/ST/STM32CubeIDE_1.18.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-strtol.o)
- .debug_frame   0x00013794       0x90 C:/ST/STM32CubeIDE_1.18.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-nano-vfprintf_float.o)
- .debug_frame   0x00013824       0xa8 C:/ST/STM32CubeIDE_1.18.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-nano-vfprintf.o)
- .debug_frame   0x000138cc       0x60 C:/ST/STM32CubeIDE_1.18.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-nano-vfprintf_i.o)
- .debug_frame   0x0001392c       0x40 C:/ST/STM32CubeIDE_1.18.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-nano-vfscanf_float.o)
- .debug_frame   0x0001396c      0x144 C:/ST/STM32CubeIDE_1.18.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-findfp.o)
- .debug_frame   0x00013ab0       0x34 C:/ST/STM32CubeIDE_1.18.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-fwalk.o)
- .debug_frame   0x00013ae4       0x6c C:/ST/STM32CubeIDE_1.18.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-printf.o)
- .debug_frame   0x00013b50       0x3c C:/ST/STM32CubeIDE_1.18.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-puts.o)
- .debug_frame   0x00013b8c       0x7c C:/ST/STM32CubeIDE_1.18.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-snprintf.o)
- .debug_frame   0x00013c08       0x74 C:/ST/STM32CubeIDE_1.18.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-sprintf.o)
- .debug_frame   0x00013c7c       0x80 C:/ST/STM32CubeIDE_1.18.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-sscanf.o)
- .debug_frame   0x00013cfc       0x88 C:/ST/STM32CubeIDE_1.18.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-stdio.o)
- .debug_frame   0x00013d84       0x4c C:/ST/STM32CubeIDE_1.18.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-vsnprintf.o)
- .debug_frame   0x00013dd0       0x40 C:/ST/STM32CubeIDE_1.18.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-wbuf.o)
- .debug_frame   0x00013e10       0x2c C:/ST/STM32CubeIDE_1.18.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-wsetup.o)
- .debug_frame   0x00013e3c       0x28 C:/ST/STM32CubeIDE_1.18.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-memmove.o)
- .debug_frame   0x00013e64       0x20 C:/ST/STM32CubeIDE_1.18.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-memset.o)
- .debug_frame   0x00013e84       0x28 C:/ST/STM32CubeIDE_1.18.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-strncmp.o)
- .debug_frame   0x00013eac       0x40 C:/ST/STM32CubeIDE_1.18.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-localeconv.o)
- .debug_frame   0x00013eec       0x2c C:/ST/STM32CubeIDE_1.18.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-closer.o)
- .debug_frame   0x00013f18       0x38 C:/ST/STM32CubeIDE_1.18.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-reent.o)
- .debug_frame   0x00013f50       0x2c C:/ST/STM32CubeIDE_1.18.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-lseekr.o)
- .debug_frame   0x00013f7c       0x2c C:/ST/STM32CubeIDE_1.18.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-readr.o)
- .debug_frame   0x00013fa8       0x2c C:/ST/STM32CubeIDE_1.18.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-sbrkr.o)
- .debug_frame   0x00013fd4       0x2c C:/ST/STM32CubeIDE_1.18.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-writer.o)
- .debug_frame   0x00014000       0x20 C:/ST/STM32CubeIDE_1.18.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-errno.o)
- .debug_frame   0x00014020       0x2c C:/ST/STM32CubeIDE_1.18.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-init.o)
- .debug_frame   0x0001404c       0xb0 C:/ST/STM32CubeIDE_1.18.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-lock.o)
- .debug_frame   0x000140fc       0x20 C:/ST/STM32CubeIDE_1.18.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-strcmp.o)
- .debug_frame   0x0001411c       0x28 C:/ST/STM32CubeIDE_1.18.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-memcpy-stub.o)
- .debug_frame   0x00014144       0x40 C:/ST/STM32CubeIDE_1.18.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-assert.o)
- .debug_frame   0x00014184       0x70 C:/ST/STM32CubeIDE_1.18.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-dtoa.o)
- .debug_frame   0x000141f4       0x38 C:/ST/STM32CubeIDE_1.18.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-freer.o)
- .debug_frame   0x0001422c      0x260 C:/ST/STM32CubeIDE_1.18.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-mprec.o)
- .debug_frame   0x0001448c       0x3c C:/ST/STM32CubeIDE_1.18.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-reallocr.o)
- .debug_frame   0x000144c8      0x11c C:/ST/STM32CubeIDE_1.18.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-strtod.o)
- .debug_frame   0x000145e4       0x90 C:/ST/STM32CubeIDE_1.18.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-nano-svfprintf.o)
- .debug_frame   0x00014674       0x78 C:/ST/STM32CubeIDE_1.18.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-nano-svfscanf.o)
- .debug_frame   0x000146ec       0x64 C:/ST/STM32CubeIDE_1.18.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-nano-vfscanf_i.o)
- .debug_frame   0x00014750       0x5c C:/ST/STM32CubeIDE_1.18.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-fflush.o)
- .debug_frame   0x000147ac       0x64 C:/ST/STM32CubeIDE_1.18.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-fprintf.o)
- .debug_frame   0x00014810       0x58 C:/ST/STM32CubeIDE_1.18.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-makebuf.o)
- .debug_frame   0x00014868       0x2c C:/ST/STM32CubeIDE_1.18.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-sccl.o)
- .debug_frame   0x00014894       0x5c C:/ST/STM32CubeIDE_1.18.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-ungetc.o)
- .debug_frame   0x000148f0       0x48 C:/ST/STM32CubeIDE_1.18.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-locale.o)
- .debug_frame   0x00014938       0x2c C:/ST/STM32CubeIDE_1.18.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-fstatr.o)
- .debug_frame   0x00014964       0x2c C:/ST/STM32CubeIDE_1.18.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-isattyr.o)
- .debug_frame   0x00014990       0x20 C:/ST/STM32CubeIDE_1.18.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libc_nano.a(libm_a-s_nan.o)
- .debug_frame   0x000149b0       0x28 C:/ST/STM32CubeIDE_1.18.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-abort.o)
- .debug_frame   0x000149d8       0x2c C:/ST/STM32CubeIDE_1.18.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-callocr.o)
- .debug_frame   0x00014a04       0x74 C:/ST/STM32CubeIDE_1.18.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-gdtoa-gethex.o)
- .debug_frame   0x00014a78       0x78 C:/ST/STM32CubeIDE_1.18.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-gdtoa-hexnan.o)
- .debug_frame   0x00014af0       0x48 C:/ST/STM32CubeIDE_1.18.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-mbtowc_r.o)
- .debug_frame   0x00014b38       0x20 C:/ST/STM32CubeIDE_1.18.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-msizer.o)
- .debug_frame   0x00014b58       0x64 C:/ST/STM32CubeIDE_1.18.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-strtoul.o)
- .debug_frame   0x00014bbc       0x3c C:/ST/STM32CubeIDE_1.18.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-wctomb_r.o)
- .debug_frame   0x00014bf8       0xcc C:/ST/STM32CubeIDE_1.18.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-signal.o)
- .debug_frame   0x00014cc4       0x3c C:/ST/STM32CubeIDE_1.18.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-signalr.o)
- .debug_frame   0x00014d00       0xac C:/ST/STM32CubeIDE_1.18.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/thumb/v7e-m+fp/hard\libgcc.a(_arm_addsubdf3.o)
- .debug_frame   0x00014dac       0x50 C:/ST/STM32CubeIDE_1.18.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/thumb/v7e-m+fp/hard\libgcc.a(_arm_muldivdf3.o)
- .debug_frame   0x00014dfc       0xc4 C:/ST/STM32CubeIDE_1.18.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/thumb/v7e-m+fp/hard\libgcc.a(_arm_cmpdf2.o)
- .debug_frame   0x00014ec0       0x20 C:/ST/STM32CubeIDE_1.18.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/thumb/v7e-m+fp/hard\libgcc.a(_arm_unorddf2.o)
- .debug_frame   0x00014ee0       0x24 C:/ST/STM32CubeIDE_1.18.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/thumb/v7e-m+fp/hard\libgcc.a(_arm_fixdfsi.o)
- .debug_frame   0x00014f04       0x24 C:/ST/STM32CubeIDE_1.18.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/thumb/v7e-m+fp/hard\libgcc.a(_arm_fixunsdfsi.o)
- .debug_frame   0x00014f28       0x24 C:/ST/STM32CubeIDE_1.18.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/thumb/v7e-m+fp/hard\libgcc.a(_arm_truncdfsf2.o)
- .debug_frame   0x00014f4c       0x2c C:/ST/STM32CubeIDE_1.18.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/thumb/v7e-m+fp/hard\libgcc.a(_aeabi_uldivmod.o)
- .debug_frame   0x00014f78       0x38 C:/ST/STM32CubeIDE_1.18.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/thumb/v7e-m+fp/hard\libgcc.a(_fixdfdi.o)
- .debug_frame   0x00014fb0       0x2c C:/ST/STM32CubeIDE_1.18.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/thumb/v7e-m+fp/hard\libgcc.a(_fixunsdfdi.o)
- .debug_frame   0x00014fdc       0x34 C:/ST/STM32CubeIDE_1.18.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/thumb/v7e-m+fp/hard\libgcc.a(_udivmoddi4.o)
+ .debug_frame   0x00012948      0x198 ./USB_DEVICE/App/usbd_cdc_if.o
+ .debug_frame   0x00012ae0      0x160 ./USB_DEVICE/App/usbd_desc.o
+ .debug_frame   0x00012c40      0x47c ./USB_DEVICE/Target/usbd_conf.o
+ .debug_frame   0x000130bc       0x48 C:/ST/STM32CubeIDE_1.18.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(libm_a-wf_acos.o)
+ .debug_frame   0x00013104       0x48 C:/ST/STM32CubeIDE_1.18.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(libm_a-wf_asin.o)
+ .debug_frame   0x0001314c       0x20 C:/ST/STM32CubeIDE_1.18.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(libm_a-wf_atan2.o)
+ .debug_frame   0x0001316c       0x48 C:/ST/STM32CubeIDE_1.18.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(libm_a-wf_pow.o)
+ .debug_frame   0x000131b4       0x38 C:/ST/STM32CubeIDE_1.18.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(libm_a-wf_sqrt.o)
+ .debug_frame   0x000131ec       0x2c C:/ST/STM32CubeIDE_1.18.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(libm_a-sf_atan.o)
+ .debug_frame   0x00013218       0x38 C:/ST/STM32CubeIDE_1.18.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(libm_a-sf_cos.o)
+ .debug_frame   0x00013250       0x20 C:/ST/STM32CubeIDE_1.18.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(libm_a-sf_fabs.o)
+ .debug_frame   0x00013270       0x38 C:/ST/STM32CubeIDE_1.18.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(libm_a-sf_sin.o)
+ .debug_frame   0x000132a8       0x20 C:/ST/STM32CubeIDE_1.18.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(libm_a-sf_finite.o)
+ .debug_frame   0x000132c8       0x20 C:/ST/STM32CubeIDE_1.18.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(libm_a-sf_copysign.o)
+ .debug_frame   0x000132e8       0x20 C:/ST/STM32CubeIDE_1.18.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(libm_a-sf_nan.o)
+ .debug_frame   0x00013308       0x20 C:/ST/STM32CubeIDE_1.18.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(libm_a-ef_sqrt.o)
+ .debug_frame   0x00013328       0x20 C:/ST/STM32CubeIDE_1.18.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(libm_a-kf_cos.o)
+ .debug_frame   0x00013348       0x20 C:/ST/STM32CubeIDE_1.18.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(libm_a-kf_sin.o)
+ .debug_frame   0x00013368       0x6c C:/ST/STM32CubeIDE_1.18.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(libm_a-ef_acos.o)
+ .debug_frame   0x000133d4       0x48 C:/ST/STM32CubeIDE_1.18.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(libm_a-ef_asin.o)
+ .debug_frame   0x0001341c       0x30 C:/ST/STM32CubeIDE_1.18.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(libm_a-ef_atan2.o)
+ .debug_frame   0x0001344c       0x88 C:/ST/STM32CubeIDE_1.18.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(libm_a-ef_pow.o)
+ .debug_frame   0x000134d4       0x38 C:/ST/STM32CubeIDE_1.18.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(libm_a-ef_rem_pio2.o)
+ .debug_frame   0x0001350c       0x20 C:/ST/STM32CubeIDE_1.18.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(libm_a-sf_scalbn.o)
+ .debug_frame   0x0001352c       0x88 C:/ST/STM32CubeIDE_1.18.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(libm_a-math_errf.o)
+ .debug_frame   0x000135b4       0x5c C:/ST/STM32CubeIDE_1.18.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(libm_a-kf_rem_pio2.o)
+ .debug_frame   0x00013610       0x20 C:/ST/STM32CubeIDE_1.18.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(libm_a-sf_floor.o)
+ .debug_frame   0x00013630       0x30 C:/ST/STM32CubeIDE_1.18.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-atoi.o)
+ .debug_frame   0x00013660       0x30 C:/ST/STM32CubeIDE_1.18.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-malloc.o)
+ .debug_frame   0x00013690       0x50 C:/ST/STM32CubeIDE_1.18.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-mallocr.o)
+ .debug_frame   0x000136e0       0x30 C:/ST/STM32CubeIDE_1.18.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-mlock.o)
+ .debug_frame   0x00013710       0x44 C:/ST/STM32CubeIDE_1.18.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-rand.o)
+ .debug_frame   0x00013754       0x64 C:/ST/STM32CubeIDE_1.18.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-strtol.o)
+ .debug_frame   0x000137b8       0x90 C:/ST/STM32CubeIDE_1.18.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-nano-vfprintf_float.o)
+ .debug_frame   0x00013848       0xa8 C:/ST/STM32CubeIDE_1.18.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-nano-vfprintf.o)
+ .debug_frame   0x000138f0       0x60 C:/ST/STM32CubeIDE_1.18.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-nano-vfprintf_i.o)
+ .debug_frame   0x00013950       0x40 C:/ST/STM32CubeIDE_1.18.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-nano-vfscanf_float.o)
+ .debug_frame   0x00013990      0x144 C:/ST/STM32CubeIDE_1.18.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-findfp.o)
+ .debug_frame   0x00013ad4       0x34 C:/ST/STM32CubeIDE_1.18.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-fwalk.o)
+ .debug_frame   0x00013b08       0x6c C:/ST/STM32CubeIDE_1.18.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-printf.o)
+ .debug_frame   0x00013b74       0x3c C:/ST/STM32CubeIDE_1.18.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-puts.o)
+ .debug_frame   0x00013bb0       0x7c C:/ST/STM32CubeIDE_1.18.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-snprintf.o)
+ .debug_frame   0x00013c2c       0x74 C:/ST/STM32CubeIDE_1.18.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-sprintf.o)
+ .debug_frame   0x00013ca0       0x80 C:/ST/STM32CubeIDE_1.18.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-sscanf.o)
+ .debug_frame   0x00013d20       0x88 C:/ST/STM32CubeIDE_1.18.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-stdio.o)
+ .debug_frame   0x00013da8       0x4c C:/ST/STM32CubeIDE_1.18.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-vsnprintf.o)
+ .debug_frame   0x00013df4       0x40 C:/ST/STM32CubeIDE_1.18.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-wbuf.o)
+ .debug_frame   0x00013e34       0x2c C:/ST/STM32CubeIDE_1.18.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-wsetup.o)
+ .debug_frame   0x00013e60       0x28 C:/ST/STM32CubeIDE_1.18.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-memmove.o)
+ .debug_frame   0x00013e88       0x20 C:/ST/STM32CubeIDE_1.18.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-memset.o)
+ .debug_frame   0x00013ea8       0x28 C:/ST/STM32CubeIDE_1.18.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-strncmp.o)
+ .debug_frame   0x00013ed0       0x40 C:/ST/STM32CubeIDE_1.18.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-localeconv.o)
+ .debug_frame   0x00013f10       0x2c C:/ST/STM32CubeIDE_1.18.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-closer.o)
+ .debug_frame   0x00013f3c       0x38 C:/ST/STM32CubeIDE_1.18.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-reent.o)
+ .debug_frame   0x00013f74       0x2c C:/ST/STM32CubeIDE_1.18.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-lseekr.o)
+ .debug_frame   0x00013fa0       0x2c C:/ST/STM32CubeIDE_1.18.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-readr.o)
+ .debug_frame   0x00013fcc       0x2c C:/ST/STM32CubeIDE_1.18.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-sbrkr.o)
+ .debug_frame   0x00013ff8       0x2c C:/ST/STM32CubeIDE_1.18.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-writer.o)
+ .debug_frame   0x00014024       0x20 C:/ST/STM32CubeIDE_1.18.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-errno.o)
+ .debug_frame   0x00014044       0x2c C:/ST/STM32CubeIDE_1.18.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-init.o)
+ .debug_frame   0x00014070       0xb0 C:/ST/STM32CubeIDE_1.18.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-lock.o)
+ .debug_frame   0x00014120       0x20 C:/ST/STM32CubeIDE_1.18.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-strcmp.o)
+ .debug_frame   0x00014140       0x28 C:/ST/STM32CubeIDE_1.18.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-memcpy-stub.o)
+ .debug_frame   0x00014168       0x40 C:/ST/STM32CubeIDE_1.18.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-assert.o)
+ .debug_frame   0x000141a8       0x70 C:/ST/STM32CubeIDE_1.18.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-dtoa.o)
+ .debug_frame   0x00014218       0x38 C:/ST/STM32CubeIDE_1.18.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-freer.o)
+ .debug_frame   0x00014250      0x260 C:/ST/STM32CubeIDE_1.18.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-mprec.o)
+ .debug_frame   0x000144b0       0x3c C:/ST/STM32CubeIDE_1.18.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-reallocr.o)
+ .debug_frame   0x000144ec      0x11c C:/ST/STM32CubeIDE_1.18.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-strtod.o)
+ .debug_frame   0x00014608       0x90 C:/ST/STM32CubeIDE_1.18.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-nano-svfprintf.o)
+ .debug_frame   0x00014698       0x78 C:/ST/STM32CubeIDE_1.18.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-nano-svfscanf.o)
+ .debug_frame   0x00014710       0x64 C:/ST/STM32CubeIDE_1.18.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-nano-vfscanf_i.o)
+ .debug_frame   0x00014774       0x5c C:/ST/STM32CubeIDE_1.18.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-fflush.o)
+ .debug_frame   0x000147d0       0x64 C:/ST/STM32CubeIDE_1.18.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-fprintf.o)
+ .debug_frame   0x00014834       0x58 C:/ST/STM32CubeIDE_1.18.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-makebuf.o)
+ .debug_frame   0x0001488c       0x2c C:/ST/STM32CubeIDE_1.18.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-sccl.o)
+ .debug_frame   0x000148b8       0x5c C:/ST/STM32CubeIDE_1.18.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-ungetc.o)
+ .debug_frame   0x00014914       0x48 C:/ST/STM32CubeIDE_1.18.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-locale.o)
+ .debug_frame   0x0001495c       0x2c C:/ST/STM32CubeIDE_1.18.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-fstatr.o)
+ .debug_frame   0x00014988       0x2c C:/ST/STM32CubeIDE_1.18.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-isattyr.o)
+ .debug_frame   0x000149b4       0x20 C:/ST/STM32CubeIDE_1.18.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libc_nano.a(libm_a-s_nan.o)
+ .debug_frame   0x000149d4       0x28 C:/ST/STM32CubeIDE_1.18.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-abort.o)
+ .debug_frame   0x000149fc       0x2c C:/ST/STM32CubeIDE_1.18.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-callocr.o)
+ .debug_frame   0x00014a28       0x74 C:/ST/STM32CubeIDE_1.18.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-gdtoa-gethex.o)
+ .debug_frame   0x00014a9c       0x78 C:/ST/STM32CubeIDE_1.18.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-gdtoa-hexnan.o)
+ .debug_frame   0x00014b14       0x48 C:/ST/STM32CubeIDE_1.18.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-mbtowc_r.o)
+ .debug_frame   0x00014b5c       0x20 C:/ST/STM32CubeIDE_1.18.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-msizer.o)
+ .debug_frame   0x00014b7c       0x64 C:/ST/STM32CubeIDE_1.18.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-strtoul.o)
+ .debug_frame   0x00014be0       0x3c C:/ST/STM32CubeIDE_1.18.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-wctomb_r.o)
+ .debug_frame   0x00014c1c       0xcc C:/ST/STM32CubeIDE_1.18.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-signal.o)
+ .debug_frame   0x00014ce8       0x3c C:/ST/STM32CubeIDE_1.18.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-signalr.o)
+ .debug_frame   0x00014d24       0xac C:/ST/STM32CubeIDE_1.18.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/thumb/v7e-m+fp/hard\libgcc.a(_arm_addsubdf3.o)
+ .debug_frame   0x00014dd0       0x50 C:/ST/STM32CubeIDE_1.18.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/thumb/v7e-m+fp/hard\libgcc.a(_arm_muldivdf3.o)
+ .debug_frame   0x00014e20       0xc4 C:/ST/STM32CubeIDE_1.18.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/thumb/v7e-m+fp/hard\libgcc.a(_arm_cmpdf2.o)
+ .debug_frame   0x00014ee4       0x20 C:/ST/STM32CubeIDE_1.18.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/thumb/v7e-m+fp/hard\libgcc.a(_arm_unorddf2.o)
+ .debug_frame   0x00014f04       0x24 C:/ST/STM32CubeIDE_1.18.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/thumb/v7e-m+fp/hard\libgcc.a(_arm_fixdfsi.o)
+ .debug_frame   0x00014f28       0x24 C:/ST/STM32CubeIDE_1.18.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/thumb/v7e-m+fp/hard\libgcc.a(_arm_fixunsdfsi.o)
+ .debug_frame   0x00014f4c       0x24 C:/ST/STM32CubeIDE_1.18.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/thumb/v7e-m+fp/hard\libgcc.a(_arm_truncdfsf2.o)
+ .debug_frame   0x00014f70       0x2c C:/ST/STM32CubeIDE_1.18.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/thumb/v7e-m+fp/hard\libgcc.a(_aeabi_uldivmod.o)
+ .debug_frame   0x00014f9c       0x38 C:/ST/STM32CubeIDE_1.18.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/thumb/v7e-m+fp/hard\libgcc.a(_fixdfdi.o)
+ .debug_frame   0x00014fd4       0x2c C:/ST/STM32CubeIDE_1.18.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/thumb/v7e-m+fp/hard\libgcc.a(_fixunsdfdi.o)
+ .debug_frame   0x00015000       0x34 C:/ST/STM32CubeIDE_1.18.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/thumb/v7e-m+fp/hard\libgcc.a(_udivmoddi4.o)
 
 .debug_line_str
                 0x00000000       0x50

@@ -6,4 +6,5 @@
 ../USB_DEVICE/App/usbd_cdc_if.c:330:15:CDC_TransmitCplt_FS	1
 ../USB_DEVICE/App/usbd_cdc_if.c:343:8:CDC_recv_data	5
 ../USB_DEVICE/App/usbd_cdc_if.c:357:8:CDC_data_available_for_read	3
-../USB_DEVICE/App/usbd_cdc_if.c:369:6:usb_printf	2
+../USB_DEVICE/App/usbd_cdc_if.c:369:6:CDC_data_rx_flush	3
+../USB_DEVICE/App/usbd_cdc_if.c:377:6:usb_printf	2

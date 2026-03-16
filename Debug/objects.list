@@ -1,3 +1,5 @@
+"./Core/Lib/base64/base64.o"
+"./Core/Lib/byte_stuffing/byte_stuffing.o"
 "./Core/Lib/crsf/crsf.o"
 "./Core/Lib/crsf/crsf_def.o"
 "./Core/Lib/crsf/crsf_telemetry.o"
@@ -7,6 +9,7 @@
 "./Core/Lib/flight_controller_libs/flight_control_loop.o"
 "./Core/Lib/flight_controller_libs/fp_cli.o"
 "./Core/Lib/flight_controller_libs/fp_cli_server.o"
+"./Core/Lib/flight_controller_libs/gazebo_link.o"
 "./Core/Lib/flight_controller_libs/geometry2D.o"
 "./Core/Lib/flight_controller_libs/geometry3D.o"
 "./Core/Lib/flight_controller_libs/imu.o"

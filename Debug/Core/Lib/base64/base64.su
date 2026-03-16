@@ -1,0 +1,5 @@
+../Core/Lib/base64/base64.c:26:8:Base64encode_len	16	static
+../Core/Lib/base64/base64.c:32:8:Base64Decode_nprbytes	32	static
+../Core/Lib/base64/base64.c:46:8:Base64decode_len	24	static
+../Core/Lib/base64/base64.c:63:8:Base64encode	32	static
+../Core/Lib/base64/base64.c:103:8:Base64decode	40	static

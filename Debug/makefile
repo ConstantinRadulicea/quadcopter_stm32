@@ -40,6 +40,8 @@ RM := rm -rf
 -include Core/Lib/lwshell/lwshell/src/lwshell/subdir.mk
 -include Core/Lib/flight_controller_libs/subdir.mk
 -include Core/Lib/crsf/subdir.mk
+-include Core/Lib/byte_stuffing/subdir.mk
+-include Core/Lib/base64/subdir.mk
 -include objects.mk
 
 ifneq ($(MAKECMDGOALS),clean)
