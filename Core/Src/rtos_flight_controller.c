@@ -14,6 +14,9 @@
 #include "crc.h"
 #include "fp_cli.h"
 #include "rc_control_recv_routine.h"
+#include "gazebo_link.h"
+
+#define ENABLE_HIL 1
 
 #define ENABLE_ESC_CALIBRATION_BUILD 0
 #define ENABLE_CLI 1
@@ -160,9 +163,29 @@ static void flight_controller_main(void *arg)
             gyro_data.x = radians(gyro[0]);
             gyro_data.y = -radians(gyro[1]);
             gyro_data.z = -radians(gyro[2]);
+
+#if ENABLE_HIL != 0
+            gazebo_link_recv_loop();
+            accel_data.x = hil_link_data_recv.accel_x_g;
+            accel_data.y = hil_link_data_recv.accel_y_g;
+            accel_data.z = hil_link_data_recv.accel_z_g;
+
+            gyro_data.x = hil_link_data_recv.gyro_x_rad_s;
+            gyro_data.y = hil_link_data_recv.gyro_y_rad_s;
+            gyro_data.z = hil_link_data_recv.gyro_z_rad_s;
+#endif
             flight_control_loop_update_imu(&fcl, gyro_data, accel_data);
         }
         flight_control_loop_tick(&fcl);
+#if ENABLE_HIL != 0
+        float motors_throttle_temp[4];
+        flight_control_loop_get_motors_throttle(&fcl, motors_throttle_temp);
+        hil_link_data_send.motor_0 = motors_throttle_temp[0];
+        hil_link_data_send.motor_1 = motors_throttle_temp[1];
+        hil_link_data_send.motor_2 = motors_throttle_temp[2];
+        hil_link_data_send.motor_3 = motors_throttle_temp[3];
+        gazebo_link_send_loop();
+#endif
       }
 }
 

@@ -25,6 +25,7 @@ extern hil_link_recv_struct_t hil_link_data_recv;
 extern hil_link_send_struct_t hil_link_data_send;
 
 void gazebo_link_recv_loop();
+void gazebo_link_send_loop();
 
 
 

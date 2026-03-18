@@ -3,11 +3,13 @@
 #include "crc.h"
 #include "crsf_def.h"
 #include "string.h"
+#include "usbd_cdc_if.h"
 
 #define HIL_OUT_WRITE(...) usb_printf(__VA_ARGS__)
 //#define HIL_IN_READ(...) usb_printf(__VA_ARGS__)
 
 #define IN_BUFFER_SIZE 256
+#define OUT_BUFFER_SIZE 256
 
 
 hil_link_recv_struct_t hil_link_data_recv;
@@ -110,6 +112,36 @@ void gazebo_link_recv_loop(void)
 
 
 void gazebo_link_send_loop(){
+	static uint8_t out_buffer[128];
+	static uint8_t out_buffer_encoded[OUT_BUFFER_SIZE];
+	struct hil_link_send_struct_raw_s *raw_data;
+	size_t buf_len = 0;
 
+	raw_data = ((struct hil_link_send_struct_raw_s*)out_buffer);
+
+
+	memcpy(&(raw_data->motor_0), &(hil_link_data_send.motor_0), sizeof(float));
+	memcpy(&(raw_data->motor_1), &(hil_link_data_send.motor_1), sizeof(float));
+	memcpy(&(raw_data->motor_2), &(hil_link_data_send.motor_2), sizeof(float));
+	memcpy(&(raw_data->motor_3), &(hil_link_data_send.motor_3), sizeof(float));
+
+	raw_data->motor_0 = crsf_htonl(raw_data->motor_0);
+	raw_data->motor_1 = crsf_htonl(raw_data->motor_1);
+	raw_data->motor_2 = crsf_htonl(raw_data->motor_2);
+	raw_data->motor_3 = crsf_htonl(raw_data->motor_3 );
+
+	buf_len = (sizeof(uint32_t) * 4);
+
+	uint8_t crc_calculated = crc8_dvb_s2_init();
+	crc_calculated = crc8_dvb_s2_add_arr(crc_calculated, out_buffer, buf_len);
+	out_buffer[buf_len] = crc_calculated;
+	buf_len += sizeof(crc_calculated);
+
+	buf_len = Base64encode(out_buffer_encoded, out_buffer, buf_len);
+
+	out_buffer_encoded[buf_len] = '\n';
+	buf_len += sizeof(uint8_t);
+
+	CDC_Transmit_FS((uint8_t*)out_buffer_encoded, (uint16_t)buf_len);
 }
 

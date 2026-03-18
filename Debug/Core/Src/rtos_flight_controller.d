@@ -72,6 +72,7 @@ Core/Src/rtos_flight_controller.o: ../Core/Src/rtos_flight_controller.c \
  C:/Programming/STM32F405RGT6_test/Core/Lib/lwshell/lwshell/src/include/lwshell/lwshell_opt.h \
  C:/Programming/STM32F405RGT6_test/Core/Lib/flight_controller_libs/fp_cli_server.h \
  C:/Programming/STM32F405RGT6_test/Core/Lib/flight_controller_libs/rc_control_recv_routine.h \
+ C:/Programming/STM32F405RGT6_test/Core/Lib/flight_controller_libs/gazebo_link.h \
  ../USB_DEVICE/App/usb_device.h \
  ../Middlewares/ST/STM32_USB_Device_Library/Core/Inc/usbd_def.h \
  ../USB_DEVICE/Target/usbd_conf.h ../Core/Inc/main.h \
@@ -159,6 +160,7 @@ C:/Programming/STM32F405RGT6_test/Core/Lib/lwshell/lwshell/src/include/lwshell/l
 C:/Programming/STM32F405RGT6_test/Core/Lib/lwshell/lwshell/src/include/lwshell/lwshell_opt.h:
 C:/Programming/STM32F405RGT6_test/Core/Lib/flight_controller_libs/fp_cli_server.h:
 C:/Programming/STM32F405RGT6_test/Core/Lib/flight_controller_libs/rc_control_recv_routine.h:
+C:/Programming/STM32F405RGT6_test/Core/Lib/flight_controller_libs/gazebo_link.h:
 ../USB_DEVICE/App/usb_device.h:
 ../Middlewares/ST/STM32_USB_Device_Library/Core/Inc/usbd_def.h:
 ../USB_DEVICE/Target/usbd_conf.h:
