@@ -1,3 +1,5 @@
+stop telemetry
+get_telemetry
 set rate_controller_roll_pid (float)kp (float)ki (float)kd (float)max_integral_error (float)Kff
 set rate_controller_pitch_pid (float)kp (float)ki (float)kd (float)max_integral_error (float)Kff
 set rate_controller_yaw_pid (float)kp (float)ki (float)kd (float)max_integral_error (float)Kff
@@ -10,3 +12,11 @@ set rate_controller_yaw_pid 2.0 1.0 0.0 0.747998 0.0
 get rate_controller_roll_pid
 get rate_controller_pitch_pid
 get rate_controller_yaw_pid
+
+set rate_controller_roll_pid 0.001 0.0 0.0 0.747998 0.0
+set rate_controller_pitch_pid 0.001 0.0 0.0 0.747998 0.0
+set rate_controller_yaw_pid 0.001 0.0 0.0 0.747998 0.0
+
+set rate_controller_roll_pid 0.135 0.135 0.0036 0.5 0.0
+set rate_controller_pitch_pid 0.135 0.135 0.0036 0.5 0.0
+set rate_controller_yaw_pid 0.180 0.018 0.0 0.5 0.0

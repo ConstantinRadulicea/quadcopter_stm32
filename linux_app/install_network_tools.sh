@@ -17,6 +17,7 @@ apt update
 
 # Install bridge-utils and isc-dhcp-client
 echo "Installing ppp, bridge-utils and isc-dhcp-client..."
-apt install -y ppp bridge-utils isc-dhcp-client
+sudo apt install -y ppp bridge-utils isc-dhcp-client
+sudo apt install socat -y
 
 echo "Installation complete successfully!"

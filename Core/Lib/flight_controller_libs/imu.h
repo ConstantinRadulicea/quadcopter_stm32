@@ -34,6 +34,7 @@ extern "C" {
 #endif
 
 #define IMU_DEFAULT_LEVELD_ATTITUDE_Q ((quaternion){ 1.0f, 0.0f, 0.0f, 0.0f }) ///< Identity quaternion (scalar-first)
+//#define IMU_GYRO_MEAN_ERROR_RAD (radians(5.0f))                               ///< gyro Zero-Rate Output used by Madgwick (rad/s)
 #define IMU_GYRO_MEAN_ERROR_RAD (radians(5.0f))                               ///< gyro Zero-Rate Output used by Madgwick (rad/s)
 
 /**

@@ -11,5 +11,17 @@ cd /home/debian/gazebo_sim
 export GZ_SIM_RESOURCE_PATH=/home/debian/gazebo_sim
 gz sim x3_hitl.sdf
 
+# list serial ports
+ll /sys/class/tty
+
+# set permission for serial port from outside distrobox
+sudo chmod a+rw /dev/ttyACM0
+
+sudo apt update
+sudo apt install python3-serial
+sudo apt install python3-pygame -y
+
 python3 print_imu.py
 python3 spin_motors.py
+python3 hil_bridge_test_gazebo_only_1.py
+python3 hil_bridge.py

@@ -132,6 +132,20 @@ static void flight_controller_main(void *arg)
         if (tmr != NULL) {
             xTimerStart(tmr, 0);
         }
+#if ENABLE_HIL != 0
+        static float accelerometer_bias_hil[3] = { 0.0f, 0.0f, 0.0f};
+        static float accelerometer_A_1_hil[3][3] = {
+        		{1.0f, 0.0f, 0.0f},
+        		{0.0f, 1.0f, 0.0f},
+        		{0.0f, 0.0f, 1.0f}
+        };
+        static float gyro_bias_hil[3] = { 0.0f, 0.0f, 0.0f};
+        static quaternion ground_default_position_q_hil = { .w = 1.0f, .x = 0.0f, .y = 0.0f, .z = 0.0f };
+
+    	imu_set_accel_bias(&fcl.imu, (coord3D) { accelerometer_bias_hil[0], accelerometer_bias_hil[1], accelerometer_bias_hil[2] }, accelerometer_A_1_hil);
+    	imu_set_gyro_bias(&fcl.imu, (coord3D) { gyro_bias_hil[0], gyro_bias_hil[1], gyro_bias_hil[2] });
+    	imu_set_leveled_attitude(&fcl.imu, ground_default_position_q_hil);
+#endif
 
     /* set 1 */
       for (;;)
@@ -180,9 +194,23 @@ static void flight_controller_main(void *arg)
 #if ENABLE_HIL != 0
         float motors_throttle_temp[4];
         flight_control_loop_get_motors_throttle(&fcl, motors_throttle_temp);
-        hil_link_data_send.motor_0 = motors_throttle_temp[0];
-        hil_link_data_send.motor_1 = motors_throttle_temp[1];
-        hil_link_data_send.motor_2 = motors_throttle_temp[2];
+
+        // Quadcopter motors
+        // Front Left  (0) (CW)
+        // Front Right (1) (CCW)
+        // Rear  Left  (2) (CCW)
+        // Rear  Right (3) (CW)
+
+        // motors		Gazebo		Quadcopter
+        // Front Right (0) (CCW)	(1)
+        // Rear  Left  (1) (CCW)	(2)
+        // Front Left  (2) (CW)		(0)
+        // Rear  Right (3) (CW)		(3)
+
+
+        hil_link_data_send.motor_0 = motors_throttle_temp[1];
+        hil_link_data_send.motor_1 = motors_throttle_temp[2];
+        hil_link_data_send.motor_2 = motors_throttle_temp[0];
         hil_link_data_send.motor_3 = motors_throttle_temp[3];
         gazebo_link_send_loop();
 #endif
@@ -370,7 +398,7 @@ static void print_telemetry_data(void *arg){
 			local_motors_throttle[0], local_motors_throttle[1], local_motors_throttle[2], local_motors_throttle[3],
 			degrees(target_attitude.x), degrees(target_attitude.y), degrees(target_attitude.z),
 			target_throttle,
-			degrees(pid_roll_output), degrees(pid_pitch_output), degrees(pid_yaw_output)
+			(pid_roll_output), (pid_pitch_output), (pid_yaw_output)
 			);
 	OUT_PRINTF("%s", telem_frame);
     }

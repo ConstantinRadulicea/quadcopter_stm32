@@ -1,9 +1,9 @@
 ../Core/Src/rtos_flight_controller.c:63:13:ctrl_timer_cb	24	static,ignoring_inline_asm
 ../Core/Src/rtos_flight_controller.c:71:13:write_motor_timer_cb	24	static,ignoring_inline_asm
 ../Core/Src/rtos_flight_controller.c:79:13:init_imu	16	static
-../Core/Src/rtos_flight_controller.c:109:13:flight_controller_main	112	static
-../Core/Src/rtos_flight_controller.c:193:13:write_motor_main	80	static,ignoring_inline_asm
-../Core/Src/rtos_flight_controller.c:261:13:print_telemetry_data	464	static
-../Core/Src/rtos_flight_controller.c:384:13:fp_cli_func	16	static
-../Core/Src/rtos_flight_controller.c:398:6:app_init	48	static,ignoring_inline_asm
-../Core/Src/rtos_flight_controller.c:415:6:app_main_start	256	static,ignoring_inline_asm
+../Core/Src/rtos_flight_controller.c:109:13:flight_controller_main	136	static
+../Core/Src/rtos_flight_controller.c:221:13:write_motor_main	80	static,ignoring_inline_asm
+../Core/Src/rtos_flight_controller.c:289:13:print_telemetry_data	464	static
+../Core/Src/rtos_flight_controller.c:412:13:fp_cli_func	16	static
+../Core/Src/rtos_flight_controller.c:426:6:app_init	48	static,ignoring_inline_asm
+../Core/Src/rtos_flight_controller.c:443:6:app_main_start	256	static,ignoring_inline_asm

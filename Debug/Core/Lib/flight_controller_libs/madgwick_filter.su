@@ -2,3 +2,4 @@
 ../Core/Lib/flight_controller_libs/madgwick_filter.c:36:7:compute_beta	32	static
 ../Core/Lib/flight_controller_libs/madgwick_filter.c:49:6:madgwick_filter_apply_6dof	216	static
 ../Core/Lib/flight_controller_libs/madgwick_filter.c:159:6:madgwick_filter_apply_9dof	328	static
+../Core/Lib/flight_controller_libs/madgwick_filter.c:297:6:madgwick_filter_apply	208	static

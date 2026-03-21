@@ -47,6 +47,10 @@ void madgwick_filter_apply_6dof(madgwick_filter_t *filter, float ax, float ay, f
 // magnetometer data is in micro Tesla (uT)
 void madgwick_filter_apply_9dof(madgwick_filter_t *filter, float ax, float ay, float az, float gx, float gy, float gz, float mx, float my, float mz);
 
+
+
+void madgwick_filter_apply(madgwick_filter_t *filter, float ax, float ay, float az, float gx, float gy, float gz);
+
 #ifdef __cplusplus
 }
 #endif

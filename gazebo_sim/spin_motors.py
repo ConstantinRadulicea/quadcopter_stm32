@@ -37,7 +37,11 @@ def main():
             
             # Pack the 4 rotor speeds into a single array
             del msg.velocity[:]
-            msg.velocity.extend([speed, speed, speed, speed])
+            motor_0 = speed # FR
+            motor_1 = speed # RL
+            motor_2 = speed # FL
+            motor_3 = speed # RR
+            msg.velocity.extend([motor_0, motor_1, motor_2, motor_3])
             
             pub.publish(msg)
             print(f"--> Thrust commanded: {speed} rad/s on all rotors\n")

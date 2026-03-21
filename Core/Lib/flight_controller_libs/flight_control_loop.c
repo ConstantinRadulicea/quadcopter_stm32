@@ -9,20 +9,6 @@
 #include <time.h>
 #endif
 
-
-// mpu9250
-//static float accelerometer_bias[3] = { 26.993853f, -24.311260f, -45.125365f };
-//static float accelerometer_A_1[3][3] = {
-//		{0.996045f, -0.000592f, 0.001492f},
-//		{-0.000592f, 0.999093f, 0.003024f},
-//		{0.001492f, 0.003024f, 0.989097f}
-//};
-//static float gyro_bias[3] = { -0.067540f, 0.034873f, -0.004956f };
-
-// bias = avg(sensor data)
-
-//mpu6500
-// in radians
 static float accelerometer_bias[3] = { 28.275280f, -16.046399f, 45.211378f };
 static float accelerometer_A_1[3][3] = {
 		{0.998455f, 0.000180f, -0.002872f},
@@ -30,17 +16,12 @@ static float accelerometer_A_1[3][3] = {
 		{-0.002872f, 0.000472f, 0.983752f}
 };
 
-// in radians
+// bias = avg(sensor data) in radians
 static float gyro_bias[3] = { -0.010603f - 0.002f, - 0.026431f - 0.0134614f + radians(0.137f), 0.020599f -0.002f - radians(0.0416f)};
 
 
 // https://articulatedrobotics.xyz/tools/rotation-calculator/
 //static quaternion ground_default_position_q = { .w = 1.0f, .x = 0.0f, .y = 0.0f, .z = 0.0f };	// angle2quat();
-
-//α x: 1.110000 deg
-//β y: -3.000000 deg
-//γ z: 0.000000 deg
-//static quaternion ground_default_position_q = { .w = 0.999610f, .x = 0.009683f, .y = -0.026176f, .z = -0.000254f };
 
 //α x: 1.545 deg
 //β y: -1.236 deg

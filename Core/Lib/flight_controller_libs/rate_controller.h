@@ -26,7 +26,7 @@
 
 
 /* ---------------- PID OUTPUT LIMITS ------------------ */
-#define CONTROLLER_PID_MAX_OUTPUT (radians(500.0f))   ///< Upper limit for PID outputs (before motor mixing)
+#define CONTROLLER_PID_MAX_OUTPUT (radians(degrees(1.0f)))   ///< Upper limit for PID outputs (before motor mixing)
 #define CONTROLLER_PID_MIN_OUTPUT (-CONTROLLER_PID_MAX_OUTPUT)  ///< Lower limit for PID outputs (before motor mixing)
 
 

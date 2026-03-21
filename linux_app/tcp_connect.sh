@@ -1,14 +1,15 @@
 #!/bin/bash
 
 # Configuration
-# STM32_IP="192.168.0.250"
-# ESP8266_IP="192.168.0.52"
+STM32_IP="192.168.0.250"
+ESP8266_IP="192.168.0.52"
 
-STM32_IP="10.72.62.250"     # ipv4 that you want to assign to the stm32. Must be on the same network as the esp8266
-ESP8266_IP="10.72.62.157"   # ipv4 for the esp8266 
+# STM32_IP="10.72.62.250"     # ipv4 that you want to assign to the stm32. Must be on the same network as the esp8266
+# ESP8266_IP="10.72.62.157"   # ipv4 for the esp8266 
 ESP8266_PORT="2323"         # port for the esp8266
 
-IFACE_OUT="enp0s3"
+# IFACE_OUT="enp0s3"
+IFACE_OUT="enp2s1"
 VIRTUAL_PORT_BAUDRATE=460800
 
 LINUX_MACHINE_IP=$(ip -4 addr show "$IFACE_OUT" | grep -oP '(?<=inet\s)\d+(\.\d+){3}')
@@ -22,7 +23,8 @@ echo "Cleaning up old sessions..."
 ps aux | grep socat
 sudo killall socat
 echo "Starting Socat tunnel to $ESP8266_IP:$ESP8266_PORT..."
-sudo socat -d -d pty,link=/dev/ttyV0,raw,echo=0 tcp:$ESP8266_IP:$ESP8266_PORT >/tmp/socat.log 2>&1 &
+# sudo socat -d -d pty,link=/dev/ttyV0,raw,echo=0 tcp:$ESP8266_IP:$ESP8266_PORT >/tmp/socat.log 2>&1 &
+sudo socat -d -d pty,link=/dev/ttyV0,raw,echo=0 tcp:$ESP8266_IP:$ESP8266_PORT > ~/socat.log 2>&1 &
 
 # Wait dynamically for the virtual serial port instead of a hard sleep
 echo "Waiting for /dev/ttyV0..."
