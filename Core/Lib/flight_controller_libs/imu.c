@@ -64,8 +64,8 @@ void imu_update_accel(imu_t* im, coord3D imu_raw_accel_m_s2) {
 }
 
 void imu_update_madgwick(imu_t* im) {
-//	madgwick_filter_apply_6dof
-	madgwick_filter_apply
+	madgwick_filter_apply_6dof
+//	madgwick_filter_apply
 	(
 		&(im->madgwick_filter),
 		-im->body_frame_accel.x,
