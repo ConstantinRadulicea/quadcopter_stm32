@@ -20,6 +20,7 @@
  */
 //#define BETA(gyro_mean_error) (sqrt(3.0f/4.0f) * gyro_mean_error)    //*from paper*
 #define BETA(gyro_mean_error) ((0.866025403784439f) * (gyro_mean_error))    //*from paper*
+#define MADGWICK_ACCEL_MAX_DEVIATION_G (0.3f)
 
 
 void madgwick_filter_init(madgwick_filter_t* filter, float sampling_freq, float gyro_mean_error) {
@@ -33,97 +34,6 @@ void madgwick_filter_init(madgwick_filter_t* filter, float sampling_freq, float 
 }
 
 
-/**
- * @brief Computes a dynamic filter gain (beta) for the Madgwick algorithm.
- * * This function adjusts the trust between the gyroscope and accelerometer based on
- * current physical conditions. It reduces beta during linear acceleration (vibration)
- * to prevent drift, and heavily boosts beta if the estimated orientation is severely
- * out of sync with the gravity vector (e.g., at startup or after a sudden jolt).
- * * @param acc_norm          The magnitude of the accelerometer vector in g's (1.0 = 1g).
- * @param F_g_error_squared The squared magnitude of the objective function error (F_g).
- * This represents the angular mismatch between expected and measured gravity.
- * @param beta_base         The baseline filter gain tuned for resting conditions.
- * @return float            The dynamically adjusted beta value to be applied to the gradient.
- */
-float compute_beta_dynamic(float acc_norm, float F_g_error_squared, float beta_base)
-{
-    // 1. Handle Linear Acceleration & Vibration
-    float delta = fabsf(acc_norm - 1.0f);
-    float vibration_factor = 1.0f - delta;
-
-    // 2. The Branching Logic
-    if (vibration_factor < 0.1f) {
-        // If experiencing high G-forces, clamp the trust in accelerometer
-        // and SKIP the snap logic so we don't snap to fake gravity.
-        vibration_factor = 0.1f;
-    }
-    else {
-        // If the device is relatively stable, check for massive angular errors.
-        // Threshold 1.65270f is exactly 80 degrees.
-        if (F_g_error_squared > 1.65270f) {
-            // Return a safely boosted Beta.
-            // Multiplying a standard 0.041 beta by 50 gives ~2.0f.
-            // This is high enough to snap instantly, but low enough to avoid NaNs.
-            return beta_base * 50.0f;
-        }
-    }
-
-    // 3. Normal Operation
-    return beta_base * vibration_factor;
-}
-
-
-
-/**
- * @brief Hard-resets the quaternion directly to the accelerometer's gravity vector.
- */
-void madgwick_hard_reset_6dof(madgwick_filter_t *filter, float ax, float ay, float az)
-{
-    // 1. Normalize the raw accelerometer data
-    float norm = sqrtf(ax*ax + ay*ay + az*az);
-    if (norm < 1.0f) return; // Prevent division by zero
-
-    ax /= norm;
-    ay /= norm;
-    az /= norm;
-
-    // 2. Extract the current yaw (Z-axis rotation) from the existing filter state.
-    // We do this by isolating the W and Z components and normalizing them.
-    float yaw_norm = sqrtf(filter->q_est.w * filter->q_est.w + filter->q_est.z * filter->q_est.z);
-
-    float qw_yaw = 1.0f;
-    float qz_yaw = 0.0f;
-
-    // Protect against gimbal lock / upside-down singularities
-    if (yaw_norm > 0.001f) {
-        qw_yaw = filter->q_est.w / yaw_norm;
-        qz_yaw = filter->q_est.z / yaw_norm;
-    }
-
-    // 3. Build the tilt quaternion (pitch/roll) directly from the Z-axis projection
-    struct quaternion q_tilt;
-    q_tilt.w = 1.0f + az;
-    q_tilt.x = -ay;
-    q_tilt.y = ax;
-    q_tilt.z = 0.0f;
-
-    // Normalize the tilt quaternion
-    q_tilt = quatnormalize(&q_tilt);
-
-    // 4. Combine yaw and tilt: q_final = q_yaw * q_tilt
-    // Because q_yaw only has W and Z, and q_tilt has Z = 0, we can heavily optimize
-    // the standard quaternion multiplication formula to just 4 multiplications.
-    struct quaternion new_q;
-    new_q.w = qw_yaw * q_tilt.w;
-    new_q.x = qw_yaw * q_tilt.x - qz_yaw * q_tilt.y;
-    new_q.y = qw_yaw * q_tilt.y + qz_yaw * q_tilt.x;
-    new_q.z = qz_yaw * q_tilt.w;
-
-    // 5. Overwrite the filter's state
-    // (Multiplying two normalized quaternions results in a normalized quaternion,
-    // so no need to normalize again here).
-    filter->q_est = new_q;
-}
 
 // The resulting quaternion is a global variable (q_est), so it is not returned or passed by reference/pointer
 // Gyroscope Angular Velocity components are in Radians per Second
@@ -171,10 +81,15 @@ void madgwick_filter_apply_6dof(madgwick_filter_t *filter, float ax, float ay, f
      Note: it is possible to compute the objective function with quaternion multiplcation functions, but it does not take into account the many zeros that cancel terms out and is not optimized like the paper shows
      */
 
+
+    float beta = 0.0f;
+    float base_beta = 0.0f;
+
+
     /* 2. ONLY proceed with Accelerometer fusion if we have gravity */
     float acc_norm = MS2TOG(sqrtf(ax*ax + ay*ay + az*az));
 
-    if (fabsf(acc_norm - 1.0f) < 0.2f)
+    if (fabsf(acc_norm - 1.0f) < MADGWICK_ACCEL_MAX_DEVIATION_G)
     {
 		q_a = quatnormalize(&q_a);              // normalize the acceleration quaternion to be a unit quaternion
 		//Compute the objective function for gravity, equation(15), simplified to equation (25) due to the 0's in the acceleration reference quaternion
@@ -211,6 +126,7 @@ void madgwick_filter_apply_6dof(madgwick_filter_t *filter, float ax, float ay, f
 	    // F_g is essentially the difference between "Expected Gravity" and "Measured Gravity"
 	    // it is error squared (error^2)
 	    error_sq = (F_g[0]*F_g[0] + F_g[1]*F_g[1] + F_g[2]*F_g[2]);
+	    base_beta = BETA(filter->gyro_mean_error);
     }
 
 
@@ -228,38 +144,15 @@ void madgwick_filter_apply_6dof(madgwick_filter_t *filter, float ax, float ay, f
     */
 
 
-
-    float beta;
-    float base_beta;
-
-    base_beta = BETA(filter->gyro_mean_error);
-
-    // 1. Handle Linear Acceleration & Vibration
-    float delta = fabsf(acc_norm - 1.0f);
-    float vibration_factor = 1.0f - delta;
-
-    // 2. The Branching Logic
-    if (vibration_factor < 0.1f) {
-        // If experiencing high G-forces, clamp the trust in accelerometer
-        // and SKIP the snap logic so we don't snap to fake gravity.
-        vibration_factor = 0.1f;
-    }
-    else {
-        // If the device is relatively stable, check for massive angular errors.
-    	// Threshold 1.65270f is exactly 80 degrees.
-    	// Threshold 0.58578f is exactly 45 degrees. 2 -2 * cos(45) = 0.58578f
-        if (error_sq > 0.58578f) {
-            // 1. Instantly snap to accelerometer
-//        	madgwick_hard_reset_6dof(filter, ax, ay, az);
-
-            // 2. Skip the normal Madgwick update for this one frame
-            // because we just manually set the position!
-        	vibration_factor = 20.0f;
-//            return;
-        }
+    // If the device is relatively stable, check for massive angular errors.
+	// Threshold 1.65270f is exactly 80 degrees.
+	// Threshold 0.58578f is exactly 45 degrees. 2 -2 * cos(45) = 0.58578f
+    if (error_sq > 0.58578f) {
+        // 1. Instantly snap to accelerometer
+    	base_beta = base_beta * 20.0f;
     }
 
-    beta = base_beta * vibration_factor;
+    beta = base_beta;
 
 
     gradient = quatmultiply_scalar(&gradient, beta);             // multiply normalized gradient by beta
@@ -397,7 +290,7 @@ void madgwick_filter_apply_9dof(madgwick_filter_t *filter, float ax, float ay, f
     }
 
 
-    float beta = compute_beta(acc_norm, BETA(filter->gyro_mean_error));
+    float beta = BETA(filter->gyro_mean_error);
 
     /* Sensor fusion part of the algorithm */
     gradient = quatmultiply_scalar(&gradient, beta);    // multiply normalized gradient by beta

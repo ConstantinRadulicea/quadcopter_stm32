@@ -19,6 +19,13 @@ extern "C" {
 
 	YAW: rotate left (CCW) (NEGATIVE YAW)
 	YAW: rotate right (CW) (POSITIVE YAW)
+
+	Axis:
+	x: rear -> front
+	y: left -> right
+	z: top -> bottom
+
+	When the plane is on the ground and standstill, the acceleration will be (x:0 m/s2; y:0 m/s2; z:-9.81 m/s2)
  */
 
 #ifndef G_CONSTANT
