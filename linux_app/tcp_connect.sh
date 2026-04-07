@@ -1,11 +1,19 @@
 #!/bin/bash
 
 # Configuration
-STM32_IP="192.168.0.250"
-ESP8266_IP="192.168.0.52"
+# STM32_IP="192.168.0.250"
+# ESP8266_IP="192.168.0.52"
 
-# STM32_IP="10.72.62.250"     # ipv4 that you want to assign to the stm32. Must be on the same network as the esp8266
-# ESP8266_IP="10.72.62.157"   # ipv4 for the esp8266 
+# STM32_IP="192.168.137.250"
+# ESP8266_IP="192.168.137.56"
+
+STM32_IP="10.148.136.60"     # ipv4 that you want to assign to the stm32. Must be on the same network as the esp8266
+ESP8266_IP="10.148.136.157"   # ipv4 for the esp8266 
+
+# STM32_IP="192.168.1.250"
+# ESP8266_IP="192.168.137.227"
+
+
 ESP8266_PORT="2323"         # port for the esp8266
 
 # IFACE_OUT="enp0s3"
@@ -48,3 +56,15 @@ sudo pppd persist holdoff 0 maxfail 0 \
 
 echo "Setting up NAT via $IFACE_OUT..."
 sudo iptables -t nat -A POSTROUTING -s $STM32_IP -o $IFACE_OUT -j MASQUERADE
+
+# # Allow established/related connections back to the external interface
+# sudo iptables -A FORWARD -i ppp0 -o $IFACE_OUT -m state --state RELATED,ESTABLISHED -j ACCEPT
+
+# # Allow incoming connections from the external network to the STM32 via PPP
+# sudo iptables -A FORWARD -i $IFACE_OUT -o ppp0 -j ACCEPT
+
+# # 1. Create a dedicated config file for IP forwarding
+# echo "net.ipv4.ip_forward=1" | sudo tee /etc/sysctl.d/99-ipforward.conf
+
+# # 2. Apply all system configuration changes immediately
+# sudo sysctl --system

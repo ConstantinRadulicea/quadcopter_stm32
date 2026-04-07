@@ -16,7 +16,7 @@
 #include "rc_control_recv_routine.h"
 #include "gazebo_link.h"
 
-#define ENABLE_HIL 1
+#define ENABLE_HIL 0
 
 #define ENABLE_ESC_CALIBRATION_BUILD 0
 #define ENABLE_CLI 1
@@ -314,12 +314,6 @@ static void print_telemetry_data(void *arg){
         flight_control_loop_get_motors_throttle(&fcl, local_motors_throttle);
         angles3D angles = quat2angle(&(body_frame_estimated_q));
 
-//        OUT_PRINTF("%.3f;%.3f;%.3f;", degrees(angles.x), degrees(angles.y), degrees(angles.z));
-//        OUT_PRINTF("%.3f;%.3f;%.3f;", body_frame_accel.x, body_frame_accel.y, body_frame_accel.z);
-//        OUT_PRINTF("%.3f;%.3f;%.3f;", body_frame_gyro.x, body_frame_gyro.y, body_frame_gyro.z);
-////        OUT_PRINTF("%.3f;%.3f;%.3f;", raw_accel.x, raw_accel.y, raw_accel.z);
-////        OUT_PRINTF("%.3f;%.3f;%.3f;", raw_gyro.x, raw_gyro.y, raw_gyro.z);
-//        OUT_PRINTF("%.3f;%.3f;%.3f;%.3f;", local_motors_throttle[0], local_motors_throttle[1], local_motors_throttle[2], local_motors_throttle[3]);
 
 #if MUTEX_ESP_ENABLE != 0
 	xSemaphoreTake(fcl.rc_attitude_control_mutex, portMAX_DELAY);
@@ -334,8 +328,7 @@ static void print_telemetry_data(void *arg){
 #if MUTEX_ESP_ENABLE != 0
 	xSemaphoreGive(fcl.rc_attitude_control_mutex);
 #endif
-	//	OUT_PRINTF("%.3f;%.3f;%.3f;", target_attitude.x, target_attitude.y, target_attitude.z);
-//	OUT_PRINTF("%.3f;", target_throttle);
+
 
 #if MUTEX_ESP_ENABLE != 0
 	xSemaphoreTake(fcl.attitude_controller_mutex, portMAX_DELAY);
@@ -352,7 +345,6 @@ static void print_telemetry_data(void *arg){
 #if MUTEX_ESP_ENABLE != 0
 	xSemaphoreGive(fcl.attitude_controller_mutex);
 #endif
-//	OUT_PRINTF("%.3f;%.3f;%.3f;", target_roll_rate, target_pitch_rate, target_yaw_rate);
 
 
 #if MUTEX_ESP_ENABLE != 0
@@ -371,17 +363,12 @@ static void print_telemetry_data(void *arg){
 #if MUTEX_ESP_ENABLE != 0
 	xSemaphoreGive(fcl.rate_controller_mutex);
 #endif
-//	OUT_PRINTF("%.3f;%.3f;%.3f;", degrees(pid_roll_output), degrees(pid_pitch_output), degrees(pid_yaw_output));
-
 //    OUT_PRINTF("%lu;", (unsigned long)(uxTaskGetStackHighWaterMark((TaskHandle_t)flight_h) * sizeof(StackType_t)));
 //    OUT_PRINTF("%lu;", (unsigned long)(uxTaskGetStackHighWaterMark((TaskHandle_t)write_h) * sizeof(StackType_t)));
 //    OUT_PRINTF("%lu;", (unsigned long)(uxTaskGetStackHighWaterMark((TaskHandle_t)rc_h)     * sizeof(StackType_t)));
 //    OUT_PRINTF("%lu;", (unsigned long)(uxTaskGetStackHighWaterMark((TaskHandle_t)telem_h)  * sizeof(StackType_t)));
 
 
-//	OUT_PRINTF("\r\n");
-
-	//	OUT_PRINTF("%.3f;%.3f;%.3f;", target_attitude.x, target_attitude.y, target_attitude.z);
 
 	snprintf(telem_frame, TELEM_BUF_SZ,
 			"%.3f;%.3f;%.3f;"
@@ -443,15 +430,6 @@ void app_init(){
 void app_main_start(void *argument)
 {
 	app_init();
-
-
-    // Priority mapping:
-    //   original 15  -> high
-    //   original 14  -> above normal
-    //   original 13  -> normal
-    //   original 5   -> below normal
-    //
-    // If you need finer spacing, use osPriorityHigh1..7, osPriorityAboveNormal1..7 (if available).
 
     net_ppp_start();
 

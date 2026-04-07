@@ -20,7 +20,11 @@
  */
 //#define BETA(gyro_mean_error) (sqrt(3.0f/4.0f) * gyro_mean_error)    //*from paper*
 #define BETA(gyro_mean_error) ((0.866025403784439f) * (gyro_mean_error))    //*from paper*
+
 #define MADGWICK_ACCEL_MAX_DEVIATION_G (0.3f)
+#define MADGWICK_MAG_EXPECTED_MAG_UT 50.0f // micro tesla
+#define MADGWICK_MAG_MAX_DEVIATION_UT (10.0f) // micro tesla
+
 
 
 void madgwick_filter_init(madgwick_filter_t* filter, float sampling_freq, float gyro_mean_error) {
@@ -178,6 +182,9 @@ void madgwick_filter_apply_9dof(madgwick_filter_t *filter, float ax, float ay, f
     struct quaternion q_est_dot = {0.0f};            // used as a place holder in equations 42 and 43
     struct quaternion q_a = {0.0f, ax, ay, az};    // equation (24) raw acceleration values, needs to be normalized
     struct quaternion q_m = {0.0f, mx, my, mz};    // raw magnetometer values, needs to be normalized
+    float error_acc_sq = 0.0f;
+//    float error_mag_sq = 0.0f;
+    float base_beta = 0.0f;
 
     float F_g [3] = {0};                      // equation(15/21/25) objective function for gravity
     float J_g [3][4] = {0};                   // jacobian matrix for gravity
@@ -208,7 +215,7 @@ void madgwick_filter_apply_9dof(madgwick_filter_t *filter, float ax, float ay, f
     /* 2. ONLY proceed with Accelerometer fusion if we have gravity */
     float acc_norm = MS2TOG(sqrtf(ax*ax + ay*ay + az*az));
 
-    if (fabsf(acc_norm - 1.0f) < 0.2f)
+    if (fabsf(acc_norm - 1.0f) < MADGWICK_ACCEL_MAX_DEVIATION_G)
     {
 
 		/* Normalize the acceleration and magnetometer quaternions to be unit quaternions */
@@ -218,12 +225,9 @@ void madgwick_filter_apply_9dof(madgwick_filter_t *filter, float ax, float ay, f
 		// 1. Calculate the Magnitude (Norm) in microTeslas (uT)
 		float mag_norm = sqrtf(mx*mx + my*my + mz*mz);
 
-		// 2. Define your expected Earth Field (e.g., 50 uT is a good global average)
-		const float EXPECTED_MAG = 50.0f;
-
 		// 3. Check if the reading is within a 20% tolerance (0.2 * 50 = 10 uT)
 		// This filters out interference from magnets or large metal objects
-		if (fabsf((mag_norm / EXPECTED_MAG) - 1.0f) < 0.2f)
+		if (fabsf(mag_norm - MADGWICK_MAG_EXPECTED_MAG_UT) < MADGWICK_MAG_MAX_DEVIATION_UT)
 		{
 			q_m = quatnormalize(&q_m);
 			/* Compute reference direction of Earth's magnetic field, equation (45) and (46)
@@ -239,6 +243,8 @@ void madgwick_filter_apply_9dof(madgwick_filter_t *filter, float ax, float ay, f
 			F_b[0] = 2.0f * b_x * (0.5f - q_est_prev.y * q_est_prev.y - q_est_prev.z * q_est_prev.z) + 2.0f * b_z * (q_est_prev.x * q_est_prev.z - q_est_prev.w * q_est_prev.y) - q_m.x;
 			F_b[1] = 2.0f * b_x * (q_est_prev.x * q_est_prev.y - q_est_prev.w * q_est_prev.z) + 2.0f * b_z * (q_est_prev.w * q_est_prev.x + q_est_prev.y * q_est_prev.z) - q_m.y;
 			F_b[2] = 2.0f * b_x * (q_est_prev.w * q_est_prev.y + q_est_prev.x * q_est_prev.z) + 2.0f * b_z * (0.5f - q_est_prev.x * q_est_prev.x - q_est_prev.y * q_est_prev.y) - q_m.z;
+
+//			error_mag_sq = (F_b[0]*F_b[0] + F_b[1]*F_b[1] + F_b[2]*F_b[2]);
 		}
 
 
@@ -287,10 +293,25 @@ void madgwick_filter_apply_9dof(madgwick_filter_t *filter, float ax, float ay, f
 		gradient.z = J_g[0][3] * F_g[0] + J_g[1][3] * F_g[1] + J_g[2][3] * F_g[2] + J_b[0][3] * F_b[0] + J_b[1][3] * F_b[1] + J_b[2][3] * F_b[2];
 	    // Normalize the combined gradient, equation (44)
 	    gradient = quatnormalize(&gradient);
+
+	    // 1. Calculate the magnitude of the error vector F_g
+	    // F_g is essentially the difference between "Expected Gravity" and "Measured Gravity"
+	    // it is error squared (error^2)
+	    error_acc_sq = (F_g[0]*F_g[0] + F_g[1]*F_g[1] + F_g[2]*F_g[2]);
+	    base_beta = BETA(filter->gyro_mean_error);
     }
 
+    float beta = 0.0f;
 
-    float beta = BETA(filter->gyro_mean_error);
+    // If the device is relatively stable, check for massive angular errors.
+	// Threshold 1.65270f is exactly 80 degrees.
+	// Threshold 0.58578f is exactly 45 degrees. 2 -2 * cos(45) = 0.58578f
+    if (error_acc_sq > 0.58578f) {
+        // 1. Instantly snap to accelerometer
+    	base_beta = base_beta * 20.0f;
+    }
+
+    beta = base_beta;
 
     /* Sensor fusion part of the algorithm */
     gradient = quatmultiply_scalar(&gradient, beta);    // multiply normalized gradient by beta
