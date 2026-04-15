@@ -1,3 +1,4 @@
+# first terminal
 xhost +local:
 
 distrobox enter gazebo_env
@@ -10,6 +11,24 @@ export GZ_SIM_RENDER_ENGINE_GUI=ogre
 cd /home/debian/gazebo_sim
 export GZ_SIM_RESOURCE_PATH=/home/debian/gazebo_sim
 gz sim x3_hitl.sdf
+
+
+
+
+
+
+
+# second terminal
+distrobox enter gazebo_env
+
+su
+
+export LIBGL_ALWAYS_SOFTWARE=1
+export GZ_SIM_RENDER_ENGINE_GUI=ogre
+
+cd /home/debian/gazebo_sim
+export GZ_SIM_RESOURCE_PATH=/home/debian/gazebo_sim
+
 
 # list serial ports
 ll /sys/class/tty

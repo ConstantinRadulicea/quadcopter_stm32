@@ -16,7 +16,7 @@
 #include "rc_control_recv_routine.h"
 #include "gazebo_link.h"
 
-#define ENABLE_HIL 0
+#define ENABLE_HIL 1
 
 #define ENABLE_ESC_CALIBRATION_BUILD 0
 #define ENABLE_CLI 1

@@ -53,7 +53,7 @@ extern "C" {
 #define RC_INPUT_DEADBAND 0.0f
 
 #define THROTTLE_IDLE 0.055f
-#define MAX_THROTTLE 0.5f
+#define MAX_THROTTLE 0.8f
 #define MAX_MOTOR_THROTTLE 1.0f
 
 struct flight_control_loop_s;

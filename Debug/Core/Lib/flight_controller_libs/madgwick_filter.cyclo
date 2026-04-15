@@ -1,4 +1,4 @@
-../Core/Lib/flight_controller_libs/madgwick_filter.c:30:6:madgwick_filter_init	1
-../Core/Lib/flight_controller_libs/madgwick_filter.c:45:6:madgwick_filter_apply_6dof	3
-../Core/Lib/flight_controller_libs/madgwick_filter.c:177:6:madgwick_filter_apply_9dof	4
-../Core/Lib/flight_controller_libs/madgwick_filter.c:332:6:madgwick_filter_apply	1
+../Core/Lib/flight_controller_libs/madgwick_filter.c:31:6:madgwick_filter_init	1
+../Core/Lib/flight_controller_libs/madgwick_filter.c:46:6:madgwick_filter_apply_6dof	3
+../Core/Lib/flight_controller_libs/madgwick_filter.c:178:6:madgwick_filter_apply_9dof	4
+../Core/Lib/flight_controller_libs/madgwick_filter.c:333:6:madgwick_filter_apply	1

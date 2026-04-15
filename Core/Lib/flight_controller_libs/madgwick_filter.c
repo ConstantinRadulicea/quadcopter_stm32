@@ -24,6 +24,7 @@
 #define MADGWICK_ACCEL_MAX_DEVIATION_G (0.3f)
 #define MADGWICK_MAG_EXPECTED_MAG_UT 50.0f // micro tesla
 #define MADGWICK_MAG_MAX_DEVIATION_UT (10.0f) // micro tesla
+#define MADGWICK_ACC_GYRO_MAX_DEVIATON (0.58578f) // Threshold 0.58578f is exactly 45 degrees. 2 -2 * cos(45) = 0.58578f
 
 
 
@@ -151,7 +152,7 @@ void madgwick_filter_apply_6dof(madgwick_filter_t *filter, float ax, float ay, f
     // If the device is relatively stable, check for massive angular errors.
 	// Threshold 1.65270f is exactly 80 degrees.
 	// Threshold 0.58578f is exactly 45 degrees. 2 -2 * cos(45) = 0.58578f
-    if (error_sq > 0.58578f) {
+    if (error_sq > MADGWICK_ACC_GYRO_MAX_DEVIATON) {
         // 1. Instantly snap to accelerometer
     	base_beta = base_beta * 20.0f;
     }
@@ -306,7 +307,7 @@ void madgwick_filter_apply_9dof(madgwick_filter_t *filter, float ax, float ay, f
     // If the device is relatively stable, check for massive angular errors.
 	// Threshold 1.65270f is exactly 80 degrees.
 	// Threshold 0.58578f is exactly 45 degrees. 2 -2 * cos(45) = 0.58578f
-    if (error_acc_sq > 0.58578f) {
+    if (error_acc_sq > MADGWICK_ACC_GYRO_MAX_DEVIATON) {
         // 1. Instantly snap to accelerometer
     	base_beta = base_beta * 20.0f;
     }

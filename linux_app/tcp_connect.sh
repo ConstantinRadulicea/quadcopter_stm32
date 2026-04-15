@@ -7,8 +7,8 @@
 # STM32_IP="192.168.137.250"
 # ESP8266_IP="192.168.137.56"
 
-STM32_IP="10.148.136.60"     # ipv4 that you want to assign to the stm32. Must be on the same network as the esp8266
-ESP8266_IP="10.148.136.157"   # ipv4 for the esp8266 
+STM32_IP="10.85.90.201"     # ipv4 that you want to assign to the stm32. Must be on the same network as the esp8266
+ESP8266_IP="10.85.90.157"   # ipv4 for the esp8266 
 
 # STM32_IP="192.168.1.250"
 # ESP8266_IP="192.168.137.227"
